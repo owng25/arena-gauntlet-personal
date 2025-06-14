@@ -164,6 +164,11 @@
         "Parameters": {}
       },
       "DisplayDescriptionNormalized": "The Ranger slams their shield into their Target dealing (100*OP) Physical Damage and Stunning for 2 seconds. The Ranger then takes 10% reduced Damage for 4 seconds."
+    }
+  },
+  "weapon_amplifiers": {
+    "SproutGuardReflectiveBarrier": {
+      "Name": "SproutGuardReflectiveBarrier",
     },
     "Flail": {
       "Name": "Flail",
@@ -17877,6 +17882,28 @@
       "Tier": 0,
       "Variation": "Original",
       "Type": "Amplifier",
+      "AmplifierForWeapon": {
+        "Name": "SproutGuard",
+        "Stage": 0,
+        "Variation": "Original",
+        "CombatAffinity": "Earth"
+      },
+      "Stats": {"MaxHealth": 400000},
+      "AttackAbilitiesSelection": "Cycle",
+      "AttackAbilities": [],
+      "OmegaAbilitiesSelection": "Cycle",
+      "OmegaAbilities": [],
+      "InnateAbilities": [
+        {
+          "Name": "Reflective Barrier",
+          "ActivationTrigger": {
+            "TriggerType": "OnShieldHit",
+            "SenderAllegiance": "Enemy",
+            "ReceiverAllegiance": "Self",
+            "AbilityTypes": [
+              "Attack",
+              "Omega"
+            ]
       "Stats": {
         "PhysicalResist": 0,
         "EnergyResist": 0,
@@ -18025,6 +18052,12 @@
           "TotalDurationMs": 0,
           "Skills": [
             {
+              "Name": "ReflectiveBarrier_Ability1",
+              "Deployment": {
+                "Type": "Direct"
+              },
+              "Targeting": {
+                "Type": "Activator"
               "Name": "Exosuit - Shield",
               "Targeting": {
                 "Type": "Self"
@@ -18128,6 +18161,52 @@
                 "Effects": [
                   {
                     "Type": "InstantDamage",
+                    "DamageType": "Pure",
+                    "Expression": 25000
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "DisplayName": "Reflective Barrier",
+      "DisplayDescription": " When any of your Shields are hit, deal 25 Pure damage back to the Attacker.",
+      "Description": {
+        "Format": " When any of your Shields are hit, deal 25 Pure damage back to the Attacker.",
+        "Parameters": {}
+      },
+      "DisplayDescriptionNormalized": " When any of your Shields are hit, deal 25 Pure damage back to the Attacker."
+    }
+  },
+  "suits": {
+    "Jumpsuit": {
+      "Name": "Jumpsuit",
+      "Stage": 1,
+      "Tier": 0,
+      "Variation": "Original",
+      "Type": "Normal",
+      "Stats": {
+        "PhysicalResist": 10,
+        "EnergyResist": 10,
+        "MaxHealth": 300000,
+        "MoveSpeedSubUnits": 1500
+      },
+      "DisplayName": "Jumpsuit",
+      "DisplayDescription": "Health: 300\r\nPhysical Resist: 10\r\nEnergy Resist: 10\r\nMovement Speed: 15",
+      "Description": {
+        "Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}",
+        "Parameters": {
+          "a": {"ParameterPath": "Stats.MaxHealth", "ValueMultiplier": 0.001},
+          "b": {"ParameterPath": "Stats.PhysicalResist"},
+          "z": {"ParameterPath": "Stats.EnergyResist"},
+          "c": {"ParameterPath": "Stats.MoveSpeedSubUnits", "ValueMultiplier": 0.01}
+        }
+      },
+      "DisplayDescriptionNormalized": "Health: 300\r\nPhysical Resist: 10\r\nEnergy Resist: 10\r\nMovement Speed: 15"
+    }
+  }
+}
                     "DamageType": "Energy",
                     "Expression": {
                       "Operation": "*",
