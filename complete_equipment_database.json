@@ -1,0 +1,258 @@
+{
+  "weapons": {
+    "StockShield": {
+      "Name": "StockShield",
+      "Stage": 1,
+      "Tier": 0,
+      "Variation": "Original",
+      "Type": "Normal",
+      "CombatAffinity": "Earth",
+      "CombatClass": "Bulwark",
+      "DominantCombatAffinity": "Earth",
+      "DominantCombatClass": "Bulwark",
+      "Stats": {
+        "MaxHealth": 0,
+        "StartingEnergy": 80000,
+        "EnergyCost": 160000,
+        "PhysicalResist": 0,
+        "EnergyResist": 0,
+        "TenacityPercentage": 0,
+        "WillpowerPercentage": 0,
+        "Grit": 0,
+        "Resolve": 0,
+        "AttackPhysicalDamage": 45000,
+        "AttackEnergyDamage": 0,
+        "AttackPureDamage": 0,
+        "AttackSpeed": 65,
+        "MoveSpeedSubUnits": 0,
+        "HitChancePercentage": 100,
+        "AttackDodgeChancePercentage": 0,
+        "CritChancePercentage": 25,
+        "CritAmplificationPercentage": 150,
+        "OmegaPowerPercentage": 100,
+        "AttackRangeUnits": 2,
+        "OmegaRangeUnits": 2,
+        "HealthRegeneration": 0,
+        "EnergyRegeneration": 0,
+        "EnergyGainEfficiencyPercentage": 100,
+        "OnActivationEnergy": 0,
+        "VulnerabilityPercentage": 100,
+        "EnergyPiercingPercentage": 0,
+        "PhysicalPiercingPercentage": 0,
+        "HealthGainEfficiencyPercentage": 100,
+        "PhysicalVampPercentage": 0,
+        "EnergyVampPercentage": 0,
+        "PureVampPercentage": 0,
+        "Thorns": 0,
+        "StartingShield": 0,
+        "CritReductionPercentage": 0
+      },
+      "AttackAbilitiesSelection": "Cycle",
+      "AttackAbilities": [
+        {
+          "Name": "Earth Shield Attack I",
+          "Skills": [
+            {
+              "Name": "Attack",
+              "Targeting": {
+                "Type": "CurrentFocus"
+              },
+              "Deployment": {
+                "Type": "Direct",
+                "PreDeploymentDelayPercentage": 50
+              },
+              "EffectPackage": {
+                "Effects": [
+                  {
+                    "Type": "InstantDamage",
+                    "DamageType": "Physical",
+                    "Expression": {
+                      "Stat": "AttackPhysicalDamage",
+                      "StatSource": "Sender"
+                    }
+                  },
+                  {
+                    "Type": "InstantDamage",
+                    "DamageType": "Energy",
+                    "Expression": {
+                      "Stat": "AttackEnergyDamage",
+                      "StatSource": "Sender"
+                    }
+                  },
+                  {
+                    "Type": "InstantDamage",
+                    "DamageType": "Pure",
+                    "Expression": {
+                      "Stat": "AttackPureDamage",
+                      "StatSource": "Sender"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "OmegaAbilitiesSelection": "Cycle",
+      "OmegaAbilities": [
+        {
+          "Name": "Earth Shield Bash",
+          "TotalDurationMs": 2000,
+          "Skills": [
+            {
+              "Name": "Damage attack with stun",
+              "Targeting": {
+                "Type": "CurrentFocus"
+              },
+              "Deployment": {
+                "Type": "Direct",
+                "PreDeploymentDelayPercentage": 50
+              },
+              "PercentageOfAbilityDuration": 100,
+              "EffectPackage": {
+                "Effects": [
+                  {
+                    "Type": "InstantDamage",
+                    "DamageType": "Physical",
+                    "Expression": {
+                      "Operation": "*",
+                      "Operands": [
+                        100000,
+                        {
+                          "Stat": "OmegaPowerPercentage",
+                          "StatSource": "Sender"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "Type": "NegativeState",
+                    "NegativeState": "Stun",
+                    "DurationMs": 2000
+                  }
+                ]
+              }
+            },
+            {
+              "Name": "Resoluteness buff",
+              "Deployment": {
+                "Type": "Direct",
+                "PreDeploymentDelayPercentage": 0
+              },
+              "Targeting": {
+                "Type": "Self"
+              },
+              "PercentageOfAbilityDuration": 0,
+              "EffectPackage": {
+                "Effects": [
+                  {
+                    "Type": "Buff",
+                    "Stat": "VulnerabilityPercentage",
+                    "DurationMs": 4000,
+                    "Expression": 10
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "DisplayName": "Stock Earth Shield I",
+      "DisplayDescription": "The Ranger slams their shield into their Target dealing (100*OP) Physical Damage and Stunning for 2 seconds. The Ranger then takes 10% reduced Damage for 4 seconds.",
+      "Description": {
+        "Format": "The Ranger slams their shield into their Target dealing (100*OP) Physical Damage and Stunning for 2 seconds. The Ranger then takes 10% reduced Damage for 4 seconds.",
+        "Parameters": {}
+      },
+      "DisplayDescriptionNormalized": "The Ranger slams their shield into their Target dealing (100*OP) Physical Damage and Stunning for 2 seconds. The Ranger then takes 10% reduced Damage for 4 seconds."
+    }
+  },
+  "weapon_amplifiers": {
+    "SproutGuardReflectiveBarrier": {
+      "Name": "SproutGuardReflectiveBarrier",
+      "Stage": 0,
+      "Tier": 0,
+      "Variation": "Original",
+      "Type": "Amplifier",
+      "AmplifierForWeapon": {
+        "Name": "SproutGuard",
+        "Stage": 0,
+        "Variation": "Original",
+        "CombatAffinity": "Earth"
+      },
+      "Stats": {"MaxHealth": 400000},
+      "AttackAbilitiesSelection": "Cycle",
+      "AttackAbilities": [],
+      "OmegaAbilitiesSelection": "Cycle",
+      "OmegaAbilities": [],
+      "InnateAbilities": [
+        {
+          "Name": "Reflective Barrier",
+          "ActivationTrigger": {
+            "TriggerType": "OnShieldHit",
+            "SenderAllegiance": "Enemy",
+            "ReceiverAllegiance": "Self",
+            "AbilityTypes": [
+              "Attack",
+              "Omega"
+            ]
+          },
+          "TotalDurationMs": 0,
+          "Skills": [
+            {
+              "Name": "ReflectiveBarrier_Ability1",
+              "Deployment": {
+                "Type": "Direct"
+              },
+              "Targeting": {
+                "Type": "Activator"
+              },
+              "EffectPackage": {
+                "Effects": [
+                  {
+                    "Type": "InstantDamage",
+                    "DamageType": "Pure",
+                    "Expression": 25000
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "DisplayName": "Reflective Barrier",
+      "DisplayDescription": " When any of your Shields are hit, deal 25 Pure damage back to the Attacker.",
+      "Description": {
+        "Format": " When any of your Shields are hit, deal 25 Pure damage back to the Attacker.",
+        "Parameters": {}
+      },
+      "DisplayDescriptionNormalized": " When any of your Shields are hit, deal 25 Pure damage back to the Attacker."
+    }
+  },
+  "suits": {
+    "Jumpsuit": {
+      "Name": "Jumpsuit",
+      "Stage": 1,
+      "Tier": 0,
+      "Variation": "Original",
+      "Type": "Normal",
+      "Stats": {
+        "PhysicalResist": 10,
+        "EnergyResist": 10,
+        "MaxHealth": 300000,
+        "MoveSpeedSubUnits": 1500
+      },
+      "DisplayName": "Jumpsuit",
+      "DisplayDescription": "Health: 300\r\nPhysical Resist: 10\r\nEnergy Resist: 10\r\nMovement Speed: 15",
+      "Description": {
+        "Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}",
+        "Parameters": {
+          "a": {"ParameterPath": "Stats.MaxHealth", "ValueMultiplier": 0.001},
+          "b": {"ParameterPath": "Stats.PhysicalResist"},
+          "z": {"ParameterPath": "Stats.EnergyResist"},
+          "c": {"ParameterPath": "Stats.MoveSpeedSubUnits", "ValueMultiplier": 0.01}
+        }
+      },
+      "DisplayDescriptionNormalized": "Health: 300\r\nPhysical Resist: 10\r\nEnergy Resist: 10\r\nMovement Speed: 15"
+    }
+  }
+}

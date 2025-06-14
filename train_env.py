@@ -162,6 +162,7 @@ INVALID_ACTION_PENALTY = -0.5 # Kept the same
 MERGE_STAGE_REWARD = 0.02     # Reward for successful merge/evolution
 PLACE_EVOLVED_REWARD = 0.01   # Reward for placing Stage > 1 unit
 BENCH_TO_BOARD_REWARD = 0.0    # Base reward for bench->board move (PLACE_EVOLVED is added on top)
+BOND_REWARD = 0.01 # New reward for bonding
 # --- End Reward Shaping Constants ---
 
 PLACEMENT_REWARDS = { 1: 1.0, 2: 0.5, 3: 0.2, 4: 0.0, 5: -0.2, 6: -0.5, 7: -0.8, 8: -1.0 }
@@ -258,7 +259,7 @@ if DETAILED_SELFPLAY_DEBUG: print(f"[INFO Config] Recalculated FLAT_OBSERVATION_
 # --- END MODIFIED Observation Space Size Calculation ---
 
 
-# --- Flattened Action Space Definitions ---
+# --- Flattened Action Space Definitions (OLD - To be removed/replaced) ---
 MAX_COMBINED_TARGET_IDX = MAX_BOARD_SLOTS + BENCH_MAX_SIZE # 19 + 15 = 34
 NUM_POSITIONS_INCLUDING_BENCH = NUM_UNIQUE_POSITIONS + 1 # 19 + 1 = 20
 
@@ -279,44 +280,39 @@ FLAT_IDX_AUGMENT_SKIP = FLAT_IDX_EXIT_PLACEMENT + 1 # Index 725
 FLAT_IDX_AUGMENT_APPLY_START = FLAT_IDX_AUGMENT_SKIP + 1 # Index 726
 FLAT_AUGMENT_APPLY_ACTIONS = NUM_AUGMENT_CHOICES * MAX_COMBINED_TARGET_IDX # 3 * 34 = 102 actions
 TOTAL_FLAT_ACTIONS = FLAT_IDX_AUGMENT_APPLY_START + FLAT_AUGMENT_APPLY_ACTIONS # 726 + 102 = 828
+# --- End OLD Flattened Action Space Definitions ---
 
-if 'FLAT_ACTION_RANGES_PRINTED_V2' not in globals() and DETAILED_SELFPLAY_DEBUG:
-    print(f"--- FLAT ACTION SPACE (POST-BENCH/SHOP CHANGE) ---"); print(f"MAX_BOARD_SLOTS: {MAX_BOARD_SLOTS}"); print(f"BENCH_MAX_SIZE: {BENCH_MAX_SIZE}"); print(f"MAX_COMBINED_TARGET_IDX: {MAX_COMBINED_TARGET_IDX}"); print(f"SHOP_SIZE: {SHOP_SIZE}"); print(f"NUM_UNIQUE_POSITIONS: {NUM_UNIQUE_POSITIONS}"); print(f"NUM_POSITIONS_INCLUDING_BENCH: {NUM_POSITIONS_INCLUDING_BENCH}"); print(f"NUM_AUGMENT_CHOICES: {NUM_AUGMENT_CHOICES}"); print(f"---"); print(f"Sell Block:       {FLAT_IDX_SELL_START} - {FLAT_IDX_BUY_START - 1} ({FLAT_SELL_ACTIONS} actions)"); print(f"Buy Block:        {FLAT_IDX_BUY_START} - {FLAT_IDX_REROLL - 1} ({FLAT_BUY_ACTIONS} actions)"); print(f"Reroll:           {FLAT_IDX_REROLL}"); print(f"Buy XP:           {FLAT_IDX_BUY_XP}"); print(f"Enter Placement:  {FLAT_IDX_ENTER_PLACEMENT}"); print(f"Modify Unit Block:{FLAT_IDX_MODIFY_UNIT_START} - {FLAT_IDX_EXIT_PLACEMENT - 1} ({FLAT_MODIFY_UNIT_ACTIONS} actions)"); print(f"Exit Placement:   {FLAT_IDX_EXIT_PLACEMENT}"); print(f"Augment Skip:     {FLAT_IDX_AUGMENT_SKIP}"); print(f"Augment Apply Blk:{FLAT_IDX_AUGMENT_APPLY_START} - {TOTAL_FLAT_ACTIONS - 1} ({FLAT_AUGMENT_APPLY_ACTIONS} actions)"); print(f"---"); print(f"TOTAL FLAT ACTIONS: {TOTAL_FLAT_ACTIONS}"); print(f"------------------------------------"); globals()['FLAT_ACTION_RANGES_PRINTED_V2'] = True
-def get_flat_sell_index(unit_combined_idx_0based: int) -> int:
-    if not (0 <= unit_combined_idx_0based < MAX_COMBINED_TARGET_IDX): raise ValueError(f"Invalid unit_combined_idx_0based for sell: {unit_combined_idx_0based} (max is {MAX_COMBINED_TARGET_IDX-1})")
-    return FLAT_IDX_SELL_START + unit_combined_idx_0based
-def get_flat_buy_index(shop_slot_idx_0based: int) -> int:
-    if not (0 <= shop_slot_idx_0based < SHOP_SIZE): raise ValueError(f"Invalid shop_slot_idx_0based for buy: {shop_slot_idx_0based} (max is {SHOP_SIZE-1})")
-    return FLAT_IDX_BUY_START + shop_slot_idx_0based
-def get_flat_modify_index(unit_combined_idx_0based: int, target_pos_id_0based_bench_is_0: int) -> int:
-    if not (0 <= unit_combined_idx_0based < MAX_COMBINED_TARGET_IDX): raise ValueError(f"Invalid unit_combined_idx_0based for modify: {unit_combined_idx_0based} (max is {MAX_COMBINED_TARGET_IDX-1})")
-    if not (0 <= target_pos_id_0based_bench_is_0 < NUM_POSITIONS_INCLUDING_BENCH): raise ValueError(f"Invalid target_pos_id_0based for modify: {target_pos_id_0based_bench_is_0} (max is {NUM_POSITIONS_INCLUDING_BENCH-1})")
-    offset = (unit_combined_idx_0based * NUM_POSITIONS_INCLUDING_BENCH) + target_pos_id_0based_bench_is_0; return FLAT_IDX_MODIFY_UNIT_START + offset
-def get_flat_augment_apply_index(augment_choice_idx_1based: int, target_unit_combined_idx_0based: int) -> int:
-    if not (1 <= augment_choice_idx_1based <= NUM_AUGMENT_CHOICES): raise ValueError(f"Invalid augment_choice_idx_1based: {augment_choice_idx_1based} (must be 1 to {NUM_AUGMENT_CHOICES})")
-    if not (0 <= target_unit_combined_idx_0based < MAX_COMBINED_TARGET_IDX): raise ValueError(f"Invalid target_unit_combined_idx_0based for augment apply: {target_unit_combined_idx_0based} (max is {MAX_COMBINED_TARGET_IDX-1})")
-    choice_idx_0based = augment_choice_idx_1based - 1; offset = (choice_idx_0based * MAX_COMBINED_TARGET_IDX) + target_unit_combined_idx_0based; return FLAT_IDX_AUGMENT_APPLY_START + offset
-def decode_flat_action(flat_action_index: int) -> Tuple[int, int, int, str]:
-    action_type = -1; param1 = -1; param2 = -1; decoded_action_str = "Unknown/Invalid"
-    if not (0 <= flat_action_index < TOTAL_FLAT_ACTIONS): return action_type, param1, param2, f"Invalid Index ({flat_action_index})"
-    if FLAT_IDX_SELL_START <= flat_action_index < FLAT_IDX_BUY_START: action_type = 0; param1 = flat_action_index - FLAT_IDX_SELL_START; decoded_action_str = f"Sell Unit Idx {param1}"
-    elif FLAT_IDX_BUY_START <= flat_action_index < FLAT_IDX_REROLL: action_type = 1; param1 = flat_action_index - FLAT_IDX_BUY_START; decoded_action_str = f"Buy Shop Idx {param1}"
-    elif flat_action_index == FLAT_IDX_REROLL: action_type = 2; decoded_action_str = "Reroll"
-    elif flat_action_index == FLAT_IDX_BUY_XP: action_type = 3; decoded_action_str = "Buy XP"
-    elif flat_action_index == FLAT_IDX_ENTER_PLACEMENT: action_type = 4; decoded_action_str = "Enter Placement"
-    elif FLAT_IDX_MODIFY_UNIT_START <= flat_action_index < FLAT_IDX_EXIT_PLACEMENT: action_type = 5; relative_idx = flat_action_index - FLAT_IDX_MODIFY_UNIT_START; param1 = relative_idx // NUM_POSITIONS_INCLUDING_BENCH; param2 = relative_idx % NUM_POSITIONS_INCLUDING_BENCH; decoded_action_str = f"Modify Unit {param1} to Pos {param2}"
-    elif flat_action_index == FLAT_IDX_EXIT_PLACEMENT: action_type = 6; decoded_action_str = "Exit Placement"
-    elif flat_action_index == FLAT_IDX_AUGMENT_SKIP: action_type = 7; param1 = 0; param2 = 0; decoded_action_str = "Augment Skip"
-    elif FLAT_IDX_AUGMENT_APPLY_START <= flat_action_index < TOTAL_FLAT_ACTIONS: action_type = 7; relative_idx = flat_action_index - FLAT_IDX_AUGMENT_APPLY_START; choice_idx_0based = relative_idx // MAX_COMBINED_TARGET_IDX; target_unit_idx_0based = relative_idx % MAX_COMBINED_TARGET_IDX; param1 = choice_idx_0based + 1; param2 = target_unit_idx_0based; decoded_action_str = f"Augment Choice {param1} on Unit {param2}"
-    else: decoded_action_str = f"Unknown Index ({flat_action_index})"
-    return action_type, param1, param2, decoded_action_str
-# --- End Flattened Action Space Definitions ---
+# --- New 4D Action Space Definitions ---
+NUM_ACTION_TYPES = 6
+DIM_ENTITY_SIZE = 60  # For player units or catalogue items
+DIM_POSITION_SIZE = 12 # For board positions (subset or mapping needed for the 19 board slots + 1 bench)
+DIM_ITEM_SIZE = 18    # For shop slots or item sub-selection (e.g. system actions)
+
+NEW_TOTAL_FLAT_ACTIONS = NUM_ACTION_TYPES * DIM_ENTITY_SIZE * DIM_POSITION_SIZE * DIM_ITEM_SIZE
+
+# Action Type Indices
+AT_SYSTEM_ACTIONS = 0
+AT_SELL_UNIT = 1
+AT_BUY_ILLUVIAL = 2
+AT_PLACE_UNIT = 3
+AT_RANGER_EQUIP = 4
+AT_RANGER_BOND = 5
+
+# Specific item_idx for AT_SYSTEM_ACTIONS
+SYSTEM_ACTION_PASS = 0 # Also used for Augment Skip if in augment phase
+SYSTEM_ACTION_REROLL_ILLUVIAL_SHOP = 1
+SYSTEM_ACTION_BUY_XP = 2
+SYSTEM_ACTION_EXIT_PLACEMENT_PHASE = 3 # From placement to planning
+SYSTEM_ACTION_END_PLANNING_PHASE = 4   # From planning/augment to combat_preparation
+# --- End New 4D Action Space Definitions ---
+
 
 # --- Data Loading & Basic Helpers ---
 try: PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else os.path.abspath('.')
 except NameError: PROJECT_ROOT = os.getcwd()
 ILLUVIAL_TEMPLATES_FILE = os.path.join(PROJECT_ROOT, "illuvial_templates.json")
 MERGED_FILE = os.path.join(DATA_DIR, "merged_data.json")
+COMPLETE_EQUIPMENT_DATABASE_FILE = os.path.join(PROJECT_ROOT, "complete_equipment_database.json")
 def load_json_safely(path: str) -> Any:
     """Loads JSON data, handling file not found and decode errors."""
     if not os.path.exists(path):
@@ -381,6 +377,18 @@ class Player:
         self.available_augment_choices: List[Optional[str]] = [None] * NUM_AUGMENT_CHOICES; self.is_augment_choice_pending: bool = False; self.augment_offer_round: int = -1
         self._pairs_presimulated_this_step: set[tuple[int, int]] = set()
 
+        # Ranger specific attributes
+        self.ranger_unit_id: Optional[str] = None
+        self.ranger_weapon: Optional[Dict] = None # Stores the INSTANCE of the equipped weapon
+        self.ranger_weapon_amplifiers: List[Dict] = [] # Stores a list of INSTANCES of equipped amplifiers
+        self.ranger_suit: Optional[Dict] = None # Stores the INSTANCE of the equipped suit (though initially might just be definition)
+
+        # Special Ranger Shop attributes
+        self.special_shop_active: bool = False
+        self.special_shop_type: Optional[str] = None # e.g., "weapon", "weapon_amplifier"
+        self.special_shop_items: List[Optional[Dict]] = [None] * 5 # Stores DEFINITIONS of items in special shop
+        self.special_shop_round_triggered: int = -1
+
     def is_alive(self)->bool: return self.health>0
     def units_on_board_count(self)->int: return len(self.board)
     def get_combined_units(self) -> List[Dict]: return list(self.board) + list(self.bench)
@@ -408,6 +416,18 @@ class Player:
         
         self.last_opponent_id=None;
         self.won_last_round = None; self.current_phase = "planning"; self.available_augment_choices = [None] * NUM_AUGMENT_CHOICES; self.is_augment_choice_pending = False; self.augment_offer_round = -1
+
+        # Reset Ranger attributes
+        self.ranger_unit_id = None
+        self.ranger_weapon = None
+        self.ranger_weapon_amplifiers = []
+        self.ranger_suit = None
+
+        # Reset Special Ranger Shop attributes
+        self.special_shop_active = False
+        self.special_shop_type = None
+        self.special_shop_items = [None] * 5
+        self.special_shop_round_triggered = -1
 
 # --- The Single Environment ---
 class IlluviumSingleEnv(gym.Env):
@@ -442,20 +462,40 @@ class IlluviumSingleEnv(gym.Env):
             self.illuvial_templates = ILLUVIAL_TEMPLATES
             if not isinstance(self.illuvial_templates, list) or not self.illuvial_templates: 
                 self.logger.error(f"Illuvial templates invalid/empty for Env {env_id}. Check illuvial_templates.json")
+
+            # Load equipment data
+            equipment_data_content = load_json_safely(COMPLETE_EQUIPMENT_DATABASE_FILE)
+            if equipment_data_content is None:
+                self.logger.error(f"Failed to load equipment data from {COMPLETE_EQUIPMENT_DATABASE_FILE}. Using empty defaults.")
+                equipment_data_content = {}
             
+            self.weapons_data_from_db: Dict[str, Any] = equipment_data_content.get("weapons", {})
+            self.weapon_amplifiers_data_from_db: Dict[str, Any] = equipment_data_content.get("weapon_amplifiers", {})
+            self.suits_data_from_db: Dict[str, Any] = equipment_data_content.get("suits", {})
+
+            if not self.weapons_data_from_db: self.logger.warning(f"No weapons data loaded from {COMPLETE_EQUIPMENT_DATABASE_FILE}")
+            if not self.weapon_amplifiers_data_from_db: self.logger.warning(f"No weapon_amplifiers data loaded from {COMPLETE_EQUIPMENT_DATABASE_FILE}")
+            if not self.suits_data_from_db: self.logger.warning(f"No suits data loaded from {COMPLETE_EQUIPMENT_DATABASE_FILE}")
+
             self.illuvial_line_to_id: Dict[str, int] = {}
             self.augment_name_to_id: Dict[str, int] = {}
             self.id_to_illuvial_line: Dict[int, str] = {}
             self.id_to_augment_name: Dict[int, str] = {}
-            self._populate_id_maps()
+
+            # Equipment definition maps
+            self.weapon_definitions: Dict[str, Dict[str, Any]] = {}
+            self.weapon_amplifier_definitions: Dict[str, Dict[str, Any]] = {}
+            self.suit_definitions: Dict[str, Dict[str, Any]] = {}
+
+            self._populate_id_maps() # This will now also populate equipment definitions
             
             global MAX_ILLUVIAL_ID, MAX_AUGMENT_ID 
             
             max_obs_component_value = 200.0
             if DETAILED_SELFPLAY_DEBUG: self.logger.debug(f"Setting Obs Space Shape: ({FLAT_OBSERVATION_SIZE},)")
             self.observation_space = Box(low=0, high=max_obs_component_value, shape=(FLAT_OBSERVATION_SIZE,), dtype=_global_np.float32)
-            if DETAILED_SELFPLAY_DEBUG: self.logger.debug(f"Setting Act Space Size: {TOTAL_FLAT_ACTIONS}")
-            self.action_space = Discrete(TOTAL_FLAT_ACTIONS)
+            if DETAILED_SELFPLAY_DEBUG: self.logger.debug(f"Setting Act Space Size to NEW_TOTAL_FLAT_ACTIONS: {NEW_TOTAL_FLAT_ACTIONS}")
+            self.action_space = Discrete(NEW_TOTAL_FLAT_ACTIONS) # MODIFIED
 
             self.round_idx: int = 0
             self.players: Dict[int, Player] = {}
@@ -514,13 +554,16 @@ class IlluviumSingleEnv(gym.Env):
                 self.logger.critical(f"{reset_debug_prefix} Failed to assign agent P0.")
                 raise RuntimeError(f"{reset_debug_prefix} Failed to assign agent P0.")
 
-            self.logger.debug(f"{reset_debug_prefix} Resetting players states and forcing initial units...")
+            self.logger.debug(f"{reset_debug_prefix} Resetting players states, initializing Rangers, and forcing initial units...")
             for pid, p in self.players.items():
                 try: 
                     p.clear_state_for_reset()
+                    self._initialize_player_ranger(p) # Add Ranger unit first
                     p.coins = FORCED_COINS
                     self._create_player_shops(p)
-                    self._force_initial_unit(p) # Ensure each player has an initial unit
+                    # _force_initial_unit will only run if the board is empty after Ranger placement.
+                    if not p.board: # Check if board is still empty after Ranger placement
+                        self._force_initial_unit(p)
                 except Exception as e: 
                     self.logger.critical(f"{reset_debug_prefix} FATAL error resetting P{pid}: {e}")
                     self.logger.exception("Full traceback for player reset failure:")
@@ -704,6 +747,159 @@ class IlluviumSingleEnv(gym.Env):
             self.id_to_augment_name[aug_id_counter] = "FallbackAugment"
             aug_id_counter += 1
         MAX_AUGMENT_ID = max(1, aug_id_counter - 1)
+
+        # Populate equipment definition maps
+        for name, data in self.weapons_data_from_db.items():
+            if isinstance(data, dict) and data.get("Name"):
+                self.weapon_definitions[data["Name"]] = data
+            else:
+                self.logger.warning(f"Invalid weapon data for '{name}' in equipment database. Skipping.")
+
+        for name, data in self.weapon_amplifiers_data_from_db.items():
+            if isinstance(data, dict) and data.get("Name"):
+                self.weapon_amplifier_definitions[data["Name"]] = data
+            else:
+                self.logger.warning(f"Invalid weapon amplifier data for '{name}' in equipment database. Skipping.")
+
+        for name, data in self.suits_data_from_db.items():
+            if isinstance(data, dict) and data.get("Name"):
+                self.suit_definitions[data["Name"]] = data
+            else:
+                self.logger.warning(f"Invalid suit data for '{name}' in equipment database. Skipping.")
+
+        if DETAILED_SELFPLAY_DEBUG:
+            self.logger.debug(f"Populated {len(self.weapon_definitions)} weapon definitions.")
+            self.logger.debug(f"Populated {len(self.weapon_amplifier_definitions)} weapon amplifier definitions.")
+            self.logger.debug(f"Populated {len(self.suit_definitions)} suit definitions.")
+
+    def _populate_special_shop(self, player: Player, shop_type: str):
+        """Populates the player's special shop with items of the given type."""
+        debug_prefix = f"[Env {self.env_id} P{player.player_id} PopulateSpecialShop Type:{shop_type}]:"
+        player.special_shop_items = [None] * 5 # Reset/Initialize with 5 slots
+
+        if shop_type == "weapon":
+            all_weapon_names = list(self.weapon_definitions.keys())
+            if not all_weapon_names:
+                self.logger.warning(f"{debug_prefix} No weapon definitions available to populate shop.")
+                return
+
+            num_to_sample = min(len(all_weapon_names), 5)
+            sampled_weapon_names = random.sample(all_weapon_names, num_to_sample)
+
+            for i, name in enumerate(sampled_weapon_names):
+                player.special_shop_items[i] = self.weapon_definitions.get(name)
+            if DETAILED_SELFPLAY_DEBUG: self.logger.debug(f"{debug_prefix} Populated with weapons: {[item.get('Name', 'None') if item else 'None' for item in player.special_shop_items]}")
+
+        elif shop_type == "weapon_amplifier":
+            if not player.ranger_weapon or not player.ranger_weapon.get('TypeID', {}).get('Name'):
+                self.logger.warning(f"{debug_prefix} Cannot populate weapon_amplifier shop. Ranger has no weapon equipped or weapon name is missing.")
+                return
+
+            equipped_weapon_name = player.ranger_weapon['TypeID']['Name']
+            compatible_amplifiers = [
+                amp_data for amp_data in self.weapon_amplifier_definitions.values()
+                if amp_data.get('AmplifierForWeapon', {}).get('Name') == equipped_weapon_name
+            ]
+
+            if not compatible_amplifiers:
+                self.logger.warning(f"{debug_prefix} No compatible amplifiers found for weapon '{equipped_weapon_name}'.")
+                return
+
+            num_to_sample = min(len(compatible_amplifiers), 5)
+            sampled_amplifiers = random.sample(compatible_amplifiers, num_to_sample)
+
+            for i, amp_data in enumerate(sampled_amplifiers):
+                player.special_shop_items[i] = amp_data
+            if DETAILED_SELFPLAY_DEBUG: self.logger.debug(f"{debug_prefix} Populated with amplifiers for '{equipped_weapon_name}': {[item.get('Name', 'None') if item else 'None' for item in player.special_shop_items]}")
+
+        else:
+            self.logger.warning(f"{debug_prefix} Unknown special shop type: {shop_type}")
+
+
+    def _initialize_player_ranger(self, player: Player):
+        """Initializes the Ranger unit for a player."""
+        debug_prefix = f"[Env {self.env_id} P{player.player_id} InitRanger]:"
+        player.ranger_unit_id = generate_random_unit_id()
+
+        # Suit
+        jumpsuit_def = self.suit_definitions.get("Jumpsuit")
+        equipped_suit_type_id: Dict[str, Any]
+        if jumpsuit_def:
+            player.ranger_suit = jumpsuit_def # Store full definition
+            equipped_suit_type_id = {
+                "Name": jumpsuit_def.get("Name", "Jumpsuit"),
+                "Stage": jumpsuit_def.get("Stage", 1),
+                "Variation": jumpsuit_def.get("Variation", "Original")
+            }
+            if DETAILED_SELFPLAY_DEBUG: self.logger.debug(f"{debug_prefix} Jumpsuit found and assigned.")
+        else:
+            self.logger.warning(f"{debug_prefix} 'Jumpsuit' not found in suit_definitions. Using placeholder for Ranger suit.")
+            player.ranger_suit = {"Name": "Jumpsuit_Placeholder", "Stats": {"MaxHealth": 300000}} # Minimal placeholder
+            equipped_suit_type_id = {"Name": "Jumpsuit", "Stage": 1, "Variation": "Original"}
+
+        ranger_instance = {
+            "ID": player.ranger_unit_id,
+            "DominantCombatAffinity": "None",
+            "DominantCombatClass": "None",
+            "BondedId": "",
+            "Level": 1,
+            "EquippedWeapon": {
+                "ID": generate_random_unit_id(), # Instance ID for the equipped weapon
+                "TypeID": {"Name": "", "Stage": 0, "Variation": "Original", "CombatAffinity": "None"}, # Definition (empty by default)
+                "EquippedAmplifiers": [] # List of amplifier instances
+            },
+            "EquippedSuit": { # Instance of the suit
+                "ID": generate_random_unit_id(), # Instance ID for the equipped suit
+                "TypeID": equipped_suit_type_id # Definition from Jumpsuit
+            },
+            "EquippedConsumables": [],
+            "EquippedAugments": [],
+            "Finish": "None"
+        }
+        # Player attributes now point to the INSTANCE dicts within the Ranger's Instance data
+        player.ranger_weapon = ranger_instance["EquippedWeapon"]
+        player.ranger_weapon_amplifiers = ranger_instance["EquippedWeapon"]["EquippedAmplifiers"]
+        # player.ranger_suit already stores the definition, the instance is in ranger_instance["EquippedSuit"]
+
+
+        ranger_type_id = {
+            "UnitType": "Ranger",
+            "LineType": "FemaleRanger", # Default, can be configurable later if needed
+            "Stage": 0, # Rangers don't have stages like Illuvials
+            "Path": "",
+            "Variation": ""
+        }
+
+        # Assign position
+        # Simple unique position for now, can be made more robust
+        pos_idx = player.player_id % len(POSITIONS_BLUE_LIST)
+        chosen_pos_coords = POSITIONS_BLUE_LIST[pos_idx]
+
+        # Check if the chosen position is already occupied by another Ranger (unlikely with simple modulo but good practice)
+        # This is a basic check; a more robust system would ensure no overlap if MAX_BOARD_SLOTS < NUM_PLAYERS
+        is_occupied = any(
+            u.get("Position", {}).get("Q") == chosen_pos_coords[0] and
+            u.get("Position", {}).get("R") == chosen_pos_coords[1]
+            for other_p_id, other_p in self.players.items() if other_p_id != player.player_id for u in other_p.board
+        )
+        if is_occupied: # Fallback if somehow occupied, find first free or use the first one
+            self.logger.warning(f"{debug_prefix} Position {chosen_pos_coords} for P{player.player_id} Ranger was occupied. Finding fallback.")
+            fallback_pos = self._find_free_tile_for_player(player, preferred_unified_id=1) # Try first tile
+            if fallback_pos: chosen_pos_coords = fallback_pos
+            else: # Absolute fallback if no free tiles (should not happen in reset)
+                 chosen_pos_coords = POSITIONS_BLUE_LIST[0]
+                 self.logger.error(f"{debug_prefix} No free tiles for Ranger. Using {chosen_pos_coords}. Expect issues.")
+
+        ranger_position = {"Q": chosen_pos_coords[0], "R": chosen_pos_coords[1]}
+
+        ranger_unit_dict = {
+            "TypeID": ranger_type_id,
+            "Instance": ranger_instance,
+            "Position": ranger_position
+        }
+        player.board.append(ranger_unit_dict)
+        if DETAILED_SELFPLAY_DEBUG: self.logger.debug(f"{debug_prefix} Ranger unit (ID: {player.ranger_unit_id}) added to board at {ranger_position}.")
+
 
     def _get_illuvial_id(self, line_type: Optional[str]) -> int: return self.illuvial_line_to_id.get(clean_line_type(line_type), 0) if line_type else 0
     def _get_augment_id(self, augment_name: Optional[str]) -> int: return self.augment_name_to_id.get(augment_name, 0) if augment_name else 0
@@ -1140,220 +1336,122 @@ class IlluviumSingleEnv(gym.Env):
 
             player = self.agent
             # State Consistency Check
+            # This needs to be done carefully as phases might be implicitly handled by the new action types
             if player.is_augment_choice_pending and player.current_phase != "augment":
-                if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.warning(f"{mask_debug_prefix} State mismatch: AugPend but Phase={player.current_phase}. Force to augment phase.")
-                player.current_phase = "augment"
+                 if DETAILED_ACTION_DEBUG: self.logger.warning(f"{mask_debug_prefix} State mismatch: AugPend but Phase={player.current_phase}. Forcing to augment phase for mask calc.")
+                 # Do not change player.current_phase here, let actions handle phase transitions
             elif not player.is_augment_choice_pending and player.current_phase == "augment":
-                if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.warning(f"{mask_debug_prefix} State mismatch: Phase=augment but no AugPend. Force to planning phase.")
-                player.current_phase = "planning"
+                 if DETAILED_ACTION_DEBUG: self.logger.warning(f"{mask_debug_prefix} State mismatch: Phase=augment but no AugPend. Acting as if planning phase for mask calc.")
 
-            if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} Calculating mask for phase: {player.current_phase}")
+            # Iterate through all possible actions in the new 4D space
+            for i in range(NEW_TOTAL_FLAT_ACTIONS):
+                action_type_idx, entity_idx, position_idx, item_idx = self.decode_new_flat_action(i)
 
-            # Augment Phase Logic
-            if player.current_phase == "augment":
-                if player.player_id == 0: # Log only for agent
-                    self.logger.info( 
-                        f"[AGENT P0 MASK - AUGMENT PHASE ENTRY Rnd{self.round_idx}] "
-                        f"AugPend={player.is_augment_choice_pending}, "
-                        f"AvailableChoices={player.available_augment_choices}"
-                    )
-                if not player.is_augment_choice_pending:
-                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.error(f"{mask_debug_prefix} Aug phase but no aug pending! Reverting to planning.")
-                    player.current_phase = "planning" # Fall through to planning logic below
-                else:
-                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} Aug Phase: Enabling Skip.")
-                    flat_mask[FLAT_IDX_AUGMENT_SKIP] = True # Can always skip
-                    combined_units = player.get_combined_units()
-                    combined_units_len = len(combined_units)
-                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} Checking {combined_units_len} units for augment application. Choices: {player.available_augment_choices}")
-                    for choice_idx_1based in range(1, NUM_AUGMENT_CHOICES + 1):
-                        choice_idx_0based = choice_idx_1based - 1
-                        if 0 <= choice_idx_0based < len(player.available_augment_choices):
-                            augment_name = player.available_augment_choices[choice_idx_0based]
-                            if augment_name is not None:
-                                if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  Choice {choice_idx_1based} ('{augment_name}') is valid.")
-                                for unit_idx_0based in range(combined_units_len):
-                                    # Ensure unit index is within MAX_COMBINED_TARGET_IDX for the action encoding
-                                    if unit_idx_0based >= MAX_COMBINED_TARGET_IDX: continue
+                # Default to False, only enable if explicitly valid
+                current_action_valid = False
 
-                                    target_unit, _, _ = self._get_unit_by_combined_index(player, unit_idx_0based + 1)
-                                    can_apply = target_unit and len(target_unit.get("Instance", {}).get("EquippedAugments", [])) < MAX_AUGMENTS_PER_UNIT
-                                    if can_apply:
-                                        try:
-                                            flat_idx = get_flat_augment_apply_index(choice_idx_1based, unit_idx_0based)
-                                            if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}   [MASK ALLOW Augment] Enabling Apply Choice {choice_idx_1based} on Unit {unit_idx_0based} (FlatIdx {flat_idx})")
-                                            flat_mask[flat_idx] = True
-                                        except Exception as e:
-                                            if hasattr(self, 'logger') and self.logger: self.logger.error(f"{mask_debug_prefix} Error calculating augment apply index: {e}")
-                                    elif DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}   [MASK DENY Augment] Cannot apply Choice {choice_idx_1based} on Unit {unit_idx_0based} (Full/Invalid)")
-                            elif DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  Choice {choice_idx_1based} is None/Invalid.")
-
-            # Planning Phase Logic (check if phase might have changed above)
-            if player.current_phase == "planning": # Note: 'if' not 'elif' because phase can change from augment to planning above
-                combined_units_planning = player.get_combined_units() # Get fresh list
-                combined_units_len_planning = len(combined_units_planning)
-                bench_len_planning = len(player.bench)
-                coins_planning = player.coins
-                can_place_on_bench_planning = bench_len_planning < BENCH_MAX_SIZE
-                if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} Plan Phase: Coins={coins_planning}, Bench={bench_len_planning}/{BENCH_MAX_SIZE}, Units={combined_units_len_planning}")
-
-                # Sell Actions: Iterate up to actual number of units OR MAX_COMBINED_TARGET_IDX
-                for unit_idx_0based in range(min(combined_units_len_planning, MAX_COMBINED_TARGET_IDX)):
-                    try:
-                        flat_idx = get_flat_sell_index(unit_idx_0based)
-                        flat_mask[flat_idx] = True
-                        if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  [MASK ALLOW Sell] Unit {unit_idx_0based} (FlatIdx {flat_idx})")
-                    except Exception as e:
-                         if hasattr(self, 'logger') and self.logger: self.logger.error(f"{mask_debug_prefix} Error calc sell idx: {e}")
-
-                # Buy Actions
-                if can_place_on_bench_planning:
-                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} Bench has space. Checking shop...")
-                    for shop_slot_0based in range(SHOP_SIZE):
-                        item = player.illuvial_shop[shop_slot_0based]
-                        if item is not None: # Check if item exists before getting cost
-                            item_cost = get_illuvial_cost(item)
-                            can_afford = coins_planning >= item_cost
-                            if can_afford:
-                                try:
-                                    flat_idx = get_flat_buy_index(shop_slot_0based)
-                                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  [MASK ALLOW Buy] Enabling Buy slot {shop_slot_0based} ({item.get('LineType','?')}, Cost {item_cost}) (FlatIdx {flat_idx})")
-                                    flat_mask[flat_idx] = True
-                                except Exception as e:
-                                     if hasattr(self, 'logger') and self.logger: self.logger.error(f"{mask_debug_prefix} Error calc buy idx: {e}")
-                            elif DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  [MASK DENY Buy] Cannot afford Buy slot {shop_slot_0based} ({item.get('LineType','?')}, Cost {item_cost})")
-                        elif DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  [MASK DENY Buy] Shop slot {shop_slot_0based} is empty.")
-                elif DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} [MASK DENY Buy] Bench full, cannot buy.")
-
-                # Reroll Action
-                if coins_planning >= REROLL_COST:
-                    flat_mask[FLAT_IDX_REROLL] = True
-                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} [MASK ALLOW Reroll] Enabling Reroll (Cost {REROLL_COST}) (FlatIdx {FLAT_IDX_REROLL})")
-                elif DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} [MASK DENY Reroll] Cannot afford Reroll.")
-
-                # Buy XP Action
-                if coins_planning >= BUY_XP_COST:
-                    flat_mask[FLAT_IDX_BUY_XP] = True
-                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} [MASK ALLOW BuyXP] Enabling Buy XP (Cost {BUY_XP_COST}) (FlatIdx {FLAT_IDX_BUY_XP})")
-                elif DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} [MASK DENY BuyXP] Cannot afford Buy XP.")
-
-                # Enter Placement Action
-                if 0 <= FLAT_IDX_ENTER_PLACEMENT < TOTAL_FLAT_ACTIONS:
-                    flat_mask[FLAT_IDX_ENTER_PLACEMENT] = True
-                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} [MASK ALLOW EnterPlace] Enabling Enter Placement (FlatIdx {FLAT_IDX_ENTER_PLACEMENT})")
-                else:
-                    if hasattr(self, 'logger') and self.logger: self.logger.error(f"{mask_debug_prefix} [ERROR] FLAT_IDX_ENTER_PLACEMENT {FLAT_IDX_ENTER_PLACEMENT} out of bounds {TOTAL_FLAT_ACTIONS}!")
-
-            # Placement Phase Logic
-            elif player.current_phase == "placement":
-                combined_units_placement = player.get_combined_units()
-                combined_units_len_placement = len(combined_units_placement)
-                bench_len_placement = len(player.bench)
-                units_on_board_count_placement = player.units_on_board_count()
-                level_cap_placement = player.level
-                can_place_on_bench_placement = bench_len_placement < BENCH_MAX_SIZE
-                can_place_more_on_board_placement = units_on_board_count_placement < level_cap_placement
-                if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} Place Phase: Board={units_on_board_count_placement}/{level_cap_placement}, Bench={bench_len_placement}/{BENCH_MAX_SIZE}, Units={combined_units_len_placement}")
-
-                # Modify Unit Actions (Move/Swap)
-                for unit_idx_0based in range(min(combined_units_len_placement, MAX_COMBINED_TARGET_IDX)):
-                    target_unit, location, _ = self._get_unit_by_combined_index(player, unit_idx_0based + 1)
-                    if not target_unit:
-                        if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  [WARN] Unit {unit_idx_0based} is None in mask check, skipping.")
-                        continue;
-                    unit_type_name = target_unit.get("TypeID", {}).get("LineType", "?")
-
-                    # Option 1: Move to Bench (target_pos_id_0based_bench_is_0 == 0)
-                    if location == "board" and can_place_on_bench_placement:
-                         try:
-                             flat_idx = get_flat_modify_index(unit_idx_0based, 0) # 0 is bench
-                             if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  [MASK ALLOW Board->Bench] Unit {unit_idx_0based} ('{unit_type_name}') -> Bench (Pos 0). FlatIdx: {flat_idx}")
-                             flat_mask[flat_idx] = True
-                         except Exception as e:
-                             if hasattr(self, 'logger') and self.logger: self.logger.error(f"{mask_debug_prefix} Error calc move->bench idx: {e}")
-                    elif location == "board" and not can_place_on_bench_placement and DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger:
-                         self.logger.debug(f"{mask_debug_prefix}  [MASK DENY Board->Bench] Unit {unit_idx_0based} ('{unit_type_name}'). Bench full ({bench_len_placement}/{BENCH_MAX_SIZE}).")
-
-                    # Option 2: Move/Swap on Board (target_pos_id_0based_bench_is_0 from 1 to NUM_UNIQUE_POSITIONS)
-                    for target_board_slot_id_1based in range(1, NUM_UNIQUE_POSITIONS + 1):
-                        target_blue_coords = UNIFIED_ID_TO_BLUE_POS_MAP.get(target_board_slot_id_1based)
-                        if not target_blue_coords: continue
-
-                        occupying_unit_at_target = player.get_unit_at_pos(target_blue_coords[0], target_blue_coords[1])
-                        
-                        can_perform_modify_action = False
-                        reason_for_denial = "DefaultDeny"
-
-                        if occupying_unit_at_target is target_unit: # Trying to move to its own spot (invalid as a move, effectively no-op)
-                            can_perform_modify_action = False # This is not a useful action to enable
-                            reason_for_denial = "Target is self (no actual move)"
-                        elif occupying_unit_at_target is not None: # Target board slot is OCCUPIED by ANOTHER unit (SWAP)
-                            if location == "board": # Swapping two board units: always possible
-                                can_perform_modify_action = True
-                            elif location == "bench": # Swapping bench unit with a board unit
-                                if units_on_board_count_placement < level_cap_placement: # If board has space for the new unit from bench
-                                    can_perform_modify_action = True
-                                elif units_on_board_count_placement == level_cap_placement and can_place_on_bench_placement:
-                                    can_perform_modify_action = True
-                                else:
-                                    reason_for_denial = f"Swap bench-to-board failed: board full ({units_on_board_count_placement}/{level_cap_placement}) or bench full for return ({bench_len_placement}/{BENCH_MAX_SIZE})"
-                        else: # Target board slot is EMPTY (MOVE)
-                            if location == "board": # Moving from one board slot to another empty board slot: always possible
-                                can_perform_modify_action = True
-                            elif location == "bench": # Moving from bench to empty board slot
-                                if can_place_more_on_board_placement:
-                                    can_perform_modify_action = True
-                                else:
-                                    reason_for_denial = f"Move bench-to-empty-board failed: board full ({units_on_board_count_placement}/{level_cap_placement})"
-                        
-                        if can_perform_modify_action:
-                            try:
-                                flat_idx = get_flat_modify_index(unit_idx_0based, target_board_slot_id_1based)
-                                move_type = f"{location}->board_slot_{target_board_slot_id_1based}"
-                                if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix}  [MASK ALLOW {move_type}] Unit {unit_idx_0based} ('{unit_type_name}'). FlatIdx: {flat_idx}")
-                                flat_mask[flat_idx] = True
-                            except Exception as e:
-                                if hasattr(self, 'logger') and self.logger: self.logger.error(f"{mask_debug_prefix} Error calc move/swap idx: {e}")
-                        elif DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger and reason_for_denial != "Target is self (no actual move)":
-                            self.logger.debug(f"{mask_debug_prefix}  [MASK DENY {location}->board_slot_{target_board_slot_id_1based}] Unit {unit_idx_0based} ('{unit_type_name}'). Reason: {reason_for_denial}")
+                if action_type_idx == AT_SYSTEM_ACTIONS:
+                    if item_idx == SYSTEM_ACTION_PASS: # Pass
+                        current_action_valid = player.current_phase in ["planning", "augment"] # Can pass in planning or if augment is pending
+                    elif item_idx == SYSTEM_ACTION_REROLL_ILLUVIAL_SHOP: # Reroll Illuvial Shop
+                        current_action_valid = player.current_phase == "planning" and player.coins >= REROLL_COST and not player.special_shop_active
+                    elif item_idx == SYSTEM_ACTION_BUY_XP: # Buy XP
+                        current_action_valid = player.current_phase == "planning" and player.coins >= BUY_XP_COST
+                    elif item_idx == SYSTEM_ACTION_EXIT_PLACEMENT_PHASE: # Exit Placement Phase
+                        current_action_valid = player.current_phase == "placement"
+                    elif item_idx == SYSTEM_ACTION_END_PLANNING_PHASE: # End Planning Phase / Begin Combat/Resolution
+                        # This action is valid if in planning, or if in augment (implies planning is done, just need to make aug choice or skip)
+                        current_action_valid = player.current_phase == "planning" or (player.current_phase == "augment" and player.is_augment_choice_pending)
 
 
-                # Exit Placement Action
-                if 0 <= FLAT_IDX_EXIT_PLACEMENT < TOTAL_FLAT_ACTIONS:
-                    if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} [MASK ALLOW ExitPlace] Enabling Exit Placement (FlatIdx {FLAT_IDX_EXIT_PLACEMENT})")
-                    flat_mask[FLAT_IDX_EXIT_PLACEMENT] = True
-                else:
-                    if hasattr(self, 'logger') and self.logger: self.logger.error(f"{mask_debug_prefix} [ERROR] FLAT_IDX_EXIT_PLACEMENT {FLAT_IDX_EXIT_PLACEMENT} out of bounds {TOTAL_FLAT_ACTIONS}!")
+                elif action_type_idx == AT_SELL_UNIT:
+                    if player.current_phase == "planning" and not player.special_shop_active:
+                        combined_units = player.get_combined_units()
+                        if 0 <= entity_idx < len(combined_units):
+                            unit_to_sell = combined_units[entity_idx]
+                            if unit_to_sell.get("Instance", {}).get("ID") != player.ranger_unit_id:
+                                current_action_valid = True
 
-            # Fallback if mask is empty (no actions were enabled by phase-specific logic)
-            if _global_np.sum(flat_mask) == 0:
-                if hasattr(self, 'logger') and self.logger: self.logger.critical(f"{mask_debug_prefix} [CRITICAL WARNING] No valid actions found! Phase={player.current_phase}. Using simple fallback.")
-                if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger:
-                    self.logger.debug(f"{mask_debug_prefix} ---- EMPTY MASK STATE ----")
-                    self.logger.debug(f"{mask_debug_prefix} Phase: {player.current_phase}, Coins: {player.coins}, HP: {player.health}, Lvl: {player.level}, XP: {player.xp}")
-                    self.logger.debug(f"{mask_debug_prefix} AugPend: {player.is_augment_choice_pending}, Choices: {player.available_augment_choices}")
-                    self.logger.debug(f"{mask_debug_prefix} Board({len(player.board)}): {[u.get('TypeID',{}).get('LineType') for u in player.board]}")
-                    self.logger.debug(f"{mask_debug_prefix} Bench({len(player.bench)}): {[u.get('TypeID',{}).get('LineType') for u in player.bench]}")
-                    self.logger.debug(f"{mask_debug_prefix} Shop: {[item.get('LineType', 'None') if item else 'None' for item in player.illuvial_shop]}")
-                    self.logger.debug(f"{mask_debug_prefix} -------------------------")
+                elif action_type_idx == AT_BUY_ILLUVIAL:
+                     if player.current_phase == "planning" and not player.special_shop_active and len(player.bench) < BENCH_MAX_SIZE:
+                         if 0 <= item_idx < SHOP_SIZE: # Max 7 main shop slots
+                             ill_template = player.illuvial_shop[item_idx]
+                             if ill_template and player.coins >= get_illuvial_cost(ill_template):
+                                 current_action_valid = True
+
+                elif action_type_idx == AT_PLACE_UNIT:
+                    if player.current_phase == "placement":
+                        combined_units = player.get_combined_units()
+                        if 0 <= entity_idx < len(combined_units):
+                            target_unit_to_place = combined_units[entity_idx]
+                            unit_is_ranger = target_unit_to_place.get("Instance", {}).get("ID") == player.ranger_unit_id
+
+                            if position_idx == 0: # Target is Bench
+                                if target_unit_to_place.get("Position") is not None and not unit_is_ranger: # Unit is on board and not ranger
+                                    current_action_valid = len(player.bench) < BENCH_MAX_SIZE
+                            elif 1 <= position_idx < (NUM_UNIQUE_POSITIONS + 1) and position_idx < DIM_POSITION_SIZE : # Target is a board slot (1 to 11 for DIM_POSITION_SIZE=12)
+                                # Map position_idx (1-11) to actual board slot IDs (1-19)
+                                actual_board_slot_id = position_idx # Assuming direct map for now for simplicity
+                                if actual_board_slot_id <= NUM_UNIQUE_POSITIONS :
+                                    # Simplified placement logic for mask: check if target is different from current, or if moving from bench
+                                    # Detailed validation (level cap, swap logic) is complex for mask, _apply_action handles actual validity
+                                    is_on_board = target_unit_to_place.get("Position") is not None
+                                    target_coords = UNIFIED_ID_TO_BLUE_POS_MAP.get(actual_board_slot_id)
+                                    occupying_unit = player.get_unit_at_pos(target_coords[0], target_coords[1]) if target_coords else True # Assume occupied if invalid coords
+
+                                    if is_on_board: # Moving board unit or swapping
+                                        current_action_valid = True # Allow attempt, _apply_action validates
+                                    else: # Moving from bench
+                                        current_action_valid = player.units_on_board_count() < player.level or occupying_unit is not None
+
+
+                elif action_type_idx == AT_RANGER_EQUIP:
+                    if player.current_phase == "planning" and player.special_shop_active:
+                        if 0 <= item_idx < 5: # 5 special shop slots
+                            if player.special_shop_items[item_idx] is not None:
+                                if player.special_shop_type == "weapon":
+                                    current_action_valid = True
+                                elif player.special_shop_type == "weapon_amplifier":
+                                    if player.ranger_weapon and player.ranger_weapon.get("TypeID", {}).get("Name") and len(player.ranger_weapon_amplifiers) < 2:
+                                        current_action_valid = True
                 
-                # Try to enable a phase-appropriate default action
-                if player.current_phase == "planning" and 0 <= FLAT_IDX_ENTER_PLACEMENT < TOTAL_FLAT_ACTIONS:
-                    flat_mask[FLAT_IDX_ENTER_PLACEMENT] = True
-                elif player.current_phase == "placement" and 0 <= FLAT_IDX_EXIT_PLACEMENT < TOTAL_FLAT_ACTIONS:
-                    flat_mask[FLAT_IDX_EXIT_PLACEMENT] = True
-                elif player.current_phase == "augment" and 0 <= FLAT_IDX_AUGMENT_SKIP < TOTAL_FLAT_ACTIONS:
-                    flat_mask[FLAT_IDX_AUGMENT_SKIP] = True
-                elif TOTAL_FLAT_ACTIONS > 0: # Absolute fallback if phase is weird or other indices are -1
-                    if 0 <= FLAT_IDX_ENTER_PLACEMENT < TOTAL_FLAT_ACTIONS: flat_mask[FLAT_IDX_ENTER_PLACEMENT] = True
-                    else: flat_mask[0] = True
+                elif action_type_idx == AT_RANGER_BOND:
+                     if player.current_phase == "planning": # Assuming bonding happens in planning
+                         combined_units = player.get_combined_units()
+                         if 0 <= entity_idx < len(combined_units):
+                             target_illuvial = combined_units[entity_idx]
+                             if target_illuvial.get("TypeID", {}).get("UnitType") == "Illuvial" and \
+                                target_illuvial.get("Instance", {}).get("ID") != player.ranger_unit_id:
+                                 current_action_valid = True
+
+                # Augment application (still uses old system for now, as it's complex)
+                # This part needs to be mapped to the new system eventually if augments become part of the 4D space
+                if player.current_phase == "augment" and player.is_augment_choice_pending:
+                    # Allow skip via SYSTEM_ACTION_PASS
+                    flat_mask[self.get_new_flat_index(AT_SYSTEM_ACTIONS, 0,0,SYSTEM_ACTION_PASS)] = True
+
+                    # This is a placeholder for mapping old augment actions to new system if needed
+                    # For now, we assume augments are handled by their own logic or a separate action type not in this 4D space.
+                    # If they were to be included, one of the dimensions (e.g. item_idx for AT_SYSTEM_ACTION or a dedicated AT_APPLY_AUGMENT)
+                    # would be used. The current 4D structure doesn't map directly to the old augment logic.
+                    # The existing FLAT_IDX_AUGMENT_SKIP and FLAT_IDX_AUGMENT_APPLY_START would need remapping.
+                    # This is a simplification for now.
+                    pass
 
 
-            if flat_mask.shape[0] != TOTAL_FLAT_ACTIONS:
-                if hasattr(self, 'logger') and self.logger: self.logger.critical(f"[CRITICAL MASK DIM ERROR] Phase {player.current_phase}: Shape {flat_mask.shape}, expected {TOTAL_FLAT_ACTIONS}. Force Zeros with one fallback.")
-                flat_mask = _global_np.zeros(TOTAL_FLAT_ACTIONS, dtype=bool)
-                if TOTAL_FLAT_ACTIONS > 0 and FLAT_IDX_ENTER_PLACEMENT >= 0 : flat_mask[FLAT_IDX_ENTER_PLACEMENT]=True
-                elif TOTAL_FLAT_ACTIONS > 0: flat_mask[0]=True
+                if current_action_valid:
+                    flat_mask[i] = True
+
+            # Fallback if mask is all zeros
+            if not flat_mask.any():
+                if hasattr(self, 'logger') and self.logger: self.logger.warning(f"{mask_debug_prefix} No valid actions found after full check! Enabling Pass action.")
+                flat_mask[self.get_new_flat_index(AT_SYSTEM_ACTIONS, 0, 0, SYSTEM_ACTION_PASS)] = True
+
+
+            if flat_mask.shape[0] != NEW_TOTAL_FLAT_ACTIONS: # Check against new total
+                if hasattr(self, 'logger') and self.logger: self.logger.critical(f"[CRITICAL MASK DIM ERROR] Phase {player.current_phase}: Shape {flat_mask.shape}, expected {NEW_TOTAL_FLAT_ACTIONS}. Force Zeros with Pass fallback.")
+                flat_mask = _global_np.zeros(NEW_TOTAL_FLAT_ACTIONS, dtype=bool)
+                flat_mask[self.get_new_flat_index(AT_SYSTEM_ACTIONS, 0, 0, SYSTEM_ACTION_PASS)] = True
                 return flat_mask
 
             if DETAILED_ACTION_DEBUG and hasattr(self, 'logger') and self.logger: self.logger.debug(f"{mask_debug_prefix} Final mask sum: {_global_np.sum(flat_mask)}")
@@ -1368,219 +1466,136 @@ class IlluviumSingleEnv(gym.Env):
                 import traceback as tb_print
                 tb_print.print_exc()
 
-            fallback_mask = _global_np.zeros(TOTAL_FLAT_ACTIONS, dtype=bool)
-            if 0 <= FLAT_IDX_ENTER_PLACEMENT < TOTAL_FLAT_ACTIONS: fallback_mask[FLAT_IDX_ENTER_PLACEMENT] = True
-            elif 0 <= FLAT_IDX_EXIT_PLACEMENT < TOTAL_FLAT_ACTIONS: fallback_mask[FLAT_IDX_EXIT_PLACEMENT] = True
-            elif 0 <= FLAT_IDX_AUGMENT_SKIP < TOTAL_FLAT_ACTIONS: fallback_mask[FLAT_IDX_AUGMENT_SKIP] = True
-            
-            if _global_np.sum(fallback_mask) == 0 and TOTAL_FLAT_ACTIONS > 0:
-                 fallback_mask[0] = True
+            fallback_mask = _global_np.zeros(NEW_TOTAL_FLAT_ACTIONS, dtype=bool) # Use new total
+            try: fallback_mask[self.get_new_flat_index(AT_SYSTEM_ACTIONS, 0, 0, SYSTEM_ACTION_PASS)] = True
+            except Exception:
+                if NEW_TOTAL_FLAT_ACTIONS > 0: fallback_mask[0] = True
             return fallback_mask
 
 
     def _apply_action(self, player: Player, flat_action_index: int) -> float:
         debug_prefix = f"[APPLY P{player.player_id} FlIdx:{flat_action_index}]:"; action_reward = 0.0; original_phase = player.current_phase
-        try:
-            action_type, param1, param2, decoded_action_str = decode_flat_action(flat_action_index);
-            if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Decoded: Type={action_type}, P1={param1}, P2={param2} ({decoded_action_str}) Phase={original_phase}")
-            if action_type == -1:
-                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Invalid action type -1. Penalty {INVALID_ACTION_PENALTY}")
-                return INVALID_ACTION_PENALTY;
 
+        action_type_idx, entity_idx, position_idx, item_idx = self.decode_new_flat_action(flat_action_index)
+
+        # For logging, create a decoded string representation (optional, but helpful for debugging)
+        # This can be expanded later to provide more meaningful debug strings per action type.
+        decoded_action_str_new = f"AT={action_type_idx},Ent={entity_idx},Pos={position_idx},Item={item_idx}"
+        if DETAILED_ACTION_DEBUG:
+            self.logger.debug(f"{debug_prefix} Decoded New: {decoded_action_str_new}. Phase='{original_phase}' SpecialShopActive={player.special_shop_active} SpecialShopType='{player.special_shop_type}'")
+
+        try:
             merge_check_needed = False
 
-            if action_type == 0: # Sell Unit
-                if original_phase != "planning": return INVALID_ACTION_PENALTY;
-                target_unit_idx_0based = param1;
-                current_combined_units = player.get_combined_units()
-                current_combined_len_sell = len(current_combined_units)
-                if not (0 <= target_unit_idx_0based < current_combined_len_sell): return INVALID_ACTION_PENALTY;
-                
-                target_unit, _, _ = self._get_unit_by_combined_index(player, target_unit_idx_0based + 1);
-                if not target_unit: return INVALID_ACTION_PENALTY;
+            # --- Special Shop Active Logic (takes precedence if AT_RANGER_EQUIP is chosen) ---
+            if player.special_shop_active and action_type_idx == AT_RANGER_EQUIP:
+                # Full logic for AT_RANGER_EQUIP will be placed here in the next step.
+                # For now, this correctly calls the new decoding and enters this block.
+                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Processing AT_RANGER_EQUIP (special shop). Item_idx: {item_idx}")
+                # Placeholder:
+                action_reward += 0.01 # Small reward for attempting
+                # Actual equip logic will clear these:
+                # player.special_shop_active = False
+                # player.special_shop_type = None
+                # player.special_shop_items = [None] * 5
+                # For now, to test flow, we just return. This will be expanded.
+                # self._cumulative_rewards_this_episode["ranger_equip"] += action_reward # Will add this with full logic
+                return INVALID_ACTION_PENALTY # Placeholder until full logic implemented
 
-                is_selling_last_unit = (current_combined_len_sell == 1);
-                refund = target_unit.get("Instance", {}).get("Cost", 1);
-                remove_success = self._remove_unit_by_combined_index(player, target_unit_idx_0based);
-                
-                if remove_success:
-                    player.coins += refund; action_reward += SELL_PENALTY;
-                    if is_selling_last_unit: action_reward += SELL_LAST_UNIT_PENALTY
-                    if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Sold unit {target_unit_idx_0based}, got {refund} coins. New coins: {player.coins}. Reward: {action_reward:.3f}")
-                else: action_reward += INVALID_ACTION_PENALTY; self.logger.warning(f"{debug_prefix} Sell unit {target_unit_idx_0based} failed to remove unit.")
+            # If special shop is active, but the action is not AT_RANGER_EQUIP,
+            # it might be a system action (like Pass/Skip) or an invalid one.
+            if player.special_shop_active and action_type_idx != AT_SYSTEM_ACTIONS:
+                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Action type {action_type_idx} ('{decoded_action_str_new}') is invalid while special shop is active. Only AT_RANGER_EQUIP ({AT_RANGER_EQUIP}) or AT_SYSTEM_ACTIONS ({AT_SYSTEM_ACTIONS}) are allowed. Penalty.")
+                return INVALID_ACTION_PENALTY
+
+            # --- Main Action Logic (if special shop is not active or action is AT_SYSTEM_ACTIONS) ---
+            if action_type_idx == AT_SYSTEM_ACTIONS:
+                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Processing AT_SYSTEM_ACTIONS with item_idx: {item_idx}")
+                # Logic for AT_SYSTEM_ACTIONS will be added in the next diff
+                pass
+
+            elif action_type_idx == AT_SELL_UNIT:
+                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Placeholder for AT_SELL_UNIT entity: {entity_idx}")
+                pass
+
+            elif action_type_idx == AT_BUY_ILLUVIAL:
+                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Placeholder for AT_BUY_ILLUVIAL item: {item_idx}")
+                pass
+
+            elif action_type_idx == AT_PLACE_UNIT:
+                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Placeholder for AT_PLACE_UNIT entity: {entity_idx}, pos: {position_idx}")
+                # ... (Logic for AT_PLACE_UNIT will be added in a subsequent step, involves new helper) ...
+                pass
+
+            elif action_type_idx == AT_RANGER_BOND:
+                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Placeholder for AT_RANGER_BOND entity: {entity_idx}")
+                # ... (Logic for AT_RANGER_BOND will be added in the next diff) ...
+                pass
             
-            elif action_type == 1: # Buy Unit
-                if original_phase != "planning": return INVALID_ACTION_PENALTY;
-                shop_slot = param1;
-                if not (0 <= shop_slot < SHOP_SIZE): return INVALID_ACTION_PENALTY;
-                ill_template = player.illuvial_shop[shop_slot]; cost = get_illuvial_cost(ill_template);
-                if ill_template is None: return INVALID_ACTION_PENALTY
+            # This case means AT_RANGER_EQUIP was chosen but special_shop_active was False.
+            elif action_type_idx == AT_RANGER_EQUIP and not player.special_shop_active:
+                 if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} AT_RANGER_EQUIP action invalid because special shop is not active.")
+                 return INVALID_ACTION_PENALTY
+
+            else:
+                # This 'else' block now primarily catches unmapped new action_type_idx or
+                # handles the transition if old augment actions are still being passed.
+                # For now, any unmapped action_type_idx is invalid.
+                # We also need to consider if flat_action_index itself might be an old augment action.
+                # This is complex during transition.
                 
-                current_coins_buy = player.coins; current_bench_len_buy = len(player.bench)
-                if current_coins_buy < cost: return INVALID_ACTION_PENALTY
-                if current_bench_len_buy >= BENCH_MAX_SIZE: return INVALID_ACTION_PENALTY
+                # TEMPORARY BRIDGE: Check if flat_action_index matches old augment system if no new action type was matched.
+                # This assumes that the NEW_TOTAL_FLAT_ACTIONS is different enough that old TOTAL_FLAT_ACTIONS
+                # indices don't meaningfully overlap with the new ones in a confusing way.
+                # This is a fragile assumption and should be removed once augments are fully in new system.
                 
-                player.coins -= cost; line_t = clean_line_type(ill_template.get("LineType", "ErrorUnit"));
-                inst = {"ID": generate_random_unit_id(), "Cost": cost, "EquippedAugments": []};
-                if "DominantCombatClass" in ill_template: inst["DominantCombatClass"] = ill_template["DominantCombatClass"]
-                if "DominantCombatAffinity" in ill_template: inst["DominantCombatAffinity"] = ill_template["DominantCombatAffinity"]
-                type_id = {"UnitType": "Illuvial", "LineType": line_t, "Stage": ill_template.get("Stage", 1), "Path": ill_template.get("Path", "Default"), "Variation": ill_template.get("Variation", "Original")}
-                new_unit = {"TypeID": type_id, "Instance": inst, "Position": None};
-                player.bench.append(new_unit); player.illuvial_shop[shop_slot] = None; action_reward += BUY_REWARD;
-                merge_check_needed = True
-                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Bought {line_t} (cost {cost}). New coins: {player.coins}, Bench: {len(player.bench)}/{BENCH_MAX_SIZE}. Reward: {action_reward:.3f}")
+                # Safely check if old constants are defined (for robustness during transition)
+                _FLAT_IDX_AUGMENT_SKIP = globals().get('FLAT_IDX_AUGMENT_SKIP', -1)
+                _FLAT_IDX_AUGMENT_APPLY_START = globals().get('FLAT_IDX_AUGMENT_APPLY_START', -1)
+                _FLAT_AUGMENT_APPLY_ACTIONS = globals().get('FLAT_AUGMENT_APPLY_ACTIONS', 0)
+                _MAX_COMBINED_TARGET_IDX = globals().get('MAX_COMBINED_TARGET_IDX', 34) # Old default
 
-            elif action_type == 2: # Reroll Shop
-                if original_phase != "planning": return INVALID_ACTION_PENALTY
-                if player.coins < REROLL_COST: return INVALID_ACTION_PENALTY
-                player.coins -= REROLL_COST; self._create_player_shops(player); action_reward += REROLL_PENALTY
-                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Rerolled shop (cost {REROLL_COST}). New coins: {player.coins}. Reward: {action_reward:.3f}")
+                is_legacy_augment_skip = (flat_action_index == _FLAT_IDX_AUGMENT_SKIP and _FLAT_IDX_AUGMENT_SKIP != -1)
+                is_legacy_augment_apply = (_FLAT_IDX_AUGMENT_APPLY_START != -1 and \
+                                           _FLAT_IDX_AUGMENT_APPLY_START <= flat_action_index < (_FLAT_IDX_AUGMENT_APPLY_START + _FLAT_AUGMENT_APPLY_ACTIONS) )
 
-            elif action_type == 3: # Buy XP
-                if original_phase != "planning": return INVALID_ACTION_PENALTY
-                if player.coins < BUY_XP_COST: return INVALID_ACTION_PENALTY
-                player.coins -= BUY_XP_COST; player.xp += BUY_XP_AMOUNT; self._check_level_up(player); action_reward += BUY_XP_REWARD
-                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Bought XP (cost {BUY_XP_COST}). New coins: {player.coins}, XP: {player.xp}, Lvl: {player.level}. Reward: {action_reward:.3f}")
+                if is_legacy_augment_skip:
+                    if player.is_augment_choice_pending and player.current_phase == "augment":
+                        action_reward += SKIP_AUGMENT_REWARD
+                        if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Skipped augment (via legacy index). Reward: {action_reward:.3f}")
+                        player.is_augment_choice_pending = False; player.available_augment_choices = [None] * NUM_AUGMENT_CHOICES; player.augment_offer_round = -1; player.current_phase = "planning"
+                    else: return INVALID_ACTION_PENALTY
+                elif is_legacy_augment_apply:
+                     if player.is_augment_choice_pending and player.current_phase == "augment":
+                        relative_idx_legacy = flat_action_index - _FLAT_IDX_AUGMENT_APPLY_START
+                        choice_idx_0based_legacy = relative_idx_legacy // _MAX_COMBINED_TARGET_IDX
+                        target_unit_idx_0based_legacy = relative_idx_legacy % _MAX_COMBINED_TARGET_IDX
 
-            elif action_type == 4: # Enter Placement Phase
-                if original_phase != "planning": return INVALID_ACTION_PENALTY
-                player.current_phase = "placement"; action_reward += 0.0;
-                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} >>> Entered placement phase <<<")
+                        if not (0 <= choice_idx_0based_legacy < len(player.available_augment_choices)): return INVALID_ACTION_PENALTY
+                        chosen_aug_name = player.available_augment_choices[choice_idx_0based_legacy]
+                        if not chosen_aug_name: return INVALID_ACTION_PENALTY
+                        current_combined_units_aug_old = player.get_combined_units()
+                        if not (0 <= target_unit_idx_0based_legacy < len(current_combined_units_aug_old)): return INVALID_ACTION_PENALTY
+                        target_unit_old, _, _ = self._get_unit_by_combined_index(player, target_unit_idx_0based_legacy + 1)
+                        if not target_unit_old: return INVALID_ACTION_PENALTY
+                        instance_data_old = target_unit_old.setdefault("Instance", {})
+                        equipped_augments_old = instance_data_old.setdefault("EquippedAugments", [])
+                        if len(equipped_augments_old) >= MAX_AUGMENTS_PER_UNIT: return INVALID_ACTION_PENALTY
+                        aug_data_key_old = f"{chosen_aug_name}_0_Original"
+                        aug_data_from_merged_old = self.merged_data.get("Augments", {}).get(aug_data_key_old)
+                        if aug_data_from_merged_old is None: return INVALID_ACTION_PENALTY
+                        new_augment_old = { "ID": generate_random_unit_id(), "TypeID": { "Name": chosen_aug_name, "Stage": aug_data_from_merged_old.get("Stage", 0), "Variation": aug_data_from_merged_old.get("Variation", "Original") }, "SelectedAbilityIndex": 0 }
+                        equipped_augments_old.append(new_augment_old); action_reward += APPLY_AUGMENT_REWARD
+                        player.is_augment_choice_pending = False; player.available_augment_choices = [None] * NUM_AUGMENT_CHOICES; player.augment_offer_round = -1; player.current_phase = "planning"
+                        if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Applied augment '{chosen_aug_name}' to unit {target_unit_idx_0based_legacy} (via legacy index).")
+                     else: return INVALID_ACTION_PENALTY
+                else:
+                    if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Unhandled new action_type_idx {action_type_idx} or unmapped legacy flat_action_index {flat_action_index}. Penalty.")
+                    return INVALID_ACTION_PENALTY
 
-            elif action_type == 5: # Modify Unit Position (Move/Swap)
-                 if original_phase != "placement": return INVALID_ACTION_PENALTY;
-                 target_unit_idx_0based = param1; target_pos_id_0based_bench_is_0 = param2;
-                 
-                 current_combined_units_mod = player.get_combined_units()
-                 current_combined_len_mod = len(current_combined_units_mod)
-                 if not (0 <= target_unit_idx_0based < current_combined_len_mod): return INVALID_ACTION_PENALTY;
-                 if not (0 <= target_pos_id_0based_bench_is_0 < NUM_POSITIONS_INCLUDING_BENCH): return INVALID_ACTION_PENALTY;
-
-                 target_unit, location, original_list_idx_in_source = self._get_unit_by_combined_index(player, target_unit_idx_0based + 1);
-                 if not target_unit: return INVALID_ACTION_PENALTY;
-                 
-                 modified = False; placed_evolved_unit = False; move_fail_reason = ""
-                 current_blue_pos_dict = target_unit.get("Position")
-                 target_unit_stage = target_unit.get('TypeID',{}).get('Stage', 1)
-
-                 is_moving_to_bench = (target_pos_id_0based_bench_is_0 == 0)
-                 is_moving_to_board_slot = (target_pos_id_0based_bench_is_0 > 0)
-                 
-                 if is_moving_to_board_slot: # Moving to a board slot
-                     target_unified_pos_id_1based = target_pos_id_0based_bench_is_0 
-                     target_blue_coords = UNIFIED_ID_TO_BLUE_POS_MAP.get(target_unified_pos_id_1based)
-                     if not target_blue_coords: move_fail_reason = "Invalid target board pos ID"; return INVALID_ACTION_PENALTY;
-                     
-                     q_target, r_target = target_blue_coords
-                     occupying_unit_at_target = player.get_unit_at_pos(q_target, r_target)
-
-                     if occupying_unit_at_target is target_unit: 
-                         move_fail_reason = "Target is self (no actual move)"
-                     elif occupying_unit_at_target is not None: # Target board slot is OCCUPIED by ANOTHER unit (SWAP)
-                         if location == "board": # Swapping two board units
-                             original_unit_pos_dict = target_unit.get("Position") 
-                             target_unit["Position"] = occupying_unit_at_target.get("Position")
-                             occupying_unit_at_target["Position"] = original_unit_pos_dict
-                             modified = True; merge_check_needed = True;
-                         elif location == "bench": # Swapping bench unit with a board unit
-                             if len(player.bench) < BENCH_MAX_SIZE:
-                                 try:
-                                     player.bench.remove(target_unit)
-                                     player.board.remove(occupying_unit_at_target)
-                                     
-                                     occupying_unit_at_target["Position"] = None
-                                     player.bench.append(occupying_unit_at_target)
-                                     
-                                     target_unit["Position"] = {"Q": q_target, "R": r_target}
-                                     player.board.append(target_unit)
-                                     modified = True; merge_check_needed = True
-                                     if target_unit_stage > 1: placed_evolved_unit = True
-                                 except ValueError: move_fail_reason = "Swap list op error"
-                             else: move_fail_reason = "Bench full for unit coming off board in swap"
-                     else: # Target board slot is EMPTY (MOVE)
-                         can_place_on_board = player.units_on_board_count() < player.level
-                         if location == "bench": # Moving from bench to empty board slot
-                             if can_place_on_board:
-                                 try:
-                                     player.bench.remove(target_unit)
-                                     target_unit["Position"] = {"Q": q_target, "R": r_target}
-                                     player.board.append(target_unit)
-                                     modified = True; merge_check_needed = True
-                                     if target_unit_stage > 1: placed_evolved_unit = True
-                                 except ValueError: move_fail_reason = "Bench to board move list op error"
-                             else: move_fail_reason = "Board full for bench to board move"
-                         elif location == "board": # Moving from one board slot to another empty board slot
-                             try:
-                                 target_unit["Position"] = {"Q": q_target, "R": r_target}
-                                 modified = True;
-                             except Exception as e: move_fail_reason = f"Board to board move error: {e}"
-                 
-                 elif is_moving_to_bench: # Moving to bench (must be from board)
-                     if location == "board":
-                         if len(player.bench) < BENCH_MAX_SIZE:
-                             try:
-                                 player.board.remove(target_unit)
-                                 target_unit["Position"] = None
-                                 player.bench.append(target_unit)
-                                 modified = True; merge_check_needed = True;
-                             except ValueError: move_fail_reason = "Board to bench move list op error"
-                         else: move_fail_reason = "Bench full for board to bench move"
-                     else: # location == "bench", trying to move bench to bench (invalid)
-                         move_fail_reason = "Cannot move bench unit to bench"
-
-                 if modified:
-                    action_reward += MODIFY_UNIT_REWARD 
-                    if placed_evolved_unit: action_reward += PLACE_EVOLVED_REWARD; self._cumulative_rewards_this_episode["place_evolved"] += PLACE_EVOLVED_REWARD
-                    elif location == "bench" and is_moving_to_board_slot : action_reward += BENCH_TO_BOARD_REWARD 
-                 elif move_fail_reason and move_fail_reason != "Target is self (no actual move)" and move_fail_reason != "Cannot move bench unit to bench":
-                     action_reward += INVALID_ACTION_PENALTY * 0.2 
-                     if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Placement action failed: {move_fail_reason}. Penalty applied.")
-
-            elif action_type == 6: # Exit Placement Phase
-                if original_phase != "placement": return INVALID_ACTION_PENALTY;
-                player.current_phase = "planning"; action_reward += 0.0;
-                if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} >>> Exited placement phase <<<")
-
-            elif action_type == 7: # Choose Augment (Skip or Apply)
-                if not player.is_augment_choice_pending or original_phase != "augment": return INVALID_ACTION_PENALTY;
-                augment_choice_idx_1based = param1; target_unit_idx_0based = param2
-                if augment_choice_idx_1based == 0: # Skip augment
-                    action_reward += SKIP_AUGMENT_REWARD;
-                    if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Skipped augment. Reward: {action_reward:.3f}")
-                elif 1 <= augment_choice_idx_1based <= NUM_AUGMENT_CHOICES: # Apply augment
-                    choice_idx_0based = augment_choice_idx_1based - 1;
-                    if not (0 <= choice_idx_0based < len(player.available_augment_choices)): return INVALID_ACTION_PENALTY;
-                    chosen_aug_name = player.available_augment_choices[choice_idx_0based];
-                    if not chosen_aug_name: return INVALID_ACTION_PENALTY;
-                    
-                    current_combined_units_aug = player.get_combined_units()
-                    if not (0 <= target_unit_idx_0based < len(current_combined_units_aug)): return INVALID_ACTION_PENALTY;
-                    
-                    target_unit, _, _ = self._get_unit_by_combined_index(player, target_unit_idx_0based + 1);
-                    if not target_unit: return INVALID_ACTION_PENALTY;
-                    
-                    instance_data = target_unit.setdefault("Instance", {}); 
-                    equipped_augments = instance_data.setdefault("EquippedAugments", []);
-                    if len(equipped_augments) >= MAX_AUGMENTS_PER_UNIT: return INVALID_ACTION_PENALTY;
-                    
-                    augment_data_key = f"{chosen_aug_name}_0_Original";
-                    augment_data_from_merged = self.merged_data.get("Augments", {}).get(augment_data_key)
-                    if augment_data_from_merged is None: 
-                        self.logger.error(f"{debug_prefix} Could not find augment data for key '{augment_data_key}'."); return INVALID_ACTION_PENALTY
-                    
-                    new_augment = { "ID": generate_random_unit_id(), "TypeID": { "Name": chosen_aug_name, "Stage": augment_data_from_merged.get("Stage", 0), "Variation": augment_data_from_merged.get("Variation", "Original") }, "SelectedAbilityIndex": 0 }
-                    equipped_augments.append(new_augment); action_reward += APPLY_AUGMENT_REWARD;
-                    if DETAILED_ACTION_DEBUG: self.logger.debug(f"{debug_prefix} Applied augment '{chosen_aug_name}' to unit {target_unit_idx_0based}. Reward: {action_reward:.3f}")
-                else: return INVALID_ACTION_PENALTY
-                
-                player.is_augment_choice_pending = False; player.available_augment_choices = [None] * NUM_AUGMENT_CHOICES; player.augment_offer_round = -1; player.current_phase = "planning"
-
-            merge_reward = 0.0
-            if merge_check_needed:
-                if DETAILED_MERGE_DEBUG: self.logger.debug(f"{debug_prefix} Action triggered merge check.")
+            if merge_check_needed: # This flag would be set by specific actions like buying an Illuvial
                 merge_reward = self._check_and_merge_units(player)
                 if merge_reward > 0:
-                    if DETAILED_MERGE_DEBUG: self.logger.debug(f"{debug_prefix} Merge check returned reward: {merge_reward:.3f}")
                     action_reward += merge_reward
                     self._cumulative_rewards_this_episode["merge"] += merge_reward
 
@@ -1588,12 +1603,42 @@ class IlluviumSingleEnv(gym.Env):
             return action_reward
 
         except Exception as e_apply:
-            self.logger.critical(f"[FATAL EXCEPTION _apply_action P{player.player_id}] FlIdx:{flat_action_index} Decoded:{action_type}, P1:{param1}, P2:{param2} Err:{e_apply}")
+            # Use action_type_idx if available, else a generic error message
+            action_type_info = action_type_idx if 'action_type_idx' in locals() else 'ErrorDecodingOrPreCheck'
+            self.logger.critical(f"[FATAL EXCEPTION _apply_action P{player.player_id}] FlIdx:{flat_action_index} Decoded AT={action_type_info} Err:{e_apply}")
             self.logger.exception("Full traceback for _apply_action failure:")
             if player: 
-                 player.is_augment_choice_pending = False; 
+                 player.is_augment_choice_pending = False; # Ensure state consistency
+                 if player.special_shop_active: # If error happened during special shop, reset it too
+                     player.special_shop_active = False
+                     player.special_shop_type = None
+                     player.special_shop_items = [None] * 5
                  player.current_phase = "planning";
             return INVALID_ACTION_PENALTY
+
+    def decode_new_flat_action(self, flat_action_index: int) -> Tuple[int, int, int, int]:
+        """Decodes a flat index into (action_type_idx, entity_idx, position_idx, item_idx)."""
+        item_idx = flat_action_index % DIM_ITEM_SIZE
+        temp_idx = flat_action_index // DIM_ITEM_SIZE
+        position_idx = temp_idx % DIM_POSITION_SIZE
+        temp_idx = temp_idx // DIM_POSITION_SIZE
+        entity_idx = temp_idx % DIM_ENTITY_SIZE
+        action_type_idx = temp_idx // DIM_ENTITY_SIZE
+        return action_type_idx, entity_idx, position_idx, item_idx
+
+    def get_new_flat_index(self, action_type_idx: int, entity_idx: int, position_idx: int, item_idx: int) -> int:
+        """Encodes the four components into a flat index."""
+        # Validate inputs to prevent out-of-bounds errors during encoding
+        if not (0 <= action_type_idx < NUM_ACTION_TYPES): raise ValueError(f"Invalid action_type_idx: {action_type_idx}")
+        if not (0 <= entity_idx < DIM_ENTITY_SIZE): raise ValueError(f"Invalid entity_idx: {entity_idx}")
+        if not (0 <= position_idx < DIM_POSITION_SIZE): raise ValueError(f"Invalid position_idx: {position_idx}")
+        if not (0 <= item_idx < DIM_ITEM_SIZE): raise ValueError(f"Invalid item_idx: {item_idx}")
+
+        flat_idx = action_type_idx
+        flat_idx = flat_idx * DIM_ENTITY_SIZE + entity_idx
+        flat_idx = flat_idx * DIM_POSITION_SIZE + position_idx
+        flat_idx = flat_idx * DIM_ITEM_SIZE + item_idx
+        return flat_idx
 
     def _get_obs(self) -> _global_np.ndarray: return self._get_perspective_observation(0)
     
@@ -1775,7 +1820,58 @@ class IlluviumSingleEnv(gym.Env):
                 if self.agent is None: 
                     _log_error_step("Agent still None after emergency reset. Raising RuntimeError.")
                     raise RuntimeError(f"{log_prefix_step_method} Agent (self.agent) is None even after emergency reset.")
+
+            # --- Special Shop Logic ---
+            current_round_for_shop_logic = self.round_idx # Use current round_idx before any potential increment
             
+            # Determine if it's a special shop round
+            is_weapon_shop_round = (current_round_for_shop_logic == 4)
+            is_amp_shop_round = (current_round_for_shop_logic == 11 or current_round_for_shop_logic == 18)
+
+            for p_shop_check_id, p_shop_check in self.players.items():
+                if not p_shop_check.is_alive():
+                    if p_shop_check.special_shop_active: # Clear shop if player died while shop was active
+                        p_shop_check.special_shop_active = False
+                        p_shop_check.special_shop_type = None
+                        p_shop_check.special_shop_items = [None] * 5
+                        _log_debug_step(f"{log_prefix_step_method} P{p_shop_check_id} died, clearing active special shop.")
+                    continue
+
+                shop_opened_this_step_for_player = False
+                if is_weapon_shop_round:
+                    if not p_shop_check.special_shop_active or p_shop_check.special_shop_round_triggered != current_round_for_shop_logic:
+                        p_shop_check.special_shop_active = True
+                        p_shop_check.special_shop_type = "weapon"
+                        p_shop_check.special_shop_round_triggered = current_round_for_shop_logic
+                        self._populate_special_shop(p_shop_check, "weapon")
+                        shop_opened_this_step_for_player = True
+                        _log_info_step(f"{log_prefix_step_method} P{p_shop_check_id} opened WEAPON shop for Round {current_round_for_shop_logic}.")
+
+                elif is_amp_shop_round:
+                    if not p_shop_check.special_shop_active or p_shop_check.special_shop_round_triggered != current_round_for_shop_logic:
+                        if p_shop_check.ranger_weapon and p_shop_check.ranger_weapon.get('TypeID', {}).get('Name'):
+                            p_shop_check.special_shop_active = True
+                            p_shop_check.special_shop_type = "weapon_amplifier"
+                            p_shop_check.special_shop_round_triggered = current_round_for_shop_logic
+                            self._populate_special_shop(p_shop_check, "weapon_amplifier")
+                            shop_opened_this_step_for_player = True
+                            _log_info_step(f"{log_prefix_step_method} P{p_shop_check_id} opened WEAPON_AMPLIFIER shop for Round {current_round_for_shop_logic} (Weapon: {p_shop_check.ranger_weapon['TypeID']['Name']}).")
+                        else:
+                            _log_warning_step(f"{log_prefix_step_method} P{p_shop_check_id} cannot open WEAPON_AMPLIFIER shop for Round {current_round_for_shop_logic} - No Ranger weapon equipped.")
+                            p_shop_check.special_shop_active = False # Ensure it's off if they can't open it
+                            p_shop_check.special_shop_type = None
+                            p_shop_check.special_shop_items = [None] * 5
+
+                # Reset shop if it's not a special shop round AND the shop wasn't just opened this step for this player
+                # and if the shop was triggered in a *previous* round.
+                if not is_weapon_shop_round and not is_amp_shop_round and not shop_opened_this_step_for_player:
+                    if p_shop_check.special_shop_active and p_shop_check.special_shop_round_triggered != current_round_for_shop_logic :
+                        _log_info_step(f"{log_prefix_step_method} P{p_shop_check_id} clearing old special shop from round {p_shop_check.special_shop_round_triggered} (current round {current_round_for_shop_logic}).")
+                        p_shop_check.special_shop_active = False
+                        p_shop_check.special_shop_type = None
+                        p_shop_check.special_shop_items = [None] * 5
+                        # p_shop_check.special_shop_round_triggered = -1 # Keep triggered round to prevent re-opening same round if logic changes
+
             if self.episode_finished:
                 _log_debug_step(f"Episode already finished. Returning last state.")
                 obs = self._last_observation if self._last_observation is not None else self._get_obs()
@@ -2592,3 +2688,5 @@ class IlluviumSingleEnv(gym.Env):
         if files: _log_debug_gbfc(f"Returning {len(files)} files.")
         else: _log_debug_gbfc(f"Returning 0 files.")
         return files
+
+[end of train_env.py]
