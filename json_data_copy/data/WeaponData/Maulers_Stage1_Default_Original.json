@@ -1,0 +1,171 @@
+{
+	"Name": "Maulers",
+	"Stage": 1,
+	"Tier": 3,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Earth",
+	"CombatClass": "Empath",
+	"DominantCombatAffinity": "Earth",
+	"DominantCombatClass": "Empath",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 20000,
+		"EnergyCost": 120000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 50000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 120,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Maulers Attack I",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Earthshaker I",
+			"TotalDurationMs": 1000,
+			"Skills": [
+				{
+					"Name": "Shield",
+					"PercentageOfAbilityDuration": 80,
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 80
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": 3000,
+								"FrequencyMs": 1500,
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										{
+											"Stat": "OmegaPowerPercentage",
+											"Percentage": 100000,
+											"StatSource": "Sender"
+										},
+										{
+											"Stat": "MaxHealth",
+											"Percentage": 5,
+											"StatSource": "Sender"
+										}
+									]
+								}
+							},
+							{
+								"Type": "Empower",
+								"DurationMs": 3000,
+								"IsConsumable": false,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "Debuff",
+										"Stat": "PhysicalResist",
+										"OverlapProcessType": "Stacking",
+										"DurationMs": -1,
+										"Expression": 3
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Quake Maulers",
+	"DisplayDescription": "The Ranger jumps up and shocks the ground, charging the stored energy from the gloves into a 100*OP + 5% Max Health Shield. \r\n\r\nWhile the Shield is active, the Ranger's attacks reduce the target's Phyisical Resist by 3 per hit.\r\n\r\nThunderclap Maulers: Gives Templar.\r\n\r\nGolem Maulers: Gives Templar and Granite.",
+	"Description": {
+		"Format": "The Ranger jumps up and shocks the ground, charging the stored energy from the gloves into a {a}*OP + {b}% Max Health Shield. \r\n\r\nWhile the Shield is active, the Ranger's attacks reduce the target's Phyisical Resist by {c} per hit.\r\n\r\nThunderclap Maulers: Gives Templar.\r\n\r\nGolem Maulers: Gives Templar and Granite.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0].Percentage",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1].Percentage"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[1].AttachedEffects[0].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger jumps up and shocks the ground, charging the stored energy from the gloves into a 100*OP + 5% Max Health Shield. \r\n\r\nWhile the Shield is active, the Ranger's attacks reduce the target's Phyisical Resist by 3 per hit.\r\n\r\nThunderclap Maulers: Gives Templar.\r\n\r\nGolem Maulers: Gives Templar and Granite."
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Bioarmor_Stage1_Original_Adaptum",
+  "Name": "Forge a Adaptum Bioarmor",
+  "Description": "Forge a Adaptum Bioarmor",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Bioarmor_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Adaptum Bioarmor",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

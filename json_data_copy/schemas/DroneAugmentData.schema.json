@@ -1,0 +1,67 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Drone Augment Data",
+	"$ref": "#/$defs/DroneAugmentType",
+	"$defs": {
+		"DroneAugmentType": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"Abilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"IsDisabled": {
+					"type": "boolean"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"DisplayDescription": {
+					"type": "string"
+				},
+				"DisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"Description": {
+					"$ref": "CombatUnitData.schema.json#/$defs/DescriptionType"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Type": {
+					"$ref": "#/$defs/DroneAugmentTypeEnum"
+				},
+				"RuntimeBonus": {
+					"$ref": "#/$defs/RuntimeBonusType"
+				}
+			},
+			"additionalProperties": false
+		},
+		"DroneAugmentTypeEnum": {
+			"type": "string",
+			"enum": [ "Simulation", "Game", "ServerAndGame"]
+		},
+		"RuntimeBonusType": {
+			"type": "object",
+			"properties": {
+				"GrantedAugments": {
+					"type": "array",
+					"items": {
+						"$ref": "AugmentData.schema.json#/$defs/AugmentTypeID"
+					}
+				},
+				"GrantedCredits": {
+					"type": "integer"
+				}
+
+			},
+			"additionalProperties": false
+		}
+	}
+}

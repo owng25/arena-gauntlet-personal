@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Ore_CelestviumOre",
+  "Name": "Extract {0} Celestvium",
+  "Description": "Extract {0} Celestvium by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "OverworldOre",
+      "Name": "CelestviumOre",
+      "Quantity": 10,
+      "Description": "Extract {0} Celestvium by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

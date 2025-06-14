@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Weekly_Overworld_Morphopod_Catch_Plobb",
+  "Name": "Catch {0} Plobb Morphopods",
+  "Description": "Catch {0} Plobb Morphopods",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 42,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Line": "Plobb",
+      "Quantity": 21,
+      "Description": "Catch {0} Plobb Morphopods",
+      "Type": "CatchMorphopodObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

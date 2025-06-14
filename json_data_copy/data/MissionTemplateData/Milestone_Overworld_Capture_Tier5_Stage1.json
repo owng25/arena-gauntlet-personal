@@ -1,0 +1,67 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier5_Stage1",
+  "Name": "Capture all Tier 5 Stage 1 Illuvials",
+  "Description": "Capture all Tier 5 Stage 1 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "004_Pterodactyl_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 5,
+      "Description": "Capture a Rhamphy",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "019_Beetle_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 5,
+      "Description": "Capture a Scarabok",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "025_Elk_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 5,
+      "Description": "Capture an Ador",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "031_PistolShrimp_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 5,
+      "Description": "Capture an Alphie",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "049_Squid_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 5,
+      "Description": "Capture a Squizz",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "091_TerrorBird_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 5,
+      "Description": "Capture a Pho",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

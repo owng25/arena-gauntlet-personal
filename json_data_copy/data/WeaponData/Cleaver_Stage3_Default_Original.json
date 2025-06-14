@@ -1,0 +1,220 @@
+{
+	"Name": "Cleaver",
+	"Stage": 3,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Verdant",
+	"CombatClass": "Berserker",
+	"DominantCombatAffinity": "Nature",
+	"DominantCombatClass": "Fighter",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 0,
+		"EnergyCost": 0,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 200000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 100,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 30,
+		"EnergyVampPercentage": 30,
+		"PureVampPercentage": 30,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Cleaver Attack III",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [],
+	"InnateAbilities": [
+		{
+			"Name": "Cleaver Vamp III",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buffs",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"DurationMs": -1,
+								"FrequencyMs": 1500,
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										{
+											"Operation": "/",
+											"Operands": [
+												{
+													"Operation": "+",
+													"Operands": [
+														{
+															"Stat": "PhysicalVampPercentage",
+															"StatSource": "Receiver"
+														},
+														{
+															"Stat": "EnergyVampPercentage",
+															"StatSource": "Receiver"
+														},
+														{
+															"Stat": "PureVampPercentage",
+															"StatSource": "Receiver"
+														}
+													]
+												},
+												3
+											]
+										},
+										50000
+									]
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"DurationMs": -1,
+								"FrequencyMs": 1500,
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										{
+											"Stat": "AttackSpeed",
+											"Percentage": 30,
+											"StatSource": "Receiver"
+										},
+										{
+											"Operation": "//",
+											"Operands": [
+												{
+													"Operation": "-",
+													"Operands": [
+														{
+															"Operation": "/",
+															"Operands": [
+																3,
+																2
+															]
+														},
+														{
+															"Operation": "/",
+															"Operands": [
+																{
+																	"Stat": "CurrentHealth",
+																	"StatSource": "Receiver"
+																},
+																{
+																	"Stat": "MaxHealth",
+																	"StatSource": "Receiver"
+																}
+															]
+														}
+													]
+												},
+												1
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Bramble Cleaver",
+	"DisplayDescription": "The Ranger gains 30% Omnivamp. When below 50% Max Health, the Ranger also gains 30% bonus Attack Speed.\r\n\r\nAdditionally, for every 1% Omnivamp, the ranger receives 50 Max Health.",
+	"Description": {
+		"Format": "The Ranger gains {a}% Omnivamp. When below 50% Max Health, the Ranger also gains {b}% bonus Attack Speed.\r\n\r\nAdditionally, for every 1% Omnivamp, the ranger receives {c} Max Health.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.PhysicalVampPercentage"
+			},
+			"b": {
+				"ParameterPath": "InnateAbilities[0].Skills[0].EffectPackage.Effects[1].Expression.Operands[0].Percentage"
+			},
+			"c": {
+				"ParameterPath": "InnateAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1]",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger gains 30% Omnivamp. When below 50% Max Health, the Ranger also gains 30% bonus Attack Speed.\r\n\r\nAdditionally, for every 1% Omnivamp, the ranger receives 50 Max Health."
+}

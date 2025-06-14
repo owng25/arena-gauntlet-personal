@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Warframe_Stage1_Original_Siege",
+  "Name": "Forge a Siege Warframe",
+  "Description": "Forge a Siege Warframe",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Warframe_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Siege Warframe",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

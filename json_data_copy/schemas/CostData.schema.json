@@ -1,0 +1,50 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Cost Data",
+	"$ref": "#/$defs/CostDataType",
+	"$defs": {
+		"CostDataType": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"IlluvialCost": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/StagesCostObject"
+					}
+				},
+				"WeaponCost": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/StagesCostObject"
+					}
+				},
+				"SuitCost": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/StagesCostObject"
+					}
+				},
+				"AugmentCost": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/StagesCostObject"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"StagesCostObject": {
+			"type": "object",
+			"properties": {
+				"Stages": {
+					"type": "array",
+					"items": {
+						"type": "integer"
+					}
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

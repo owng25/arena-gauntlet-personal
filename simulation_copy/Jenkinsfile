@@ -1,0 +1,112 @@
+#!/usr/bin/groovy
+import com.illuvium.Constants
+import com.illuvium.DateTimeUtils
+
+library identifier: 'IlluviumGame@main',
+        retriever: modernSCM(
+                [$class: 'GitSCMSource',
+                 credentialsId: 'jenkins-ssh-private-key',
+                 remote: 'git@github.com:IlluviumGame/automation.git'
+                ])
+
+properties([
+        buildDiscarder(
+                logRotator(
+                        artifactDaysToKeepStr: '15',
+                        artifactNumToKeepStr: '15',
+                        daysToKeepStr: '15',
+                        numToKeepStr: '15'
+                )
+        )
+])
+
+def token = ""
+def gitAuthorEmail = ""
+def dateFormat = "yyyy.M.d.HH.mm"
+def utils = new DateTimeUtils()
+def nodeTarget = getNode.getNodeTarget()
+def simulationConstants = new Constants()
+def buildNumber = env.BUILD_NUMBER.toInteger()
+buildNumber = utils.getCurrentDate(dateFormat) + "-" + buildNumber
+boolean publishArtifacts = params.publish_artifacts
+def jobName = "${env.JOB_NAME}".split('/')[0]
+
+
+echo "INFO: Build started at ${buildNumber}"
+
+sendSplunkConsoleLog {
+    node(nodeTarget) {
+        try {
+            def jenkins_git_branch = params.BRANCH == null ? env.BRANCH_NAME : params.BRANCH
+            stage('Checkout SCM') {
+                checkoutRepo('simulation', jenkins_git_branch)
+            }
+
+            def gitAuthorCmd = "git show -s --pretty=%ae"
+            gitAuthorEmail = sh(script: "${gitAuthorCmd}", returnStdout: true).trim();
+            echo "INFO: Last author is ${gitAuthorEmail}"
+
+            stage("Install JQ"){
+                sh("apt-get install -y jq")
+            }
+
+            stage("Setup Artifactory") {
+                token = sh(
+                        script: "aws secretsmanager get-secret-value --secret-id /read-only/infra/${env.env}-artifactory-docker-credentials --query 'SecretString' --output text | jq -r '.password'",
+                        returnStdout: true
+                    )
+
+                sh(script: """
+                    conan profile new default --detect
+
+                    conan remote add ${env.env}-simulation-artifacts ${simulationConstants.artifactoryApi}/api/conan/dev-simulation-artifacts
+                    conan remote add ${env.env}-simulation-artifacts-ue ${simulationConstants.artifactoryApi}/api/conan/dev-simulation-artifacts-ue
+                    """)
+            }
+
+            stage("Simulation Build Server") {
+                sh(script: """#!/usr/bin/env bash
+                    # Set correct clang path
+                    export CC=${simulationConstants.C_PATH}
+                    export CXX=${simulationConstants.CXX_PATH}
+                    export GIT_BRANCH=${jenkins_git_branch}
+
+                    # Enable variables
+                    source "scripts/init.sh"
+
+                    echo \${BUILD_LINUX_SERVER_DIR_NAME}
+                    printenv
+
+                    # Install, build, package
+                    bash ./ServerLinuxPackage.sh --enable-testing --enable-cli
+
+                    echo -e "\n==== Runing Tests ====\n"
+                    ./\${BUILD_LINUX_SERVER_DIR_NAME}/bin/libIlluviumSimulation-Linux-x64-Tests --logger-disable
+
+                    # Build the package without testing
+                    echo -e "\n==== Building package without testing ====\n"
+                    bash ./ServerLinuxPackage.sh
+
+                    # Export the package
+                    echo -e "\n==== Exporting Package ====\n"
+                    conan export-pkg . ${simulationConstants.artifactoryUser}/libIlluviumSimulation  --profile=conan/conan_profile_linux_server -s compiler.version=11 --package-folder ./\${PACKAGE_SERVER_DIR_NAME}/
+
+                    # Remove gtest from local cache so that we don't upload it
+                    conan remove gtest/* --packages --builds --force
+
+                    # Upload everything
+                    echo -e "\n==== Uploading Package ====\n"
+                    conan profile show default
+                    conan user infra-artifactory-ci@illuvium.io --remote ${env.env}-simulation-artifacts --password ${token}
+                    conan upload "*" --all --confirm  --remote ${env.env}-simulation-artifacts --parallel
+                    """)
+            }
+        } catch (Exception e) {
+            currentBuild.result = 'FAILURE'
+            echo "Build failed with error: ${e}"
+            if(env.BRANCH_NAME == 'main') {
+                discordNotify('autobattle', 'FAILURE', gitAuthorEmail, e.toString())
+            }
+        }
+    }
+}

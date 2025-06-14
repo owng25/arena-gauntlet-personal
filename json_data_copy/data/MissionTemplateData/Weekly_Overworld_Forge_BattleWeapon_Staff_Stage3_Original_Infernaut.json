@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Staff_Stage3_Original_Infernaut",
+  "Name": "Forge a Infernaut Staff",
+  "Description": "Forge a Infernaut Staff",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Staff_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Infernaut Staff",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

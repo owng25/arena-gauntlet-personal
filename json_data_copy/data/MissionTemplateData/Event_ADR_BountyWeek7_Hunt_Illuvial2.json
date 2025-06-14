@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek7_Hunt_Illuvial2",
+  "Name": "Collect an Adoredo",
+  "Description": "Collect an Adoredo",
+  "Expiry": "2025-05-22",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-15T00:00:00.0000000Z",
+      "EndTime": "2025-05-22T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "026_Elk_Stage2_Default_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect an Adoredo",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 720,
+      "Type": "AirdropReward"
+    }
+  ]
+}

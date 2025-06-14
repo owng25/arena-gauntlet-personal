@@ -1,0 +1,83 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier3_Stage2",
+  "Name": "Capture all Tier 3 Stage 2  Illuvials",
+  "Description": "Capture all Tier 3 Stage 2  Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "008_SeaScorpion_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 3,
+      "Description": "Capture a Rypterus",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "017_AntEater_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 3,
+      "Description": "Capture a Verminio",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "038_StarNosedMole_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 3,
+      "Description": "Capture a Loulura",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "071_KomodoDragon_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 3,
+      "Description": "Capture a Krunk",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "074_PoodleMoth_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 3,
+      "Description": "Capture an Artace",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "077_Sloth_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 3,
+      "Description": "Capture a Twine",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "083_Penguin_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 3,
+      "Description": "Capture a Stabbin",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "086_FennecFox_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 3,
+      "Description": "Capture a Quinx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

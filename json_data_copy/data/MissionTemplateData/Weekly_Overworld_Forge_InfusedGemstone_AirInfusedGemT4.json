@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_InfusedGemstone_AirInfusedGemT4",
+  "Name": "Forge Infused Epic Air Gems",
+  "Description": "Forge Infused Epic Air Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "AirInfusedGemT4",
+      "Quantity": 56,
+      "Description": "Forge {0} Infused Epic Air Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

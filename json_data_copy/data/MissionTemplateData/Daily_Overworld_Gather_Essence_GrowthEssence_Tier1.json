@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Essence_GrowthEssence_Tier1",
+  "Name": "Gather {0} Growth Essence",
+  "Description": "Gather {0} Growth Essence by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "Essence",
+      "Name": "GrowthEssence_Tier1",
+      "Quantity": 15,
+      "Description": "Gather {0} Growth Essence by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

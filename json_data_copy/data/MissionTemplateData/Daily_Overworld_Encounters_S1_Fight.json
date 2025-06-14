@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Overworld_Encounters_S1_Fight",
+  "Name": "Fight {0} encounters in Stage 1",
+  "Description": "Fight {0} encounters in Stage 1",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 12,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "Quantity": 12,
+      "Stage": 1,
+      "Description": "Fight {0} encounters in Stage 1",
+      "Type": "FightEncounterObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Blaster_Stage1_Original_Aqua",
+  "Name": "Forge a Aqua Blaster",
+  "Description": "Forge a Aqua Blaster",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Blaster_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Aqua Blaster",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

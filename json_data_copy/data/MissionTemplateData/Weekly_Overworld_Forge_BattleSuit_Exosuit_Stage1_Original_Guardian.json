@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Exosuit_Stage1_Original_Guardian",
+  "Name": "Forge a Guardian Exosuit",
+  "Description": "Forge a Guardian Exosuit",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Exosuit_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Guardian Exosuit",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

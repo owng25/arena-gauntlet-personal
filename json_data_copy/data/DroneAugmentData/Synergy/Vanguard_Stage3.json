@@ -1,0 +1,26 @@
+{
+	"Name": "Vanguard",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Vanguard Matrix",
+	"DisplayDescription": "Gain a Vanguard Imprint and a Fatesealer.",
+	"Description": {
+		"Format": "Gain a Vanguard Imprint and a Fatesealer.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Vanguard",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "Fatesealer",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

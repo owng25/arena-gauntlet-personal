@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_OverworldDroneEquipment_AtomicConjurant_Stage3",
+  "Name": "Forge a Supreme Atomic Conjurant",
+  "Description": "Forge a Supreme Atomic Conjurant",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "OverworldDroneEquipment",
+      "Name": "AtomicConjurant_Stage3",
+      "Quantity": 1,
+      "Description": "Forge a Supreme Atomic Conjurant",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

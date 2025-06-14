@@ -1,0 +1,128 @@
+{
+	"Name": "CommunalRegrowth",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "CommunalRegrowth_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "CommunalRegrowth - Gain Healing Efficiency",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "HealthGainEfficiencyPercentage",
+								"OverlapProcessType": "Sum",
+								"DurationMs": -1,
+								"Expression": 25
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "CommunalRegrowth_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "HealthInRange",
+				"HealthLowerLimitPercentage": 50,
+				"MaxActivations": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "CommunalRegrowth - Gain Max Health and Heal",
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Airborne",
+							"Underground"
+						]
+					},
+					"Targeting": {
+						"Type": "Allegiance",
+						"Group": "Ally",
+						"Self": true,
+						"Guidance": [
+							"Ground",
+							"Airborne",
+							"Underground"
+						]
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 350000
+							},
+							{
+								"Type": "InstantHeal",
+								"HealType": "Normal",
+								"Expression": {
+									"Operation": "%",
+									"Operands": [
+										30,
+										{
+											"Operation": "-",
+											"Operands": [
+												{
+													"Stat": "MaxHealth",
+													"StatSource": "Receiver"
+												},
+												{
+													"Stat": "CurrentHealth",
+													"StatSource": "Receiver"
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Communal Regrowth",
+	"DisplayDescription": "Holder receives <HealthGainEfficiencyPercentage>25%</> additional <HealthGainEfficiencyPercentage>Healing</> from all sources.\r\n\r\nOnce per combat, at 50% Health, all allies gain <MaxHealth>350</> <MaxHealth>Max Health</> and are healed <MaxHealth>30%</> of their missing Health.",
+	"Description": {
+		"Format": "Holder receives <HealthGainEfficiencyPercentage>{HealEff}%</> additional <HealthGainEfficiencyPercentage>Healing</> from all sources.\r\n\r\nOnce per combat, at {HealthTrigger}% Health, all allies gain <MaxHealth>{MaxHealth}</> <MaxHealth>Max Health</> and are healed <MaxHealth>{HealVal}%</> of their missing Health.",
+		"Parameters": {
+			"HealEff": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"HealthTrigger": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.HealthLowerLimitPercentage",
+				"ValueMultiplier": 1.0
+			},
+			"MaxHealth": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"HealVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].Expression.Operands[0]",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Holder receives 25% additional Healing from all sources.\r\n\r\nOnce per combat, at 50% Health, all allies gain 350 Max Health and are healed 30% of their missing Health."
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Consumable_Floraball_Tier0",
+  "Name": "Gather {0} Floraball",
+  "Description": "Gather {0} Floraball by harvesting plants in a Stage 0 Region",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "Consumable",
+      "Name": "Floraball_Tier0",
+      "Quantity": 210,
+      "Description": "Gather {0} Floraball by harvesting plants in a Stage 0 Region",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

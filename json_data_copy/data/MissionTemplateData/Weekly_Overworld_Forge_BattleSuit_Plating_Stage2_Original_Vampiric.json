@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Plating_Stage2_Original_Vampiric",
+  "Name": "Forge a Vampiric Plating",
+  "Description": "Forge a Vampiric Plating",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Plating_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Vampiric Plating",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

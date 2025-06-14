@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Weekly_Gauntlet_Leviathan_Tier5_Win",
+  "Name": "Win {0} matches of Leviathan Gauntlet",
+  "Description": "Win {0} matches of Leviathan Gauntlet",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "Quantity": 7,
+      "WinRequired": true,
+      "GameMode": "Gauntlet",
+      "Queue": "Leviathan",
+      "Description": "Win {0} matches of Leviathan Gauntlet",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

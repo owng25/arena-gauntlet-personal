@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_InfusedGemstone_FireInfusedGemT1",
+  "Name": "Forge Infused Common Fire Gems",
+  "Description": "Forge Infused Common Fire Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "FireInfusedGemT1",
+      "Quantity": 70,
+      "Description": "Forge {0} Infused Common Fire Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

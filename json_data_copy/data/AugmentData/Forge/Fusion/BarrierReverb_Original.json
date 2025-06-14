@@ -1,0 +1,209 @@
+{
+	"Name": "BarrierReverb",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "BarrierReverb_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "BarrierReverb - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 15,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 15,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 15,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 15
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 5
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 5
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PureVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 5
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "BarrierReverb_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "BarrierReverb - Shield Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": false,
+								"DurationMs": -1,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "InstantShieldBurn",
+										"Expression": 50000
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "BarrierReverb_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnShieldHit",
+				"SenderAllegiance": "Self",
+				"ReceiverAllegiance": "Enemy",
+				"AbilityTypes": [
+					"Attack",
+					"Omega"
+				],
+				"ActivationCooldownMs": 1000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "BarrierReverb - Splash",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"EffectPackage": {
+						"Attributes": {
+							"Propagation": {
+								"PropagationType": "Splash",
+								"SplashRadiusUnits": 15,
+								"DeploymentGuidance": [
+									"Ground",
+									"Airborne",
+									"Underground"
+								],
+								"EffectPackage": {
+									"Effects": [
+										{
+											"Type": "InstantDamage",
+											"DamageType": "Pure",
+											"Expression": 50000
+										}
+									]
+								}
+							}
+						},
+						"Effects": []
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Barrier Reverb",
+	"DisplayDescription": "Attacks deal an additional 50 damage to Shields.\r\n\r\nAfter hitting a Shield, deal 50 Pure Damage around the target. (1s cooldown).\r\n\r\nStats:\r\n+15% <AttackDamage>Attack Damage</>\r\n+15 <OmegaPowerPercentage>Omega Power</>\r\n+5% <Omnivamp>Omnivamp</>",
+	"Description": {
+		"Format": "Attacks deal an additional {ShieldDamage} damage to Shields.\r\n\r\nAfter hitting a Shield, deal {DamageValue} Pure Damage around the target. ({Cooldown}s cooldown).\r\n\r\nStats:\r\n+{Stat_AD}% <AttackDamage>Attack Damage</>\r\n+{Stat_OP} <OmegaPowerPercentage>Omega Power</>\r\n+{Stat_Vamp}% <Omnivamp>Omnivamp</>",
+		"Parameters": {
+			"ShieldDamage": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"DamageValue": {
+				"ParameterPath": "Abilities[2].Skills[0].EffectPackage.Attributes.Propagation.EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Cooldown": {
+				"ParameterPath": "Abilities[2].ActivationTrigger.ActivationCooldownMs",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_AD": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_OP": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Vamp": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[4].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Attacks deal an additional 50 damage to Shields.\r\n\r\nAfter hitting a Shield, deal 50 Pure Damage around the target. (1s cooldown).\r\n\r\nStats:\r\n+15% Attack Damage\r\n+15 Omega Power\r\n+5% Omnivamp"
+}

@@ -1,0 +1,182 @@
+{
+	"Name": "Pistol",
+	"Stage": 1,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatClass": "None",
+	"CombatAffinity": "None",
+	"Stats": {
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 45000,
+		"CritChancePercentage": 25,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"MaxHealth": 0,
+		"OmegaPowerPercentage": 100,
+		"OnActivationEnergy": 0,
+		"StartingEnergy": 0,
+		"MoveSpeedSubUnits": 1000,
+		"AttackRangeUnits": 50,
+		"OmegaRangeUnits": 50,
+		"HitChancePercentage": 100,
+		"AttackSpeed": 90,
+		"CritAmplificationPercentage": 150,
+		"EnergyCost": 100000,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPureDamage": 0,
+		"AttackDodgeChancePercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyGainEfficiencyPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Pistol Attack I",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						]
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 40
+					},
+					"Projectile": {
+						"SizeUnits": 0,
+						"IsHoming": true,
+						"SpeedSubUnits": 18000,
+						"IsBlockable": false,
+						"ApplyToAll": false
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Charged Shot I",
+			"TotalDurationMs": 1500,
+			"Skills": [
+				{
+					"Name": "Damage shot",
+					"Targeting": {
+						"Type": "CurrentFocus",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						]
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 60
+					},
+					"Projectile": {
+						"SizeUnits": 5,
+						"IsHoming": true,
+						"SpeedSubUnits": 15000,
+						"IsBlockable": false,
+						"ApplyToAll": false
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										100000,
+										{
+											"Operation": "*",
+											"Operands": [
+												100000,
+												{
+													"Stat": "OmegaPowerPercentage",
+													"StatSource": "Sender"
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Pistol",
+	"DisplayDescription": "The Ranger overcharges their pistol dealing (100*OP + 100) Physical Damage to their target.",
+	"Description": {
+		"Format": "The Ranger overcharges their pistol dealing ({a}*OP + {b}) Physical Damage to their target.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1].Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger overcharges their pistol dealing (100*OP + 100) Physical Damage to their target."
+}

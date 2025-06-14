@@ -1,0 +1,39 @@
+{
+	"Name": "AttackSpeed",
+	"Stage": 2,
+	"Abilities": [
+		{
+			"Name": "Attack Speed",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Attack Speed Buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

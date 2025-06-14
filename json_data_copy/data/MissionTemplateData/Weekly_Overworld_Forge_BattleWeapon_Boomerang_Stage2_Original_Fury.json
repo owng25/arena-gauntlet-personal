@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Boomerang_Stage2_Original_Fury",
+  "Name": "Forge a Fury Boomerang",
+  "Description": "Forge a Fury Boomerang",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Boomerang_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Fury Boomerang",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

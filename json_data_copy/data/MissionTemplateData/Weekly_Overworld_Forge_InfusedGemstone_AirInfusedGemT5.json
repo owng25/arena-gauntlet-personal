@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_InfusedGemstone_AirInfusedGemT5",
+  "Name": "Forge Infused Resplendent Air Gems",
+  "Description": "Forge Infused Resplendent Air Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "AirInfusedGemT5",
+      "Quantity": 35,
+      "Description": "Forge {0} Infused Resplendent Air Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

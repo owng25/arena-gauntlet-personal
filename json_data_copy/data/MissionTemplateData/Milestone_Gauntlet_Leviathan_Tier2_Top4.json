@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Milestone_Gauntlet_Leviathan_Tier2_Top4",
+  "Name": "Finish {0} matches of Leviathan Gauntlet in Top 4",
+  "Description": "Finish {0} matches of Leviathan Gauntlet in Top 4",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "Quantity": 1000,
+      "Top4Finish": true,
+      "GameMode": "Gauntlet",
+      "Queue": "Leviathan",
+      "Description": "Finish {0} matches of Leviathan Gauntlet in Top 4",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

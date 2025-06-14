@@ -1,0 +1,42 @@
+version: 0.2
+env:
+  git-credential-helper: yes
+  shell: bash
+  variables:
+    JFROG_URL : "https://illuvium.jfrog.io/artifactory"
+  secrets-manager:
+    JFROG_TOKEN               : /read-only/infra/${ENV}-artifactory-docker-credentials
+    CDN_ACCESS_KEY_ID         : "/read-only/infra/$ENV-cloudflare-access-key-id"
+    CDN_SECRET_ACCESS_KEY_ID  : "/read-only/infra/$ENV-cloudflare-secret-access-key-id"
+phases:
+  build:
+    commands:
+      - curl -fL https://install-cli.jfrog.io | sh
+      - export JFROG_TOKEN_PROCESSED=$(echo ${JFROG_TOKEN} | jq -r '.password')
+      - curl https://rclone.org/install.sh |  bash
+      - mkdir -p ~/.config/rclone
+      - |
+        cat <<EOT > ~/.config/rclone/rclone.conf
+        [cdn]
+        type = s3
+        provider = Cloudflare
+        access_key_id = ${CDN_ACCESS_KEY_ID}
+        secret_access_key = ${CDN_SECRET_ACCESS_KEY_ID}
+        endpoint = https://2e129aa4e7283982729a0777d8ea2540.r2.cloudflarestorage.com
+        acl = private
+        no_check_bucket = true
+        EOT
+        chmod 740 ~/.config/rclone/rclone.conf
+        rclone version
+      - export CI="true" && jf c add --url "${JFROG_URL}" --access-token "${JFROG_TOKEN_PROCESSED}"
+      - jf rt dl json-data/${ARTIFACT_NAME}/jd-${ARTIFACT_NAME}.zip
+        --url "${JFROG_URL}" --access-token "${JFROG_TOKEN_PROCESSED}"
+      - |
+        if [ ${CDN_S3} = "true" ]; then
+          aws s3 cp ${ARTIFACT_NAME}/jd-${ARTIFACT_NAME}.zip s3://${ENV}-game-data-archive-upload/
+        fi
+      - |
+        if [ ${CDN_R2} = "true" ]; then
+          rclone copy ${ARTIFACT_NAME}/jd-${ARTIFACT_NAME}.zip cdn:${ENV}-illuvium-media-cdn/data/ -P
+          # rclone tree cdn:${ENV}-illuvium-media-cdn/data/
+        fi

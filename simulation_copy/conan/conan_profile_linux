@@ -1,0 +1,11 @@
+include(default)
+[settings]
+    arch=x86_64
+    compiler=clang
+    compiler.libcxx=libstdc++11
+    os=Linux
+
+[options]
+    enable_visualization=False
+    enable_cli=True
+    enable_testing=True

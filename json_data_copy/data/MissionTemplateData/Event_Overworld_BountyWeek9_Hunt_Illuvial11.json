@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek9_Hunt_Illuvial11",
+  "Name": "Capture a Nimble Hydrolynx",
+  "Description": "Capture a Nimble Hydrolynx",
+  "Expiry": "2025-06-05",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-29T00:00:00.0000000Z",
+      "EndTime": "2025-06-05T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "111_Lynx_Stage3_RogueWater_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Nimble Hydrolynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 48,
+      "Type": "AirdropReward"
+    }
+  ]
+}

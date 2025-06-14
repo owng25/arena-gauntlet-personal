@@ -1,0 +1,82 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Augment Data",
+	"$ref": "#/$defs/AugmentType",
+	"$defs": {
+		"AugmentType": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"Abilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"IsDisabled": {
+					"type": "boolean"
+				},
+				"ActivationTrigger": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatActivationTriggerData"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"DisplayDescription": {
+					"type": "string"
+				},
+				"DisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"Description": {
+					"$ref": "CombatUnitData.schema.json#/$defs/DescriptionType"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Tier": {
+					"type": "integer"
+				},
+				"Variation": {
+					"type": "string"
+				},
+				"Type": {
+					"$ref": "#/$defs/AugmentTypeEnum"
+				},
+				"CombatClasses": {
+					"additionalProperties": {
+						"type": "integer"
+					}
+				},
+				"CombatAffinities": {
+					"additionalProperties": {
+						"type": "integer"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"AugmentTypeEnum": {
+			"type": "string",
+			"enum": ["Normal", "Component", "GreaterPower", "SynergyBonus"]
+		},
+		"AugmentTypeID": {
+			"type": "object",
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Variation": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

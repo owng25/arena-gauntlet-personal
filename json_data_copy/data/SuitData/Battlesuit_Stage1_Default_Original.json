@@ -1,0 +1,119 @@
+{
+	"Name": "Battlesuit",
+	"Stage": 1,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 60,
+		"EnergyResist": 40,
+		"MaxHealth": 500000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 1800,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "TemplarSynergy_Omega",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 3
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Templar Extra Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": true,
+								"ActivationsUntilExpiry": 1,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Physical",
+										"Expression": {
+											"Percentage": 50,
+											"Stat": "AttackPhysicalDamage",
+											"StatSource": "Sender"
+										}
+									},
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Energy",
+										"Expression": {
+											"Percentage": 50,
+											"Stat": "AttackEnergyDamage",
+											"StatSource": "Sender"
+										}
+									},
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Pure",
+										"Expression": {
+											"Percentage": 50,
+											"Stat": "AttackPureDamage",
+											"StatSource": "Sender"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Alpha Battlesuit",
+	"DisplayDescription": "Health: 500\r\nPhysical Resist: 60\r\nEnergy Resist: 40\r\nMovement Speed: 18\r\n\r\nPassive: Deal 50% more damage every third attack.\r\n\r\nBeta Battlesuit: Deal 75% more damage every third attack.\r\n\r\nGamma Battlesuit: Deal 100% more damage every third attack.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Deal {d}% more damage every third attack.\r\n\r\nBeta Battlesuit: Deal 75% more damage every third attack.\r\n\r\nGamma Battlesuit: Deal 100% more damage every third attack.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Percentage"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 500\r\nPhysical Resist: 60\r\nEnergy Resist: 40\r\nMovement Speed: 18\r\n\r\nPassive: Deal 50% more damage every third attack.\r\n\r\nBeta Battlesuit: Deal 75% more damage every third attack.\r\n\r\nGamma Battlesuit: Deal 100% more damage every third attack."
+}

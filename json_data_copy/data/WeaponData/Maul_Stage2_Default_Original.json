@@ -1,0 +1,189 @@
+{
+	"Name": "Maul",
+	"Stage": 2,
+	"Tier": 5,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Mud",
+	"CombatClass": "Empath",
+	"DominantCombatAffinity": "Earth",
+	"DominantCombatClass": "Empath",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 60000,
+		"EnergyCost": 180000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 200000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 60,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 30,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 3,
+		"OmegaRangeUnits": 3,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Maul Attack II",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Willbreaker II",
+			"TotalDurationMs": 1500,
+			"Skills": [
+				{
+					"Name": "LIFT THE MAUL",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 75
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "NegativeState",
+								"NegativeState": "Stun",
+								"DurationMs": 2500
+							}
+						]
+					}
+				},
+				{
+					"Name": "AOE",
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Enemy",
+						"RadiusUnits": 20
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										300000,
+										{
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "PhysicalResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "EnergyResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Abyssal Maul",
+	"DisplayDescription": "The Ranger channels dark energy into their maul, delivering a crushing blow that Stuns the target for 2.5 seconds. The impact creates a shockwave, dealing 300*OP Physical Damage to all enemies within 20 radius.\r\n\r\nAdditionally, enemies hit by the shockwave have their Physical and Energy Resistances reduced  by 10.\r\n\r\nDreadmarsh Maul: Gives Mud and Revenant.",
+	"Description": {
+		"Format": "The Ranger channels dark energy into their maul, delivering a crushing blow that Stuns the target for {a} seconds. The impact creates a shockwave, dealing {b}*OP Physical Damage to all enemies within {d} radius.\r\n\r\nAdditionally, enemies hit by the shockwave have their Physical and Energy Resistances reduced  by {c}.\r\n\r\nDreadmarsh Maul: Gives Mud and Revenant.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"d": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].Targeting.RadiusUnits"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[1].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger channels dark energy into their maul, delivering a crushing blow that Stuns the target for 2.5 seconds. The impact creates a shockwave, dealing 300*OP Physical Damage to all enemies within 20 radius.\r\n\r\nAdditionally, enemies hit by the shockwave have their Physical and Energy Resistances reduced  by 10.\r\n\r\nDreadmarsh Maul: Gives Mud and Revenant."
+}

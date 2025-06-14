@@ -1,0 +1,79 @@
+{
+	"Name": "Inhibator",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "Inhibator_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Inhibator - Efficiency Debuffs",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Aura",
+								"AttachedEffects": [
+									{
+										"Type": "Debuff",
+										"Stat": "HealthGainEfficiencyPercentage",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 30,
+										"FrequencyMs": 1000,
+										"Expression": 40
+									},
+									{
+										"Type": "Debuff",
+										"Stat": "EnergyGainEfficiencyPercentage",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 30,
+										"FrequencyMs": 1000,
+										"Expression": 40
+									},
+									{
+										"Type": "Debuff",
+										"Stat": "ShieldGainEfficiencyPercentage",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 30,
+										"FrequencyMs": 1000,
+										"Expression": 40
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Inhibator",
+	"DisplayDescription": "Enemies within 40-hexes have their <HealthGainEfficiencyPercentage>Healing</>, <EnergyGainEfficiencyPercentage>Energy</>, and <ShieldGainEfficiencyPercentage>Shield</> reduced by <HealthGainEfficiencyPercentage>30%</>.",
+	"Description": {
+		"Format": "Enemies within {Radius}-hexes have their <HealthGainEfficiencyPercentage>Healing</>, <EnergyGainEfficiencyPercentage>Energy</>, and <ShieldGainEfficiencyPercentage>Shield</> reduced by <HealthGainEfficiencyPercentage>{EffVal}%</>.",
+		"Parameters": {
+			"Radius": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"EffVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].RadiusUnits",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Enemies within 40-hexes have their Healing, Energy, and Shield reduced by 30%."
+}

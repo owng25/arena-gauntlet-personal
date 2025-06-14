@@ -1,0 +1,32 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Augment Data",
+	"$ref": "#/$defs/ConsumableType",
+	"$defs": {
+		"ConsumableType": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"Abilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Tier": {
+					"type": "integer"
+				},
+				"IsDisabled": {
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

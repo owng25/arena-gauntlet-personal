@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Rod_Stage1_Original_Emberling",
+  "Name": "Forge a Emberling Rod",
+  "Description": "Forge a Emberling Rod",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Rod_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Emberling Rod",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

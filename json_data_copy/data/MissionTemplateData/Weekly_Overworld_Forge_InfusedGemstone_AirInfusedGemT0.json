@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_InfusedGemstone_AirInfusedGemT0",
+  "Name": "Forge Infused Air Gem Fragments",
+  "Description": "Forge Infused Air Gem Fragments",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "AirInfusedGemT0",
+      "Quantity": 140,
+      "Description": "Forge {0} Infused Air Gem Fragments",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

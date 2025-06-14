@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_AirInfusedGemT3",
+  "Name": "Forge {0} Infused Rare Air Gems",
+  "Description": "Forge {0} Infused Rare Air Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "AirInfusedGemT3",
+      "Quantity": 8,
+      "Description": "Forge {0} Infused Rare Air Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

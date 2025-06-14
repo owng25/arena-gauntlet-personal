@@ -1,0 +1,9 @@
+[settings]
+    build_type=Release
+
+[options]
+    enable_profiling=False
+    enable_testing=False
+    enable_unity_build=True
+    enable_cli=False
+    enable_visualization=False

@@ -1,0 +1,101 @@
+{
+	"Name": "DefiantRetribution",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "DefiantRetribution_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "HealthInRange",
+				"HealthLowerLimitPercentage": 20,
+				"MaxActivations": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "DefiantRetribution - Restore to Full Health",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantHeal",
+								"HealType": "Normal",
+								"Expression": {
+									"Percentage": 100,
+									"Stat": "MaxHealth",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "PositiveState",
+								"PositiveState": "Indomitable",
+								"DurationMs": 1000
+							}
+						]
+					}
+				},
+				{
+					"Name": "DefiantRetribution - Debuff Resistances",
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Targeting": {
+						"Type": "Allegiance",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "PhysicalResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 15
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "EnergyResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 15
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Defiant Retribution",
+	"DisplayDescription": "Once per combat, at 20% Health, the holder restores back to <MaxHealth>Full Health</> and causes all enemies to lose <Resistance>15</> <Resistance>Resistances</>.",
+	"Description": {
+		"Format": "Once per combat, at {HealthTrigger}% Health, the holder restores back to <MaxHealth>Full Health</> and causes all enemies to lose <Resistance>{ResistVal}</> <Resistance>Resistances</>.",
+		"Parameters": {
+			"HealthTrigger": {
+				"ParameterPath": "Abilities[0].ActivationTrigger.HealthLowerLimitPercentage",
+				"ValueMultiplier": 1.0
+			},
+			"ResistVal": {
+				"ParameterPath": "Abilities[0].Skills[1].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Once per combat, at 20% Health, the holder restores back to Full Health and causes all enemies to lose 15 Resistances."
+}

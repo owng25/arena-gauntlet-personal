@@ -1,0 +1,24 @@
+{
+  "ProductionId": "Milestone_Overworld_Gain_500000_XP",
+  "Name": "Gain 500000 Illuvial Experience",
+  "Description": "Gain 500000 XP with your Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ExperienceNeeded": 500000,
+      "Description": "Gain 500000 XP with your Illuvials",
+      "Type": "GainIlluvialExperienceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+	"Name": "Emberheart",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "Emberheart_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Emberheart - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 200000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Emberheart_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 4000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Emberheart - Heal",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantHeal",
+								"HealType": "Normal",
+								"Expression": {
+									"Operation": "%",
+									"Operands": [
+										5,
+										{
+											"Operation": "-",
+											"Operands": [
+												{
+													"Stat": "MaxHealth",
+													"StatSource": "Receiver"
+												},
+												{
+													"Stat": "CurrentHealth",
+													"StatSource": "Receiver"
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"Name": "Emberheart - Burn",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy",
+						"Lowest": true,
+						"Num": 1
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "HealthGainEfficiencyPercentage",
+								"OverlapProcessType": "Merge",
+								"DurationMs": 4000,
+								"Expression": {
+									"Percentage": 25,
+									"Stat": "HealthGainEfficiencyPercentage",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Emberheart",
+	"DisplayDescription": "Every 4 seconds, heal <MaxHealth>5%</> of missing Health and Burn the nearest enemy.\r\n\r\nStats:\r\n+200 <MaxHealth>Health</>\r\n+10 <OmegaPowerPercentage>Omega Power</>\r\n\r\n<Italic>Burn: Reduces the Healing received by 25%.</>",
+	"Description": {
+		"Format": "Every {TriggerTime} seconds, heal <MaxHealth>{HealValue}%</> of missing Health and Burn the nearest enemy.\r\n\r\nStats:\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_OP} <OmegaPowerPercentage>Omega Power</>\r\n\r\n<Italic>Burn: Reduces the Healing received by 25%.</>",
+		"Parameters": {
+			"TriggerTime": {
+				"ParameterPath": "Abilities[1].Skills[1].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"HealValue": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_OP": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Every 4 seconds, heal 5% of missing Health and Burn the nearest enemy.\r\n\r\nStats:\r\n+200 Health\r\n+10 Omega Power\r\n\r\nBurn: Reduces the Healing received by 25%."
+}

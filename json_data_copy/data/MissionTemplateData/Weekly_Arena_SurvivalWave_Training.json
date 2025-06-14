@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Weekly_Arena_SurvivalWave_Training",
+  "Name": "Defeat Wave {0} in Survival (Training Mode)",
+  "Description": "Defeat Wave {0} in Survival (Training Mode)",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 4,
+  "Game": "Arena",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Challenge": "Training",
+      "QuantityMaximum": 40,
+      "Description": "Defeat Wave {0} in Survival (Training Mode)",
+      "Type": "SurvivalWaveObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

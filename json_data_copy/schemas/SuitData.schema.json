@@ -1,0 +1,58 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Combat Suit Data",
+	"$ref": "#/$defs/CombatSuitType",
+	"$defs": {
+		"CombatSuitType": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"DisplayName": {
+					"type": "string"
+				},
+				"DisplayDescription": {
+					"type": "string"
+				},
+				"DisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"Description": {
+					"$ref": "CombatUnitData.schema.json#/$defs/DescriptionType"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Tier": {
+					"type": "integer"
+				},
+				"Variation": {
+					"type": "string"
+				},
+				"Stats": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatStatsType"
+				},
+
+				"Abilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"IsDisabled": {
+					"type": "boolean"
+				},
+				"Type": {
+					"$ref": "#/$defs/SuitTypeEnum"
+				}
+			},
+			"additionalProperties": false
+		},
+		"SuitTypeEnum": {
+			"type": "string",
+			"enum": ["Normal", "Amplifier"]
+		}
+	}
+}

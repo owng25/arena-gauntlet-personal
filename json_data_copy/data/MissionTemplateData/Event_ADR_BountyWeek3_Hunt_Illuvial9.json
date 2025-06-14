@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek3_Hunt_Illuvial9",
+  "Name": "Collect a Stage 1 Lynx",
+  "Description": "Collect a Stage 1 Lynx",
+  "Expiry": "2025-04-24",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-17T00:00:00.0000000Z",
+		"EndTime": "2025-04-24T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "100_Lynx_Stage1_NoneNone_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect a Stage 1 Lynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 24,
+      "Type": "AirdropReward"
+    }
+  ]
+}

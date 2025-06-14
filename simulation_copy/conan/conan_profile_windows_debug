@@ -1,0 +1,5 @@
+include(conan_profile_windows)
+
+[settings]
+    build_type=Debug
+    compiler.runtime_type=Debug

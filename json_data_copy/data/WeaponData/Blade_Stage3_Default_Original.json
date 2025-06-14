@@ -1,0 +1,144 @@
+{
+	"Name": "Blade",
+	"Stage": 3,
+	"Tier": 2,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Frost",
+	"CombatClass": "Slayer",
+	"DominantCombatAffinity": "Air",
+	"DominantCombatClass": "Fighter",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 0,
+		"EnergyCost": 0,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 140000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 100,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 40,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Blade Attack III",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										{
+											"Stat": "AttackPhysicalDamage",
+											"StatSource": "Sender"
+										},
+										{
+											"Percentage": 40000,
+											"Stat": "AttackSpeed",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										{
+											"Stat": "AttackEnergyDamage",
+											"StatSource": "Sender"
+										},
+										20000
+									]
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Operation": "/",
+									"Operands": [
+										{
+											"Stat": "AttackSpeed",
+											"StatSource": "Receiver"
+										},
+										200
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [],
+	"DisplayName": "Mycotic Blade",
+	"DisplayDescription": "The Ranger gains 20 extra Energy Attack Damage and deals bonus Physical Damage equal to 40% of their Attack Speed with each strike.\r\n\r\nAdditionally, each hit reduces the Target's Attack Speed by 0.5%.",
+	"Description": {
+		"Format": "The Ranger gains {a} extra Energy Attack Damage and deals bonus Physical Damage equal to {b}% of their Attack Speed with each strike.\r\n\r\nAdditionally, each hit reduces the Target's Attack Speed by 0.5%.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "AttackAbilities[0].Skills[0].EffectPackage.Effects[1].Expression.Operands[1]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "AttackAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1].Percentage",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger gains 20 extra Energy Attack Damage and deals bonus Physical Damage equal to 40% of their Attack Speed with each strike.\r\n\r\nAdditionally, each hit reduces the Target's Attack Speed by 0.5%."
+}

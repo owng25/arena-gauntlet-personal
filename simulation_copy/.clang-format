@@ -1,0 +1,40 @@
+# References
+# - https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+# - https://github.com/vampy/university-AVDP/blob/master/.clang-format
+
+# Use the Google style in this project.
+BasedOnStyle: Google
+
+# Aka BSD Style
+BreakBeforeBraces: Allman
+
+# 4 spaces
+IndentWidth: 4
+
+# Indent width for line continuations.
+ContinuationIndentWidth: 4
+UseTab: Never
+
+# Don't indent switch case labels as we use 4 spaces anyways
+IndentCaseLabels: false
+
+# The extra indent or outdent of access modifiers, e.g. public:
+# Don't indent as we use 4 spaces anyways
+AccessModifierOffset: -4
+
+# Some folks prefer to write "int& foo" while others prefer "int &foo".  The
+# Google Style Guide only asks for consistency within a project, we chose
+# "int& foo" for this project:
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+ColumnLimit: 120
+AlignAfterOpenBracket: AlwaysBreak
+BinPackArguments: false
+BinPackParameters: false
+AllowAllArgumentsOnNextLine: false
+AllowAllConstructorInitializersOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortLambdasOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+FixNamespaceComments: true

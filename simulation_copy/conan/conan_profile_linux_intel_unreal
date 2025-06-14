@@ -1,0 +1,7 @@
+include(conan_profile_linux)
+include(conan_profile_generic_unreal_and_server)
+
+[settings]
+    arch=x86_64
+    compiler=clang
+    compiler.libcxx=libc++

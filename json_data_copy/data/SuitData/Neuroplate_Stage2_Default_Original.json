@@ -1,0 +1,89 @@
+{
+	"Name": "Neuroplate",
+	"Stage": 2,
+	"Tier": 2,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 55,
+		"EnergyResist": 65,
+		"MaxHealth": 1000000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 1500,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "OP dmg increase",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Increase OP Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "OmegaDamagePercentage",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 30,
+									"Stat": "OmegaDamagePercentage",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Cortex Neuroplate",
+	"DisplayDescription": "Health: 1,000\r\nPhysical Resist: 55\r\nEnergy Resist: 65\r\nMovement Speed: 15\r\n\r\nPassive: Omega Ability damage is increased by 30%.\r\n\r\nMindflare Neuroplate: Omega Ability damage is increased by 40%. The Omega Ability refunds 20% of your Energy.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Omega Ability damage is increased by {d}%.\r\n\r\nMindflare Neuroplate: Omega Ability damage is increased by 40%. The Omega Ability refunds 20% of your Energy.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,000\r\nPhysical Resist: 55\r\nEnergy Resist: 65\r\nMovement Speed: 15\r\n\r\nPassive: Omega Ability damage is increased by 30%.\r\n\r\nMindflare Neuroplate: Omega Ability damage is increased by 40%. The Omega Ability refunds 20% of your Energy."
+}

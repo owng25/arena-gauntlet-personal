@@ -1,0 +1,67 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier5_Stage3",
+  "Name": "Capture all Tier 5 Stage 3  Illuvials",
+  "Description": "Capture all Tier 5 Stage 3 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "006_Pterodactyl_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Description": "Capture a Rhamphyre",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "021_Beetle_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Description": "Capture a Titanor",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "027_Elk_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Description": "Capture an Adorius",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "033_PistolShrimp_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Description": "Capture a Dualeph",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "051_Squid_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Description": "Capture an Ophisto",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "093_TerrorBird_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Description": "Capture a Phosphorus",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

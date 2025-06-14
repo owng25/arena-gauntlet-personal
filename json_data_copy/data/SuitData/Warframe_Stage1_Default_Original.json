@@ -1,0 +1,93 @@
+{
+	"Name": "Warframe",
+	"Stage": 1,
+	"Tier": 2,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 55,
+		"EnergyResist": 45,
+		"MaxHealth": 800000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2200,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Pierce 80% of Physical and Energy Resist.",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Piercing buffs",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalPiercingPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyPiercingPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Siege Warframe",
+	"DisplayDescription": "Health: 800\r\nPhysical Resist: 55\r\nEnergy Resist: 45\r\nMovement Speed: 22\r\n\r\nPassive: Attacks pierce 10% Resistances.\r\n\r\nAssault Warframe: Attacks pierce 30% Resistances.\r\n\r\nOnslaught Warframe: Attacks pierce 40% Resistances. Your target receives 5% increased damage while you attack it.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Attacks pierce {d}% Resistances.\r\n\r\nAssault Warframe: Attacks pierce 30% Resistances.\r\n\r\nOnslaught Warframe: Attacks pierce 40% Resistances. Your target receives 5% increased damage while you attack it.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 800\r\nPhysical Resist: 55\r\nEnergy Resist: 45\r\nMovement Speed: 22\r\n\r\nPassive: Attacks pierce 10% Resistances.\r\n\r\nAssault Warframe: Attacks pierce 30% Resistances.\r\n\r\nOnslaught Warframe: Attacks pierce 40% Resistances. Your target receives 5% increased damage while you attack it."
+}

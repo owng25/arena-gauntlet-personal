@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek3_Hunt_Illuvial8",
+  "Name": "Capture a Stoic Floralynx",
+  "Description": "Capture a Stoic Floralynx",
+  "Expiry": "2025-04-24",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-17T00:00:00.0000000Z",
+		"EndTime": "2025-04-24T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "119_Lynx_Stage3_BulwarkNature_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Stoic Floralynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 48,
+      "Type": "AirdropReward"
+    }
+  ]
+}

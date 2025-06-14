@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Ore_TellviumOre",
+  "Name": "Extract {0} Tellvium",
+  "Description": "Extract {0} Tellvium by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "OverworldOre",
+      "Name": "TellviumOre",
+      "Quantity": 30,
+      "Description": "Extract {0} Tellvium by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

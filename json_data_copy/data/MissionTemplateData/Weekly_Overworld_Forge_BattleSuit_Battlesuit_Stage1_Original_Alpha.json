@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Battlesuit_Stage1_Original_Alpha",
+  "Name": "Forge a Alpha Battlesuit",
+  "Description": "Forge a Alpha Battlesuit",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Battlesuit_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Alpha Battlesuit",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

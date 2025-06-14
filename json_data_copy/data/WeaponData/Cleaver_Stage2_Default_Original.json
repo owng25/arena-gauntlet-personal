@@ -1,0 +1,170 @@
+{
+	"Name": "Cleaver",
+	"Stage": 2,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Verdant",
+	"CombatClass": "Fighter",
+	"DominantCombatAffinity": "Nature",
+	"DominantCombatClass": "Fighter",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 0,
+		"EnergyCost": 0,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 140000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 100,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 30,
+		"EnergyVampPercentage": 30,
+		"PureVampPercentage": 30,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Cleaver Attack II",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"InnateAbilities": [
+		{
+			"Name": "Cleaver Vamp II",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buffs",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"DurationMs": -1,
+								"FrequencyMs": 1500,
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										{
+											"Operation": "/",
+											"Operands": [
+												{
+													"Operation": "+",
+													"Operands": [
+														{
+															"Stat": "PhysicalVampPercentage",
+															"StatSource": "Receiver"
+														},
+														{
+															"Stat": "EnergyVampPercentage",
+															"StatSource": "Receiver"
+														},
+														{
+															"Stat": "PureVampPercentage",
+															"StatSource": "Receiver"
+														}
+													]
+												},
+												3
+											]
+										},
+										25000
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [],
+	"DisplayName": "Razor Cleaver",
+	"DisplayDescription": "The Ranger gains 30% Omnivamp.\r\n\r\nAdditionally, for every 1% Omnivamp, the ranger receives 25 Max Health.\r\n\r\nBramble Cleaver: Gives Verdant and Berserker.",
+	"Description": {
+		"Format": "The Ranger gains {a}% Omnivamp.\r\n\r\nAdditionally, for every 1% Omnivamp, the ranger receives {b} Max Health.\r\n\r\nBramble Cleaver: Gives Verdant and Berserker.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.PhysicalVampPercentage"
+			},
+			"b": {
+				"ParameterPath": "InnateAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1]",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger gains 30% Omnivamp.\r\n\r\nAdditionally, for every 1% Omnivamp, the ranger receives 25 Max Health.\r\n\r\nBramble Cleaver: Gives Verdant and Berserker."
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Shard_ShardT2",
+  "Name": "Extract {0} Uncommon Shard",
+  "Description": "Extract {0} Uncommon Shard by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "Shard",
+      "Name": "ShardT2",
+      "Quantity": 20,
+      "Description": "Extract {0} Uncommon Shard by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Guard_Stage2_Original_Bloom",
+  "Name": "Forge a Bloom Guard",
+  "Description": "Forge a Bloom Guard",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Guard_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Bloom Guard",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

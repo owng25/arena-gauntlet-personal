@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_Bounty_Hunt_Week1_Illuvial8",
+  "Name": "Collect a Ti'Ru",
+  "Description": "Collect a Ti'Ru",
+  "Expiry": "2025-04-17",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-03T00:00:00.0000000Z",
+		"EndTime": "2025-04-17T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "079_TreeKangaroo_Stage1_Default_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect a Ti'Ru",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 3,
+      "Type": "AirdropReward"
+    }
+  ]
+}

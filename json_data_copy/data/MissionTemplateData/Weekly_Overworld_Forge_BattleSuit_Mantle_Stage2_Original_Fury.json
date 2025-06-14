@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Mantle_Stage2_Original_Fury",
+  "Name": "Forge a Fury Mantle",
+  "Description": "Forge a Fury Mantle",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Mantle_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Fury Mantle",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

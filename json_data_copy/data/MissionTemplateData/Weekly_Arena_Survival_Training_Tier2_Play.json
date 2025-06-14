@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Weekly_Arena_Survival_Training_Tier2_Play",
+  "Name": "Play {0} Arena Survival Training Games",
+  "Description": "Play {0} Arena Survival Training Games",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "GameMode": "Survival",
+      "Quantity": 35,
+      "Queue": "Training",
+      "WinRequired": false,
+      "Description": "Play {0} Arena Survival Training Games",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

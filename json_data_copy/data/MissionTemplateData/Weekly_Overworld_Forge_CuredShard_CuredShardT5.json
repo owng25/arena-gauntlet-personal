@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_CuredShard_CuredShardT5",
+  "Name": "Forge Cured Resplendent Shards",
+  "Description": "Forge {0} Cured Resplendent Shards",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "CuredShard",
+      "Name": "CuredShardT5",
+      "Quantity": 14,
+      "Description": "Forge {0} Cured Resplendent Shards",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

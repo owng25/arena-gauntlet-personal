@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Weekly_Overworld_Fuse_Tier0",
+  "Name": "Fuse a Tier 0 Illuvial",
+  "Description": "Fuse a Tier 0 Illuvial",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 21,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Quantity": 1,
+      "Tier": 0,
+      "Description": "Fuse a Tier 0 Illuvial",
+      "Type": "FuseIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

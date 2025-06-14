@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Starmail_Stage1_Original_Impulse",
+  "Name": "Forge a Impulse Starmail",
+  "Description": "Forge a Impulse Starmail",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Starmail_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Impulse Starmail",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

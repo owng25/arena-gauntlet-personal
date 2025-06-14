@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_ADR_BountyWeek4_Holo_Tier4",
+  "Name": "Collect a Holo Tier 4 Illuvial",
+  "Description": "Collect a Holo Tier 4 Illuvial",
+  "Expiry": "2025-05-01",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-24T00:00:00.0000000Z",
+		"EndTime": "2025-05-01T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Finish": "Holo",
+      "Quantity": 1,
+      "Tier": 4,
+      "Source": "ADR",
+      "Description": "Collect a Holo Tier 4 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 200,
+      "Type": "AirdropReward"
+    }
+  ]
+}

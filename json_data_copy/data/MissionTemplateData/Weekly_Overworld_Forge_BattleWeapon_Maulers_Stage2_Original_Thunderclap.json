@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Maulers_Stage2_Original_Thunderclap",
+  "Name": "Forge a Thunderclap Maulers",
+  "Description": "Forge a Thunderclap Maulers",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Maulers_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Thunderclap Maulers",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

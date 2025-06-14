@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek2_Hunt_Illuvial4",
+  "Name": "Capture a Caradulo",
+  "Description": "Capture a Caradulo",
+  "Expiry": "2025-04-17",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-10T00:00:00.0000000Z",
+		"EndTime": "2025-04-17T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "089_WaterBuffalo_Stage2_Default_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Caradulo",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 12,
+      "Type": "AirdropReward"
+    }
+  ]
+}

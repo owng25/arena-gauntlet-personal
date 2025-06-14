@@ -1,0 +1,185 @@
+{
+	"Name": "StockSword",
+	"Stage": 2,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Air",
+	"CombatClass": "Fighter",
+	"DominantCombatAffinity": "Air",
+	"DominantCombatClass": "Fighter",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 20000,
+		"EnergyCost": 100000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 75000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 110,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 2,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Air Sword Attack II",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Air Power Strike",
+			"TotalDurationMs": 2000,
+			"Skills": [
+				{
+					"Name": "Damage attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										{
+											"Stat": "AttackPhysicalDamage",
+											"StatSource": "Sender"
+										},
+										{
+											"Operation": "*",
+											"Operands": [
+												350000,
+												{
+													"Stat": "OmegaPowerPercentage",
+													"StatSource": "Sender"
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"Name": "Attack speed bonus",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 0
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 25,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Stock Air Sword II",
+	"DisplayDescription": "The Ranger launches a powerful strike at their Target, dealing ((Physical Attack Damage+350)*OP) Physical Damage and gaining 25% Attack Speed for 5 seconds.",
+	"Description": {
+		"Format": "The Ranger launches a powerful strike at their Target, dealing ((Physical Attack Damage+{a})*OP) Physical Damage and gaining {b}% Attack Speed for {c} seconds.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1].Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].Expression.Percentage"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger launches a powerful strike at their Target, dealing ((Physical Attack Damage+350)*OP) Physical Damage and gaining 25% Attack Speed for 5 seconds."
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Consumable_GumboDrop_Tier2",
+  "Name": "Gather {0} Uncommon Gumbo Drop",
+  "Description": "Gather {0} Uncommon Gumbo Drop by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "Consumable",
+      "Name": "GumboDrop_Tier2",
+      "Quantity": 20,
+      "Description": "Gather {0} Uncommon Gumbo Drop by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

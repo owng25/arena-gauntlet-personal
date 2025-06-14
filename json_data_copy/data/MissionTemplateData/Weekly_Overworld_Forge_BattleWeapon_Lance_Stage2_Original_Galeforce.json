@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Lance_Stage2_Original_Galeforce",
+  "Name": "Forge a Galeforce Lance",
+  "Description": "Forge a Galeforce Lance",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Lance_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Galeforce Lance",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

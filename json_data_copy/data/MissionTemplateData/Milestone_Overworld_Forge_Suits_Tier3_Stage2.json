@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Suits_Tier3_Stage2",
+  "Name": "Forge Tier 3 Stage 2 Suits",
+  "Description": "Forge Tier 3 Stage 2 Suits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Apexguard_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Prime Apexguard",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Bioarmor_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Regencore Bioarmor",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Impervium_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Alloyed Impervium",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

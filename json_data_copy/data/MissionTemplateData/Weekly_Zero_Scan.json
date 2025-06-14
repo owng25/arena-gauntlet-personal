@@ -1,0 +1,24 @@
+{
+  "ProductionId": "Weekly_Zero_Scan",
+  "Name": "Scan for Illuvials",
+  "Description": "Complete a Scan operation",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 6,
+  "Game": "Zero",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "Quantity": 5,
+      "Description": "Complete a Scan operation",
+      "Type": "ScanCountObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

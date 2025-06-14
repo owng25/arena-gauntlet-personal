@@ -1,0 +1,114 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Weapon Data",
+	"$ref": "#/$defs/CombatWeaponType",
+	"$defs": {
+		"CombatWeaponType": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"DisplayName": {
+					"type": "string"
+				},
+				"DisplayDescription": {
+					"type": "string"
+				},
+				"DisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"Description": {
+					"$ref": "CombatUnitData.schema.json#/$defs/DescriptionType"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Tier": {
+					"type": "integer"
+				},
+				"Variation": {
+					"type": "string"
+				},
+				"DominantCombatAffinity": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatAffinityEnum"
+				},
+				"DominantCombatClass": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatClassEnum"
+				},
+				"CombatClass": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatClassEnum"
+				},
+				"CombatAffinity": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatAffinityEnum"
+				},
+				"AmplifierForWeapon": {
+					"$ref": "#/$defs/WeaponTypeID"
+				},
+				"Stats": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatStatsType"
+				},
+				"AttackAbilitiesSelection": {
+					"type": "string"
+				},
+				"AttackAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"OmegaAbilitiesSelection": {
+					"type": "string"
+				},
+				"OmegaAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"InnateAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"IsDisabled": {
+					"type": "boolean"
+				},
+				"Type": {
+					"$ref": "#/$defs/WeaponTypeEnum"
+				},
+				"EffectsReplacements": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatEffectType"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"WeaponTypeEnum": {
+			"type": "string",
+			"enum": ["Normal", "Amplifier"]
+		},
+		"WeaponTypeID": {
+			"type": "object",
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Variation": {
+					"type": "string"
+				},
+				"CombatAffinity": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatAffinityEnum"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

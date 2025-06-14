@@ -1,0 +1,179 @@
+{
+	"Name": "EntropySigil",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "EntropySigil_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "EntropySigil - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 100000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "Grit",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "Resolve",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "EntropySigil_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnHit",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"SenderAllegiance": "Self",
+				"ReceiverAllegiance": "Enemy",
+				"EveryX": true
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "EntropySigil - Energy Gain",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyGain",
+								"Expression": {
+									"Operation": "%",
+									"Operands": [
+										3,
+										{
+											"Stat": "CurrentEnergy",
+											"StatSource": "SenderFocus"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"Name": "EntropySigil - Energy Burn",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyBurn",
+								"Expression": {
+									"Operation": "%",
+									"Operands": [
+										3,
+										{
+											"Stat": "CurrentEnergy",
+											"StatSource": "Receiver"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Entropy Sigil",
+	"DisplayDescription": "Attacks steal <EnergyCost>3%</> of the target's current <EnergyCost>Energy</>.\r\n\r\nStats:\r\n+10% <AttackDamage>Attack Damage</>\r\n+100 <MaxHealth>Health</>\r\n+10 <Grit>Mitigation</>\r\n\r\n<Italic>Mitigation: Reduces incoming damage by a flat value.</>",
+	"Description": {
+		"Format": "Attacks steal <EnergyCost>{StealValue}%</> of the target's current <EnergyCost>Energy</>.\r\n\r\nStats:\r\n+{Stat_AD}% <AttackDamage>Attack Damage</>\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_Mitigation} <Grit>Mitigation</>\r\n\r\n<Italic>Mitigation: Reduces incoming damage by a flat value.</>",
+		"Parameters": {
+			"StealValue": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_AD": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_Mitigation": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[4].Expression",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Attacks steal 3% of the target's current Energy.\r\n\r\nStats:\r\n+10% Attack Damage\r\n+100 Health\r\n+10 Mitigation\r\n\r\nMitigation: Reduces incoming damage by a flat value."
+}

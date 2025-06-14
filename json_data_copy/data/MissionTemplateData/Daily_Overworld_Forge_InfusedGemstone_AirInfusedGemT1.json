@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_AirInfusedGemT1",
+  "Name": "Forge {0} Infused Common Air Gems",
+  "Description": "Forge {0} Infused Common Air Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "AirInfusedGemT1",
+      "Quantity": 10,
+      "Description": "Forge {0} Infused Common Air Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

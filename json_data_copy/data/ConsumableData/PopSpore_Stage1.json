@@ -1,0 +1,35 @@
+{
+	"Name": "PopSpore",
+	"Stage": 1,
+	"Tier": 1,
+	"Abilities": [
+		{
+			"Name": "Gain 20 Thorns.",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Thorns",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "Thorns",
+								"DurationMs": -1,
+								"Expression": 20000
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

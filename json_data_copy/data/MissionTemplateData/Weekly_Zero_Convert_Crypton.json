@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Weekly_Zero_Convert_Crypton",
+  "Name": "Convert Crypton",
+  "Description": "Convert {0} Crypton into a different resource using an Anti-Solon or a Hyperion Lathe",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Zero",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "FuelType": "Crypton",
+      "Quantity": 100,
+      "Description": "Convert {0} Crypton into a different resource using an Anti-Solon or a Hyperion Lathe",
+      "Type": "ConvertFuelObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

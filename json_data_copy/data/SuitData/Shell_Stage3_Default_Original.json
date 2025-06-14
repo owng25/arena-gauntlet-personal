@@ -1,0 +1,104 @@
+{
+	"Name": "Shell",
+	"Stage": 3,
+	"Tier": 1,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 85,
+		"EnergyResist": 75,
+		"MaxHealth": 1500000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 1800,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "Grit",
+								"OverlapProcessType": "Stacking",
+								"Expression": 30000,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "Resolve",
+								"OverlapProcessType": "Stacking",
+								"Expression": 30000,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "VulnerabilityPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 20
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Plasma Shell",
+	"DisplayDescription": "Health: 1,500\r\nPhysical Resist: 85\r\nEnergy Resist: 75\r\nMovement Speed: 18\r\n\r\nPassive: Gain 30 Grit and Resolve, and gain 20% damage reduction.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d} Grit and Resolve, and gain {e}% damage reduction.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"e": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[2].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,500\r\nPhysical Resist: 85\r\nEnergy Resist: 75\r\nMovement Speed: 18\r\n\r\nPassive: Gain 30 Grit and Resolve, and gain 20% damage reduction."
+}

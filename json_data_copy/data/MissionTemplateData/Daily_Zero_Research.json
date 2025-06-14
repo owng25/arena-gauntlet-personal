@@ -1,0 +1,24 @@
+{
+  "ProductionId": "Daily_Zero_Research",
+  "Name": "Research Biodata",
+  "Description": "Complete a Research operation",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 6,
+  "Game": "Zero",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "Quantity": 1,
+      "Description": "Complete a Research operation",
+      "Type": "ResearchCountObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

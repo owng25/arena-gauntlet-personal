@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek10_Hunt_Illuvial10",
+  "Name": "Collect a Stoic Terralynx",
+  "Description": "Collect a Stoic Terralynx",
+  "Expiry": "2025-06-12",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-06-05T00:00:00.0000000Z",
+      "EndTime": "2025-06-12T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "117_Lynx_Stage3_BulwarkEarth_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect a Stoic Terralynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 48,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Zero_Complete_Daily_Goals",
+  "Name": "Complete {0} Daily Goals",
+  "Description": "Complete {0} Daily Goals",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 6,
+  "Game": "Zero",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "GoalType": "Daily",
+      "QuantityMinimum": 15,
+      "QuantityMaximum": 15,
+      "Description": "Complete {0} Daily Goals",
+      "Type": "FinishPlotGoalsObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

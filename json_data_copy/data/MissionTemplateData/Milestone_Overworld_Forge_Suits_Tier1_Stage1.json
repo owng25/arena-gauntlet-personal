@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Suits_Tier1_Stage1",
+  "Name": "Forge Tier 1 Stage 1 Suits",
+  "Description": "Forge Tier 1 Stage 1 Suits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Aeroweave_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Microcell Aeroweave",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Plating_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Sanguine Plating",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Shell_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Galvanic Shell",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

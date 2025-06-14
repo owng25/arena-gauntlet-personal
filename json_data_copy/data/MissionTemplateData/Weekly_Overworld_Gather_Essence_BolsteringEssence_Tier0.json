@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Essence_BolsteringEssence_Tier0",
+  "Name": "Gather {0} Bolstering Essence",
+  "Description": "Gather {0} Bolstering Essence by harvesting plants in a Stage 0 Region",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "Essence",
+      "Name": "BolsteringEssence_Tier0",
+      "Quantity": 105,
+      "Description": "Gather {0} Bolstering Essence by harvesting plants in a Stage 0 Region",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

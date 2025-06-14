@@ -1,0 +1,26 @@
+{
+	"Name": "Berserker",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Berserker Matrix",
+	"DisplayDescription": "Gain a Berserker Imprint and a Mendoskeleton.",
+	"Description": {
+		"Format": "Gain a Berserker Imprint and a Mendoskeleton.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Berserker",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "Mendoskeleton",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

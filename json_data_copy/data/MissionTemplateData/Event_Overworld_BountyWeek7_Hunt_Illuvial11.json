@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek7_Hunt_Illuvial11",
+  "Name": "Capture a Rai-lee",
+  "Description": "Capture a Rai-lee",
+  "Expiry": "2025-05-22",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-15T00:00:00.0000000Z",
+      "EndTime": "2025-05-22T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "099_RedPanda_Stage3_Default_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Rai-lee",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 48,
+      "Type": "AirdropReward"
+    }
+  ]
+}

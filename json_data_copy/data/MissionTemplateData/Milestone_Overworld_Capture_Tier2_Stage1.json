@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier2_Stage1",
+  "Name": "Capture all Tier 2 Stage 1 Illuvials",
+  "Description": "Capture all Tier 2 Stage 1 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "100_Lynx_Stage1_NoneNone_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 2,
+      "Description": "Capture a Lynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

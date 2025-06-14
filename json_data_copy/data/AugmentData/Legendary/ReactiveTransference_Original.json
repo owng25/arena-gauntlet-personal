@@ -1,0 +1,127 @@
+{
+	"Name": "ReactiveTransference",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "ReactiveTransference_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnHit",
+				"SenderAllegiance": "Enemy",
+				"ReceiverAllegiance": "Self",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"ActivationCooldownMs": 1000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "ReactiveTransference - Buffs",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 5,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 5,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 5,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "ReactiveTransference_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "ReactiveTransference - Attack Damage Bonus",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 50,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Reactive Transference",
+	"DisplayDescription": "The holder gains <AttackDamage>50%</> <AttackDamage>Attack Damage</> and after being hit by an attack gain bonus <AttackDamage>5%</> <AttackDamage>Attack Damage</>. (1s cooldown)",
+	"Description": {
+		"Format": "The holder gains <AttackDamage>{ADVal2}%</> <AttackDamage>Attack Damage</> and after being hit by an attack gain bonus <AttackDamage>{ADVal}%</> <AttackDamage>Attack Damage</>. ({Cooldown}s cooldown)",
+		"Parameters": {
+			"ADVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Cooldown": {
+				"ParameterPath": "Abilities[0].ActivationTrigger.ActivationCooldownMs",
+				"ValueMultiplier": 0.001
+			},
+			"ADVal2": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The holder gains 50% Attack Damage and after being hit by an attack gain bonus 5% Attack Damage. (1s cooldown)"
+}

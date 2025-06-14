@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Shell_Stage1_Original_Galvanic",
+  "Name": "Forge a Galvanic Shell",
+  "Description": "Forge a Galvanic Shell",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Shell_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Galvanic Shell",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

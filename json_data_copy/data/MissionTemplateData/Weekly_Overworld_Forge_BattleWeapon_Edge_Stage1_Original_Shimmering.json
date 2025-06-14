@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Edge_Stage1_Original_Shimmering",
+  "Name": "Forge a Shimmering Edge",
+  "Description": "Forge a Shimmering Edge",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Edge_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Shimmering Edge",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+include(conan_profile_mac)
+
+[settings]
+    arch=x86_64
+    arch_build=x86_64

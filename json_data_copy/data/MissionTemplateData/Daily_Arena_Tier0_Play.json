@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Arena_Tier0_Play",
+  "Name": "Play {0} Arena Games",
+  "Description": "Play {0} Arena Games",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Quantity": 5,
+      "WinRequired": false,
+      "Description": "Play {0} Arena Games",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Blaster_Stage2_Original_Typhoon",
+  "Name": "Forge a Typhoon Blaster",
+  "Description": "Forge a Typhoon Blaster",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Blaster_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Typhoon Blaster",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Gem_AirGemT5",
+  "Name": "Extract {0} Resplendent Air Gem",
+  "Description": "Extract {0} Resplendent Air Gem by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "OverworldGemstone",
+      "Name": "AirGemT5",
+      "Quantity": 5,
+      "Description": "Extract {0} Resplendent Air Gem by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

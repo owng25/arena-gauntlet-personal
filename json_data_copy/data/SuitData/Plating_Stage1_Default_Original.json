@@ -1,0 +1,100 @@
+{
+	"Name": "Plating",
+	"Stage": 1,
+	"Tier": 1,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 50,
+		"EnergyResist": 30,
+		"MaxHealth": 600000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2000,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Gain 20% Omnivamp that can Overshield up to 200.",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Gain 20% Omnivamp that can Overshield up to 200",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PureVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Sanguine Plating",
+	"DisplayDescription": "Health: 600\r\nPhysical Resist: 50\r\nEnergy Resist: 30\r\nMovement Speed: 20\r\n\r\nPassive: Gain 10% Omnivamp.\r\n\r\nVampiric Plating: Gain 15% Omnivamp.\r\n\r\nHemothirst Plating: Gain 20% Omnivamp. Every third attack gives a stack of 1% Omnivamp, up to 20 stacks.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d}% Omnivamp.\r\n\r\nVampiric Plating: Gain 15% Omnivamp.\r\n\r\nHemothirst Plating: Gain 20% Omnivamp. Every third attack gives a stack of 1% Omnivamp, up to 20 stacks.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[2].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 600\r\nPhysical Resist: 50\r\nEnergy Resist: 30\r\nMovement Speed: 20\r\n\r\nPassive: Gain 10% Omnivamp.\r\n\r\nVampiric Plating: Gain 15% Omnivamp.\r\n\r\nHemothirst Plating: Gain 20% Omnivamp. Every third attack gives a stack of 1% Omnivamp, up to 20 stacks."
+}

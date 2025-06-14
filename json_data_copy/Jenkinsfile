@@ -1,0 +1,98 @@
+#!/usr/bin/groovy
+import com.illuvium.Constants
+import com.illuvium.DateTimeUtils
+
+library identifier: 'IlluviumGame@main',
+        retriever:
+                modernSCM([
+                                $class: 'GitSCMSource',
+                                credentialsId: 'jenkins-ssh-private-key',
+                                remote: 'git@github.com:IlluviumGame/automation.git'
+                        ])
+
+properties([
+        buildDiscarder(
+                logRotator(
+                        artifactDaysToKeepStr: '20',
+                        artifactNumToKeepStr: '20',
+                        daysToKeepStr: '15',
+                        numToKeepStr: '20'
+                )
+        ),
+])
+
+version = ''
+utils = new DateTimeUtils()
+dateFormat = 'yyyy.MM.dd.HH.mm'
+buildNumber = utils.getCurrentDate(dateFormat)
+serverConstants = new Constants()
+server = Artifactory.server 'artifactory'
+nodeTarget = getNode.getNodeTarget()
+env.BRANCH_NAME = env.CHANGE_BRANCH ? env.CHANGE_BRANCH : env.BRANCH_NAME
+
+echo "INFO: Build started at ${buildNumber}"
+
+node(nodeTarget) {
+    stage('Checkout JSON-Data Repository') {
+        checkoutRepo('json-data', env.BRANCH_NAME)
+    }
+
+    stage('Get Secrets'){
+        apiCreds = sh(
+            script: "aws secretsmanager get-secret-value --secret-id \
+                    /apps/game/${env.env}-artifactory-api-key-creds --query 'SecretString'",
+            returnStdout: true
+        ).trim()
+    }
+
+    stage('Run Versioning Tool') {
+        sh "git checkout ${env.BRANCH_NAME}"
+
+        version = sh(
+                script: "dotnet run -c Release --project src/VersionTool/VersionTool.csproj",
+                returnStdout: true
+        ).trim().replace('_', '')
+    }
+
+    stage('Validate & Build Models') {
+        sh "dotnet run -c Release --project src/SchemaTool/SchemaTool.csproj -- . -g src/Illuvium.DataModels/generated"
+        sh "dotnet build -P:PackageVersion=${version} src/Illuvium.DataModels/Illuvium.DataModels.csproj -c Release"
+    }
+
+    stage('Push Nuget Package to Artifactory') {
+        sh "set +x && dotnet nuget push src/Illuvium.DataModels/Illuvium.DataModels.${version}.nupkg \
+            --api-key ${apiCreds} --source ${serverConstants.artifactoryApi}/api/nuget/json-data/${version}"
+    }
+
+    stage('Archive & Push Data JSON Configurations') {
+        sh "zip -r -D jd-${version}.zip data schemas"
+        def uploadSpec = """{
+                "files": [
+                    {
+                    "pattern": "jd-${version}.zip",
+                    "target": "json-data/${version}/"
+                    }
+                ]
+            }"""
+        server.upload spec: uploadSpec
+    }
+
+    stage('Tag Repository'){
+        if (!env.CHANGE_BRANCH) {
+            sh("""
+                git config user.name "Jenkins CI"
+                git config user.email "jenkins-ci@illuvium.io"
+                git tag -a ${version} -m "[Jenkins CI]"
+            """)
+
+            sshagent(['jenkins-ssh-private-key']) {
+                sh("""
+                   #!/usr/bin/env bash
+                   set +x
+                   export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
+                   git push origin ${version}
+                """)
+            }
+        }
+    }
+}

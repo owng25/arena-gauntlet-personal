@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek8_Hunt_Illuvial5",
+  "Name": "Capture a Rhamphyre",
+  "Description": "Capture a Rhamphyre",
+  "Expiry": "2025-05-29",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-22T00:00:00.0000000Z",
+      "EndTime": "2025-05-29T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "006_Pterodactyl_Stage3_Default_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Rhamphyre",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 2880,
+      "Type": "AirdropReward"
+    }
+  ]
+}

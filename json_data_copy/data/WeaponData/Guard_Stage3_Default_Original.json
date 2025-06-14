@@ -1,0 +1,249 @@
+{
+	"Name": "Guard",
+	"Stage": 3,
+	"Tier": 1,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Bloom",
+	"CombatClass": "Behemoth",
+	"DominantCombatAffinity": "Earth",
+	"DominantCombatClass": "Bulwark",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 80000,
+		"EnergyCost": 200000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 105000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 70,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Guard Attack III",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Bloom Barrier III",
+			"TotalDurationMs": 3000,
+			"Skills": [
+				{
+					"Name": "Ally Healing",
+					"PercentageOfAbilityDuration": 1,
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Ally",
+						"RadiusUnits": 20,
+						"Self": true
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 0
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantHeal",
+								"HealType": "Normal",
+								"Expression": {
+									"Operation": "/",
+									"Operands": [
+										{
+											"Operation": "+",
+											"Operands": [
+												{
+													"Operation": "*",
+													"Operands": [
+														800000,
+														{
+															"Stat": "OmegaPowerPercentage",
+															"StatSource": "Receiver"
+														}
+													]
+												},
+												{
+													"Percentage": 15,
+													"Stat": "MaxHealth",
+													"StatSource": "Receiver"
+												}
+											]
+										},
+										10
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"Name": "The shield",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 10
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": 3000,
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										{
+											"Operation": "*",
+											"Operands": [
+												800000,
+												{
+													"Stat": "OmegaPowerPercentage",
+													"StatSource": "Receiver"
+												}
+											]
+										},
+										{
+											"Percentage": 15,
+											"Stat": "MaxHealth",
+											"StatSource": "Receiver"
+										}
+									]
+								},
+								"OnWasHit": {
+									"Name": "Incoming damage gives more shield",
+									"Targeting": {
+										"Type": "Self"
+									},
+									"Deployment": {
+										"Type": "Direct"
+									},
+									"EffectPackage": {
+										"Effects": [
+											{
+												"Type": "SpawnShield",
+												"DurationMs": 2000,
+												"Expression": {
+													"Operation": "*",
+													"Operands": [
+														{
+															"Percentage": 2,
+															"Stat": "MaxHealth",
+															"StatSource": "Receiver"
+														},
+														{
+															"Stat": "OmegaPowerPercentage",
+															"StatSource": "Receiver"
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Blossom Guard",
+	"DisplayDescription": "The Ranger hides behind the shield as it starts to rotate quickly, radiating stored energy from blocked Attacks to create a Shield of (800*OP + 15% Max Health) for 3 seconds. Allies within 20 radius are Healed for 15% of the Shield's value.\r\n\r\nAdditionally, each time the shield is struck, the Ranger receives an additional 2%*OP Max Health Shield.",
+	"Description": {
+		"Format": "The Ranger hides behind the shield as it starts to rotate quickly, radiating stored energy from blocked Attacks to create a Shield of ({a}*OP + {b}% Max Health) for {c} seconds. Allies within {f} radius are Healed for {d}% of the Shield's value.\r\n\r\nAdditionally, each time the shield is struck, the Ranger receives an additional {e}%*OP Max Health Shield.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0].Operands[0].Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0].Operands[1].Percentage"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"f": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].Targeting.RadiusUnits"
+			},
+			"d": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].Expression.Operands[1].Percentage"
+			},
+			"e": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].OnWasHit.EffectPackage.Effects[0].Expression.Operands[0].Percentage"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger hides behind the shield as it starts to rotate quickly, radiating stored energy from blocked Attacks to create a Shield of (800*OP + 15% Max Health) for 3 seconds. Allies within 20 radius are Healed for 15% of the Shield's value.\r\n\r\nAdditionally, each time the shield is struck, the Ranger receives an additional 2%*OP Max Health Shield."
+}

@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek9_Hunt_Illuvial5",
+  "Name": "Capture a Dash",
+  "Description": "Capture a Dash",
+  "Expiry": "2025-06-05",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-29T00:00:00.0000000Z",
+      "EndTime": "2025-06-05T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "010_Thylacine_Stage1_Default_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Dash",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 60,
+      "Type": "AirdropReward"
+    }
+  ]
+}

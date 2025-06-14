@@ -1,0 +1,88 @@
+{
+	"Name": "Exosuit",
+	"Stage": 3,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 100,
+		"EnergyResist": 100,
+		"MaxHealth": 1250000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 1500,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "10% max hp shield on battle start",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "max hp shield",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 50,
+									"Stat": "MaxHealth",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Juggernaut Exosuit",
+	"DisplayDescription": "Health: 1,250\r\nPhysical Resist: 100\r\nEnergy Resist: 100\r\nMovement Speed: 15\r\n\r\nPassive: Start the combat with a 50% Max Health Shield.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Start the combat with a {d}% Max Health Shield.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,250\r\nPhysical Resist: 100\r\nEnergy Resist: 100\r\nMovement Speed: 15\r\n\r\nPassive: Start the combat with a 50% Max Health Shield."
+}

@@ -1,0 +1,47 @@
+{
+	"Name": "SpikeJuice",
+	"Stage": 0,
+	"Tier": 0,
+	"Abilities": [
+		{
+			"Name": "Gain Indomitable for 3 seconds.",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Indomitable",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalVampPercentage",
+								"DurationMs": -1,
+								"Expression": 7
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyVampPercentage",
+								"DurationMs": -1,
+								"Expression": 7
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PureVampPercentage",
+								"DurationMs": -1,
+								"Expression": 7
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

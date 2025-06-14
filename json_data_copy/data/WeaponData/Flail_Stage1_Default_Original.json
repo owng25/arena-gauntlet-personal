@@ -1,0 +1,154 @@
+{
+	"Name": "Flail",
+	"Stage": 1,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Water",
+	"CombatClass": "Bulwark",
+	"DominantCombatAffinity": "Water",
+	"DominantCombatClass": "Bulwark",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 30000,
+		"EnergyCost": 140000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 110000,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 90,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 3,
+		"OmegaRangeUnits": 3,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Flail Attack I",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Waveforged Resurgence I",
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Empower next 5 attacks with Energy Damage",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"PercentageOfAbilityDuration": 50,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": true,
+								"ActivationsUntilExpiry": 5,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Energy",
+										"Expression": {
+											"Operation": "*",
+											"Operands": [
+												150000,
+												{
+													"Stat": "OmegaPowerPercentage",
+													"StatSource": "Sender"
+												}
+											]
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Ripple Flail",
+	"DisplayDescription": "The Ranger overcharges the flail, gaining 150*OP Energy Damage for the next 5 hits.\r\n\r\nTorrent Flail: Gives Tsunami.\r\n\r\nTidal Flail: Gives Tsunami and Aegis.",
+	"Description": {
+		"Format": "The Ranger overcharges the flail, gaining {a}*OP Energy Damage for the next {b} hits.\r\n\r\nTorrent Flail: Gives Tsunami.\r\n\r\nTidal Flail: Gives Tsunami and Aegis.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].ActivationsUntilExpiry"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger overcharges the flail, gaining 150*OP Energy Damage for the next 5 hits.\r\n\r\nTorrent Flail: Gives Tsunami.\r\n\r\nTidal Flail: Gives Tsunami and Aegis."
+}

@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_Overworld_BountyWeek5_DarkHolo_Tier2",
+  "Name": "Capture a Dark Holo Tier 2 Illuvial",
+  "Description": "Capture a Dark Holo Tier 2 Illuvial",
+  "Expiry": "2025-05-08",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-05-01T00:00:00.0000000Z",
+		"EndTime": "2025-05-08T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Finish": "DarkHolo",
+      "Quantity": 1,
+      "Tier": 2,
+      "Source": "Default",
+      "Description": "Capture a Dark Holo Tier 2 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 400,
+      "Type": "AirdropReward"
+    }
+  ]
+}

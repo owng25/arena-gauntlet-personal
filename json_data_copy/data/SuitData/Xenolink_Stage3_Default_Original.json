@@ -1,0 +1,140 @@
+{
+	"Name": "Xenolink",
+	"Stage": 3,
+	"Tier": 5,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 70,
+		"EnergyResist": 80,
+		"MaxHealth": 1500000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2000,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "TsunamiSynergy_RestoreEnergy",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Omega"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Skill Name",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyGain",
+								"Expression": {
+									"Operation": "%",
+									"Operands": [
+										30,
+										{
+											"Stat": "EnergyCost",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "EnergyRegeneration",
+								"OverlapProcessType": "Stacking",
+								"Expression": 1000,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"Expression": 50,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Spectral Xenolink",
+	"DisplayDescription": "Health: 1,500\r\nPhysical Resist: 70\r\nEnergy Resist: 80\r\nMovement Speed: 20\r\n\r\nPassive: Gain 10 Energy Regen and 50 Omega Power. Omega Abilities refund 30% of your Energy.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d} Energy Regen and {g} Omega Power. Omega Abilities refund {f}% of your Energy.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.01
+			},
+			"g": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].Expression"
+			},
+			"f": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,500\r\nPhysical Resist: 70\r\nEnergy Resist: 80\r\nMovement Speed: 20\r\n\r\nPassive: Gain 10 Energy Regen and 50 Omega Power. Omega Abilities refund 30% of your Energy."
+}

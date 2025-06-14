@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Arena_SurvivalWave_Training",
+  "Name": "Reach Wave {0} in Survival (Training Mode)",
+  "Description": "Reach Wave {0} in Survival (Training Mode)",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 4,
+  "Game": "Arena",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Challenge": "Training",
+      "Quantity": 30,
+      "Description": "Reach Wave {0} in Survival (Training Mode)",
+      "Type": "SurvivalWaveObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

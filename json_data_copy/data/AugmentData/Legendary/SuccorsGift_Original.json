@@ -1,0 +1,165 @@
+{
+	"Name": "SuccorsGift",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "SuccorsGift_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "SuccorsGift - Vulnerability",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Aura",
+								"AttachedEffects": [
+									{
+										"Type": "Buff",
+										"Stat": "VulnerabilityPercentage",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 25,
+										"Expression": 15
+									},
+									{
+										"Type": "Buff",
+										"Stat": "AttackPhysicalDamage",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 25,
+										"Expression": {
+											"Percentage": 15,
+											"Stat": "AttackPhysicalDamage",
+											"StatSource": "Receiver"
+										}
+									},
+									{
+										"Type": "Buff",
+										"Stat": "AttackEnergyDamage",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 25,
+										"Expression": {
+											"Percentage": 15,
+											"Stat": "AttackEnergyDamage",
+											"StatSource": "Receiver"
+										}
+									},
+									{
+										"Type": "Buff",
+										"Stat": "AttackPureDamage",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 25,
+										"Expression": {
+											"Percentage": 15,
+											"Stat": "AttackPureDamage",
+											"StatSource": "Receiver"
+										}
+									},
+									{
+										"Type": "Buff",
+										"Stat": "OmegaDamagePercentage",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 25,
+										"Expression": {
+											"Percentage": 15,
+											"Stat": "OmegaDamagePercentage",
+											"StatSource": "Receiver"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "SuccorsGift_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "HealthInRange",
+				"HealthLowerLimitPercentage": 20,
+				"MaxActivations": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "SuccorsGift - Indomitable",
+					"Targeting": {
+						"Type": "ExpressionCheck",
+						"Guidance": [
+							"Ground",
+							"Airborne",
+							"Underground"
+						],
+						"Group": "Ally",
+						"Lowest": true,
+						"Num": 3,
+						"Expression": {
+							"Stat": "CurrentHealth%",
+							"StatSource": "Sender"
+						}
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "PositiveState",
+								"PositiveState": "Indomitable",
+								"DurationMs": 3000
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Succors Gift",
+	"DisplayDescription": "The holder and allies within 25-hexes gain <DamageReduction>15%</> <DamageReduction>Damage Reduction</> and <DamageAmplification>15%</> <DamageAmplification>Damage Amp</>.\r\n\r\nOnce per combat, at 20% Health, the holder grants Indomitable to the 3 lowest percent Health allies for 3 seconds.\r\n\r\n<Italic>Indomitable: Cannot drop below 1 Health.</>",
+	"Description": {
+		"Format": "The holder and allies within {Radius}-hexes gain <DamageReduction>{DmgRedVal}%</> <DamageReduction>Damage Reduction</> and <DamageAmplification>{DmgRedVal}%</> <DamageAmplification>Damage Amp</>.\r\n\r\nOnce per combat, at {HealthTrigger}% Health, the holder grants Indomitable to the {AllyNum} lowest percent Health allies for {Duration} seconds.\r\n\r\n<Italic>Indomitable: Cannot drop below 1 Health.</>",
+		"Parameters": {
+			"Radius": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].RadiusUnits",
+				"ValueMultiplier": 1.0
+			},
+			"DmgRedVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression"
+			},
+			"HealthTrigger": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.HealthLowerLimitPercentage",
+				"ValueMultiplier": 1.0
+			},
+			"AllyNum": {
+				"ParameterPath": "Abilities[1].Skills[0].Targeting.Num",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The holder and allies within 25-hexes gain 15% Damage Reduction and 15% Damage Amp.\r\n\r\nOnce per combat, at 20% Health, the holder grants Indomitable to the 3 lowest percent Health allies for 3 seconds.\r\n\r\nIndomitable: Cannot drop below 1 Health."
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_NatureInfusedGemT1",
+  "Name": "Forge {0} Infused Common Nature Gems",
+  "Description": "Forge {0} Infused Common Nature Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "NatureInfusedGemT1",
+      "Quantity": 10,
+      "Description": "Forge {0} Infused Common Nature Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

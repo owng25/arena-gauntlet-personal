@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Gem_NatureGemT4",
+  "Name": "Extract {0} Epic Nature Gem",
+  "Description": "Extract {0} Epic Nature Gem by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "OverworldGemstone",
+      "Name": "NatureGemT4",
+      "Quantity": 10,
+      "Description": "Extract {0} Epic Nature Gem by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

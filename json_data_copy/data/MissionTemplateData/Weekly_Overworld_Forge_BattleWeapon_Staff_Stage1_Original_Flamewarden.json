@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Staff_Stage1_Original_Flamewarden",
+  "Name": "Forge a Flamewarden Staff",
+  "Description": "Forge a Flamewarden Staff",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Staff_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Flamewarden Staff",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

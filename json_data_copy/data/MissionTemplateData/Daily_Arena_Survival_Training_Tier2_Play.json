@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Daily_Arena_Survival_Training_Tier2_Play",
+  "Name": "Play {0} Survival Game in Training Mode",
+  "Description": "Play {0} Survival Game in Training Mode",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "GameMode": "Survival",
+      "Quantity": 5,
+      "Queue": "Training",
+      "WinRequired": false,
+      "Description": "Play {0} Survival Game in Training Mode",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

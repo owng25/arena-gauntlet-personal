@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek8_Hunt_Illuvial14",
+  "Name": "Collect a Quinx",
+  "Description": "Collect a Quinx",
+  "Expiry": "2025-05-29",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-22T00:00:00.0000000Z",
+      "EndTime": "2025-05-29T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "086_FennecFox_Stage2_Default_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect a Quinx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 60,
+      "Type": "AirdropReward"
+    }
+  ]
+}

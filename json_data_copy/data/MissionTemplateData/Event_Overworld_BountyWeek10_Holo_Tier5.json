@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_Overworld_BountyWeek10_Holo_Tier5",
+  "Name": "Capture a Holo Tier 5 Illuvial",
+  "Description": "Capture a Holo Tier 5 Illuvial",
+  "Expiry": "2025-06-12",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-06-05T00:00:00.0000000Z",
+      "EndTime": "2025-06-12T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Finish": "Holo",
+      "Quantity": 1,
+      "Tier": 5,
+      "Source": "Default",
+      "Description": "Capture a Holo Tier 5 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 600,
+      "Type": "AirdropReward"
+    }
+  ]
+}

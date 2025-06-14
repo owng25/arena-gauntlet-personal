@@ -1,0 +1,101 @@
+{
+	"Name": "Cybercore",
+	"Stage": 1,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 50,
+		"EnergyResist": 50,
+		"MaxHealth": 1150000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2500,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "MudSynergy_Empower",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"NumberOfAbilitiesActivated": 1,
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "AttackSpeed Reduction",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Merge",
+								"DurationMs": 5000,
+								"FrequencyMs": 500,
+								"MaxStacks": 1,
+								"Expression": {
+									"Percentage": 15,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Calibrated Cybercore",
+	"DisplayDescription": "Health: 1,150\r\nPhysical Resist: 50\r\nEnergy Resist: 50\r\nMovement Speed: 25\r\n\r\nPassive: Attacks debuff your target's Attack Speed by 15% for 5 seconds.\r\n\r\nPrecision Cybercore: Attacks debuff your target's Attack Speed by 30% for 5 seconds.\r\n\r\nPerfected Cybercore: Attacks steal 30% Attack Speed from your target for 5 seconds.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Attacks debuff your target's Attack Speed by {d}% for {e} seconds.\r\n\r\nPrecision Cybercore: Attacks debuff your target's Attack Speed by 30% for 5 seconds.\r\n\r\nPerfected Cybercore: Attacks steal 30% Attack Speed from your target for 5 seconds.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage"
+			},
+			"e": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,150\r\nPhysical Resist: 50\r\nEnergy Resist: 50\r\nMovement Speed: 25\r\n\r\nPassive: Attacks debuff your target's Attack Speed by 15% for 5 seconds.\r\n\r\nPrecision Cybercore: Attacks debuff your target's Attack Speed by 30% for 5 seconds.\r\n\r\nPerfected Cybercore: Attacks steal 30% Attack Speed from your target for 5 seconds."
+}

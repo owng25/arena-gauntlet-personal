@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Encounters_S3_Win",
+  "Name": "Win {0} encounters in Stage 3",
+  "Description": "Win {0} encounters in Stage 3",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 31,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "Quantity": 42,
+      "Stage": 3,
+      "WinRequired": true,
+      "Description": "Win {0} encounters in Stage 3",
+      "Type": "FightEncounterObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

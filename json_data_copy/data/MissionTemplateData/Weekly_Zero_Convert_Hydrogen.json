@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Weekly_Zero_Convert_Hydrogen",
+  "Name": "Convert Hydrogen",
+  "Description": "Convert {0} Hydrogen into a different resource using a Sequestration Plant or a Photodisintegration Plan",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Zero",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "Quantity": 4000000,
+      "ResourceType": "Hydrogen",
+      "Description": "Convert {0} Hydrogen into a different resource using a Sequestration Plant or a Photodisintegration Plan",
+      "Type": "ConvertResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

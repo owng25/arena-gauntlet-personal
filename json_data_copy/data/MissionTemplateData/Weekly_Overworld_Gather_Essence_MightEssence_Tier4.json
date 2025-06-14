@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Essence_MightEssence_Tier4",
+  "Name": "Gather {0} Might Essence",
+  "Description": "Gather {0} Might Essence by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "Essence",
+      "Name": "MightEssence_Tier4",
+      "Quantity": 63,
+      "Description": "Gather {0} Might Essence by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

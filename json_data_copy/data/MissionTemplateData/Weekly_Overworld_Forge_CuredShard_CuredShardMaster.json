@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_CuredShard_CuredShardMaster",
+  "Name": "Forge Cured Master Shards",
+  "Description": "Forge {0} Cured Master Shards",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "CuredShard",
+      "Name": "CuredShardMaster",
+      "Quantity": 1,
+      "Description": "Forge {0} Cured Master Shards",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

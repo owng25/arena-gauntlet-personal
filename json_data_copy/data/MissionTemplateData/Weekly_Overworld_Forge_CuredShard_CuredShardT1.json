@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_CuredShard_CuredShardT1",
+  "Name": "Forge Cured Common Shards",
+  "Description": "Forge {0} Cured Common Shards",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "CuredShard",
+      "Name": "CuredShardT1",
+      "Quantity": 35,
+      "Description": "Forge {0} Cured Common Shards",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

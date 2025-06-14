@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_OverworldDroneEquipment_PhaseCompactor_Stage2",
+  "Name": "Forge a Advanced Phase Compactor",
+  "Description": "Forge a Advanced Phase Compactor",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "OverworldDroneEquipment",
+      "Name": "PhaseCompactor_Stage2",
+      "Quantity": 1,
+      "Description": "Forge a Advanced Phase Compactor",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

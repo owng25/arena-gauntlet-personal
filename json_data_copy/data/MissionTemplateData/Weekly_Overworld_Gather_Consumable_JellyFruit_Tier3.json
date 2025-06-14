@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Consumable_JellyFruit_Tier3",
+  "Name": "Gather {0} Rare Jellyfruit Tendrils",
+  "Description": "Gather {0} Rare Jellyfruit Tendrils by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "Consumable",
+      "Name": "JellyFruit_Tier3",
+      "Quantity": 105,
+      "Description": "Gather {0} Rare Jellyfruit Tendrils by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

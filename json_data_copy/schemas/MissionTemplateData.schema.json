@@ -1,0 +1,1821 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "MissionTemplate",
+	"$ref": "#/$defs/MissionTemplate",
+	"$defs": {
+		"MissionTemplate": {
+			"type": "object",
+			"x-versioned": true,
+			"description": "Represents the basic format of a mission",
+			"additionalProperties": false,
+			"properties": {
+				"ProductionId": {
+					"type": "string",
+					"description": "The unique id of the mission",
+					"maxLength": 100
+				},
+				"Name": {
+					"type": "string",
+					"description": "A friendly name for the mission",
+					"maxLength": 500
+				},
+				"Description": {
+					"type": "string",
+					"description": "A friendly description that will be displayed to the player. This could be a basic description, or a more advanced narrative piece.",
+					"maxLength": 500
+				},
+				"MissionTier": {
+					"type": "integer",
+					"description": "What tier the mission belongs to",
+					"minimum": 0,
+					"maximum": 5
+				},
+				"Type": {
+					"type": "string",
+					"description": "The type of mission that the player is undertaking",
+					"enum": [
+						"Daily",
+						"Weekly",
+						"Faction",
+						"Quest",
+						"Milestone",
+						"Event",
+						"Collectible"
+					]
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times that the mission can be completed",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"Game": {
+					"type": "string",
+					"description": "The game that the mission is for",
+					"enum": [ "Arena", "Overworld", "Zero", "Beyond" ]
+				},
+				"Expiry": {
+					"type": "string",
+					"description": "How long the player has to complete the mission",
+					"oneOf": [
+						{
+							"type": "string",
+							"format": "date-time"
+						},
+						{
+							"type": "string",
+							"pattern": "^\\d+\\.\\d{2}:(60|[0-5][0-9]):00$"
+						}
+					]
+				},
+				"Weight": {
+					"type": "integer",
+					"description": "How likely it is that this mission will appear",
+					"minimum": 1,
+					"maximum": 200
+				},
+				"Tags": {
+					"type": "array",
+					"description": "The tags that the mission has",
+					"minItems": 0,
+					"maxItems": 5,
+					"items": {
+						"type": "string",
+						"maxLength": 50
+					}
+				},
+				"Conditions": {
+					"type": "array",
+					"description": "The conditions that must be met before the mission can be started",
+					"minItems": 1,
+					"maxItems": 5,
+					"items": {
+						"$ref": "#/$defs/ConditionTemplate",
+						"oneOf": [
+							{
+								"$ref": "#/$defs/MissionConditionTemplate"
+							},
+							{
+								"$ref": "#/$defs/RangerLevelConditionTemplate"
+							},
+							{
+								"$ref": "#/$defs/TimeConditionTemplate"
+							}
+						]
+					}
+				},
+				"Objectives": {
+					"type": "array",
+					"description": "The objectives that the player must complete",
+					"minItems": 1,
+					"items": {
+						"$ref": "#/$defs/ObjectiveTemplate",
+						"oneOf": [
+							{
+								"$ref": "#/$defs/CaptureIlluvialObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/GainIlluvialExperienceObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ForgeItemObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/FuseIlluvialObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/GatherResourceObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/CatchMorphopodObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/FightEncounterObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ArenaGameObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/EmoteObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/SurvivalWaveObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/LeaderboardObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ExtractResourceObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ConvertResourceObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ConvertFuelObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/SpendResourceOnConstructionObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ScanCountObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ResearchCountObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/SuperchargePodariumObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ExtractDyesObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/PlotLevelUpObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/FinishPlotGoalsObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/ConstructBuildingObjectiveTemplate"
+							},
+							{
+								"$ref": "#/$defs/UpgradeBuildingObjectiveTemplate"
+							}
+						]
+					}
+				},
+				"Rewards": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 3,
+					"items": {
+						"$ref": "#/$defs/RewardTemplate",
+						"oneOf": [
+							{
+								"$ref": "#/$defs/FactionRewardTemplate"
+							},
+							{
+								"$ref": "#/$defs/AirdropRewardTemplate"
+							},
+							{
+								"$ref": "#/$defs/AirdropMultiplierRewardTemplate"
+							},
+							{
+								"$ref": "#/$defs/MissionRewardTemplate"
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"ProductionId",
+				"Name",
+				"Description",
+				"Game",
+				"Type",
+				"Weight",
+				"Objectives",
+				"MissionTier"
+			]
+		},
+		"ConditionTemplate": {
+			"type": "object",
+			"$id": "schema:ConditionTemplate",
+			"description": "Base of all conditions",
+			"properties": {
+				"Type": {
+					"type": "string",
+					"description": "The type of condition that must be met before the mission can be selected"
+				}
+			}
+		},
+		"ObjectiveTemplate": {
+			"type": "object",
+			"description": "Base of all objectives",
+			"additionalProperties": true,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"description": "The type of objective that the player will complete"
+				},
+				"Description": {
+					"type": "string",
+					"description": "A friendly description that will be displayed to the player. This could be a basic description, or a more advanced narrative piece."
+				},
+				"ObjectiveId": {
+					"type": "string",
+					"description": "Unique identifier for the objective. Useful for organization in missions/quests with multiple objectives."
+				},
+				"Optional": {
+					"type": "boolean",
+					"description": "If true, indicates that this objective is not required for completing a quest/mission, but may give extra rewards if completed."
+				}
+			},
+			"required": [ "Type", "Description" ]
+		},
+		"RewardTemplate": {
+			"type": "object",
+			"description": "Base of all rewards",
+			"additionalProperties": true,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"description": "The type of reward that the player will receive"
+				}
+			}
+		},
+		"MissionConditionTemplate": {
+			"type": "object",
+			"$id": "schema:MissionConditionTemplate",
+			"$ref": "#/$defs/ConditionTemplate",
+			"description": "Player must complete the specified mission before this mission can be selected",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "MissionCondition"
+				},
+				"ProductionId": {
+					"type": "string",
+					"description": "The production id of the mission that must be completed before this mission can be selected"
+				}
+			},
+			"required": [ "Type", "ProductionId" ]
+		},
+		"NftConditionTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ConditionTemplate",
+			"description": "The item that must be owned before the mission can be selected",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "NftCondition"
+				},
+				"ItemType": {
+					"type": "string",
+					"description": "The type of item that must be owned",
+					"enum": [
+						"Augment",
+						"BattleSuit",
+						"BattleWeapon",
+						"Blueprint",
+						"Consumable",
+						"CuredShard",
+						"Dye",
+						"Essence",
+						"Illuvial",
+						"InfusedGemstone",
+						"OverworldComponent",
+						"OverworldDroneEquipment",
+						"OverworldEquipment",
+						"OverworldGemstone",
+						"OverworldIngot",
+						"OverworldMorphopod",
+						"OverworldOre",
+						"Shard",
+						"ShardDust",
+						"Skin"
+					]
+				},
+				"Name": {
+					"type": "string",
+					"description": "The name of the item that must be owned"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of items that must be owned",
+					"minimum": 1,
+					"maximum": 100
+				}
+			},
+			"required": [ "Type", "Name", "ItemType", "Quantity" ]
+		},
+		"RangerLevelConditionTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ConditionTemplate",
+			"description": "The minimum ranger level that the player must be before the mission can be selected",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "RangerLevelCondition"
+				},
+				"Level": {
+					"type": "integer",
+					"description": "The minimum level that the player must be before this mission can be selected"
+				}
+			},
+			"required": [ "Type", "Level" ]
+		},
+		"TimeConditionTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ConditionTemplate",
+			"description": "The item that must be owned before the mission can be selected",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "TimeCondition"
+				},
+				"StartTime": {
+					"type": "string",
+					"description": "The time after which the mission can be started"
+				},
+				"EndTime": {
+					"type": "string",
+					"description": "The time after which the mission can no longer be started"
+				}
+			},
+			"required": [ "Type", "StartTime" ]
+		},
+		"FactionConditionTemplate": {
+			"type": "object",
+			"$id": "schema:FactionConditionTemplate",
+			"$ref": "#/$defs/ConditionTemplate",
+			"description": "The faction level that must be achieved before the mission can be selected",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "FactionCondition"
+				},
+				"FactionName": {
+					"type": "string",
+					"description": "The name of the faction that the player must belong to. (todo: enum)"
+				},
+				"FactionLevel": {
+					"type": "integer",
+					"description": "The minimum faction level the player must have before the mission can be selected",
+					"minimum": 1,
+					"maximum": 100
+				}
+			},
+			"required": [ "Type", "FactionName", "FactionLevel" ]
+		},
+		"CaptureIlluvialObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must capture the specified illuvial",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "CaptureIlluvialObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times that we can capture the Illuvial.",
+					"minimum": 1,
+					"maximum": 100,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"Line": {
+					"type": "string",
+					"description": "The line of Illuvial to capture"
+				},
+				"Name": {
+					"type": "string",
+					"description": "The name of Illuvial to capture"
+				},
+				"Stage": {
+					"type": "integer",
+					"description": "The desired stage of the illuvial",
+					"minimum": 1,
+					"maximum": 3
+				},
+				"Tier": {
+					"type": "integer",
+					"description": "The desired tier of the illuvial",
+					"minimum": 0,
+					"maximum": 5
+				},
+				"Finish": {
+					"type": "string",
+					"description": "The desired finish of the illuvial",
+					"enum": [ "Colour", "Holo", "DarkHolo" ]
+				},
+				"Source": {
+					"type": "string",
+					"description": "The source of illuvial capture event",
+					"enum": [ "Default", "ADR" ]
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ExtractResourceObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must extract specified amount of resource",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ExtractResourceObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The amount of resource to be extracted.",
+					"minimum": 1,
+					"maximum": 1000000000,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum amount of resource to be extracted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum amount of resource to be extracted.",
+					"minimum": 1,
+					"maximum": 10000
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 10
+				},
+				"ResourceType": {
+					"type": "string",
+					"description": "The type of resource to extract."
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ConvertResourceObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must convert specified amount of resource",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ConvertResourceObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The amount of resource to be converted.",
+					"minimum": 1,
+					"maximum": 1000000000,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum amount of resource to be converted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum amount of resource to be converted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"ResourceType": {
+					"type": "string",
+					"description": "The type of resource to convert."
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ConvertFuelObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must convert specified amount of fuel",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ConvertFuelObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The amount of fuel to be converted.",
+					"minimum": 1,
+					"maximum": 1000000000,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum amount of fuel to be converted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum amount of fuel to be converted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"FuelType": {
+					"type": "string",
+					"description": "The type of fuel to convert."
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"SpendResourceOnConstructionObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must spend specified amount of resource on Build or Upgrade activities",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "SpendResourceOnConstructionObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The amount of fuel to be converted.",
+					"minimum": 1,
+					"maximum": 1000000000,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum amount of fuel to be converted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum amount of fuel to be converted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"ResourceType": {
+					"type": "string",
+					"description": "The type of resource to convert."
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ScanCountObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must perform Scan Activities from Singularity Scanner",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ScanCountObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of scans to be performed.",
+					"minimum": 1,
+					"maximum": 10,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of scans to be performed.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of scans to be performed.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ResearchCountObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must perform Research Activities from Materials Lab",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ResearchCountObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of researches to be performed.",
+					"minimum": 1,
+					"maximum": 10,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of researches to be performed.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of researches to be performed.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"SuperchargePodariumObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must supercharge the Podarium with given Morphopods amount",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "SuperchargePodariumObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of Morphopods to be used.",
+					"minimum": 1,
+					"maximum": 10,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of Morphopods to be used.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of Morphopods to be used.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ExtractDyesObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must extract amount of Dyes from mutated plants",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ExtractDyesObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of Dyes to be extracted.",
+					"minimum": 1,
+					"maximum": 10,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of Dyes to be extracted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of Dyes to be extracted.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"PlotLevelUpObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must level up the plot by getting enough XP",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "PlotLevelUpObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of level ups to achieve.",
+					"minimum": 1,
+					"maximum": 100,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of level ups to achieve.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of level ups to achieve.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"FinishPlotGoalsObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must complete goals of particular type on Illuvium Zero plot",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "FinishPlotGoalsObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of goals to complete.",
+					"minimum": 1,
+					"maximum": 10,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of goals to complete.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of goals to complete.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"GoalType": {
+					"type": "string",
+					"description": "The type of goals to complete: Daily, Weekly or Main"
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ConstructBuildingObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must construct building with specific type",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ConstructBuildingObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of buildings to construct.",
+					"minimum": 1,
+					"maximum": 10,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of buildings to construct.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of buildings to construct.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"BuildingId": {
+					"type": "string",
+					"description": "The id of the building to be constructed. ANY for any building."
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"UpgradeBuildingObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must upgrade building with specific type",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "UpgradeBuildingObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of buildings to ugprade.",
+					"minimum": 1,
+					"maximum": 10,
+					"format": "int32"
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of buildings to ugprade.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of buildings to ugprade.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"BuildingId": {
+					"type": "string",
+					"description": "The id of the building to be ugpraded. ANY for any building."
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"GainIlluvialExperienceObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must increase by a certain amount of XP",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "GainIlluvialExperienceObjective"
+				},
+				"Line": {
+					"type": "string",
+					"description": "The line of Illuvial to gain experience for"
+				},
+				"ExperienceNeeded": {
+					"type": "integer",
+					"description": "The amount of experience required to gain for the mission",
+					"minimum": 100,
+					"maximum": 10000000
+				},
+				"ExperienceNeededMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times the action needs to occur",
+					"minimum": 100,
+					"maximum": 10000
+				},
+				"ExperienceNeededMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times the action needs to occur",
+					"minimum": 100,
+					"maximum": 10000000
+				},
+				"ExperienceNeededStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 50,
+					"maximum": 5000
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ForgeItemObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must craft the specified item",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ForgeItemObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times a crafting action needs to occur. This takes precedence over the quantityMinimum and quantityMaximum fields.",
+					"minimum": 1,
+					"maximum": 500
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times a crafting action needs to occur",
+					"minimum": 1,
+					"maximum": 500
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times a crafting action needs to occur",
+					"minimum": 1,
+					"maximum": 500
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"Name": {
+					"type": "string",
+					"description": "The name of the item to forge"
+				},
+				"Tier": {
+					"type": "integer",
+					"description": "The tier of the item to forge",
+					"minimum": 0,
+					"maximum": 5
+				},
+				"Stage": {
+					"type": "integer",
+					"description": "The stage of the item to forge",
+					"minimum": 1,
+					"maximum": 3
+				},
+				"ItemType": {
+					"type": "string",
+					"description": "The type of item to forge",
+					"enum": [
+						"Augment",
+						"BattleSuit",
+						"BattleWeapon",
+						"Blueprint",
+						"Consumable",
+						"CuredShard",
+						"Dye",
+						"Essence",
+						"Illuvial",
+						"InfusedGemstone",
+						"OverworldComponent",
+						"OverworldDroneEquipment",
+						"OverworldEquipment",
+						"OverworldGemstone",
+						"OverworldIngot",
+						"OverworldMorphopod",
+						"OverworldOre",
+						"Shard",
+						"ShardDust",
+						"Skin"
+					]
+				}
+			},
+			"required": [ "Type", "Name" ]
+		},
+		"FuseIlluvialObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must fuse the specified illuvial",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "FuseIlluvialObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times that we can fuse the Illuvial.",
+					"minimum": 1,
+					"maximum": 5
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times a fuse action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times a fuse action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"Line": {
+					"type": "string",
+					"description": "The line of Illuvial to fuse"
+				},
+				"Name": {
+					"type": "string",
+					"description": "The line of Illuvial to fuse"
+				},
+				"Stage": {
+					"type": "integer",
+					"description": "The desired stage of the illuvial",
+					"minimum": 2,
+					"maximum": 3
+				},
+				"Tier": {
+					"type": "integer",
+					"description": "The desired tier of the illuvial",
+					"minimum": 0,
+					"maximum": 5
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"GatherResourceObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must collect the specified resource and amount",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "GatherResourceObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times the action needs to occur. This takes precedence over the quantityMinimum and quantityMaximum fields.",
+					"minimum": 1,
+					"maximum": 500
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 500
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 500
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"Name": {
+					"type": "string",
+					"description": "The name of the resource to gather"
+				},
+				"ItemType": {
+					"type": "string",
+					"description": "The type of item to gather",
+					"enum": [
+						"Augment",
+						"BattleSuit",
+						"BattleWeapon",
+						"Blueprint",
+						"Consumable",
+						"CuredShard",
+						"Dye",
+						"Essence",
+						"Illuvial",
+						"InfusedGemstone",
+						"OverworldComponent",
+						"OverworldDroneEquipment",
+						"OverworldEquipment",
+						"OverworldGemstone",
+						"OverworldIngot",
+						"OverworldMorphopod",
+						"OverworldOre",
+						"Shard",
+						"ShardDust",
+						"Skin"
+					]
+				}
+			},
+			"required": [ "Type", "Name" ]
+		},
+		"CatchMorphopodObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must catch the specified amount of Morphopods",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "CatchMorphopodObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times the action needs to occur. This takes precedence over the quantityMinimum and quantityMaximum fields.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"Line": {
+					"type": "string",
+					"description": "The type of Morphopod to capture"
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"FightEncounterObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must fight the specified number of Encounters",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "FightEncounterObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times the action needs to occur. This takes precedence over the quantityMinimum and quantityMaximum fields.",
+					"minimum": 1,
+					"maximum": 10000
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"WinRequired": {
+					"type": "boolean",
+					"description": "Whether the player must win the encounter or not"
+				},
+				"Region": {
+					"type": "string",
+					"description": "The region that the encounter must be fought in"
+				},
+				"Stage": {
+					"type": "integer",
+					"description": "The stage of the encounter that the player must fight",
+					"minimum": 0,
+					"maximum": 3
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"ArenaGameObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must complete the specified arena game",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ArenaGameObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times the action needs to occur. This takes precedence over the quantityMinimum and quantityMaximum fields.",
+					"minimum": 1,
+					"maximum": 100000
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100000
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100000
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"GameMode": {
+					"type": "string",
+					"description": "The game mode that the player must complete",
+					"enum": [ "Survival", "Ascendant", "Gauntlet" ]
+				},
+				"Queue": {
+					"type": "string",
+					"description": "The queue that the player must complete",
+					"enum": [
+						"Ranked",
+						"Casual",
+						"Leviathan",
+						"Competitive",
+						"Training"
+					]
+				},
+				"WinRequired": {
+					"type": "boolean",
+					"description": "Whether the player must win the game or not"
+				},
+				"Top4Finish": {
+					"type": "boolean",
+					"description": "Whether the player must finish in top 4 or not"
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"EmoteObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must use the specified emote",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "EmoteObjective"
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of times the action needs to occur. This takes precedence over the quantityMinimum and quantityMaximum fields.",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"EmoteType": {
+					"type": "string",
+					"description": "The emote that the player must use"
+				}
+			},
+			"required": [ "Type" ]
+		},
+		"SurvivalWaveObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must complete the specified number of waves in survival mode",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "SurvivalWaveObjective"
+				},
+				"Challenge": {
+					"type": "string",
+					"description": "Training or competitive mode",
+					"enum": [ "Competitive", "Training" ]
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The wave that the player must complete",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of times the action needs to occur",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 10
+				}
+			},
+			"required": [ "Type", "Challenge" ]
+		},
+		"LeaderboardObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must reach the specified rank on the leaderboard",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "LeaderboardObjective"
+				},
+				"Rank": {
+					"type": "integer",
+					"description": "The rank that the player needs to achieve in the leaderboard",
+					"minimum": 1,
+					"maximum": 1000
+				},
+				"GameMode": {
+					"type": "string",
+					"description": "The game mode that the player must complete",
+					"enum": [ "Survival", "Ascendant", "Leviathan", "GauntletRanked", "GauntletLeviathan" ]
+				}
+			},
+			"required": [ "Type", "GameMode" ]
+		},
+		"DialogObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must talk to a specific NPC (client-side objective)",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "DialogObjective"
+				},
+				"ProviderTag": {
+					"type": "string",
+					"description": "The NPC's identifier"
+				}
+			},
+			"required": [ "Type", "ProviderTag" ]
+		},
+		"ScanLocationObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must scan a specific location in the Overworld (client-side objective)",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ScanLocationObjective"
+				},
+				"RegionId": {
+					"type": "string",
+					"description": "The region containing the scan location"
+				},
+				"Location": {
+					"type": "string",
+					"description": "Identifier of the location to scan, e.g. XYZ coordinates"
+				}
+			},
+			"required": [ "Type", "RegionId", "Location" ]
+		},
+		"TrainerBattleObjectiveTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/ObjectiveTemplate",
+			"description": "The player must win a battle against an NPC",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "TrainerBattleObjective"
+				},
+				"ProviderTag": {
+					"type": "string",
+					"description": "The trainer NPC's identifier"
+				},
+				"EnemyUnits": {
+					"type": "array",
+					"description": "Enemy units in the battle",
+					"minItems": 1,
+					"maxItems": 10,
+					"items": { "$ref": "#/$defs/TrainerBattleUnit" }
+				},
+				"Mods": {
+					"type": "array",
+					"description": "Mods active in the battle",
+					"items": { "$ref": "#/$defs/ModTypeId" }
+				}
+			},
+			"required": [ "Type", "ProviderTag", "EnemyUnits" ]
+		},
+		"FactionRewardTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/RewardTemplate",
+			"description": "Increase standing within a faction",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "FactionReward"
+				},
+				"Points": {
+					"type": "integer",
+					"description": "The fixed number of points that will be given. This takes precedence over the PointsBase, PointsMinimum and PointsMaximum fields.",
+					"minimum": 5,
+					"maximum": 1000000,
+					"multipleOf": 1
+				},
+				"PointsBase": {
+					"type": "integer",
+					"description": "A variable amount of points that will be given based on the quantities in the objectives. This takes precedence over the PointsMinimum and PointsMaximum fields.",
+					"minimum": 5,
+					"maximum": 1000000,
+					"multipleOf": 1
+				},
+				"PointsMinimum": {
+					"type": "integer",
+					"description": "The minimum number of points that can be given",
+					"minimum": 1,
+					"maximum": 1000000,
+					"multipleOf": 1
+				},
+				"PointsMaximum": {
+					"type": "integer",
+					"description": "The maximum number of points that can be given",
+					"minimum": 1,
+					"maximum": 1000000,
+					"multipleOf": 1
+				},
+				"PointsStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 1000000,
+					"multipleOf": 1
+				}
+			}
+		},
+		"AirdropRewardTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/RewardTemplate",
+			"description": "This reward counts towards the current/next airdrop",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "AirdropReward"
+				},
+				"Points": {
+					"type": "integer",
+					"description": "The fixed number of points that will be given. This takes precedence over the PointsBase, PointsMinimum and PointsMaximum fields.",
+					"minimum": 0,
+					"maximum": 2000000,
+					"multipleOf": 1
+				},
+				"PointsBase": {
+					"type": "integer",
+					"description": "A variable amount of points that will be given based on the quantities in the objectives. This takes precedence over the PointsMinimum and PointsMaximum fields.",
+					"minimum": 2,
+					"maximum": 1000000,
+					"multipleOf": 1
+				},
+				"PointsMinimum": {
+					"type": "integer",
+					"description": "The minimum number of points that can be given",
+					"minimum": 10,
+					"maximum": 1000000,
+					"multipleOf": 1
+				},
+				"PointsMaximum": {
+					"type": "integer",
+					"description": "The maximum number of points that can be given",
+					"minimum": 1,
+					"maximum": 1000000,
+					"multipleOf": 1
+				},
+				"PointsStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 1000000,
+					"multipleOf": 1
+				}
+			}
+		},
+		"AirdropMultiplierRewardTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/RewardTemplate",
+			"description": "This reward will add to your current airdrop multiplier",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "AirdropMultiplierReward"
+				},
+				"Multiplier": {
+					"type": "number",
+					"description": "The amount that will be added to the players airdrop multiplier",
+					"minimum": 0.01,
+					"maximum": 2,
+					"multipleOf": 0.01
+				}
+			}
+		},
+		"MissionRewardTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/RewardTemplate",
+			"description": "Unlock a new mission",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "MissionReward"
+				},
+				"ProductionId": {
+					"type": "string",
+					"description": "The production id of the mission that will be unlocked"
+				}
+			}
+		},
+		"ItemRewardTemplate": {
+			"type": "object",
+			"$ref": "#/$defs/RewardTemplate",
+			"description": "The player will receive the specified item",
+			"additionalProperties": false,
+			"properties": {
+				"Type": {
+					"type": "string",
+					"const": "ItemReward"
+				},
+				"ItemName": {
+					"type": "string",
+					"description": "The name of the item to reward"
+				},
+				"ItemType": {
+					"type": "string",
+					"description": "The type of item to reward",
+					"enum": [
+						"Augment",
+						"BattleSuit",
+						"BattleWeapon",
+						"Blueprint",
+						"Consumable",
+						"CuredShard",
+						"Dye",
+						"Essence",
+						"Illuvial",
+						"InfusedGemstone",
+						"OverworldComponent",
+						"OverworldDroneEquipment",
+						"OverworldEquipment",
+						"OverworldGemstone",
+						"OverworldIngot",
+						"OverworldMorphopod",
+						"OverworldOre",
+						"Shard",
+						"ShardDust",
+						"Skin"
+					]
+				},
+				"Quantity": {
+					"type": "integer",
+					"description": "The number of items to reward",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMinimum": {
+					"type": "integer",
+					"description": "The minimum number of items to reward",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityMaximum": {
+					"type": "integer",
+					"description": "The maximum number of items to reward",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"QuantityStep": {
+					"type": "integer",
+					"description": "The step size to have for the minimum and maximum quantity",
+					"minimum": 1,
+					"maximum": 10
+				}
+			}
+		},
+		"TrainerBattleUnit": {
+			"type": "object",
+			"description": "Definition of a unit in a trainer battle",
+			"additionalProperties": false,
+			"properties": {
+				"TypeId": { "$ref": "#/$defs/UnitTypeId" },
+				"Position": { "$ref": "#/$defs/GridPosition" },
+				"Level": { "type": "integer" },
+				"EquippedWeapon": { "$ref": "#/$defs/WeaponTypeId" },
+				"EquippedSuit": { "$ref": "#/$defs/SuitTypeId" },
+				"EquippedConsumables": {
+					"type": "array",
+					"items": { "type": "string" }
+				},
+				"EquippedAugments": {
+					"type": "array",
+					"items": { "type": "string" }
+				},
+				"Traits": { "type": "string" },
+				"Finish": {
+					"type": "string",
+					"enum": [ "Colour", "Holo", "DarkHolo" ]
+				},
+				"RandomPercentageModifierStats": {
+					"description": "List of Trait modifiers for the unit (key/value pairs)",
+					"additionalProperties": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 5
+					}
+				}
+			},
+			"required": [ "TypeId", "Position" ]
+		},
+		"UnitTypeId": {
+			"type": "object",
+			"description": "Type identifier of a combat unit",
+			"additionalProperties": false,
+			"properties": {
+				"UnitType": { "type": "string" },
+				"Line": { "type": "string" },
+				"Stage": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 3
+				},
+				"Path": { "type": "string" },
+				"Variation": { "type": "string" }
+			},
+			"required": [ "UnitType", "Line", "Stage", "Path", "Variation" ]
+		},
+		"WeaponTypeId": {
+			"type": "object",
+			"description": "Type identifier of a combat weapon",
+			"additionalProperties": false,
+			"properties": {
+				"Name": { "type": "string" },
+				"Stage": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 3
+				},
+				"Variation": { "type": "string" },
+				"CombatAffinity": { "type": "string" }
+			},
+			"required": [ "Name", "Stage", "Variation", "CombatAffinity" ]
+		},
+		"SuitTypeId": {
+			"type": "object",
+			"description": "Type identifier of a combat suit",
+			"additionalProperties": false,
+			"properties": {
+				"Name": { "type": "string" },
+				"Stage": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 3
+				},
+				"Variation": { "type": "string" }
+			},
+			"required": [ "Name", "Stage", "Variation" ]
+		},
+		"ModTypeId": {
+			"type": "object",
+			"description": "Type identifier for battle mods",
+			"additionalProperties": false,
+			"properties": {
+				"Name": { "type": "string" },
+				"Stage": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 3
+				},
+				"Variation": { "type": "string" }
+			},
+			"required": [ "Name", "Stage" ]
+		},
+		"GridPosition": {
+			"type": "object",
+			"description": "A unit's position on the battle grid, in axial (q,r) coordinates",
+			"additionalProperties": false,
+			"properties": {
+				"Q": { "type": "integer" },
+				"R": { "type": "integer" }
+			},
+			"required": [ "Q", "R" ]
+		}
+	}
+}

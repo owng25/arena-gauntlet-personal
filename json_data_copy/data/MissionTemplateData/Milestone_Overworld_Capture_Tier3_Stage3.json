@@ -1,0 +1,83 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier3_Stage3",
+  "Name": "Capture all Tier 3 Stage 3 Illuvials",
+  "Description": "Capture all Tier 3 Stage 3 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "009_SeaScorpion_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 3,
+      "Description": "Capture a Ryplance",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "018_AntEater_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 3,
+      "Description": "Capture a Vermilliare",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "039_StarNosedMole_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 3,
+      "Description": "Capture a Malura",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "072_KomodoDragon_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 3,
+      "Description": "Capture a Blotto",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "075_PoodleMoth_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 3,
+      "Description": "Capture a Monarch",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "078_Sloth_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 3,
+      "Description": "Capture a Gnarl",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "084_Penguin_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 3,
+      "Description": "Capture a Slashin",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "087_FennecFox_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 3,
+      "Description": "Capture a Ghazotep",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

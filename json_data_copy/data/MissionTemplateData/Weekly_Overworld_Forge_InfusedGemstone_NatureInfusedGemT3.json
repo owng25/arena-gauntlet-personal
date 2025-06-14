@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_InfusedGemstone_NatureInfusedGemT3",
+  "Name": "Forge Infused Rare Nature Gems",
+  "Description": "Forge Infused Rare Nature Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "NatureInfusedGemT3",
+      "Quantity": 56,
+      "Description": "Forge {0} Infused Rare Nature Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

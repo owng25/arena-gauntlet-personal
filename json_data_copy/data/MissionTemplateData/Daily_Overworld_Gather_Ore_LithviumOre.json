@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Ore_LithviumOre",
+  "Name": "Extract {0} Lithvium",
+  "Description": "Extract {0} Lithvium by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "OverworldOre",
+      "Name": "LithviumOre",
+      "Quantity": 40,
+      "Description": "Extract {0} Lithvium by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+	"Name": "Aerocloak",
+	"Stage": 2,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 65,
+		"EnergyResist": 90,
+		"MaxHealth": 1400000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2000,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackDodgeChancePercentage",
+								"Expression": 20,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "On Dodge, gain 10% stacking crit amp, up to 200%.",
+			"ActivationTrigger": {
+				"TriggerType": "OnDodge",
+				"Allegiance": "Self"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "AerocloakS2",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "CritAmplificationPercentage",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"MaxStacks": 20,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Zephyr Aerocloak",
+	"DisplayDescription": "Health: 1,400\r\nPhysical Resist: 65\r\nEnergy Resist: 90\r\nMovement Speed: 20\r\n\r\nPassive: Gain 20 Dodge Chance. Dodging an Attack grants 10% Crit Amp, up to 20 stacks.\r\n\r\nVortex Aerocloak: Dodging an Attack grants you 20% Crit Amp, up to 15 stacks. Gain 20 Dodge Chance and 10% Crit Chance.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d} Dodge Chance. Dodging an Attack grants {e}% Crit Amp, up to {f} stacks.\r\n\r\nVortex Aerocloak: Dodging an Attack grants you 20% Crit Amp, up to 15 stacks. Gain 20 Dodge Chance and 10% Crit Chance.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			},
+			"e": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression"
+			},
+			"f": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].MaxStacks"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,400\r\nPhysical Resist: 65\r\nEnergy Resist: 90\r\nMovement Speed: 20\r\n\r\nPassive: Gain 20 Dodge Chance. Dodging an Attack grants 10% Crit Amp, up to 20 stacks.\r\n\r\nVortex Aerocloak: Dodging an Attack grants you 20% Crit Amp, up to 15 stacks. Gain 20 Dodge Chance and 10% Crit Chance."
+}

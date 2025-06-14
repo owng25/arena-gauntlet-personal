@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek4_Hunt_Illuvial3",
+  "Name": "Capture a Stoic Lynx",
+  "Description": "Capture a Stoic Lynx",
+  "Expiry": "2025-05-01",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-24T00:00:00.0000000Z",
+		"EndTime": "2025-05-01T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "103_Lynx_Stage2_BulwarkNone_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Stoic Lynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 36,
+      "Type": "AirdropReward"
+    }
+  ]
+}

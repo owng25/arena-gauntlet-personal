@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Bioarmor_Stage2_Original_Regencore",
+  "Name": "Forge a Regencore Bioarmor",
+  "Description": "Forge a Regencore Bioarmor",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Bioarmor_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Regencore Bioarmor",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek2_Hunt_Illuvial9",
+  "Name": "Collect a Cling",
+  "Description": "Collect a Cling",
+  "Expiry": "2025-04-17",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-10T00:00:00.0000000Z",
+		"EndTime": "2025-04-17T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "076_Sloth_Stage1_Default_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect a Cling",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 15,
+      "Type": "AirdropReward"
+    }
+  ]
+}

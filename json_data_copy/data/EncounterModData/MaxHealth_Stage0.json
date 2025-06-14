@@ -1,0 +1,34 @@
+{
+	"Name": "MaxHealth",
+	"Stage": 0,
+	"Abilities": [
+		{
+			"Name": "Max Health",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Max Health buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"Expression": 50000,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

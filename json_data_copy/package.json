@@ -1,0 +1,13 @@
+{
+	"name": "@json-data/json-data",
+	"description": "Static sim data json",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/IlluviumGame/json-data.git"
+	},
+	"files": [
+		"data/**",
+		"schemas/**"
+	],
+	"version": "0.0.5"
+}

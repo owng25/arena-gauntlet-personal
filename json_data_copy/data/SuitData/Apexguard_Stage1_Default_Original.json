@@ -1,0 +1,90 @@
+{
+	"Name": "Apexguard",
+	"Stage": 1,
+	"Tier": 3,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 40,
+		"EnergyResist": 30,
+		"MaxHealth": 1350000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 1700,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff health %",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "MaxHealth",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Sentry Apexguard",
+	"DisplayDescription": "Health: 1,350\r\nPhysical Resist: 40\r\nEnergy Resist: 30\r\nMovement Speed: 17\r\n\r\nPassive: Gain 20% bonus Max Health.\r\n\r\nPrime Apexguard: Gain 40% bonus Max Health.\r\n\r\nCenturion Apexguard: Gain 50% bonus Max Health. Attacks deal 2% of your Max Health as Phyiscal Damage.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d}% bonus Max Health.\r\n\r\nPrime Apexguard: Gain 40% bonus Max Health.\r\n\r\nCenturion Apexguard: Gain 50% bonus Max Health. Attacks deal 2% of your Max Health as Phyiscal Damage.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,350\r\nPhysical Resist: 40\r\nEnergy Resist: 30\r\nMovement Speed: 17\r\n\r\nPassive: Gain 20% bonus Max Health.\r\n\r\nPrime Apexguard: Gain 40% bonus Max Health.\r\n\r\nCenturion Apexguard: Gain 50% bonus Max Health. Attacks deal 2% of your Max Health as Phyiscal Damage."
+}

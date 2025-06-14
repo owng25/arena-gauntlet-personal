@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Guard_Stage1_Original_Sprout",
+  "Name": "Forge a Sprout Guard",
+  "Description": "Forge a Sprout Guard",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Guard_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Sprout Guard",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

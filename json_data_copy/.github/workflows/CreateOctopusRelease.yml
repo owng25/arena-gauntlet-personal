@@ -1,0 +1,63 @@
+name: Create Octopus Release
+
+on:
+  push:
+    tags:
+      - '*.*.*'  # Trigger on tags that match the versioning format (e.g., 85.3.0)
+
+env:
+  OCTOPUS_URL: https://illuvium.octopus.app/
+  OCTOPUS_SPACE: 'Illuvium'
+  OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
+      
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history to query previous tags
+          
+      - name: Fetch all tags (force update local tags)
+        run: |
+          git fetch --tags --force
+          
+      - name: Get Tag Name
+        id: get_tag
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          
+      - name: Get Previous Tag
+        id: get_previous_tag
+        run: |
+          # Get the previous tag
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^)
+          echo "PREVIOUS_TAG=$PREVIOUS_TAG" >> $GITHUB_ENV
+
+      - name: Generate Release Notes
+        id: generate_release_notes
+        run: |
+          # Get commit messages between previous tag and current tag
+          RELEASE_NOTES=$(git log ${{ env.PREVIOUS_TAG }}..${{ env.TAG_NAME }} --pretty=format:"%h - %s (%an)%n")
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          echo "$RELEASE_NOTES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Push Build Information to Octopus Deploy 🐙
+        uses: OctopusDeploy/push-build-information-action@v3
+        with:
+          packages: 'dummy-package'  # Provide a placeholder package name
+          version: ${{ env.TAG_NAME }}  # Use the tag name as the version
+
+      - name: Deploy Release in Octopus Deploy 🐙
+        uses: octopusdeploy/create-release-action@v3
+        with:
+          api_key: ${{ secrets.OCTOPUS_API_KEY }}
+          server: ${{ env.OCTOPUS_SERVER }}
+          project: 'json-data'
+          release_number: ${{ env.TAG_NAME }}
+          channel: 'all-without-ci'  # Use the specified channel
+          git_ref: ${{ github.ref }}  # Use the current tag ref
+          git_commit: ${{ github.sha }}  # Use the SHA of the commit for the tag
+          release_notes: ${{ env.RELEASE_NOTES }}  # Add release notes with commits

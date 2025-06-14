@@ -1,0 +1,59 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier2_Stage2",
+  "Name": "Capture all Tier 2 Stage 2 Illuvials",
+  "Description": "Capture all Tier 2 Stage 2 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "101_Lynx_Stage2_FighterNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 2,
+      "Description": "Capture a Relentless Lynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "102_Lynx_Stage2_RogueNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 2,
+      "Description": "Capture a Nimble Lynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "103_Lynx_Stage2_BulwarkNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 2,
+      "Description": "Capture a Stoic Lynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "104_Lynx_Stage2_PsionNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 2,
+      "Description": "Capture an Arcane Lynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "105_Lynx_Stage2_EmpathNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 2,
+      "Description": "Capture a Virtuous Lynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

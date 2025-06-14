@@ -1,0 +1,245 @@
+{
+	"Name": "Maulers",
+	"Stage": 3,
+	"Tier": 3,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Granite",
+	"CombatClass": "Templar",
+	"DominantCombatAffinity": "Earth",
+	"DominantCombatClass": "Empath",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 20000,
+		"EnergyCost": 120000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 75000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 120,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Maulers Attack III",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Earthshaker III",
+			"TotalDurationMs": 1000,
+			"Skills": [
+				{
+					"Name": "Shield",
+					"PercentageOfAbilityDuration": 80,
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 80
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": 3000,
+								"FrequencyMs": 500,
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										{
+											"Stat": "OmegaPowerPercentage",
+											"Percentage": 200000,
+											"StatSource": "Sender"
+										},
+										{
+											"Stat": "MaxHealth",
+											"Percentage": 10,
+											"StatSource": "Sender"
+										}
+									]
+								}
+							},
+							{
+								"Type": "Empower",
+								"DurationMs": 3000,
+								"IsConsumable": false,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "Debuff",
+										"Stat": "PhysicalResist",
+										"OverlapProcessType": "Stacking",
+										"DurationMs": -1,
+										"Expression": 5
+									}
+								]
+							},
+							{
+								"Type": "Buff",
+								"DurationMs": 3000,
+								"Stat": "AttackEnergyDamage",
+								"Expression": 30000
+							}
+						]
+					}
+				},
+				{
+					"Name": "Gain phys resist on hit",
+					"PercentageOfAbilityDuration": 0,
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnMark",
+								"MarkType": "Beneficial",
+								"DurationMs": 3000,
+								"AttachedAbilities": [
+									{
+										"Name": "Gain phys resist on hit",
+										"ActivationTrigger": {
+											"TriggerType": "OnHit",
+											"AbilityTypes": [
+												"Attack"
+											],
+											"SenderAllegiance": "Self",
+											"ReceiverAllegiance": "Enemy"
+										},
+										"TotalDurationMs": 0,
+										"Skills": [
+											{
+												"Name": "Gain Physical resist",
+												"Deployment": {
+													"Type": "Direct"
+												},
+												"Targeting": {
+													"Type": "Self"
+												},
+												"EffectPackage": {
+													"Effects": [
+														{
+															"Type": "Buff",
+															"DurationMs": -1,
+															"Stat": "PhysicalResist",
+															"OverlapProcessType": "Stacking",
+															"Expression": {
+																"Operation": "/",
+																"Operands": [
+																	5,
+																	1
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Golem Maulers",
+	"DisplayDescription": "The Ranger jumps up and shocks the ground, charging the stored energy from the gloves into a 200*OP + 10% Max Health Shield. \r\n\r\nWhile the Shield is active, the Ranger's attacks deal 30 bonus Energy Damage and reduce the target's Physical Resist by 5 per hit.\r\n\r\nAdditionally, the Ranger gains 5 Physical Resist per hit while the shield is active.",
+	"Description": {
+		"Format": "The Ranger jumps up and shocks the ground, charging the stored energy from the gloves into a {a}*OP + {b}% Max Health Shield. \r\n\r\nWhile the Shield is active, the Ranger's attacks deal {c} bonus Energy Damage and reduce the target's Physical Resist by {d} per hit.\r\n\r\nAdditionally, the Ranger gains {e} Physical Resist per hit while the shield is active.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0].Percentage",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1].Percentage"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[2].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"d": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[1].AttachedEffects[0].Expression"
+			},
+			"e": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger jumps up and shocks the ground, charging the stored energy from the gloves into a 200*OP + 10% Max Health Shield. \r\n\r\nWhile the Shield is active, the Ranger's attacks deal 30 bonus Energy Damage and reduce the target's Physical Resist by 5 per hit.\r\n\r\nAdditionally, the Ranger gains 5 Physical Resist per hit while the shield is active."
+}

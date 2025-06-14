@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Lance_Stage3_Original_Zephyr",
+  "Name": "Forge a Zephyr Lance",
+  "Description": "Forge a Zephyr Lance",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Lance_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Zephyr Lance",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

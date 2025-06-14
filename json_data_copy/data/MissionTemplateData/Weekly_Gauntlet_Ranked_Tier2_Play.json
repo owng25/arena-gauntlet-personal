@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Weekly_Gauntlet_Ranked_Tier2_Play",
+  "Name": "Play {0} matches of Ranked Gauntlet",
+  "Description": "Play {0} matches of Ranked Gauntlet",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "Quantity": 14,
+      "WinRequired": true,
+      "GameMode": "Gauntlet",
+      "Queue": "Ranked",
+      "Description": "Play {0} matches of Ranked Gauntlet",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

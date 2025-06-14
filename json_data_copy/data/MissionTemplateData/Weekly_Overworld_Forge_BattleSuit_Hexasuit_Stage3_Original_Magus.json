@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Hexasuit_Stage3_Original_Magus",
+  "Name": "Forge a Magus Hexasuit",
+  "Description": "Forge a Magus Hexasuit",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Hexasuit_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Magus Hexasuit",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

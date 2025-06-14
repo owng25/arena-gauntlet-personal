@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Apexguard_Stage3_Original_Centurion",
+  "Name": "Forge a Centurion Apexguard",
+  "Description": "Forge a Centurion Apexguard",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Apexguard_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Centurion Apexguard",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

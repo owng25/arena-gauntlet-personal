@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Ore_RhodiviumOre",
+  "Name": "Extract {0} Rhodivium",
+  "Description": "Extract {0} Rhodivium by mining deposits in a Stage 0 Region",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "OverworldOre",
+      "Name": "RhodiviumOre",
+      "Quantity": 50,
+      "Description": "Extract {0} Rhodivium by mining deposits in a Stage 0 Region",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

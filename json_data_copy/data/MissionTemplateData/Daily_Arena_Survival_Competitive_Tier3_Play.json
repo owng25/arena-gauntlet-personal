@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Daily_Arena_Survival_Competitive_Tier3_Play",
+  "Name": "Play {0} Survival Game in Competitive Mode",
+  "Description": "Play {0} Survival Game in Competitive Mode",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "GameMode": "Survival",
+      "Quantity": 5,
+      "Queue": "Competitive",
+      "WinRequired": false,
+      "Description": "Play {0} Survival Game in Competitive Mode",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

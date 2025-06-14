@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_CuredShard_CuredShardT3",
+  "Name": "Forge {0} Cured Rare Shards",
+  "Description": "Forge {0} Cured Rare Shards",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 13,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "CuredShard",
+      "Name": "CuredShardT3",
+      "Quantity": 3,
+      "Description": "Forge {0} Cured Rare Shards",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

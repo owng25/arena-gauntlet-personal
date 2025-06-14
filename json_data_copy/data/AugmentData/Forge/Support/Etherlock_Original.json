@@ -1,0 +1,105 @@
+{
+	"Name": "Etherlock",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "Etherlock_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Etherlock - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 100000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Etherlock_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Etherlock - Increase Energy Cost",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CombatStatCheck",
+						"Group": "Enemy",
+						"Stat": "EnergyCost",
+						"Lowest": false,
+						"Num": 2
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "EnergyCost",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "EnergyCost",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Etherlock",
+	"DisplayDescription": "Combat Start: The 2 highest <EnergyCost>Energy Cost</> enemies have their <EnergyCost>Energy Cost</> increased by <EnergyCost>20%</>.\r\n\r\nStats:\r\n+100 <MaxHealth>Health</>\r\n+10 <OmegaPowerPercentage>Omega Power</>",
+	"Description": {
+		"Format": "Combat Start: The {EnemyNum} highest <EnergyCost>Energy Cost</> enemies have their <EnergyCost>Energy Cost</> increased by <EnergyCost>{CostVal}%</>.\r\n\r\nStats:\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_OP} <OmegaPowerPercentage>Omega Power</>",
+		"Parameters": {
+			"EnemyNum": {
+				"ParameterPath": "Abilities[1].Skills[0].Targeting.Num",
+				"ValueMultiplier": 1.0
+			},
+			"CostVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_OP": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Combat Start: The 2 highest Energy Cost enemies have their Energy Cost increased by 20%.\r\n\r\nStats:\r\n+100 Health\r\n+10 Omega Power"
+}

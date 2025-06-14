@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Milestone_Arena_Survival_Tier2_Play",
+  "Name": "Play {0} Arena Survival Games",
+  "Description": "Play {0} Arena Survival Games",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "GameMode": "Survival",
+      "Quantity": 1000,
+      "WinRequired": false,
+      "Description": "Play {0} Arena Survival Games",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

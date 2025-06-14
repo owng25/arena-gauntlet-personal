@@ -1,0 +1,120 @@
+{
+	"Name": "KineticInverter",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "KineticInverter_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 5000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "KineticInverter - Target Closest",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy",
+						"Lowest": true,
+						"Num": 1
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyBurn",
+								"Expression": 15000
+							}
+						]
+					}
+				},
+				{
+					"Name": "KineticInverter - Target Furthest",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy",
+						"Lowest": false,
+						"Num": 2
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyBurn",
+								"Expression": 15000
+							}
+						]
+					}
+				},
+				{
+					"Name": "KineticInverter - Gain Energy",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyGain",
+								"Expression": 45000
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Kinetic Inverter",
+	"DisplayDescription": "Every 5 seconds, the closest enemy and the 2 furthest enemies lose <StartingEnergy>15</> <StartingEnergy>Energy</>, and the holder gains <StartingEnergy>45</> <StartingEnergy>Energy</>.",
+	"Description": {
+		"Format": "Every {TriggerTime} seconds, the closest enemy and the {FurthestNum} furthest enemies lose <StartingEnergy>{EnergyValEnemy}</> <StartingEnergy>Energy</>, and the holder gains <StartingEnergy>{EnergyValAlly}</> <StartingEnergy>Energy</>.",
+		"Parameters": {
+			"TriggerTime": {
+				"ParameterPath": "Abilities[0].ActivationTrigger.ActivateEveryTimeMs",
+				"ValueMultiplier": 0.001
+			},
+			"FurthestNum": {
+				"ParameterPath": "Abilities[0].Skills[1].Targeting.Num",
+				"ValueMultiplier": 1.0
+			},
+			"EnergyValEnemy": {
+				"ParameterPath": "Abilities[0].Skills[1].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"EnergyValAlly": {
+				"ParameterPath": "Abilities[0].Skills[2].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Every 5 seconds, the closest enemy and the 2 furthest enemies lose 15 Energy, and the holder gains 45 Energy."
+}

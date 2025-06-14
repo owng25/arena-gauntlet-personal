@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Xenolink_Stage1_Original_Arcane",
+  "Name": "Forge a Arcane Xenolink",
+  "Description": "Forge a Arcane Xenolink",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Xenolink_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Arcane Xenolink",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

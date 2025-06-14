@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Gem_WaterGemT3",
+  "Name": "Extract {0} Rare Water Gem",
+  "Description": "Extract {0} Rare Water Gem by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "OverworldGemstone",
+      "Name": "WaterGemT3",
+      "Quantity": 105,
+      "Description": "Extract {0} Rare Water Gem by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

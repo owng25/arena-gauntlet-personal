@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_Overworld_BountyWeek7_Tier3_Stage1",
+  "Name": "Capture a Tier 3 Stage 1 Illuvial",
+  "Description": "Capture a Tier 3 Stage 1 Illuvial",
+  "Expiry": "2025-05-22",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-15T00:00:00.0000000Z",
+      "EndTime": "2025-05-22T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Quantity": 1,
+      "Source": "Default",
+      "Stage": 1,
+      "Tier": 3,
+      "Description": "Capture a Tier 3 Stage 1 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 5,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "ProductionId": "Daily_Overworld_Gain_XP",
+  "Name": "Gain {0} XP with your Illuvials",
+  "Description": "Gain {0} XP with your Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 97,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ExperienceNeeded": 1500,
+      "Description": "Gain {0} XP with your Illuvials",
+      "Type": "GainIlluvialExperienceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

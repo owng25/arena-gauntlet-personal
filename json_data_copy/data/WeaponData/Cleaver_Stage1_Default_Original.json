@@ -1,0 +1,108 @@
+{
+	"Name": "Cleaver",
+	"Stage": 1,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Nature",
+	"CombatClass": "Fighter",
+	"DominantCombatAffinity": "Nature",
+	"DominantCombatClass": "Fighter",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 0,
+		"EnergyCost": 0,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 90000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 100,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 15,
+		"EnergyVampPercentage": 15,
+		"PureVampPercentage": 15,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Cleaver Attack I",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [],
+	"InnateAbilities": [],
+	"DisplayName": "Vinebound Cleaver",
+	"DisplayDescription": "The Ranger gains 15% Omnivamp.\r\n\r\nRazor Cleaver: Gives Verdant.\r\n\r\nBramble Cleaver: Gives Verdant and Berserker.",
+	"Description": {
+		"Format": "The Ranger gains {a}% Omnivamp.\r\n\r\nRazor Cleaver: Gives Verdant.\r\n\r\nBramble Cleaver: Gives Verdant and Berserker.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.PhysicalVampPercentage"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger gains 15% Omnivamp.\r\n\r\nRazor Cleaver: Gives Verdant.\r\n\r\nBramble Cleaver: Gives Verdant and Berserker."
+}

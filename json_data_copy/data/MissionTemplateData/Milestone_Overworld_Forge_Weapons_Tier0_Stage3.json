@@ -1,0 +1,169 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Weapons_Tier0_Stage3",
+  "Name": "Forge Tier 0 Stage 3 Weapons",
+  "Description": "Forge Tier 0 Stage 3 Weapons",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "StockDagger_Stage3_Air_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Air Dagger III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockDagger_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Earth Dagger III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockDagger_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Fire Dagger III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockDagger_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Nature Dagger III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockDagger_Stage3_Water_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Water Dagger III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockGlove_Stage3_Air_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Air Glove III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockGlove_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Earth Glove III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockGlove_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Fire Glove III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockGlove_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Nature Glove III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockGlove_Stage3_Water_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Water Glove III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockShield_Stage3_Air_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Air Shield III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockShield_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Earth Shield III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockShield_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Fire Shield III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockShield_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Nature Shield III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockShield_Stage3_Water_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Water Shield III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockStaff_Stage3_Air_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Air Staff III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockStaff_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Earth Staff III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockStaff_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Fire Staff III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockStaff_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Nature Staff III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockStaff_Stage3_Water_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Water Staff III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockSword_Stage3_Air_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Air Sword III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockSword_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Earth Sword III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockSword_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Fire Sword III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockSword_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Nature Sword III",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "StockSword_Stage3_Water_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stock Water Sword III",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

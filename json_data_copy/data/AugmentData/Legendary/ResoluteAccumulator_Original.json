@@ -1,0 +1,99 @@
+{
+	"Name": "ResoluteAccumulator",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "ResoluteAccumulator_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Resolute Accumulator - Shield",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": -1,
+								"Expression": 1500000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "ResoluteAccumulator_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnShieldHit",
+				"SenderAllegiance": "Enemy",
+				"ReceiverAllegiance": "Self",
+				"AbilityTypes": [
+					"Attack",
+					"Omega"
+				],
+				"ActivationCooldownMs": 3000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Resolute Accumulator - Grit & Resolve",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "Grit",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "Resolve",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10000
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Resolute Accumulator",
+	"DisplayDescription": "Combat Start: Gain 1,500 Shield. When any Shield on the holder is damaged, gain <Grit>10</> <Grit>Mitigation</>. (3s cooldown)\r\n\r\n<Italic>Mitigation: Reduces incoming damage by a flat value.</>",
+	"Description": {
+		"Format": "Combat Start: Gain {ShieldVal} Shield. When any Shield on the holder is damaged, gain <Grit>{MitigationVal}</> <Grit>Mitigation</>. ({Cooldown}s cooldown)\r\n\r\n<Italic>Mitigation: Reduces incoming damage by a flat value.</>",
+		"Parameters": {
+			"ShieldVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"MitigationVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Cooldown": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.ActivationCooldownMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Combat Start: Gain 1,500 Shield. When any Shield on the holder is damaged, gain 10 Mitigation. (3s cooldown)\r\n\r\nMitigation: Reduces incoming damage by a flat value."
+}

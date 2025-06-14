@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_CuredShard_CuredShardT0",
+  "Name": "Forge Cured Shard Fragments",
+  "Description": "Forge {0} Cured Shard Fragments",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "CuredShard",
+      "Name": "CuredShardT0",
+      "Quantity": 70,
+      "Description": "Forge {0} Cured Shard Fragments",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

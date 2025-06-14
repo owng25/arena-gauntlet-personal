@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Aerocloak_Stage2_Original_Zephyr",
+  "Name": "Forge a Zephyr Aerocloak",
+  "Description": "Forge a Zephyr Aerocloak",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Aerocloak_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Zephyr Aerocloak",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

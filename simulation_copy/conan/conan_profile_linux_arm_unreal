@@ -1,0 +1,31 @@
+include(conan_profile_linux)
+include(conan_profile_generic_unreal_and_server)
+
+# toolchain=aarch64-linux-gnu
+
+# [env]
+# CONAN_CMAKE_FIND_ROOT_PATH=/usr/$toolchain
+# CHOST=$toolchain
+# AR=$toolchain-ar
+# AS=$toolchain-as
+# RANLIB=$toolchain-ranlib
+# CC=$toolchain-gcc
+# CXX=$toolchain-g++
+# STRIP=$toolchain-strip
+# RC=$toolchain-windres
+# PKG_CONFIG_PATH=/usr/lib/$toolchain/pkgconfig
+
+# [settings]
+# os=Linux
+# os_build=Linux
+# arch=armv8
+# arch_build=x86_64
+# compiler=gcc
+# compiler.libcxx=libc++
+
+[settings]
+    arch=armv8
+    os_target=Linux
+    arch_target=armv8
+    compiler=clang
+    compiler.libcxx=libc++

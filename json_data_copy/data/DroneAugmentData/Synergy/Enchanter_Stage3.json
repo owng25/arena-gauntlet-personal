@@ -1,0 +1,26 @@
+{
+	"Name": "Enchanter",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Enchanter Matrix",
+	"DisplayDescription": "Gain a Enchanter Imprint and a Flow Equalizer.",
+	"Description": {
+		"Format": "Gain a Enchanter Imprint and a Flow Equalizer.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Enchanter",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "FlowEqualizer",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

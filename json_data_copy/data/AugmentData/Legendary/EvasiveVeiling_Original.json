@@ -1,0 +1,75 @@
+{
+	"Name": "EvasiveVeiling",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "EvasiveVeiling_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "HealthInRange",
+				"HealthLowerLimitPercentage": 50,
+				"MaxActivations": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Evasive Veiling - Positive States and Attack Speed",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "PositiveState",
+								"PositiveState": "Invulnerable",
+								"DurationMs": 4000
+							},
+							{
+								"Type": "PositiveState",
+								"PositiveState": "Untargetable",
+								"DurationMs": 4000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 60,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Evasive Veiling",
+	"DisplayDescription": "Once per combat, at <MaxHealth>50% Health</>, become Untargetable and Invulnerable for 4 seconds and gain <AttackSpeed>60%</> <AttackSpeed>Attack Speed</>.\r\n\r\n<Italic>Invulnerable: Cannot receive damage</>\r\n\r\n<Italic>Untargetable: Cannot be targeted by enemies</>",
+	"Description": {
+		"Format": "Once per combat, at <MaxHealth>{HealthTrigger}% Health</>, become Untargetable and Invulnerable for {Duration} seconds and gain <AttackSpeed>{ASVal}%</> <AttackSpeed>Attack Speed</>.\r\n\r\n<Italic>Invulnerable: Cannot receive damage</>\r\n\r\n<Italic>Untargetable: Cannot be targeted by enemies</>",
+		"Parameters": {
+			"HealthTrigger": {
+				"ParameterPath": "Abilities[0].ActivationTrigger.HealthLowerLimitPercentage",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"ASVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[2].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Once per combat, at 50% Health, become Untargetable and Invulnerable for 4 seconds and gain 60% Attack Speed.\r\n\r\nInvulnerable: Cannot receive damage\r\n\r\nUntargetable: Cannot be targeted by enemies"
+}

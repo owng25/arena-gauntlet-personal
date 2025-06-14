@@ -1,0 +1,212 @@
+{
+	"Name": "Edge",
+	"Stage": 2,
+	"Tier": 1,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Spore",
+	"CombatClass": "Rogue",
+	"DominantCombatAffinity": "Air",
+	"DominantCombatClass": "Rogue",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 50000,
+		"EnergyCost": 120000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 85000,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 110,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 3,
+		"OmegaRangeUnits": 3,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Edge Attack II",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Frostbite II",
+			"TotalDurationMs": 1000,
+			"Skills": [
+				{
+					"Name": "Hurled sword",
+					"Targeting": {
+						"Type": "CurrentFocus",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						]
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 50
+					},
+					"Projectile": {
+						"SizeUnits": 3,
+						"SpeedSubUnits": 10000,
+						"IsHoming": false,
+						"IsBlockable": false,
+						"ApplyToAll": true,
+						"ContinueAfterTarget": true
+					},
+					"PercentageOfAbilityDuration": 50,
+					"EffectPackage": {
+						"Attributes": {
+							"RotateToTarget": true
+						},
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										{
+											"Operation": "*",
+											"Operands": [
+												300000,
+												{
+													"Stat": "OmegaPowerPercentage",
+													"StatSource": "Sender"
+												}
+											]
+										},
+										{
+											"Operation": "*",
+											"Operands": [
+												75000,
+												{
+													"Stat": "AttackSpeed",
+													"StatSource": "Sender"
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"Name": "Energy Damage buff",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 0
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"DurationMs": 3000,
+								"OverlapProcessType": "Stacking",
+								"Expression": 30000
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Spectral Edge",
+	"DisplayDescription": "The Ranger hurls their sword forward, causing it to pierce through all enemies in its path. The sword deals Physical Damage equal to 300*OP + 75% of their Attack Speed.\r\n\r\nAdditionally, the Ranger deals 30 bonus Energy Damage per hit for the next 3 seconds.\r\n\r\nCryonic Edge: Gives Spore and Phantom.",
+	"Description": {
+		"Format": "The Ranger hurls their sword forward, causing it to pierce through all enemies in its path. The sword deals Physical Damage equal to {a}*OP + {b}% of their Attack Speed.\r\n\r\nAdditionally, the Ranger deals {c} bonus Energy Damage per hit for the next {d} seconds.\r\n\r\nCryonic Edge: Gives Spore and Phantom.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0].Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1].Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"d": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger hurls their sword forward, causing it to pierce through all enemies in its path. The sword deals Physical Damage equal to 300*OP + 75% of their Attack Speed.\r\n\r\nAdditionally, the Ranger deals 30 bonus Energy Damage per hit for the next 3 seconds.\r\n\r\nCryonic Edge: Gives Spore and Phantom."
+}

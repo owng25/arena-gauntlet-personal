@@ -1,0 +1,210 @@
+{
+	"Name": "StockGlove",
+	"Stage": 2,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Air",
+	"CombatClass": "Psion",
+	"DominantCombatAffinity": "Air",
+	"DominantCombatClass": "Psion",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 60000,
+		"EnergyCost": 140000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 67000,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 80,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 70,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Air Glove Attack II",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"PreDeploymentDelayPercentage": 40
+					},
+					"Projectile": {
+						"SizeUnits": 0,
+						"IsHoming": true,
+						"SpeedSubUnits": 10000,
+						"IsBlockable": false,
+						"ApplyToAll": false
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Air Energy Blast",
+			"TotalDurationMs": 2000,
+			"Skills": [
+				{
+					"Name": "Damage bomb",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"Group": "Enemy",
+						"Lowest": false,
+						"Num": 1
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 45
+					},
+					"Projectile": {
+						"SizeUnits": 3,
+						"IsHoming": true,
+						"SpeedSubUnits": 5600,
+						"IsBlockable": true,
+						"ApplyToAll": false
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Attributes": {
+							"Propagation": {
+								"PropagationType": "Splash",
+								"SplashRadiusUnits": 15,
+								"DeploymentGuidance": [
+									"Ground",
+									"Airborne"
+								],
+								"EffectPackage": {
+									"Effects": [
+										{
+											"Type": "InstantDamage",
+											"DamageType": "Energy",
+											"Expression": {
+												"Operation": "*",
+												"Operands": [
+													350000,
+													{
+														"Stat": "OmegaPowerPercentage",
+														"StatSource": "Sender"
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						},
+						"Effects": []
+					}
+				},
+				{
+					"Name": "Increase omega power",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 0
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 7
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Stock Air Glove II",
+	"DisplayDescription": "The Ranger launches an energy bomb at the furthest enemy. When the bomb comes in contact with an enemy it explodes, dealing (350*OP) Energy Damage to all enemies in 15 radius. The ranger then gains 7 Omega Power for the rest of combat.",
+	"Description": {
+		"Format": "The Ranger launches an energy bomb at the furthest enemy. When the bomb comes in contact with an enemy it explodes, dealing ({a}*OP) Energy Damage to all enemies in {b} radius. The ranger then gains {c} Omega Power for the rest of combat.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Attributes.Propagation.EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Attributes.Propagation.SplashRadiusUnits"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger launches an energy bomb at the furthest enemy. When the bomb comes in contact with an enemy it explodes, dealing (350*OP) Energy Damage to all enemies in 15 radius. The ranger then gains 7 Omega Power for the rest of combat."
+}

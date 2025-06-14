@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_NatureInfusedGemT5",
+  "Name": "Forge {0} Infused Resplendent Nature Gems",
+  "Description": "Forge {0} Infused Resplendent Nature Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "NatureInfusedGemT5",
+      "Quantity": 5,
+      "Description": "Forge {0} Infused Resplendent Nature Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

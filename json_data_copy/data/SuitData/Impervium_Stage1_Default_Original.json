@@ -1,0 +1,86 @@
+{
+	"Name": "Impervium",
+	"Stage": 1,
+	"Tier": 3,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 50,
+		"EnergyResist": 50,
+		"MaxHealth": 1000000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 1500,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "VulnerabilityPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Infused Impervium",
+	"DisplayDescription": "Health: 1,000\r\nPhysical Resist: 50\r\nEnergy Resist: 50\r\nMovement Speed: 15\r\n\r\nPassive: Reduce all incoming damage by 10%.\r\n\r\nAlloyed Impervium: Reduce all incoming damage by 20%.\r\n\r\nForged Impervium: Reduce all incoming damage by 20%. Heal 100 every 5 seconds.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Reduce all incoming damage by {d}%.\r\n\r\nAlloyed Impervium: Reduce all incoming damage by 20%.\r\n\r\nForged Impervium: Reduce all incoming damage by 20%. Heal 100 every 5 seconds.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,000\r\nPhysical Resist: 50\r\nEnergy Resist: 50\r\nMovement Speed: 15\r\n\r\nPassive: Reduce all incoming damage by 10%.\r\n\r\nAlloyed Impervium: Reduce all incoming damage by 20%.\r\n\r\nForged Impervium: Reduce all incoming damage by 20%. Heal 100 every 5 seconds."
+}

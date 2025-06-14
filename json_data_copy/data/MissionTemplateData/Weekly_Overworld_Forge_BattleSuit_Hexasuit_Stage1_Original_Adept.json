@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Hexasuit_Stage1_Original_Adept",
+  "Name": "Forge a Adept Hexasuit",
+  "Description": "Forge a Adept Hexasuit",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Hexasuit_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Adept Hexasuit",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

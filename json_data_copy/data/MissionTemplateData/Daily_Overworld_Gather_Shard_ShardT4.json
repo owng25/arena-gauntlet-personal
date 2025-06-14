@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Shard_ShardT4",
+  "Name": "Extract {0} Epic Shard",
+  "Description": "Extract {0} Epic Shard by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "Shard",
+      "Name": "ShardT4",
+      "Quantity": 10,
+      "Description": "Extract {0} Epic Shard by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

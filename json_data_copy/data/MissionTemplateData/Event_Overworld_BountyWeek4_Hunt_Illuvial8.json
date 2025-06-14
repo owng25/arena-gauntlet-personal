@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek4_Hunt_Illuvial8",
+  "Name": "Capture a Rhamphite",
+  "Description": "Capture a Rhamphite",
+  "Expiry": "2025-05-01",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-24T00:00:00.0000000Z",
+		"EndTime": "2025-05-01T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "005_Pterodactyl_Stage2_Default_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Rhamphite",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 720,
+      "Type": "AirdropReward"
+    }
+  ]
+}

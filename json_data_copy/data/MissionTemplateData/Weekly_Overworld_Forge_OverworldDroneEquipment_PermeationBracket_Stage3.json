@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_OverworldDroneEquipment_PermeationBracket_Stage3",
+  "Name": "Forge a Supreme Permeation Bracket",
+  "Description": "Forge a Supreme Permeation Bracket",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "OverworldDroneEquipment",
+      "Name": "PermeationBracket_Stage3",
+      "Quantity": 1,
+      "Description": "Forge a Supreme Permeation Bracket",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

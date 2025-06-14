@@ -1,0 +1,84 @@
+step "deployment-approval" {
+    name = "Deployment Approval"
+
+    action {
+        action_type = "Octopus.Manual"
+        environments = ["uat", "sepolia", "preprod", "prod"]
+        properties = {
+            Octopus.Action.Manual.BlockConcurrentDeployments = "False"
+            Octopus.Action.Manual.Instructions = "Please manually approve the Deployment"
+            Octopus.Action.RunOnServer = "false"
+        }
+    }
+}
+
+step "deploy-json-data-dev" {
+    name = "Deploy Json Data"
+
+    action {
+        environments = ["dev", "int", "sepolia", "uat", "preprod", "prod"]
+        properties = {
+            AWSAccount = "Account"
+            AWSRegion = "us-east-1"
+            CodeBuildJobName = "#{Octopus.Environment.Name}-json-data-cd-cb"
+            EnvironmentOverrides = <<-EOT
+                ARTIFACT_NAME=#{Octopus.Release.Number}
+                CDN_S3=true
+                CDN_R2=true
+                EOT
+            Octopus.Action.Template.Id = "ActionTemplates-21"
+            Octopus.Action.Template.Version = "19"
+        }
+        worker_pool = "hosted-ubuntu"
+
+        container {
+            feed = "dockerhub"
+            image = "octopusdeploy/worker-tools:6.3.0-ubuntu.22.04"
+        }
+    }
+}
+
+step "discord-deployment-completed" {
+    name = "Discord: Deployment Completed"
+
+    action {
+        properties = {
+            "Embed Ping UAT" = "<@&1280847783623921756>"
+            EmbedColor = "3066993"
+            EmbedMessage = <<-EOT
+                The #{Octopus.Environment.Name} deployment of #{Octopus.Release.Number} #{Octopus.Project.Name} has been completed successfully
+                
+                **Release Notes:**
+                #{Octopus.Release.Notes}
+                EOT
+            EmbedPing = "@here"
+            EmbedTitle = "Deployment Completed"
+            Octopus.Action.Template.Id = "ActionTemplates-1"
+            Octopus.Action.Template.Version = "22"
+            ThreadID = "1292774849550352435"
+            WebhookURL = "#{Discord.Webhook.Url}"
+        }
+        worker_pool = "hosted-windows"
+    }
+}
+
+step "discord-deployment-failed" {
+    condition = "Failure"
+    name = "Discord: Deployment Failed"
+
+    action {
+        properties = {
+            "Embed Ping INT" = "<@&1293485855838568520>"
+            "Embed Ping UAT" = "<@&1293485855838568520>"
+            EmbedColor = "15158332"
+            EmbedMessage = "The #{Octopus.Environment.Name} deployment of #{Octopus.Release.Number} #{Octopus.Project.Name} has failed"
+            EmbedPing = "@here"
+            EmbedTitle = "Deployment Failed"
+            Octopus.Action.Template.Id = "ActionTemplates-1"
+            Octopus.Action.Template.Version = "22"
+            ThreadID = "1292774849550352435"
+            WebhookURL = "#{Discord.Webhook.Url}"
+        }
+        worker_pool = "hosted-windows"
+    }
+}

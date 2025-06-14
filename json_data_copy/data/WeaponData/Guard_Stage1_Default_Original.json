@@ -1,0 +1,161 @@
+{
+	"Name": "Guard",
+	"Stage": 1,
+	"Tier": 1,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Earth",
+	"CombatClass": "Bulwark",
+	"DominantCombatAffinity": "Earth",
+	"DominantCombatClass": "Bulwark",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 80000,
+		"EnergyCost": 200000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 60000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 70,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Guard Attack I",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Bloom Barrier I",
+			"TotalDurationMs": 3000,
+			"Skills": [
+				{
+					"Name": "The shield",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 10
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": 3000,
+								"Expression": {
+									"Operation": "+",
+									"Operands": [
+										{
+											"Operation": "*",
+											"Operands": [
+												500000,
+												{
+													"Stat": "OmegaPowerPercentage",
+													"StatSource": "Receiver"
+												}
+											]
+										},
+										{
+											"Percentage": 5,
+											"Stat": "MaxHealth",
+											"StatSource": "Receiver"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Sprout Guard",
+	"DisplayDescription": "The Ranger hides behind the shield as it starts to rotate quickly, radiating stored energy from blocked Attacks to create a Shield of (500*OP + 5% Max Health) for 3 seconds.\r\n\r\nBloom Guard: Gives Behemoth.\r\n\r\nBlossom Guard: Gives Behemoth and Bloom.",
+	"Description": {
+		"Format": "The Ranger hides behind the shield as it starts to rotate quickly, radiating stored energy from blocked Attacks to create a Shield of ({a}*OP + {b}% Max Health) for {c} seconds.\r\n\r\nBloom Guard: Gives Behemoth.\r\n\r\nBlossom Guard: Gives Behemoth and Bloom.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0].Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[1].Percentage"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger hides behind the shield as it starts to rotate quickly, radiating stored energy from blocked Attacks to create a Shield of (500*OP + 5% Max Health) for 3 seconds.\r\n\r\nBloom Guard: Gives Behemoth.\r\n\r\nBlossom Guard: Gives Behemoth and Bloom."
+}

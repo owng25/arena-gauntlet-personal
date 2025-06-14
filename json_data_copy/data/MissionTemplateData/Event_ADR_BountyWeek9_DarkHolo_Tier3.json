@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_ADR_BountyWeek9_DarkHolo_Tier3",
+  "Name": "Collect a Dark Holo Tier 3 Illuvial",
+  "Description": "Collect a Dark Holo Tier 3 Illuvial",
+  "Expiry": "2025-06-05",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-29T00:00:00.0000000Z",
+      "EndTime": "2025-06-05T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Finish": "DarkHolo",
+      "Quantity": 1,
+      "Tier": 3,
+      "Source": "ADR",
+      "Description": "Collect a Dark Holo Tier 3 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 500,
+      "Type": "AirdropReward"
+    }
+  ]
+}

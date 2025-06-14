@@ -1,0 +1,100 @@
+{
+	"Name": "SpatialDisruptor",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "SpatialDisruptor_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Spatial Disruptor - Clumsy and Attack Speed spread",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Group": "Enemy",
+						"Lowest": true,
+						"Num": 1,
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 0
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Attributes": {
+							"Propagation": {
+								"PropagationType": "Chain",
+								"TargetingGroup": "Enemy",
+								"ChainDelayMs": 4000,
+								"ChainNumber": 11,
+								"OnlyNewTargets": true,
+								"IgnoreFirstPropagationReceiver": false,
+								"EffectPackage": {
+									"Effects": [
+										{
+											"Type": "NegativeState",
+											"NegativeState": "Clumsy",
+											"DurationMs": -1
+										},
+										{
+											"Type": "Debuff",
+											"Stat": "AttackSpeed",
+											"DurationMs": -1,
+											"Expression": {
+												"Percentage": 25,
+												"Stat": "AttackSpeed",
+												"StatSource": "Receiver"
+											}
+										},
+										{
+											"Type": "Debuff",
+											"Stat": "MoveSpeedSubUnits",
+											"DurationMs": -1,
+											"Expression": {
+												"Percentage": 25,
+												"Stat": "AttackSpeed",
+												"StatSource": "Receiver"
+											}
+										}
+									]
+								}
+							}
+						},
+						"Effects": []
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Spatial Disruptor",
+	"DisplayDescription": "The closest enemy is Clumsy and has their <AttackSpeed>Attack Speed</> and <MoveSpeedSubUnits>Movement Speed</> reduced by <AttackSpeed>25%</>.\r\n\r\nThe effect spreads to an additional target every 4 seconds.\r\n\r\n<Italic>Clumsy: Disables the ability to Dodge.</>",
+	"Description": {
+		"Format": "The closest enemy is Clumsy and has their <AttackSpeed>Attack Speed</> and <MoveSpeedSubUnits>Movement Speed</> reduced by <AttackSpeed>{ASVal}%</>.\r\n\r\nThe effect spreads to an additional target every {Frequncy} seconds.\r\n\r\n<Italic>Clumsy: Disables the ability to Dodge.</>",
+		"Parameters": {
+			"ASVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Attributes.Propagation.EffectPackage.Effects[1].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Frequncy": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Attributes.Propagation.ChainDelayMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The closest enemy is Clumsy and has their Attack Speed and Movement Speed reduced by 25%.\r\n\r\nThe effect spreads to an additional target every 4 seconds.\r\n\r\nClumsy: Disables the ability to Dodge."
+}

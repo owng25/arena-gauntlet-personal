@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Mantle_Stage1_Original_Rage",
+  "Name": "Forge a Rage Mantle",
+  "Description": "Forge a Rage Mantle",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Mantle_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Rage Mantle",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

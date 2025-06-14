@@ -1,0 +1,83 @@
+{
+	"Name": "Mesmerizer",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "Mesmerizer_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "HealthInRange",
+				"HealthLowerLimitPercentage": 10,
+				"MaxActivations": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Mesmerizer - Indomitable",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "PositiveState",
+								"PositiveState": "Indomitable",
+								"DurationMs": 2000
+							}
+						]
+					}
+				},
+				{
+					"Name": "Mesmerizer - Charm",
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Targeting": {
+						"Type": "Allegiance",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "NegativeState",
+								"NegativeState": "Charm",
+								"DurationMs": 2000
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Mesmerizer",
+	"DisplayDescription": "Once per combat, at 10% Health, the holder becomes Indomitable and Charms all enemies for 2 seconds.\r\n\r\n<Italic>Indomitable: Cannot drop below 1 Health.</>\r\n\r\n<Italic>Charm: Causes units to move towards source.</>",
+	"Description": {
+		"Format": "Once per combat, at {HealthTrigger}% Health, the holder becomes Indomitable and Charms all enemies for {Duration} seconds.\r\n\r\n<Italic>Indomitable: Cannot drop below 1 Health.</>\r\n\r\n<Italic>Charm: Causes units to move towards source.</>",
+		"Parameters": {
+			"HealthTrigger": {
+				"ParameterPath": "Abilities[0].ActivationTrigger.HealthLowerLimitPercentage",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Once per combat, at 10% Health, the holder becomes Indomitable and Charms all enemies for 2 seconds.\r\n\r\nIndomitable: Cannot drop below 1 Health.\r\n\r\nCharm: Causes units to move towards source."
+}

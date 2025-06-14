@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Weekly_Zero_Convert_Carbon",
+  "Name": "Convert Carbon",
+  "Description": "Convert {0} Carbon into a different resource using a Condenser Plant or a Photodisintegration Plant",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Zero",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "Quantity": 4000000,
+      "ResourceType": "Carbon",
+      "Description": "Convert {0} Carbon into a different resource using a Condenser Plant or a Photodisintegration Plant",
+      "Type": "ConvertResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

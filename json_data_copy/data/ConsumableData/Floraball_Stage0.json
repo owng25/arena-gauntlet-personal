@@ -1,0 +1,47 @@
+{
+	"Name": "Floraball",
+	"Stage": 0,
+	"Tier": 0,
+	"Abilities": [
+		{
+			"Name": "Consumable - Floraball",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Max Health and Energy/Physical Resist buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"Expression": 200000,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"Expression": 20,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalResist",
+								"Expression": 20,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

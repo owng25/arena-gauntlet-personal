@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek4_Hunt_Illuvial12",
+  "Name": "Collect a Titanor",
+  "Description": "Collect a Titanor",
+  "Expiry": "2025-05-01",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-24T00:00:00.0000000Z",
+		"EndTime": "2025-05-01T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "021_Beetle_Stage3_Default_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect a Titanor",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 2880,
+      "Type": "AirdropReward"
+    }
+  ]
+}

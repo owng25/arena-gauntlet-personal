@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_ADR_BountyWeek9_Holo_Tier2",
+  "Name": "Collect a Holo Tier 2 Illuvial",
+  "Description": "Collect a Holo Tier 2 Illuvial",
+  "Expiry": "2025-06-05",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-29T00:00:00.0000000Z",
+      "EndTime": "2025-06-05T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Finish": "Holo",
+      "Quantity": 1,
+      "Tier": 2,
+      "Source": "ADR",
+      "Description": "Collect a Holo Tier 2 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 40,
+      "Type": "AirdropReward"
+    }
+  ]
+}

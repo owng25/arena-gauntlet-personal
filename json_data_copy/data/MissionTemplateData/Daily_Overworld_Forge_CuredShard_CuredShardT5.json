@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_CuredShard_CuredShardT5",
+  "Name": "Forge {0} Cured Resplendent Shards",
+  "Description": "Forge {0} Cured Resplendent Shards",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 13,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "CuredShard",
+      "Name": "CuredShardT5",
+      "Quantity": 2,
+      "Description": "Forge {0} Cured Resplendent Shards",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

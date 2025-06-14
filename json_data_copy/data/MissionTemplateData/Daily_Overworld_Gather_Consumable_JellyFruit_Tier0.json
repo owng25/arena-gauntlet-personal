@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Consumable_JellyFruit_Tier0",
+  "Name": "Gather {0} Jellyfruit Tendrils",
+  "Description": "Gather {0} Jellyfruit Tendrils by harvesting plants in a Stage 0 Region",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "Consumable",
+      "Name": "JellyFruit_Tier0",
+      "Quantity": 30,
+      "Description": "Gather {0} Jellyfruit Tendrils by harvesting plants in a Stage 0 Region",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

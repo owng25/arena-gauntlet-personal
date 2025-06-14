@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Weapons_Tier3_Stage1",
+  "Name": "Forge Tier 3 Stage 1 Weapons",
+  "Description": "Forge Tier 3 Stage 1 Weapons",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Blaster_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Aqua Blaster",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Boomerang_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Strike Boomerang",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Maulers_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Quake Maulers",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

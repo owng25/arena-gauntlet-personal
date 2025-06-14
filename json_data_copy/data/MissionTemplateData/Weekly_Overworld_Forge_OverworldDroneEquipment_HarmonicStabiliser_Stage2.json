@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_OverworldDroneEquipment_HarmonicStabiliser_Stage2",
+  "Name": "Forge a Advanced Harmonic Stabiliser",
+  "Description": "Forge a Advanced Harmonic Stabiliser",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "OverworldDroneEquipment",
+      "Name": "HarmonicStabiliser_Stage2",
+      "Quantity": 1,
+      "Description": "Forge a Advanced Harmonic Stabiliser",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Apexguard_Stage2_Original_Prime",
+  "Name": "Forge a Prime Apexguard",
+  "Description": "Forge a Prime Apexguard",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Apexguard_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Prime Apexguard",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

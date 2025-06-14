@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Encounters_S2_Win",
+  "Name": "Win {0} encounters in Stage 2",
+  "Description": "Win {0} encounters in Stage 2",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 12,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "Quantity": 6,
+      "Stage": 2,
+      "WinRequired": true,
+      "Description": "Win {0} encounters in Stage 2",
+      "Type": "FightEncounterObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

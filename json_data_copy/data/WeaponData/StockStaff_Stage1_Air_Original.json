@@ -1,0 +1,234 @@
+{
+	"Name": "StockStaff",
+	"Stage": 1,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Air",
+	"CombatClass": "Empath",
+	"DominantCombatAffinity": "Air",
+	"DominantCombatClass": "Empath",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 80000,
+		"EnergyCost": 180000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 40000,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 85,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 50,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Air Staff Attack I",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						]
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 50
+					},
+					"Projectile": {
+						"SizeUnits": 0,
+						"IsHoming": true,
+						"SpeedSubUnits": 10000,
+						"IsBlockable": false,
+						"ApplyToAll": false
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Air Protection Pulse",
+			"TotalDurationMs": 2000,
+			"Skills": [
+				{
+					"Name": "Shield self",
+					"Targeting": {
+						"Type": "Self",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 100
+					},
+					"PercentageOfAbilityDuration": 50,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": 5000,
+								"AttachedEffects": [
+									{
+										"Type": "Buff",
+										"Stat": "AttackSpeed",
+										"DurationMs": 5000,
+										"Expression": {
+											"Percentage": 15,
+											"Stat": "AttackSpeed",
+											"StatSource": "Receiver"
+										}
+									}
+								],
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										150000,
+										{
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"Name": "Shield adjacent party",
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Ally",
+						"RadiusUnits": 25
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 0
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": 5000,
+								"AttachedEffects": [
+									{
+										"Type": "Buff",
+										"Stat": "AttackSpeed",
+										"DurationMs": 5000,
+										"Expression": {
+											"Percentage": 15,
+											"Stat": "AttackSpeed",
+											"StatSource": "Receiver"
+										}
+									}
+								],
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										200000,
+										{
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Stock Air Staff I",
+	"DisplayDescription": "The Ranger slams their staff into the ground. Allies in 25 radius gain (200*OP) Shield for 5 seconds and 15% Attack Speed whilst the Shield holds.",
+	"Description": {
+		"Format": "The Ranger slams their staff into the ground. Allies in {a} radius gain ({b}*OP) Shield for {c} seconds and {d}% Attack Speed whilst the Shield holds.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].Targeting.RadiusUnits"
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"d": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Percentage"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger slams their staff into the ground. Allies in 25 radius gain (200*OP) Shield for 5 seconds and 15% Attack Speed whilst the Shield holds."
+}

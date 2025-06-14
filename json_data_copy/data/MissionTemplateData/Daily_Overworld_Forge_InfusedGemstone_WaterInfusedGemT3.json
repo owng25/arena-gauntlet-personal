@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_WaterInfusedGemT3",
+  "Name": "Forge {0} Infused Rare Water Gems",
+  "Description": "Forge {0} Infused Rare Water Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "WaterInfusedGemT3",
+      "Quantity": 8,
+      "Description": "Forge {0} Infused Rare Water Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

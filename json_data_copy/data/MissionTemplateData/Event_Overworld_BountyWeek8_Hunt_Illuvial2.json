@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek8_Hunt_Illuvial2",
+  "Name": "Capture a Stoic Hydrolynx",
+  "Description": "Capture a Stoic Hydrolynx",
+  "Expiry": "2025-05-29",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-22T00:00:00.0000000Z",
+      "EndTime": "2025-05-29T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "116_Lynx_Stage3_BulwarkWater_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Stoic Hydrolynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 48,
+      "Type": "AirdropReward"
+    }
+  ]
+}

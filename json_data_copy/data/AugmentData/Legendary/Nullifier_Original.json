@@ -1,0 +1,111 @@
+{
+	"Name": "Nullifier",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "Nullifier_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Nullifier - Damage Reduction",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "VulnerabilityPercentage",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"Expression": 25
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Nullifier_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Nullifier - Corrode and Shatter",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Aura",
+								"AttachedEffects": [
+									{
+										"Type": "Debuff",
+										"Stat": "PhysicalResist",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 25,
+										"FrequencyMs": 1000,
+										"Expression": {
+											"Percentage": 40,
+											"Stat": "PhysicalResist",
+											"StatSource": "Receiver"
+										}
+									},
+									{
+										"Type": "Debuff",
+										"Stat": "EnergyResist",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 25,
+										"FrequencyMs": 1000,
+										"Expression": {
+											"Percentage": 40,
+											"Stat": "EnergyResist",
+											"StatSource": "Receiver"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Nullifier",
+	"DisplayDescription": "Gain <DamageReduction>25%</> <DamageReduction>Damage Reduction</>.\r\n\r\nShatter and Corrode all enemies within 25-hexes with increased effectiveness.\r\n\r\n<Italic>Shatter: Reduces target's Physical Resistances by</> <Hyper>40%.</>\r\n\r\n<Italic>Corrode: Reduces target's Energy Resistances by</> <Hyper>40%.</>",
+	"Description": {
+		"Format": "Gain <DamageReduction>{DmgRed}%</> <DamageReduction>Damage Reduction</>.\r\n\r\nShatter and Corrode all enemies within {Radius}-hexes with increased effectiveness.\r\n\r\n<Italic>Shatter: Reduces target's Physical Resistances by</> <Hyper>{DebuffVal}%.</>\r\n\r\n<Italic>Corrode: Reduces target's Energy Resistances by</> <Hyper>{DebuffVal}%.</>",
+		"Parameters": {
+			"DmgRed": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"Radius": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffects[1].RadiusUnits",
+				"ValueMultiplier": 1.0
+			},
+			"DebuffVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Gain 25% Damage Reduction.\r\n\r\nShatter and Corrode all enemies within 25-hexes with increased effectiveness.\r\n\r\nShatter: Reduces target's Physical Resistances by 40%.\r\n\r\nCorrode: Reduces target's Energy Resistances by 40%."
+}

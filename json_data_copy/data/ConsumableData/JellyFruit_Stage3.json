@@ -1,0 +1,41 @@
+{
+	"Name": "JellyFruit",
+	"Stage": 3,
+	"Tier": 3,
+	"Abilities": [
+		{
+			"Name": "Consumable - Jelly Fruit",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "OP and Energy Regen buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"DurationMs": -1,
+								"Expression": 60
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyRegeneration",
+								"Expression": 600,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

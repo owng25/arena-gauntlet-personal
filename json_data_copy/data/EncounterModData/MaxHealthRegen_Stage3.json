@@ -1,0 +1,38 @@
+{
+	"Name": "MaxHealthRegen",
+	"Stage": 3,
+	"Abilities": [
+		{
+			"Name": "Max Health Regen",
+			"TotalDurationMs": 0,
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 1000
+			},
+			"Skills": [
+				{
+					"Name": "Instant heal",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantHeal",
+								"HealType": "Normal",
+								"Expression": {
+									"Percentage": 4,
+									"Stat": "MaxHealth",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

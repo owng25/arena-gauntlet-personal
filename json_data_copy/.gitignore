@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+.idea*
+/src/.vs
+/src/*/bin
+/src/*/obj
+/src/*/*.nupkg
+/src/*/TestResults
+
+#not committing generated files right now
+/src/Illuvium.DataModels/generated

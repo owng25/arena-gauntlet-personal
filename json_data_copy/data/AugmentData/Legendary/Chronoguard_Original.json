@@ -1,0 +1,117 @@
+{
+	"Name": "Chronoguard",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "Chronoguard_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Chronoguard - Gain Resistances",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalResist",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"Expression": 200
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"Expression": 200
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Chronoguard_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnHit",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"SenderAllegiance": "Enemy",
+				"ReceiverAllegiance": "Self",
+				"EveryX": true,
+				"MaxActivations": 40
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Chronoguard - Deplete Resistances and Heal",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalResist",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"Expression": -5
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"Expression": -5
+							},
+							{
+								"Type": "InstantHeal",
+								"HealType": "Normal",
+								"Expression": {
+									"Percentage": 1,
+									"Stat": "MaxHealth",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Chronoguard",
+	"DisplayDescription": "Gain <Resistance>200</> Resistances. Each time the holder is hit by an attack, reduce this bonus by <Resistance>5</> and heal <MaxHealth>1%</> Max Health.",
+	"Description": {
+		"Format": "Gain <Resistance>{ResistancesVal}</> Resistances. Each time the holder is hit by an attack, reduce this bonus by <Resistance>{ResistDecay}</> and heal <MaxHealth>{HealVal}%</> Max Health.",
+		"Parameters": {
+			"ResistancesVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"ResistDecay": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": -1.0
+			},
+			"HealVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[2].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Gain 200 Resistances. Each time the holder is hit by an attack, reduce this bonus by 5 and heal 1% Max Health."
+}

@@ -1,0 +1,460 @@
+{
+  "ProductionId": "Milestone_Overworld_Fuse_Stage2",
+  "Name": "Fuse all stage 2 Illuvials",
+  "Description": "Fuse all stage 2 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "002_Axolotl_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse an Axon Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "005_Pterodactyl_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Rhamphite Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "008_SeaScorpion_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Rypterus Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "011_Thylacine_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Rake Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "014_Turtle_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse an Archos Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "017_AntEater_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Verminio Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "020_Beetle_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Goliant Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "023_Dodo_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Kukkulus Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "026_Elk_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse an Adoredo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "029_Pangolin_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Singe Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "032_PistolShrimp_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Synalph Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "035_Shoebill_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Fernite Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "038_StarNosedMole_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Loulura Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "041_Taipan_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Phyriox Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "044_Snail_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Teeantee Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "047_Mammoth_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Mah\u0027tu Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "050_Squid_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse an Octius Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "053_PolarBear_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Jokull Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "056_Tiktaalik_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Fludd Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "059_Monkier_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Monkier Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "062_Aapon_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Aapon Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "065_Grilla_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Grilla Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "068_Tenrec_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Revo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "071_KomodoDragon_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Krunk Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "074_PoodleMoth_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse an Artace Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "077_Sloth_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Twine Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "080_TreeKangaroo_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Tii\u0027Ruo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "083_Penguin_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Stabbin Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "086_FennecFox_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Quinx Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "089_WaterBuffalo_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Caradulo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "092_TerrorBird_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Phorus Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "095_DropBear_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Chukoorl Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "098_RedPanda_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Rai-lu Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "101_Lynx_Stage2_FighterNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Relentless Lynx Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "102_Lynx_Stage2_RogueNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Nimble Lynx Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "103_Lynx_Stage2_BulwarkNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Stoic Lynx Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "104_Lynx_Stage2_PsionNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse an Arcane Lynx Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "105_Lynx_Stage2_EmpathNone_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Virtuous Lynx Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "131_DokaWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Water Doka Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "132_DokaEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Earth Doka Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "133_DokaFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Fire Doka Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "134_DokaNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Nature Doka Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "135_DokaAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Air Doka Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "136_GrokkoWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Water Grokko Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "137_GrokkoEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Earth Grokko Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "138_GrokkoFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Fire Grokko Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "139_GrokkoNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Nature Grokko Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "140_GrokkoAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Air Grokko Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "141_VolanteWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Water Volante Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "142_VolanteEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Earth Volante Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "143_VolanteFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Fire Volante Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "144_VolanteNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Nature Volante Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "145_VolanteAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Air Volante Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "146_FliishWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Water Fliish Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "147_FliishEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Earth Fliish Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "148_FliishFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Fire Fliish Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "149_FliishNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Nature Fliish Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "150_FliishAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Air Fliish Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "151_AtippoWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Water Atippo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "152_AtippoEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Earth Atippo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "153_AtippoFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Fire Atippo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "154_AtippoNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Nature Atippo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    },
+    {
+      "Name": "155_AtippoAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Description": "Fuse a Greater Air Atippo Illuvial",
+      "Type": "FuseIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

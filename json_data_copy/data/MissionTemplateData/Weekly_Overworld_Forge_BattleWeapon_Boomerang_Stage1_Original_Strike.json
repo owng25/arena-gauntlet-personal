@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Boomerang_Stage1_Original_Strike",
+  "Name": "Forge a Strike Boomerang",
+  "Description": "Forge a Strike Boomerang",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Boomerang_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Strike Boomerang",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

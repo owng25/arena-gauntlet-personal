@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Weekly_Arena_Survival_Competitive_Tier3_Play",
+  "Name": "Play {0} Arena Survival Competitive Games",
+  "Description": "Play {0} Arena Survival Competitive Games",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "GameMode": "Survival",
+      "Quantity": 35,
+      "Queue": "Competitive",
+      "WinRequired": false,
+      "Description": "Play {0} Arena Survival Competitive Games",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+	"Name": "NaniticDiscord",
+	"Stage": 2,
+	"Tier": 2,
+	"Abilities": [
+		{
+			"Name": "Debuff - Nanitic Discord",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Attack Speed debuff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": -30,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

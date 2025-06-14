@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Cybercore_Stage3_Original_Perfected",
+  "Name": "Forge a Perfected Cybercore",
+  "Description": "Forge a Perfected Cybercore",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Cybercore_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Perfected Cybercore",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

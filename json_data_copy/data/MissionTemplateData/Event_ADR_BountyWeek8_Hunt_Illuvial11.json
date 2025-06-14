@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek8_Hunt_Illuvial11",
+  "Name": "Collect a Carablu",
+  "Description": "Collect a Carablu",
+  "Expiry": "2025-05-29",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-22T00:00:00.0000000Z",
+      "EndTime": "2025-05-29T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "088_WaterBuffalo_Stage1_Default_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect a Carablu",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 3,
+      "Type": "AirdropReward"
+    }
+  ]
+}

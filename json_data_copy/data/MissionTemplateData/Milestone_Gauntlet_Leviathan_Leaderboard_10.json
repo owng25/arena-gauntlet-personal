@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Milestone_Gauntlet_Leviathan_Leaderboard_10",
+  "Name": "Reach top {0} on the Leviathan Gauntlet Leaderboard",
+  "Description": "Reach top {0} on the Leviathan Gauntlet Leaderboard (Snapshot at 00:00 UTC)",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "GameMode": "GauntletLeviathan",
+      "Rank": 10,
+      "Description": "Reach top {0} on the Leviathan Gauntlet Leaderboard (Snapshot at 00:00 UTC)",
+      "Type": "LeaderboardObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

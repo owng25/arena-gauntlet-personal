@@ -1,0 +1,239 @@
+{
+	"Name": "EclipseCatalyst",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "EclipseCatalyst_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 5000,
+				"MaxActivations": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "EclipseCatalyst - Ally Buffs 1",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Ally",
+						"Self": true,
+						"RadiusUnits": 25
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": 40
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "EclipseCatalyst_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 10000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "EclipseCatalyst - Enemy Debuffs",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Enemy",
+						"RadiusUnits": 25
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "PhysicalResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "PhysicalResist",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "EnergyResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "EnergyResist",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "EclipseCatalyst_Ability1.1",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 10000,
+				"NotBeforeMs": 15000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "EclipseCatalyst - Ally Buffs 1.1",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Ally",
+						"Self": true,
+						"RadiusUnits": 25
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 5000,
+								"Expression": 40
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Eclipse Catalyst",
+	"DisplayDescription": "Every 5 seconds, the holder alternates between Light and Dark states, affecting units within 25-hexes.\r\n\r\nLight: Allies gain <AttackDamage>40%</> <AttackDamage>Attack Damage</> and <OmegaPowerPercentage>40%</> <OmegaPowerPercentage>Omega Power</>.\r\n\r\nDark: Enemies lose <AttackSpeed>40%</> <AttackSpeed>Attack Speed</> and <Resistance>40%</> <Resistance>Resistances</>.",
+	"Description": {
+		"Format": "Every {TriggerTime} seconds, the holder alternates between Light and Dark states, affecting units within {Radius}-hexes.\r\n\r\nLight: Allies gain <AttackDamage>{ADVal}%</> <AttackDamage>Attack Damage</> and <OmegaPowerPercentage>{OPVal}%</> <OmegaPowerPercentage>Omega Power</>.\r\n\r\nDark: Enemies lose <AttackSpeed>{ASVal}%</> <AttackSpeed>Attack Speed</> and <Resistance>{ResistVal}%</> <Resistance>Resistances</>.",
+		"Parameters": {
+			"TriggerTime": {
+				"ParameterPath": "Abilities[0].ActivationTrigger.ActivateEveryTimeMs",
+				"ValueMultiplier": 0.001
+			},
+			"Radius": {
+				"ParameterPath": "Abilities[0].Skills[0].Targeting.RadiusUnits",
+				"ValueMultiplier": 1.0
+			},
+			"ADVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"OPVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"ASVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"ResistVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Every 5 seconds, the holder alternates between Light and Dark states, affecting units within 25-hexes.\r\n\r\nLight: Allies gain 40% Attack Damage and 40% Omega Power.\r\n\r\nDark: Enemies lose 40% Attack Speed and 40% Resistances."
+}

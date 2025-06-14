@@ -1,0 +1,34 @@
+{
+	"Name": "EnergyRegen",
+	"Stage": 2,
+	"Abilities": [
+		{
+			"Name": "Energy Regen",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Energy Regen Buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "EnergyRegeneration",
+								"DurationMs": -1,
+								"Expression": 300
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

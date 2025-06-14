@@ -1,0 +1,67 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier5_Stage2",
+  "Name": "Capture all Tier 5 Stage 2 Illuvials",
+  "Description": "Capture all Tier 5 Stage 2 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "005_Pterodactyl_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 5,
+      "Description": "Capture a Rhamphite",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "020_Beetle_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 5,
+      "Description": "Capture a Goliant",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "026_Elk_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 5,
+      "Description": "Capture an Adoredo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "032_PistolShrimp_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 5,
+      "Description": "Capture a Synalph",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "050_Squid_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 5,
+      "Description": "Capture an Octius",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "092_TerrorBird_Stage2_Default_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 5,
+      "Description": "Capture a Phorus",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

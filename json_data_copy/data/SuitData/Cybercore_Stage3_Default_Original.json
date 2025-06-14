@@ -1,0 +1,139 @@
+{
+	"Name": "Cybercore",
+	"Stage": 3,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 100,
+		"EnergyResist": 100,
+		"MaxHealth": 2100000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2500,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "MudSynergy_Empower",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"NumberOfAbilitiesActivated": 1,
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "AttackSpeed Reduction",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Merge",
+								"DurationMs": 5000,
+								"FrequencyMs": 500,
+								"Expression": {
+									"Percentage": 30,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "On Attack, gain 2% Attack Speed.",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "On Attack, gain 2% Attack Speed",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Merge",
+								"DurationMs": 5000,
+								"FrequencyMs": 500,
+								"Expression": {
+									"Percentage": 30,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Perfected Cybercore",
+	"DisplayDescription": "Health: 2,100\r\nPhysical Resist: 100\r\nEnergy Resist: 100\r\nMovement Speed: 25\r\n\r\nPassive: Attacks steal 30% Attack Speed from your target for 5 seconds.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Attacks steal {d}% Attack Speed from your target for {e} seconds.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage"
+			},
+			"e": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 2,100\r\nPhysical Resist: 100\r\nEnergy Resist: 100\r\nMovement Speed: 25\r\n\r\nPassive: Attacks steal 30% Attack Speed from your target for 5 seconds."
+}

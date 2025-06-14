@@ -1,0 +1,126 @@
+{
+	"Name": "Corroder",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "Corroder_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Corroder - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 25
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Corroder_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Corroder - Corrode",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": true,
+								"ActivationsUntilExpiry": 1,
+								"ActivatedBy": "Attack",
+								"AttachedEffectPackageAttributes": {
+									"Propagation": {
+										"PropagationType": "Splash",
+										"IgnoreFirstPropagationReceiver": false,
+										"SplashRadiusUnits": 25,
+										"EffectPackage": {
+											"Effects": [
+												{
+													"Type": "Debuff",
+													"Stat": "EnergyResist",
+													"DurationMs": 5000,
+													"Expression": {
+														"Percentage": 25,
+														"Stat": "EnergyResist",
+														"StatSource": "Receiver"
+													}
+												}
+											]
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Corroder",
+	"DisplayDescription": "Attacks Corrode the target and all enemies within 25-hexes for 5 seconds.\r\n\r\nStats:\r\n+25 <OmegaPowerPercentage>Omega Power</>\r\n\r\n<Italic>Corrode: Reduces target's Energy Resistances by 25%.</>",
+	"Description": {
+		"Format": "Attacks Corrode the target and all enemies within {Radius}-hexes for {Duration} seconds.\r\n\r\nStats:\r\n+{Stat_OP} <OmegaPowerPercentage>Omega Power</>\r\n\r\n<Italic>Corrode: Reduces target's Energy Resistances by 25%.</>",
+		"Parameters": {
+			"Radius": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffectPackageAttributes.Propagation.SplashRadiusUnits",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffectPackageAttributes.Propagation.EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_OP": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Attacks Corrode the target and all enemies within 25-hexes for 5 seconds.\r\n\r\nStats:\r\n+25 Omega Power\r\n\r\nCorrode: Reduces target's Energy Resistances by 25%."
+}

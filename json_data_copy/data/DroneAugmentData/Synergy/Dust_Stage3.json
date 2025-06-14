@@ -1,0 +1,26 @@
+{
+	"Name": "Dust",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Dust Matrix",
+	"DisplayDescription": "Gain a Dust Imprint and a Sunder Matrix.",
+	"Description": {
+		"Format": "Gain a Dust Imprint and a Sunder Matrix.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Dust",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "SunderMatrix",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

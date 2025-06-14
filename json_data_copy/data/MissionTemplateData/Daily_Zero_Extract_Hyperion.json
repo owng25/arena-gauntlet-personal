@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Zero_Extract_Hyperion",
+  "Name": "Extract Hyperion",
+  "Description": "Extract {0} Hyperion from a Hyperion site",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Zero",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "Quantity": 20,
+      "ResourceType": "Hyperion",
+      "Description": "Extract {0} Hyperion from a Hyperion site",
+      "Type": "ExtractResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

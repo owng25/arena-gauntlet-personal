@@ -1,0 +1,219 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier0_Stage2",
+  "Name": "Capture all Tier 0 Stage 2 Illuvials",
+  "Description": "Capture all Tier 0 Stage 2 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "131_DokaWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Water Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "132_DokaEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Earth Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "133_DokaFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Fire Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "134_DokaNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Nature Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "135_DokaAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Air Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "136_GrokkoWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Water Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "137_GrokkoEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Earth Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "138_GrokkoFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Fire Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "139_GrokkoNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Nature Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "140_GrokkoAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Air Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "141_VolanteWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Water Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "142_VolanteEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Earth Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "143_VolanteFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Fire Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "144_VolanteNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Nature Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "145_VolanteAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Air Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "146_FliishWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Water Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "147_FliishEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Earth Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "148_FliishFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Fire Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "149_FliishNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Nature Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "150_FliishAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Air Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "151_AtippoWater_Stage2_Water_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Water Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "152_AtippoEarth_Stage2_Earth_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Earth Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "153_AtippoFire_Stage2_Fire_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Fire Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "154_AtippoNature_Stage2_Nature_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Nature Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "155_AtippoAir_Stage2_Air_Original",
+      "Quantity": 1,
+      "Stage": 2,
+      "Tier": 0,
+      "Description": "Capture a Greater Air Atippo",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

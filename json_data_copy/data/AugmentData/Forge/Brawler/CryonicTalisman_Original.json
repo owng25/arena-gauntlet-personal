@@ -1,0 +1,155 @@
+{
+	"Name": "CryonicTalisman",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "CryonicTalisman_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Cryonic Talisman - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 300000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 15
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 15
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "CryonicTalisman_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 1000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Cryonic Talisman - Inflict Frost",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy",
+						"Lowest": true,
+						"Num": 1
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 990,
+								"Expression": {
+									"Percentage": 25,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Cryonic Talisman",
+	"DisplayDescription": "The closest enemy is inflicted with Frost.\r\n\r\nStats:\r\n+10% <AttackDamage>Attack Damage</>\r\n+300 <MaxHealth>Health</>\r\n+15 <Resistance>Resistances</>\r\n\r\n<Italic>Frost: Reduces target's Attack Speed by 25%</>",
+	"Description": {
+		"Format": "The closest enemy is inflicted with Frost.\r\n\r\nStats:\r\n+{Stat_AD}% <AttackDamage>Attack Damage</>\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_Resist} <Resistance>Resistances</>\r\n\r\n<Italic>Frost: Reduces target's Attack Speed by 25%</>",
+		"Parameters": {
+			"Stat_AD": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_Resist": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[4].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The closest enemy is inflicted with Frost.\r\n\r\nStats:\r\n+10% Attack Damage\r\n+300 Health\r\n+15 Resistances\r\n\r\nFrost: Reduces target's Attack Speed by 25%"
+}

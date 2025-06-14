@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Zero_Convert_Silicon",
+  "Name": "Convert Silicon",
+  "Description": "Convert {0} Silicon into a different resource using a Sequestration Plant or a Condenser Plant",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 2,
+  "Game": "Zero",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "Quantity": 800000,
+      "ResourceType": "Silicon",
+      "Description": "Convert {0} Silicon into a different resource using a Sequestration Plant or a Condenser Plant",
+      "Type": "ConvertResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

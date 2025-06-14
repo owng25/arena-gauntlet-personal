@@ -1,0 +1,73 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier5_Stage3_holo",
+  "Name": "Capture all Tier 5 Stage 3 Illuvials (Holo Finish)",
+  "Description": "Capture all Tier 5 Stage 3 Illuvials (Holo Finish)",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "006_Pterodactyl_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Finish": "Holo",
+      "Description": "Capture a Holo Rhamphyre",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "021_Beetle_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Finish": "Holo",
+      "Description": "Capture a Holo Titanor",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "027_Elk_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Finish": "Holo",
+      "Description": "Capture a Holo Adorius",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "033_PistolShrimp_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Finish": "Holo",
+      "Description": "Capture a Holo Dualeph",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "051_Squid_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Finish": "Holo",
+      "Description": "Capture a Holo Ophisto",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "093_TerrorBird_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 5,
+      "Finish": "Holo",
+      "Description": "Capture a Holo Phosphorus",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Multiplier": 0.05,
+      "Type": "AirdropMultiplierReward"
+    }
+  ]
+}

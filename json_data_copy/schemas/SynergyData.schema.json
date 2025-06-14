@@ -1,0 +1,162 @@
+﻿{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Combat Synergy Data",
+	"oneOf": [
+		{
+			"$ref": "#/$defs/CombatAffinityType"
+		},
+		{
+			"$ref": "#/$defs/CombatClassType"
+		}
+	],
+	"$defs": {
+		"CombatSynergyBonus": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"DisplayName": {
+					"type": "string"
+				},
+				"DisplayDescription": {
+					"type": "string"
+				},
+				"DisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"HyperDisplayDescription": {
+					"type": "string"
+				},
+				"HyperDisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"DisplayDescriptionThresholds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"DisplayDescriptionThresholdsNormalized": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Description": {
+					"$ref": "CombatUnitData.schema.json#/$defs/DescriptionType"
+				},
+				"HyperDescription": {
+					"$ref": "CombatUnitData.schema.json#/$defs/DescriptionType"
+				},
+				"HyperDescriptionParts": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/HyperDescriptionPartType"
+					}
+				},
+				"DescriptionThresholds": {
+					"$ref": "#/$defs/DescriptionThresholdsType"
+				},
+				"SynergyThresholds": {
+					"type": "array",
+					"items": {
+						"type": "integer"
+					}
+				},
+				"SynergyThresholdsAbilities": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatSynergyThresholdsAbilityType"
+				},
+				"DisableIntrinsicAbilitiesOnFirstThreshold": {
+					"type": "boolean"
+				},
+				"IntrinsicAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"HyperAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				}
+			}
+		},
+		"HyperDescriptionPartType": {
+			"type": "object",
+			"properties": {
+				"DisplayDescription": {
+					"type": "string"
+				},
+				"DisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"StatType": {
+					"type": "string"
+				},
+				"Description": {
+					"$ref": "CombatUnitData.schema.json#/$defs/DescriptionType"
+				}
+			},
+			"required": ["StatType", "Description"],
+			"additionalProperties": false
+		},
+		"DescriptionThresholdsType": {
+			"type": "object",
+			"properties": {
+				"Format": {
+					"type": "string"
+				},
+				"Parameters": {
+					"type": "array",
+					"items": {
+						"additionalProperties": { "$ref": "CombatUnitData.schema.json#/$defs/DescriptionTypeParameters" }
+					}
+				}
+			},
+			"required": ["Format"],
+			"additionalProperties": false
+		},
+		"CombatAffinityType": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/CombatSynergyBonus"
+				}
+			],
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"CombatAffinity": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatAffinityEnum"
+				},
+				"CombatAffinityComponents": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"unevaluatedProperties": false
+		},
+		"CombatClassType": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/CombatSynergyBonus"
+				}
+			],
+			"properties": {
+				"CombatClass": {
+					"$ref": "CombatUnitData.schema.json#/$defs/CombatClassEnum"
+				},
+				"CombatClassComponents": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"unevaluatedProperties": false
+		}
+	}
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Flail_Stage2_Original_Torrent",
+  "Name": "Forge a Torrent Flail",
+  "Description": "Forge a Torrent Flail",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Flail_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Torrent Flail",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

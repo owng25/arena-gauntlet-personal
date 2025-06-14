@@ -1,0 +1,178 @@
+{
+	"Name": "Duskfall",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "Duskfall_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Duskfall - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 100000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Duskfall_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Duskfall - Target Enemies",
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Targeting": {
+						"Type": "Allegiance",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnMark",
+								"MarkType": "Detrimental",
+								"DurationMs": -1,
+								"ShouldDestroyAttachedEntityOnSenderDeath": true,
+								"AttachedAbilities": [
+									{
+										"Name": "Duskfall_SubAbility1",
+										"ActivationTrigger": {
+											"TriggerType": "OnVanquish",
+											"Allegiance": "Self"
+										},
+										"TotalDurationMs": 0,
+										"Skills": [
+											{
+												"Name": "Duskfall - Debuff AD and OP",
+												"Deployment": {
+													"Type": "Direct",
+													"Guidance": [
+														"Ground",
+														"Underground",
+														"Airborne"
+													]
+												},
+												"Targeting": {
+													"Type": "Self"
+												},
+												"EffectPackage": {
+													"Effects": [
+														{
+															"Type": "Debuff",
+															"Stat": "AttackPhysicalDamage",
+															"OverlapProcessType": "Sum",
+															"DurationMs": 5000,
+															"Expression": {
+																"Percentage": 25,
+																"Stat": "AttackPhysicalDamage",
+																"StatSource": "Receiver"
+															}
+														},
+														{
+															"Type": "Debuff",
+															"Stat": "AttackEnergyDamage",
+															"OverlapProcessType": "Sum",
+															"DurationMs": 5000,
+															"Expression": {
+																"Percentage": 25,
+																"Stat": "AttackEnergyDamage",
+																"StatSource": "Receiver"
+															}
+														},
+														{
+															"Type": "Debuff",
+															"Stat": "AttackPureDamage",
+															"OverlapProcessType": "Sum",
+															"DurationMs": 5000,
+															"Expression": {
+																"Percentage": 25,
+																"Stat": "AttackPureDamage",
+																"StatSource": "Receiver"
+															}
+														},
+														{
+															"Type": "Debuff",
+															"Stat": "OmegaPowerPercentage",
+															"OverlapProcessType": "Sum",
+															"DurationMs": 5000,
+															"Expression": 25
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Duskfall",
+	"DisplayDescription": "When an ally or the holder is Vanquished, all enemies lose <AttackDamage>25%</> <AttackDamage>Attack Damage</> and <OmegaPowerPercentage>25</> <OmegaPowerPercentage>Omega Power</> for 5 seconds.\r\n\r\nStats:\r\n+100 <MaxHealth>Health</>\r\n+10 <OmegaPowerPercentage>Omega Power</>",
+	"Description": {
+		"Format": "When an ally or the holder is Vanquished, all enemies lose <AttackDamage>{DebuffValue}%</> <AttackDamage>Attack Damage</> and <OmegaPowerPercentage>{DebuffValue}</> <OmegaPowerPercentage>Omega Power</> for {Duration} seconds.\r\n\r\nStats:\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_OP} <OmegaPowerPercentage>Omega Power</>",
+		"Parameters": {
+			"DebuffValue": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_OP": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "When an ally or the holder is Vanquished, all enemies lose 25% Attack Damage and 25 Omega Power for 5 seconds.\r\n\r\nStats:\r\n+100 Health\r\n+10 Omega Power"
+}

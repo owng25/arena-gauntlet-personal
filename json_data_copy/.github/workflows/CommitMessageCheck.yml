@@ -1,0 +1,21 @@
+name: 'Commit Message Check'
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+
+jobs:
+  check-commit-message:
+    name: Check Commit Message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure Jira reference
+        uses: gsactions/commit-message-checker@v1
+        with:
+          pattern: '^(\[[A-Z\d]+-\d+\])+\s+.+'
+          flags: ''
+          error: 'Commit message must have Jira prefix such as [BACKEND-396]'
+          excludeDescription: 'true' # optional: this excludes the description body of a pull request

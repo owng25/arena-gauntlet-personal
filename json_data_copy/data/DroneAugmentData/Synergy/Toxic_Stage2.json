@@ -1,0 +1,21 @@
+{
+	"Name": "Toxic",
+	"Stage": 2,
+	"Type": "Game",
+	"DisplayName": "Toxic Module",
+	"DisplayDescription": "Gain a Toxic Imprint.",
+	"Description": {
+		"Format": "Gain a Toxic Imprint.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Toxic",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

@@ -1,0 +1,237 @@
+{
+	"Name": "ArcticDominion",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "ArcticDominion_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "ArcticDominion - Inflict Frost",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Merge",
+								"DurationMs": 3000,
+								"Expression": {
+									"Percentage": 25,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "ArcticDominion_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnVanquish",
+				"Allegiance": "Self"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "ArcticDominion - Vanquish by Self",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy",
+						"Lowest": true,
+						"Num": 1
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "NegativeState",
+								"NegativeState": "Frozen",
+								"DurationMs": 3000
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "VulnerabilityPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 3000,
+								"Expression": 30
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "ArcticDominion_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Arctic Dominion - Target Enemies",
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Targeting": {
+						"Type": "Allegiance",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Ally"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnMark",
+								"MarkType": "Beneficial",
+								"DurationMs": -1,
+								"ShouldDestroyAttachedEntityOnSenderDeath": true,
+								"AttachedAbilities": [
+									{
+										"Name": "ArcticDominion_SubAbility1",
+										"ActivationTrigger": {
+											"TriggerType": "OnVanquish",
+											"Allegiance": "Self"
+										},
+										"TotalDurationMs": 0,
+										"Skills": [
+											{
+												"Name": "Arctic Dominion - Frozen and extra Damage",
+												"Targeting": {
+													"Type": "DistanceCheck",
+													"Guidance": [
+														"Ground",
+														"Underground",
+														"Airborne"
+													],
+													"Group": "Enemy",
+													"Lowest": true,
+													"Num": 1
+												},
+												"Deployment": {
+													"Type": "Direct",
+													"Guidance": [
+														"Ground",
+														"Underground",
+														"Airborne"
+													]
+												},
+												"EffectPackage": {
+													"Effects": [
+														{
+															"Type": "NegativeState",
+															"NegativeState": "Frozen",
+															"DurationMs": 3000
+														},
+														{
+															"Type": "Debuff",
+															"Stat": "VulnerabilityPercentage",
+															"OverlapProcessType": "Merge",
+															"DurationMs": 3000,
+															"Expression": 30
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "ArcticDominion_Ability4",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Arctic Dominion - Immune to Frost and Frozen",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "PositiveState",
+								"PositiveState": "Immune",
+								"DurationMs": -1,
+								"AttachableEffectTypeList": [
+									{
+										"Type": "NegativeState",
+										"NegativeState": "Frozen"
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Arctic Dominion",
+	"DisplayDescription": "The holder is Immune to Frozen and attacks inflict Frost for 3 seconds.\r\n\r\nWhen an enemy is Vanquished, the closest enemy to the Vanquisher is Frozen and takes <DamageAmplification>30%</> more damage for 3 seconds.\r\n\r\n<Italic>Frost: Reduces target's Attack Speed by 25%.</>\r\n\r\n<Italic>Frozen: Cannot move, attack, use abilities and gain Energy.</>",
+	"Description": {
+		"Format": "The holder is Immune to Frozen and attacks inflict Frost for {FrostDuration} seconds.\r\n\r\nWhen an enemy is Vanquished, the closest enemy to the Vanquisher is Frozen and takes <DamageAmplification>{DamageReduction}%</> more damage for {Duration} seconds.\r\n\r\n<Italic>Frost: Reduces target's Attack Speed by 25%.</>\r\n\r\n<Italic>Frozen: Cannot move, attack, use abilities and gain Energy.</>",
+		"Parameters": {
+			"FrostDuration": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"DamageReduction": {
+				"ParameterPath": "Abilities[2].Skills[0].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[2].Skills[0].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The holder is Immune to Frozen and attacks inflict Frost for 3 seconds.\r\n\r\nWhen an enemy is Vanquished, the closest enemy to the Vanquisher is Frozen and takes 30% more damage for 3 seconds.\r\n\r\nFrost: Reduces target's Attack Speed by 25%.\r\n\r\nFrozen: Cannot move, attack, use abilities and gain Energy."
+}

@@ -1,0 +1,117 @@
+{
+	"Name": "Plasmaskin",
+	"Stage": 2,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 70,
+		"EnergyResist": 55,
+		"MaxHealth": 1550000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2200,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Holder has True Sight, 30% increased Attack Damage, and 30% increased Attack Speed.",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "True Sight and Attack Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "PositiveState",
+								"PositiveState": "Truesight",
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Blazing Plasmaskin",
+	"DisplayDescription": "Health: 1,550\r\nPhysical Resist: 70\r\nEnergy Resist: 55\r\nMovement Speed: 22\r\n\r\nPassive: Gain True Sight and 40% bonus Attack Damage.\r\n\r\nRadiant Plasmaskin: You and your 2 closest Allies gain True Sight. You gain 50% bonus Attack Damage.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain True Sight and {d}% bonus Attack Damage.\r\n\r\nRadiant Plasmaskin: You and your 2 closest Allies gain True Sight. You gain 50% bonus Attack Damage.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression.Percentage"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,550\r\nPhysical Resist: 70\r\nEnergy Resist: 55\r\nMovement Speed: 22\r\n\r\nPassive: Gain True Sight and 40% bonus Attack Damage.\r\n\r\nRadiant Plasmaskin: You and your 2 closest Allies gain True Sight. You gain 50% bonus Attack Damage."
+}

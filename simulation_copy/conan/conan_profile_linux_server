@@ -1,0 +1,5 @@
+include(conan_profile_linux)
+include(conan_profile_generic_unreal_and_server)
+
+[options]
+    enable_ue=False

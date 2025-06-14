@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Zero_Extract_Solon",
+  "Name": "Extract Solon",
+  "Description": "Extract {0} Solon from a Solon site",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Zero",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "Quantity": 20,
+      "ResourceType": "Solon",
+      "Description": "Extract {0} Solon from a Solon site",
+      "Type": "ExtractResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

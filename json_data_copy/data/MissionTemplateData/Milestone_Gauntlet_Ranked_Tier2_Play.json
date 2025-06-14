@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Milestone_Gauntlet_Ranked_Tier2_Play",
+  "Name": "Ranked Gauntlet Stalwart",
+  "Description": "Play {0} matches of Ranked Gauntlet",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "Quantity": 1000,
+      "GameMode": "Gauntlet",
+      "Queue": "Ranked",
+      "Description": "Play {0} matches of Ranked Gauntlet",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

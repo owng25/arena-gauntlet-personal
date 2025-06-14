@@ -1,0 +1,71 @@
+{
+	"Name": "SappingHex",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "Sapping Hex Ability",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 1000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Sapping Hex - Debuffs",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Enemy",
+						"RadiusUnits": 25
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "OmegaPowerPercentage",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"Expression": 3
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "EnergyResist",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"Expression": 3
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "PhysicalResist",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"Expression": 3
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Sapping Hex",
+	"DisplayDescription": "Enemies within 25-hexes lose 3 <OmegaPowerPercentage>Omega Power</> and <Resistance>Resistances</> per second.",
+	"Description": {
+		"Format": "Enemies within {Radius}-hexes lose {DebuffVal} <OmegaPowerPercentage>Omega Power</> and <Resistance>Resistances</> per second.",
+		"Parameters": {
+			"Radius": {
+				"ParameterPath": "Abilities[0].Skills[0].Targeting.RadiusUnits",
+				"ValueMultiplier": 1.0
+			},
+			"DebuffVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[2].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Enemies within 25-hexes lose 3 Omega Power and Resistances per second."
+}

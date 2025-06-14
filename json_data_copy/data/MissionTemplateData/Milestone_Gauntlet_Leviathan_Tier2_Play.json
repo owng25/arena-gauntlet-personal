@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Milestone_Gauntlet_Leviathan_Tier2_Play",
+  "Name": "Leviathan Gauntlet Stalwart",
+  "Description": "Play {0} matches of Leviathan Gauntlet",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "Quantity": 1000,
+      "GameMode": "Gauntlet",
+      "Queue": "Leviathan",
+      "Description": "Play {0} matches of Leviathan Gauntlet",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

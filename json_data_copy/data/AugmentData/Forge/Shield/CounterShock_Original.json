@@ -1,0 +1,142 @@
+{
+	"Name": "CounterShock",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "CounterShock_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "CounterShock - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 200000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "CounterShock_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "CounterShock - Target Enemies",
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Targeting": {
+						"Type": "Allegiance",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnMark",
+								"MarkType": "Detrimental",
+								"DurationMs": -1,
+								"ShouldDestroyAttachedEntityOnSenderDeath": true,
+								"AttachedAbilities": [
+									{
+										"Name": "CounterShock - Sub Ability",
+										"ActivationTrigger": {
+											"TriggerType": "OnActivateXAbilities",
+											"AbilityTypes": [
+												"Omega"
+											],
+											"EveryX": true,
+											"NumberOfAbilitiesActivated": 1
+										},
+										"TotalDurationMs": 0,
+										"Skills": [
+											{
+												"Name": "CounterShock - Deal Damage to Enemies",
+												"Deployment": {
+													"Type": "Direct"
+												},
+												"Targeting": {
+													"Type": "Self"
+												},
+												"EffectPackage": {
+													"Effects": [
+														{
+															"Type": "InstantDamage",
+															"DamageType": "Energy",
+															"Expression": {
+																"Percentage": 100,
+																"Stat": "EnergyCost",
+																"StatSource": "Sender"
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Counter Shock",
+	"DisplayDescription": "When enemies use their Omega, they are dealt <AttackEnergyDamage>100%</> of their <EnergyCost>Energy Cost</> as <AttackEnergyDamage>Energy Damage</>.\r\n\r\nStats:\r\n+200 <MaxHealth>Health</>\r\n+10 <EnergyResist>Energy Resistance</>",
+	"Description": {
+		"Format": "When enemies use their Omega, they are dealt <AttackEnergyDamage>{Damage}%</> of their <EnergyCost>Energy Cost</> as <AttackEnergyDamage>Energy Damage</>.\r\n\r\nStats:\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_EngResist} <EnergyResist>Energy Resistance</>",
+		"Parameters": {
+			"Damage": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_EngResist": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "When enemies use their Omega, they are dealt 100% of their Energy Cost as Energy Damage.\r\n\r\nStats:\r\n+200 Health\r\n+10 Energy Resistance"
+}

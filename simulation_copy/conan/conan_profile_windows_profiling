@@ -1,0 +1,9 @@
+include(conan_profile_windows)
+
+[settings]
+    build_type=RelWithDebInfo
+
+[options]
+    enable_profiling=True
+    enable_testing=True
+    enable_visualization=False

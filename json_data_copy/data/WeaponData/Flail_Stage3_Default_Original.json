@@ -1,0 +1,217 @@
+{
+	"Name": "Flail",
+	"Stage": 3,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Tsunami",
+	"CombatClass": "Aegis",
+	"DominantCombatAffinity": "Water",
+	"DominantCombatClass": "Bulwark",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 30000,
+		"EnergyCost": 140000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 175000,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 90,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 3,
+		"OmegaRangeUnits": 3,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Flail Attack III",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Waveforged Resurgence III",
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Empower next 5 attacks with Energy Damage",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"PercentageOfAbilityDuration": 50,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": true,
+								"ActivationsUntilExpiry": 5,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Energy",
+										"Expression": {
+											"Operation": "*",
+											"Operands": [
+												300000,
+												{
+													"Stat": "OmegaPowerPercentage",
+													"StatSource": "Sender"
+												}
+											]
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"Name": "Energy gain per hit during 4s",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"PercentageOfAbilityDuration": 50,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnMark",
+								"MarkType": "Beneficial",
+								"DurationMs": 4000,
+								"AttachedAbilities": [
+									{
+										"Name": "Energy gain per hit",
+										"ActivationTrigger": {
+											"TriggerType": "OnHit",
+											"AbilityTypes": [
+												"Attack",
+												"Omega"
+											],
+											"SenderAllegiance": "Self",
+											"ReceiverAllegiance": "Enemy"
+										},
+										"TotalDurationMs": 0,
+										"Skills": [
+											{
+												"Name": "Energy gain",
+												"Targeting": {
+													"Type": "InZone",
+													"Group": "Ally",
+													"RadiusUnits": 20,
+													"Self": true
+												},
+												"Deployment": {
+													"Type": "Direct"
+												},
+												"EffectPackage": {
+													"Effects": [
+														{
+															"Type": "InstantEnergyGain",
+															"Expression": 5000
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Tidal Flail",
+	"DisplayDescription": "The Ranger overcharges the flail, gaining 300*OP Energy Damage for the next 5 hits.\r\n\r\nAdditionally, the Ranger and Allies within 20 radius also receive 5 Energy per hit while overcharged.",
+	"Description": {
+		"Format": "The Ranger overcharges the flail, gaining {a}*OP Energy Damage for the next {b} hits.\r\n\r\nAdditionally, the Ranger and Allies within {d} radius also receive {c} Energy per hit while overcharged.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].ActivationsUntilExpiry"
+			},
+			"d": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].Targeting.RadiusUnits"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger overcharges the flail, gaining 300*OP Energy Damage for the next 5 hits.\r\n\r\nAdditionally, the Ranger and Allies within 20 radius also receive 5 Energy per hit while overcharged."
+}

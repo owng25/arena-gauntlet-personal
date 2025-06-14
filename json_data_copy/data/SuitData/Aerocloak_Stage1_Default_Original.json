@@ -1,0 +1,85 @@
+{
+	"Name": "Aerocloak",
+	"Stage": 1,
+	"Tier": 4,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 40,
+		"EnergyResist": 65,
+		"MaxHealth": 1100000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2000,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackDodgeChancePercentage",
+								"Expression": 10,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Nimbus Aerocloak",
+	"DisplayDescription": "Health: 1,100\r\nPhysical Resist: 40\r\nEnergy Resist: 65\r\nMovement Speed: 20\r\n\r\nPassive: Gain 10 Dodge Chance.\r\n\r\nZephyr Aerocloak: Dodging an Attack grants you 10% Crit Amp, up to 20 stacks. Gain 10 Dodge Chance.\r\n\r\nVortex Aerocloak: Dodging an Attack grants you 20% Crit Amp, up to 15 stacks. Gain 20 Dodge Chance and 10% Crit Chance.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d} Dodge Chance.\r\n\r\nZephyr Aerocloak: Dodging an Attack grants you 10% Crit Amp, up to 20 stacks. Gain 10 Dodge Chance.\r\n\r\nVortex Aerocloak: Dodging an Attack grants you 20% Crit Amp, up to 15 stacks. Gain 20 Dodge Chance and 10% Crit Chance.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,100\r\nPhysical Resist: 40\r\nEnergy Resist: 65\r\nMovement Speed: 20\r\n\r\nPassive: Gain 10 Dodge Chance.\r\n\r\nZephyr Aerocloak: Dodging an Attack grants you 10% Crit Amp, up to 20 stacks. Gain 10 Dodge Chance.\r\n\r\nVortex Aerocloak: Dodging an Attack grants you 20% Crit Amp, up to 15 stacks. Gain 20 Dodge Chance and 10% Crit Chance."
+}

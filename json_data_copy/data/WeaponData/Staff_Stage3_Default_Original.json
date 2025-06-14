@@ -1,0 +1,213 @@
+{
+	"Name": "Staff",
+	"Stage": 3,
+	"Tier": 1,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Inferno",
+	"CombatClass": "Mystic",
+	"DominantCombatAffinity": "Fire",
+	"DominantCombatClass": "Empath",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 30000,
+		"EnergyCost": 120000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 90000,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 80,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 50,
+		"OmegaRangeUnits": 50,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Staff Attack III",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						]
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 50
+					},
+					"Projectile": {
+						"SizeUnits": 0,
+						"IsHoming": true,
+						"SpeedSubUnits": 10000,
+						"IsBlockable": false,
+						"ApplyToAll": false
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Infernal Convergence III",
+			"TotalDurationMs": 2000,
+			"Skills": [
+				{
+					"Name": "Spinning Projectile",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 45
+					},
+					"Projectile": {
+						"SizeUnits": 3,
+						"IsHoming": true,
+						"SpeedSubUnits": 5600,
+						"IsBlockable": false,
+						"ApplyToAll": false
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Attributes": {
+							"Propagation": {
+								"PropagationType": "Splash",
+								"SplashRadiusUnits": 20,
+								"DeploymentGuidance": [
+									"Ground",
+									"Airborne"
+								],
+								"EffectPackage": {
+									"Effects": [
+										{
+											"Type": "InstantDamage",
+											"DamageType": "Energy",
+											"Expression": {
+												"Operation": "+",
+												"Operands": [
+													{
+														"Operation": "*",
+														"Operands": [
+															200000,
+															{
+																"Stat": "OmegaPowerPercentage",
+																"StatSource": "Sender"
+															}
+														]
+													},
+													{
+														"Operation": "%",
+														"Operands": [
+															3,
+															{
+																"Operation": "-",
+																"Operands": [
+																	{
+																		"Stat": "MaxHealth",
+																		"StatSource": "Receiver"
+																	},
+																	{
+																		"Stat": "CurrentHealth",
+																		"StatSource": "Receiver"
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						},
+						"Effects": []
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Infernaut Staff",
+	"DisplayDescription": "The Ranger releases a whirling projectile from their staff, igniting the target upon impact and inflicting damage equal to 200*OP + 3% of the target's Missing Health.\r\n\r\nUpon impact, the explosion extends outward, dealing the same damage to nearby enemies within 20 radius.",
+	"Description": {
+		"Format": "The Ranger releases a whirling projectile from their staff, igniting the target upon impact and inflicting damage equal to {a}*OP + {b}% of the target's Missing Health.\r\n\r\nUpon impact, the explosion extends outward, dealing the same damage to nearby enemies within {c} radius.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Attributes.Propagation.EffectPackage.Effects[0].Expression.Operands[0].Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Attributes.Propagation.EffectPackage.Effects[0].Expression.Operands[1].Operands[0]"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Attributes.Propagation.SplashRadiusUnits"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger releases a whirling projectile from their staff, igniting the target upon impact and inflicting damage equal to 200*OP + 3% of the target's Missing Health.\r\n\r\nUpon impact, the explosion extends outward, dealing the same damage to nearby enemies within 20 radius."
+}

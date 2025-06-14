@@ -1,0 +1,61 @@
+{
+	"Name": "AttackDamage",
+	"Stage": 1,
+	"Abilities": [
+		{
+			"Name": "Attack Damage",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Attack Damage Buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 12,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 12,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 12,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Consumable_Floraball_Tier1",
+  "Name": "Gather {0} Common Floraball",
+  "Description": "Gather {0} Common Floraball by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "Consumable",
+      "Name": "Floraball_Tier1",
+      "Quantity": 25,
+      "Description": "Gather {0} Common Floraball by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

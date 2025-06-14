@@ -1,0 +1,208 @@
+{
+	"Name": "Lance",
+	"Stage": 2,
+	"Tier": 5,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Air",
+	"CombatClass": "Vanguard",
+	"DominantCombatAffinity": "Air",
+	"DominantCombatClass": "Bulwark",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 30000,
+		"EnergyCost": 150000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 125000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 90,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 30,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 4,
+		"OmegaRangeUnits": 4,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Lance Attack II",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Sirocco Strike II",
+			"TotalDurationMs": 1500,
+			"Skills": [
+				{
+					"Name": "ConeAttack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Zone",
+						"PreDeploymentDelayPercentage": 40
+					},
+					"Zone": {
+						"Shape": "Triangle",
+						"RadiusUnits": 21,
+						"DirectionDegrees": 0,
+						"DurationMs": 200,
+						"FrequencyMs": 200,
+						"ApplyOnce": true
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										250000,
+										{
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"Name": "Vulnerability",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 80
+					},
+					"PercentageOfAbilityDuration": 100,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "VulnerabilityPercentage",
+								"DurationMs": -1,
+								"Expression": 5
+							}
+						]
+					}
+				},
+				{
+					"Name": "Shield",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": -1,
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										400000,
+										{
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Galeforce Lance",
+	"DisplayDescription": "The Ranger thrusts the lance in the target's direction, creating a gust of wind that deals 250*OP Physical Damage to enemies in a cone. The Ranger is then enveloped in a shimmering 400*OP air Shield.\r\n\r\nAdditionally, the target receives 5% increased Damage from all sources.\r\n\r\nZephyr Lance: Gives Vanguard and Dust.",
+	"Description": {
+		"Format": "The Ranger thrusts the lance in the target's direction, creating a gust of wind that deals {a}*OP Physical Damage to enemies in a cone. The Ranger is then enveloped in a shimmering {b}*OP air Shield.\r\n\r\nAdditionally, the target receives {c}% increased Damage from all sources.\r\n\r\nZephyr Lance: Gives Vanguard and Dust.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[2].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger thrusts the lance in the target's direction, creating a gust of wind that deals 250*OP Physical Damage to enemies in a cone. The Ranger is then enveloped in a shimmering 400*OP air Shield.\r\n\r\nAdditionally, the target receives 5% increased Damage from all sources.\r\n\r\nZephyr Lance: Gives Vanguard and Dust."
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Essence_RuinationEssence_Tier5",
+  "Name": "Gather {0} Ruination Essence",
+  "Description": "Gather {0} Ruination Essence by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "Essence",
+      "Name": "RuinationEssence_Tier5",
+      "Quantity": 42,
+      "Description": "Gather {0} Ruination Essence by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

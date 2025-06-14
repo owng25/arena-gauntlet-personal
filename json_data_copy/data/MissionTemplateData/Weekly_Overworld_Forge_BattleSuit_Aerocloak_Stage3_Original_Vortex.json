@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Aerocloak_Stage3_Original_Vortex",
+  "Name": "Forge a Vortex Aerocloak",
+  "Description": "Forge a Vortex Aerocloak",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Aerocloak_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Vortex Aerocloak",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

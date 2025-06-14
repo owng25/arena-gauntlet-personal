@@ -1,0 +1,39 @@
+root=true
+# http://EditorConfig.org
+# See Plugin for VS: https://github.com/editorconfig/editorconfig-visualstudio
+# Other editors: http://editorconfig.org/#download
+
+# top-most EditorConfig file
+
+[*]
+# Unix-style newlines with a newline ending every file
+end_of_line=lf
+trim_trailing_whitespace=true
+charset=utf-8
+
+# MSBuild
+[*.{csproj,proj,projitems,shproj,fsproj,target,props}]
+indent_style=space
+indent_size=2
+
+# Bash/Python files
+[*.{sh, vdf}]
+indent_style=space
+indent_size=4
+
+[*.py]
+indent_style=space
+indent_size=4
+
+[*.{c,c++,cc,cp,cpp,cu,cuh,cxx,h,hh,hpp,hxx,inc,inl,ino,ipp,mpp,proto,tpp}]
+indent_style=space
+indent_size=4
+
+[*.{appxmanifest,build,config,csproj,dbml,discomap,dtd,jsproj,lsproj,njsproj,nuspec,proj,props,resw,resx,StyleCop,targets,tasks,vbproj,xaml,xamlx,xml,xoml,xsd}]
+indent_style=space
+indent_size=2
+tab_width=2
+
+[*.{cmd,bat}]
+end_of_line=crlf
+charset = ascii

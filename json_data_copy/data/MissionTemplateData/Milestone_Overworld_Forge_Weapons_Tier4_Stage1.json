@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Weapons_Tier4_Stage1",
+  "Name": "Forge Tier 4 Stage 1 Weapons",
+  "Description": "Forge Tier 4 Stage 1 Weapons",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Bow_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Galewind Bow",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Cleaver_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Vinebound Cleaver",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Flail_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Ripple Flail",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

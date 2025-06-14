@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "JsonValidator": {
+      "commandName": "Project",
+      "commandLineArgs": "../.. -g ../Illuvium.DataModels/generated",
+      "workingDirectory": "."
+    }
+  }
+}

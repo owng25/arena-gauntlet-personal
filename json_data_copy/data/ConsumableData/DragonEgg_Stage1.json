@@ -1,0 +1,37 @@
+{
+	"Name": "DragonEgg",
+	"Stage": 1,
+	"Tier": 1,
+	"Abilities": [
+		{
+			"Name": "Consumable - Dragon Egg",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 1000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Pure AOE Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Enemy",
+						"RadiusUnits": 25
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": 30000
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

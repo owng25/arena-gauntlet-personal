@@ -1,0 +1,26 @@
+{
+	"Name": "Arcanite",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Arcanite Matrix",
+	"DisplayDescription": "Gain a Arcanite Imprint and a Power Diverter.",
+	"Description": {
+		"Format": "Gain a Arcanite Imprint and a Power Diverter.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Arcanite",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "PowerDiverter",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

@@ -1,0 +1,132 @@
+{
+	"Name": "Neuroplate",
+	"Stage": 3,
+	"Tier": 2,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 75,
+		"EnergyResist": 85,
+		"MaxHealth": 1400000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 1500,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "OP dmg increase",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Increase OP Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "OmegaDamagePercentage",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "OmegaDamagePercentage",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "TsunamiSynergy_RestoreEnergy",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Omega"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Skill Name",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyGain",
+								"Expression": {
+									"Operation": "%",
+									"Operands": [
+										20,
+										{
+											"Stat": "EnergyCost",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Mindflare Neuroplate",
+	"DisplayDescription": "Health: 1,400\r\nPhysical Resist: 75\r\nEnergy Resist: 85\r\nMovement Speed: 15\r\n\r\nPassive: Omega Ability damage is increased by 40%. Omega Abilities refund 20% of your Energy.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Omega Ability damage is increased by {d}%. Omega Abilities refund {e}% of your Energy.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage"
+			},
+			"e": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,400\r\nPhysical Resist: 75\r\nEnergy Resist: 85\r\nMovement Speed: 15\r\n\r\nPassive: Omega Ability damage is increased by 40%. Omega Abilities refund 20% of your Energy."
+}

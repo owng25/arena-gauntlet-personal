@@ -1,0 +1,65 @@
+version: 0.2
+env:
+  git-credential-helper: yes
+  shell: bash
+  variables:
+    JFROG_URL : "illuvium.jfrog.io/artifactory"
+  secrets-manager:
+    API_KEY: /apps/game/${ENV}-artifactory-api-key-creds
+    JFROG_TOKEN: /read-only/infra/${ENV}-artifactory-docker-credentials
+phases:
+  build:
+    commands:
+      - export JFROG_ILLUVIUM_TOKEN_PROCESSED=$(echo ${JFROG_TOKEN} | jq -r '.password')
+      - export JFROG_ILLUVIUM_USERNAME_PROCESSED=$(echo ${JFROG_TOKEN} | jq -r '.username')
+      - curl -fL https://install-cli.jfrog.io | sh
+      - |
+        set -x
+
+        # CODEBUILD_SOURCE_VERSION variable on the main branch displays only the commit id
+        if [[ $CODEBUILD_SOURCE_VERSION =~ ^[a-z0-9]{40}$ ]]; then
+          echo "Main branch detected, changing variable."
+          CODEBUILD_SOURCE_VERSION="main"
+        else
+          echo "Non-main branch, leaving unchanged."
+        fi
+
+        if [[ "${CODEBUILD_SOURCE_VERSION}" = pr/* ]]; then
+          CB_BRANCH=$(echo ${CODEBUILD_WEBHOOK_HEAD_REF} | sed 's|^refs/heads/||')
+          git checkout ${CB_BRANCH}
+        else
+          git checkout ${CODEBUILD_SOURCE_VERSION}
+        fi
+
+      - export VERSION=$(dotnet run -c Release --project src/VersionTool/VersionTool.csproj | tr -d '_')
+      - echo "VERSION - [${VERSION}]"
+      - dotnet run -c Release --project src/SchemaTool/SchemaTool.csproj -- . -g src/Illuvium.DataModels/generated
+      - dotnet test src/JsonSchema.sln --configuration Release
+      - dotnet build -P:PackageVersion=${VERSION} src/Illuvium.DataModels/Illuvium.DataModels.csproj -c Release
+      - dotnet nuget push src/Illuvium.DataModels/Illuvium.DataModels.${VERSION}.nupkg
+        --api-key ${API_KEY} --source https://${JFROG_URL}/api/nuget/json-data/${VERSION}
+      - zip -qr -D jd-${VERSION}.zip data schemas
+      - export JFROG_TOKEN_PROCESSED=$(echo ${JFROG_TOKEN} | jq -r '.password')
+      - jf rt u jd-${VERSION}.zip "json-data/${VERSION}/" --url "https://${JFROG_URL}" --access-token "${JFROG_TOKEN_PROCESSED}"
+
+      - |
+        git config user.name "CB"
+        git config user.email "codebuild@illuvium.io"
+        git tag -a ${VERSION} -m "[CB CI]"
+
+      - |
+        [[ "${CODEBUILD_SOURCE_VERSION}" = pr/* ]] && echo "For PR branches we do not push tags." || git push origin ${VERSION}
+      - npm config set @illuvium:registry https://${JFROG_URL}/api/npm/json-data-npm/
+      - npm version ${VERSION}
+      - |
+        echo "@json-data:registry=https://illuvium.jfrog.io/artifactory/api/npm/json-data-npm/" >>  .npmrc
+        echo "//${JFROG_URL}/api/npm/json-data-npm/:_authToken=${JFROG_ILLUVIUM_TOKEN_PROCESSED}" >>  .npmrc
+        echo "//${JFROG_URL}/api/npm/json-data-npm/:always-auth=true" >>  .npmrc
+      - |
+        # CODEBUILD_SOURCE_VERSION variable on the main branch displays only the commit id
+        if [[ $CODEBUILD_SOURCE_VERSION = "main" ]]; then
+          echo "Main branch detected, changing variable."
+          npm publish --registry https://${JFROG_URL}/api/npm/json-data-npm/ --scope=json-data
+        else
+          echo "Non-main branch, leaving unchanged."
+        fi

@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek7_Hunt_Illuvial10",
+  "Name": "Collect a Fern",
+  "Description": "Collect a Fern",
+  "Expiry": "2025-05-22",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-15T00:00:00.0000000Z",
+      "EndTime": "2025-05-22T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "034_Shoebill_Stage1_Default_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect a Fern",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 60,
+      "Type": "AirdropReward"
+    }
+  ]
+}

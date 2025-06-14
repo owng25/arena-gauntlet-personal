@@ -1,0 +1,140 @@
+{
+	"Name": "Blazewrath",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "Blazewrath_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Blazewrath - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 20
+							},
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 100000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Blazewrath_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Omnigenic - Omega Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "OmegaDamagePercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "OmegaDamagePercentage",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Blazewrath_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Blazewrath - Burn",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"ActivatedBy": "Omega",
+								"DurationMs": -1,
+								"IsConsumable": true,
+								"ActivationsUntilExpiry": 1,
+								"AttachedEffects": [
+									{
+										"Type": "Debuff",
+										"Stat": "HealthGainEfficiencyPercentage",
+										"OverlapProcessType": "Merge",
+										"DurationMs": 5000,
+										"Expression": 25
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Blazewrath",
+	"DisplayDescription": "Gain <OmegaDamagePercentage>10%</> <OmegaDamagePercentage>Omega Damage</>.\r\n\r\nHolder's Omega Burns the target for 5 seconds.\r\n\r\nStats:\r\n+20 <OmegaPowerPercentage>Omega Power</>\r\n+100 <MaxHealth>Health</>.\r\n\r\n<Italic>Burn: Reduces healing received by 25%.</>",
+	"Description": {
+		"Format": "Gain <OmegaDamagePercentage>{OmegaDmg}%</> <OmegaDamagePercentage>Omega Damage</>.\r\n\r\nHolder's Omega Burns the target for {Duration} seconds.\r\n\r\nStats:\r\n+{Stat_OP} <OmegaPowerPercentage>Omega Power</>\r\n+{Stat_Health} <MaxHealth>Health</>.\r\n\r\n<Italic>Burn: Reduces healing received by 25%.</>",
+		"Parameters": {
+			"OmegaDmg": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[2].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_OP": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Gain 10% Omega Damage.\r\n\r\nHolder's Omega Burns the target for 5 seconds.\r\n\r\nStats:\r\n+20 Omega Power\r\n+100 Health.\r\n\r\nBurn: Reduces healing received by 25%."
+}

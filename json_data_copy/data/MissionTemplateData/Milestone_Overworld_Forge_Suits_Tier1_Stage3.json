@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Suits_Tier1_Stage3",
+  "Name": "Forge Tier 1 Stage 3 Suits",
+  "Description": "Forge Tier 1 Stage 3 Suits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Aeroweave_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Hyperflux Aeroweave",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Plating_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Hemothirst Plating",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Shell_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Plasma Shell",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Zero_Extract_Carbon",
+  "Name": "Extract Carbon",
+  "Description": "Extract {0} Carbon from a Carbon site",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Zero",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Quantity": 800000,
+      "ResourceType": "Carbon",
+      "Description": "Extract {0} Carbon from a Carbon site",
+      "Type": "ExtractResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

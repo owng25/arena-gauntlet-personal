@@ -1,0 +1,29 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Encounter Mod Data",
+	"$ref": "#/$defs/EncounterModType",
+	"$defs": {
+		"EncounterModType": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Abilities": {
+					"type": "array",
+					"items": {
+						"$ref": "CombatUnitData.schema.json#/$defs/CombatAbilityType"
+					}
+				},
+				"IsDisabled": {
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

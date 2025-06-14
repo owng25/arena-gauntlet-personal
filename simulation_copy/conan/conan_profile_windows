@@ -1,0 +1,15 @@
+[settings]
+    arch=x86_64
+    compiler=msvc
+    compiler.runtime=dynamic
+    compiler.version=193
+    compiler.update=8
+    compiler.cppstd=20
+    os=Windows
+    build_type=Release
+    compiler.runtime_type=Release
+
+[options]
+    enable_visualization=True
+    enable_cli=True
+    enable_testing=True

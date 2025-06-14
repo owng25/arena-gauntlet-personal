@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_ADR_BountyWeek7_Tier5_Stage1",
+  "Name": "Collect a Tier 5 Stage 1 Illuvial",
+  "Description": "Collect a Tier 5 Stage 1 Illuvial",
+  "Expiry": "2025-05-22",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-15T00:00:00.0000000Z",
+      "EndTime": "2025-05-22T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Quantity": 1,
+      "Source": "ADR",
+      "Stage": 1,
+      "Tier": 5,
+      "Description": "Collect a Tier 5 Stage 1 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 60,
+      "Type": "AirdropReward"
+    }
+  ]
+}

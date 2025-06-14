@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Plating_Stage1_Original_Sanguine",
+  "Name": "Forge a Sanguine Plating",
+  "Description": "Forge a Sanguine Plating",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Plating_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Sanguine Plating",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

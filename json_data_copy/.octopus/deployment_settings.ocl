@@ -1,0 +1,37 @@
+deployment_changes_template = <<-EOT
+        Deployment contained releases:<br/>
+        #{each change in Octopus.Deployment.Changes}
+        <h2>#{change.Version}</h2>
+        <p>#{change.ReleaseNotes | MarkdownToHtml}</p>
+        #{/each}
+        Which addressed the following issues:</br>
+        #{each workItem in Octopus.Deployment.WorkItems}
+          #{if workItem.LinkUrl}
+              [<a href="#{workItem.LinkUrl}">#{workItem.Id}</a>] #{workItem.Description}</br>
+          #{/if}
+          #{unless workItem.LinkUrl}
+              #{workItem.Description}</br>
+          #{/unless}
+        #{/each}
+        
+        EOT
+release_notes_template = <<-EOT
+        Here are the release notes:
+        #{each package in Octopus.Release.Package}
+        - #{package.PackageId} #{package.Version}
+        #{each workItem in package.WorkItems}
+            - [#{workItem.Id}](#{workItem.LinkUrl}) - #{workItem.Description}
+        #{/each}
+        #{each commit in package.Commits}
+            - [#{commit.CommitId}](#{commit.LinkUrl}) - #{commit.Comment}
+        #{/each}
+        #{/each}
+        EOT
+
+connectivity_policy {
+    allow_deployments_to_no_targets = true
+}
+
+versioning_strategy {
+    template = "#{Octopus.Version.LastMajor}.#{Octopus.Version.LastMinor}.#{Octopus.Version.NextPatch}"
+}

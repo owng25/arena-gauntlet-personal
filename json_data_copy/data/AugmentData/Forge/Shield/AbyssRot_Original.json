@@ -1,0 +1,152 @@
+{
+	"Name": "AbyssRot",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "AbyssRot_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "AbyssRot - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 300000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 15
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalResist",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 15
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "AbyssRot_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "AbyssRot - Corrode",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Aura",
+								"AttachedEffects": [
+									{
+										"Type": "Debuff",
+										"Stat": "EnergyResist",
+										"OverlapProcessType": "Sum",
+										"DurationMs": -1,
+										"RadiusUnits": 25,
+										"FrequencyMs": 1000,
+										"Expression": {
+											"Percentage": 25,
+											"Stat": "EnergyResist",
+											"StatSource": "Receiver"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Abyss Rot",
+	"DisplayDescription": "Corrode enemies within 25-hexes.\r\n\r\nStats:\r\n+300 <MaxHealth>Health</>\r\n+10% <AttackDamage>Attack Damage</>\r\n+15 <EnergyResist>Energy Resistance</>\r\n\r\n<Italic>Corrode: Reduces target's Energy Resistances by 25%.</>",
+	"Description": {
+		"Format": "Corrode enemies within {Radius}-hexes.\r\n\r\nStats:\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_AD}% <AttackDamage>Attack Damage</>\r\n+{Stat_EngResist} <EnergyResist>Energy Resistance</>\r\n\r\n<Italic>Corrode: Reduces target's Energy Resistances by 25%.</>",
+		"Parameters": {
+			"Radius": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_AD": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_EngResist": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[4].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Corrode enemies within 25-hexes.\r\n\r\nStats:\r\n+300 Health\r\n+10% Attack Damage\r\n+15 Energy Resistance\r\n\r\nCorrode: Reduces target's Energy Resistances by 25%."
+}

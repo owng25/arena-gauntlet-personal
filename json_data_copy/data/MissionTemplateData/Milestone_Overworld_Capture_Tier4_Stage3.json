@@ -1,0 +1,75 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier4_Stage3",
+  "Name": "Capture all Tier 4 Stage 3 Illuvials",
+  "Description": "Capture all Tier 4 Stage 3 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "012_Thylacine_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 4,
+      "Description": "Capture an Umbre",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "030_Pangolin_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 4,
+      "Description": "Capture a Sear",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "036_Shoebill_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 4,
+      "Description": "Capture a Blazenite",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "042_Taipan_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 4,
+      "Description": "Capture a Scoriox",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "048_Mammoth_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 4,
+      "Description": "Capture a Mah\u2019mut",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "054_PolarBear_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 4,
+      "Description": "Capture a Jotun",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "057_Tiktaalik_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 4,
+      "Description": "Capture a Geyyser",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

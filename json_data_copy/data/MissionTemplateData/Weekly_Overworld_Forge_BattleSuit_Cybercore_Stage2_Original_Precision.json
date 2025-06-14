@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Cybercore_Stage2_Original_Precision",
+  "Name": "Forge a Precision Cybercore",
+  "Description": "Forge a Precision Cybercore",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Cybercore_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Precision Cybercore",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

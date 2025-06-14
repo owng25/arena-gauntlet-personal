@@ -1,0 +1,26 @@
+{
+	"Name": "Phantom",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Phantom Matrix",
+	"DisplayDescription": "Gain a Phantom Imprint and an Aethersteal.",
+	"Description": {
+		"Format": "Gain a Phantom Imprint and an Aethersteal.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Phantom",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "Aethersteal",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

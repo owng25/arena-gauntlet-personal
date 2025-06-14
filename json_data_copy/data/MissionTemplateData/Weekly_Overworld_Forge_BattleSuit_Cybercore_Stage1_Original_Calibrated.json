@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Cybercore_Stage1_Original_Calibrated",
+  "Name": "Forge a Calibrated Cybercore",
+  "Description": "Forge a Calibrated Cybercore",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Cybercore_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Calibrated Cybercore",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

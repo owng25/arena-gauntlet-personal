@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Arena_SurvivalWave_Competitive",
+  "Name": "Reach Wave {0} in Survival (Competitive Mode)",
+  "Description": "Reach Wave {0} in Survival (Competitive Mode)",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 4,
+  "Game": "Arena",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Challenge": "Competitive",
+      "Quantity": 30,
+      "Description": "Reach Wave {0} in Survival (Competitive Mode)",
+      "Type": "SurvivalWaveObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

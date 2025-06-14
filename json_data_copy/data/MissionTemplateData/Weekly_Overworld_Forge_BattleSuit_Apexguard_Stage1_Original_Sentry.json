@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Apexguard_Stage1_Original_Sentry",
+  "Name": "Forge a Sentry Apexguard",
+  "Description": "Forge a Sentry Apexguard",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Apexguard_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Sentry Apexguard",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Rod_Stage3_Original_Emberseed",
+  "Name": "Forge a Emberseed Rod",
+  "Description": "Forge a Emberseed Rod",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Rod_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Emberseed Rod",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

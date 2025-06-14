@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_InfusedGemstone_WaterInfusedGemT5",
+  "Name": "Forge Infused Resplendent Water Gems",
+  "Description": "Forge Infused Resplendent Water Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "WaterInfusedGemT5",
+      "Quantity": 35,
+      "Description": "Forge {0} Infused Resplendent Water Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

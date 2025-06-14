@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Essence_FuryEssence_Tier5",
+  "Name": "Gather {0} Fury Essence",
+  "Description": "Gather {0} Fury Essence by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "Essence",
+      "Name": "FuryEssence_Tier5",
+      "Quantity": 6,
+      "Description": "Gather {0} Fury Essence by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

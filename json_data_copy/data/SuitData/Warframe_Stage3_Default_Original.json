@@ -1,0 +1,131 @@
+{
+	"Name": "Warframe",
+	"Stage": 3,
+	"Tier": 2,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 90,
+		"EnergyResist": 70,
+		"MaxHealth": 1600000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2200,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Pierce 80% of Physical and Energy Resist.",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Piercing buffs",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalPiercingPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 40
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyPiercingPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 40
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Give Frost to enemy on Attack",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Tornado knock-up and stun with EnergyDamage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "VulnerabilityPercentage",
+								"OverlapProcessType": "Merge",
+								"DurationMs": 2500,
+								"Expression": 5
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Onslaught Warframe",
+	"DisplayDescription": "Health: 1,600\r\nPhysical Resist: 90\r\nEnergy Resist: 70\r\nMovement Speed: 22\r\n\r\nPassive: Attacks pierce 40% Resistances. Your target receives 5% increased damage while you attack it.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Attacks pierce {d}% Resistances. Your target receives {e}% increased damage while you attack it.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			},
+			"e": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,600\r\nPhysical Resist: 90\r\nEnergy Resist: 70\r\nMovement Speed: 22\r\n\r\nPassive: Attacks pierce 40% Resistances. Your target receives 5% increased damage while you attack it."
+}

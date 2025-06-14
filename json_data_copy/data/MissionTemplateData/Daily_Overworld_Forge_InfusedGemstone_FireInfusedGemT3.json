@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_FireInfusedGemT3",
+  "Name": "Forge {0} Infused Rare Fire Gems",
+  "Description": "Forge {0} Infused Rare Fire Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "FireInfusedGemT3",
+      "Quantity": 8,
+      "Description": "Forge {0} Infused Rare Fire Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

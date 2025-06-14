@@ -1,0 +1,186 @@
+{
+	"Name": "UmbralStride",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "UmbralStride_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "UmbralStride - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalPiercingPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "UmbralStride_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnVanquish",
+				"Allegiance": "Self"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "UmbralStride - Additional Damage and Attack Speed",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": true,
+								"ActivationsUntilExpiry": 1,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Physical",
+										"Expression": {
+											"Percentage": 75,
+											"Stat": "AttackPhysicalDamage",
+											"StatSource": "Sender"
+										}
+									},
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Energy",
+										"Expression": {
+											"Percentage": 75,
+											"Stat": "AttackEnergyDamage",
+											"StatSource": "Sender"
+										}
+									},
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Pure",
+										"Expression": {
+											"Percentage": 75,
+											"Stat": "AttackPureDamage",
+											"StatSource": "Sender"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "UmbralStride_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnVanquish",
+				"Allegiance": "Self"
+			},
+			"TotalDurationMs": 200,
+			"Skills": [
+				{
+					"Name": "UmbralStride - Blink",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CombatStatCheck",
+						"Group": "Enemy",
+						"Stat": "CurrentHealth",
+						"Lowest": true,
+						"Num": 1
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Blink",
+								"BlinkTarget": "BehindReceiver",
+								"BlinkDelayMs": 0,
+								"DurationMs": 100,
+								"BlinkReservePreviousPosition": true
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Umbral Stride",
+	"DisplayDescription": "On Vanquish, Blink to the lowest Health enemy and deal <DamageAmplification>75%</> increased damage with the next attack.\r\n\r\nStats:\r\n+20% <AttackDamage>Attack Damage</>\r\n+10% <PhysicalPiercingPercentage>Physical Resist Piercing</>",
+	"Description": {
+		"Format": "On Vanquish, Blink to the lowest Health enemy and deal <DamageAmplification>{DamageValue}%</> increased damage with the next attack.\r\n\r\nStats:\r\n+{Stat_AD}% <AttackDamage>Attack Damage</>\r\n+{Stat_Pierce}% <PhysicalPiercingPercentage>Physical Resist Piercing</>",
+		"Parameters": {
+			"DamageValue": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_AD": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Pierce": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "On Vanquish, Blink to the lowest Health enemy and deal 75% increased damage with the next attack.\r\n\r\nStats:\r\n+20% Attack Damage\r\n+10% Physical Resist Piercing"
+}

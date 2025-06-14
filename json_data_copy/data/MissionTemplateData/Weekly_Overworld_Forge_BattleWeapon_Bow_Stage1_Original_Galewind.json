@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Bow_Stage1_Original_Galewind",
+  "Name": "Forge a Galewind Bow",
+  "Description": "Forge a Galewind Bow",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Bow_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Galewind Bow",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+	"Name": "Sceptre",
+	"Stage": 3,
+	"Tier": 5,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Toxic",
+	"CombatClass": "Enchanter",
+	"DominantCombatAffinity": "Nature",
+	"DominantCombatClass": "Psion",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 80000,
+		"EnergyCost": 200000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 125000,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 90,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 70,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Scepter Attack III",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"PreDeploymentDelayPercentage": 40
+					},
+					"Projectile": {
+						"SizeUnits": 0,
+						"IsHoming": true,
+						"SpeedSubUnits": 10000,
+						"IsBlockable": false,
+						"ApplyToAll": false
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Bramble Burst III",
+			"TotalDurationMs": 1500,
+			"Skills": [
+				{
+					"Name": "The root",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Guidance": [
+							"Ground",
+							"Underground"
+						],
+						"Group": "Enemy",
+						"Lowest": false,
+						"Num": 3
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Underground"
+						],
+						"PreDeploymentDelayPercentage": 35
+					},
+					"PercentageOfAbilityDuration": 100,
+					"Projectile": {
+						"SizeUnits": 1,
+						"IsHoming": true,
+						"SpeedSubUnits": 6000,
+						"IsBlockable": false,
+						"ApplyToAll": true
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										575000,
+										{
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							},
+							{
+								"Type": "NegativeState",
+								"NegativeState": "Root",
+								"DurationMs": 2000
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "AttackSpeed",
+								"DurationMs": 2000,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "DOT",
+								"DamageType": "Energy",
+								"DurationMs": 3000,
+								"FrequencyMs": 300,
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										200000,
+										{
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Venomous Sceptre",
+	"DisplayDescription": "The Ranger summons thorny brambles that advance to the 3 furthest enemies, 575*OP Energy Damage to all enemies they pass through. Upon impact, the brambles root the enemies for 2 seconds.\r\n\r\nAdditionally, enemies hit also have their Attack Speed reduced by 20% and are dealt an extra 200*OP Energy Damage over the next 3 seconds.",
+	"Description": {
+		"Format": "The Ranger summons thorny brambles that advance to the {a} furthest enemies, {b}*OP Energy Damage to all enemies they pass through. Upon impact, the brambles root the enemies for {c} seconds.\r\n\r\nAdditionally, enemies hit also have their Attack Speed reduced by {d}% and are dealt an extra {e}*OP Energy Damage over the next {f} seconds.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].Targeting.Num"
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[1].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"d": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[2].Expression.Percentage"
+			},
+			"e": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[3].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"f": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[3].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger summons thorny brambles that advance to the 3 furthest enemies, 575*OP Energy Damage to all enemies they pass through. Upon impact, the brambles root the enemies for 2 seconds.\r\n\r\nAdditionally, enemies hit also have their Attack Speed reduced by 20% and are dealt an extra 200*OP Energy Damage over the next 3 seconds."
+}

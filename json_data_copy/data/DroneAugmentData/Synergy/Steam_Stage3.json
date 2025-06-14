@@ -1,0 +1,26 @@
+{
+	"Name": "Steam",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Steam Matrix",
+	"DisplayDescription": "Gain a Steam Imprint and a Veil Piercer.",
+	"Description": {
+		"Format": "Gain a Steam Imprint and a Veil Piercer.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Steam",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "VeilPiercer",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

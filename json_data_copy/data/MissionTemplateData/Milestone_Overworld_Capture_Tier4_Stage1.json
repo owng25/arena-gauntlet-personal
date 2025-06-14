@@ -1,0 +1,75 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier4_Stage1",
+  "Name": "Capture all Tier 4 Stage 1 Illuvials",
+  "Description": "Capture all Tier 4 Stage 1 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "010_Thylacine_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 4,
+      "Description": "Capture a Dash",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "028_Pangolin_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 4,
+      "Description": "Capture a Flare",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "034_Shoebill_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 4,
+      "Description": "Capture a Fern",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "040_Taipan_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 4,
+      "Description": "Capture a Phyri",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "046_Mammoth_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 4,
+      "Description": "Capture a Mah\u0027mu",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "052_PolarBear_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 4,
+      "Description": "Capture a Mjoll",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "055_Tiktaalik_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 4,
+      "Description": "Capture an Ebb",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

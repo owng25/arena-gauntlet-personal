@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_EarthInfusedGemT4",
+  "Name": "Forge {0} Infused Epic Earth Gems",
+  "Description": "Forge {0} Infused Epic Earth Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "EarthInfusedGemT4",
+      "Quantity": 8,
+      "Description": "Forge {0} Infused Epic Earth Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

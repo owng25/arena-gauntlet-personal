@@ -1,0 +1,219 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier2_Stage3",
+  "Name": "Capture all Tier 2 Stage 3 Illuvials",
+  "Description": "Capture all Tier 2 Stage 3 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "106_Lynx_Stage3_FighterEarth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Relentless Terralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "107_Lynx_Stage3_FighterWater_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Relentless Hydrolynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "108_Lynx_Stage3_FighterFire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Relentless Emberlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "109_Lynx_Stage3_FighterNature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Relentless Floralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "110_Lynx_Stage3_FighterAir_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Relentless Zephyrlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "111_Lynx_Stage3_RogueWater_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Nimble Hydrolynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "112_Lynx_Stage3_RogueEarth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Nimble Terralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "113_Lynx_Stage3_RogueFire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Nimble Emberlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "114_Lynx_Stage3_RogueNature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Nimble Floralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "115_Lynx_Stage3_RogueAir_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Nimble Zephyrlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "116_Lynx_Stage3_BulwarkWater_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Stoic Hydrolynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "117_Lynx_Stage3_BulwarkEarth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Stoic Terralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "118_Lynx_Stage3_BulwarkFire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Stoic Emberlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "119_Lynx_Stage3_BulwarkNature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Stoic Floralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "120_Lynx_Stage3_BulwarkAir_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Stoic Zephyrlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "121_Lynx_Stage3_PsionWater_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture an Arcane Hydrolynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "122_Lynx_Stage3_PsionEarth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture an Arcane Terralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "123_Lynx_Stage3_PsionFire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture an Arcane Emberlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "124_Lynx_Stage3_PsionNature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture an Arcane Floralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "125_Lynx_Stage3_PsionAir_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture an Arcane Zephyrlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "126_Lynx_Stage3_EmpathWater_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Virtuous Hydrolynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "127_Lynx_Stage3_EmpathEarth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Virtuous Terralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "128_Lynx_Stage3_EmpathFire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Virtuous Emberlynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "129_Lynx_Stage3_EmpathNature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Virtuous Floralynx",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "130_Lynx_Stage3_EmpathAir_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Capture a Virtuous Zephyrlynx",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

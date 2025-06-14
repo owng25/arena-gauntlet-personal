@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Milestone_Arena_Survival_Tier0_Win",
+  "Name": "Defeat Wave {0} in Survival (Competitive Mode)",
+  "Description": "Defeat Wave {0} in Survival (Competitive Mode)",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Challenge": "Competitive",
+      "Quantity": 10,
+      "Description": "Defeat Wave {0} in Survival (Competitive Mode)",
+      "Type": "SurvivalWaveObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

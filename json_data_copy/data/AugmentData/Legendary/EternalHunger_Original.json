@@ -1,0 +1,111 @@
+{
+	"Name": "EternalHunger",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "EternalHunger_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "EternalHunger - Omnivamp",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 35
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 35
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PureVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 35
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "EternalHunger_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnAssist"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "EternalHunger - Takedown Omnivamp",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 5
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 5
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PureVampPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 5
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Eternal Hunger",
+	"DisplayDescription": "Gain <Omnivamp>35%</> <Omnivamp>Omnivamp</>. Takedowns grants an additional <Omnivamp>5%</> <Omnivamp>Omnivamp</>.",
+	"Description": {
+		"Format": "Gain <Omnivamp>{VampValStart}%</> <Omnivamp>Omnivamp</>. Takedowns grants an additional <Omnivamp>{VampValScale}%</> <Omnivamp>Omnivamp</>.",
+		"Parameters": {
+			"VampValStart": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"VampValScale": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Gain 35% Omnivamp. Takedowns grants an additional 5% Omnivamp."
+}

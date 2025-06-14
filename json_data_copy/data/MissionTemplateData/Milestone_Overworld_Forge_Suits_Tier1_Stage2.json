@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Suits_Tier1_Stage2",
+  "Name": "Forge Tier 1 Stage 2 Suits",
+  "Description": "Forge Tier 1 Stage 2 Suits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Aeroweave_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Nanofiber Aeroweave",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Plating_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Vampiric Plating",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Shell_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Ionic Shell",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

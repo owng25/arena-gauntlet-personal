@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_ADR_BountyWeek2_Hunt_Illuvial15",
+  "Name": "Collect an Alphie",
+  "Description": "Collect an Alphie",
+  "Expiry": "2025-04-17",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-10T00:00:00.0000000Z",
+		"EndTime": "2025-04-17T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Name": "031_PistolShrimp_Stage1_Default_Original",
+      "Quantity": 1,
+      "Source": "ADR",
+      "Description": "Collect an Alphie",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 180,
+      "Type": "AirdropReward"
+    }
+  ]
+}

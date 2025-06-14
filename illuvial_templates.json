@@ -1,0 +1,524 @@
+[
+    {
+        "LineType": "PolarBear",
+        "Stage": 1,
+        "Tier": 4,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "AtippoFire",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Fire",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "Shoebill",
+        "Stage": 1,
+        "Tier": 4,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "GrokkoFire",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Fire",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "Elk",
+        "Stage": 1,
+        "Tier": 5,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "Aapon",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "PistolShrimp",
+        "Stage": 1,
+        "Tier": 5,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "PoodleMoth",
+        "Stage": 1,
+        "Tier": 3,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "AtippoAir",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Air",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "VolanteAir",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Air",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "DokaEarth",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Earth",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "DokaWater",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Water",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "KomodoDragon",
+        "Stage": 1,
+        "Tier": 3,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "Tiktaalik",
+        "Stage": 1,
+        "Tier": 4,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "VolanteFire",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Fire",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "AtippoNature",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Nature",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "Turtle",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "Pterodactyl",
+        "Stage": 1,
+        "Tier": 5,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "AtippoWater",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Water",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "StarNosedMole",
+        "Stage": 1,
+        "Tier": 3,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "GrokkoEarth",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Earth",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "WaterBuffalo",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "GrokkoWater",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Water",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "VolanteEarth",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Earth",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "TreeKangaroo",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "Tenrec",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "SeaScorpion",
+        "Stage": 1,
+        "Tier": 3,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "GrokkoAir",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Air",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "Beetle",
+        "Stage": 1,
+        "Tier": 5,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "Dodo",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "Grilla",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "VolanteWater",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Water",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "Squid",
+        "Stage": 1,
+        "Tier": 5,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "AtippoEarth",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Earth",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "GrokkoNature",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Nature",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "Taipan",
+        "Stage": 1,
+        "Tier": 4,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "Penguin",
+        "Stage": 1,
+        "Tier": 3,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "FliishNature",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Nature",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "AntEater",
+        "Stage": 1,
+        "Tier": 3,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "DokaNature",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Nature",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "VolanteNature",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Nature",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "FliishFire",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Fire",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "FennecFox",
+        "Stage": 1,
+        "Tier": 3,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Empath",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "Sloth",
+        "Stage": 1,
+        "Tier": 3,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "FliishWater",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Water",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "DokaAir",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Air",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "TerrorBird",
+        "Stage": 1,
+        "Tier": 5,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Nature"
+    },
+    {
+        "LineType": "Monkier",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "DokaFire",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Fire",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "Axolotl",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "Thylacine",
+        "Stage": 1,
+        "Tier": 4,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Water"
+    },
+    {
+        "LineType": "FliishAir",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Air",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "RedPanda",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Fighter",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "Snail",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "DropBear",
+        "Stage": 1,
+        "Tier": 1,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Rogue",
+        "DominantCombatAffinity": "Fire"
+    },
+    {
+        "LineType": "Mammoth",
+        "Stage": 1,
+        "Tier": 4,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Air"
+    },
+    {
+        "LineType": "FliishEarth",
+        "Stage": 1,
+        "Tier": 0,
+        "Path": "Earth",
+        "Variation": "Original",
+        "DominantCombatClass": "Psion",
+        "DominantCombatAffinity": "Earth"
+    },
+    {
+        "LineType": "Pangolin",
+        "Stage": 1,
+        "Tier": 4,
+        "Path": "Default",
+        "Variation": "Original",
+        "DominantCombatClass": "Bulwark",
+        "DominantCombatAffinity": "Fire"
+    }
+]

@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Overworld_Capture_Tier4",
+  "Name": "Capture {0} Tier 4 Illuvial",
+  "Description": "Capture {0} Tier 4 Illuvial",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 16,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "Quantity": 2,
+      "Tier": 4,
+      "Description": "Capture {0} Tier 4 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

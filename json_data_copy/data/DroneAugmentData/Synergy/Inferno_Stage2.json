@@ -1,0 +1,21 @@
+{
+	"Name": "Inferno",
+	"Stage": 2,
+	"Type": "Game",
+	"DisplayName": "Inferno Module",
+	"DisplayDescription": "Gain a Inferno Imprint.",
+	"Description": {
+		"Format": "Gain a Inferno Imprint.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Inferno",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

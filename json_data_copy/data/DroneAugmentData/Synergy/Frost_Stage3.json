@@ -1,0 +1,26 @@
+{
+	"Name": "Frost",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Frost Matrix",
+	"DisplayDescription": "Gain a Frost Imprint and a Cryonic Talisman.",
+	"Description": {
+		"Format": "Gain a Frost Imprint and a Cryonic Talisman.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Frost",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "CryonicTalisman",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

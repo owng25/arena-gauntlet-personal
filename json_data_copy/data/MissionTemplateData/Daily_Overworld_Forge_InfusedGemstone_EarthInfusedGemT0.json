@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_EarthInfusedGemT0",
+  "Name": "Forge {0} Infused Earth Gem Fragments",
+  "Description": "Forge {0} Infused Earth Gem Fragments",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "EarthInfusedGemT0",
+      "Quantity": 20,
+      "Description": "Forge {0} Infused Earth Gem Fragments",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

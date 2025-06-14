@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Sceptre_Stage3_Original_Venomous",
+  "Name": "Forge a Venomous Sceptre",
+  "Description": "Forge a Venomous Sceptre",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Sceptre_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Venomous Sceptre",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

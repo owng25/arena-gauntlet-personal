@@ -1,0 +1,34 @@
+{
+	"Name": "OmegaPower",
+	"Stage": 3,
+	"Abilities": [
+		{
+			"Name": "Omega Power",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Omega Power Buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"DurationMs": -1,
+								"Expression": 30
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

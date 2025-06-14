@@ -1,0 +1,21 @@
+{
+	"Name": "Verdant",
+	"Stage": 2,
+	"Type": "Game",
+	"DisplayName": "Verdant Module",
+	"DisplayDescription": "Gain a Verdant Imprint.",
+	"Description": {
+		"Format": "Gain a Verdant Imprint.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Verdant",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

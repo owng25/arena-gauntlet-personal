@@ -1,0 +1,161 @@
+{
+	"Name": "HollowRepressor",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "HollowRepressor_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "HollowRepressor - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 100000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "HollowRepressor_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 1000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "HollowRepressor - Enemy Debuff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Group": "Enemy",
+						"Lowest": true,
+						"Num": 2
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "HealthGainEfficiencyPercentage",
+								"OverlapProcessType": "Sum",
+								"DurationMs": 990,
+								"FrequencyMs": 1000,
+								"Expression": 20
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "EnergyGainEfficiencyPercentage",
+								"OverlapProcessType": "Sum",
+								"DurationMs": 990,
+								"FrequencyMs": 1000,
+								"Expression": 20
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "ShieldGainEfficiencyPercentage",
+								"OverlapProcessType": "Sum",
+								"DurationMs": 990,
+								"FrequencyMs": 1000,
+								"Expression": 20
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "HollowRepressor_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "HollowRepressor - Enemy Debuff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Group": "Enemy",
+						"Lowest": true,
+						"Num": 2
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Debuff",
+								"Stat": "HealthGainEfficiencyPercentage",
+								"OverlapProcessType": "Sum",
+								"DurationMs": 990,
+								"Expression": 20
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "EnergyGainEfficiencyPercentage",
+								"OverlapProcessType": "Sum",
+								"DurationMs": 990,
+								"Expression": 20
+							},
+							{
+								"Type": "Debuff",
+								"Stat": "ShieldGainEfficiencyPercentage",
+								"OverlapProcessType": "Sum",
+								"DurationMs": 990,
+								"Expression": 20
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Hollow Repressor",
+	"DisplayDescription": "The 2 closest enemies have their <HealthGainEfficiencyPercentage>Healing</>, <EnergyGainEfficiencyPercentage>Energy</>, and <ShieldGainEfficiencyPercentage>Shielding</> effectiveness reduced by <HealthGainEfficiencyPercentage>20%</>.\r\n\r\nStats:\r\n+100 <MaxHealth>Health</>\r\n+10 <OmegaPowerPercentage>Omega Power</>",
+	"Description": {
+		"Format": "The 2 closest enemies have their <HealthGainEfficiencyPercentage>Healing</>, <EnergyGainEfficiencyPercentage>Energy</>, and <ShieldGainEfficiencyPercentage>Shielding</> effectiveness reduced by <HealthGainEfficiencyPercentage>{EffValue}%</>.\r\n\r\nStats:\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_OP} <OmegaPowerPercentage>Omega Power</>",
+		"Parameters": {
+			"EffValue": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_OP": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The 2 closest enemies have their Healing, Energy, and Shielding effectiveness reduced by 20%.\r\n\r\nStats:\r\n+100 Health\r\n+10 Omega Power"
+}

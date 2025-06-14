@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Plasmaskin_Stage1_Original_Luminous",
+  "Name": "Forge a Luminous Plasmaskin",
+  "Description": "Forge a Luminous Plasmaskin",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Plasmaskin_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Luminous Plasmaskin",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

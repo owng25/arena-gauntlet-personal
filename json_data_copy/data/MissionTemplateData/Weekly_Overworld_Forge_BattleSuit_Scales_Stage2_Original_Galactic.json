@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Scales_Stage2_Original_Galactic",
+  "Name": "Forge a Galactic Scales",
+  "Description": "Forge a Galactic Scales",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Scales_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Galactic Scales",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

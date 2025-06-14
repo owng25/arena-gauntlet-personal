@@ -1,0 +1,99 @@
+{
+	"Name": "QuantumReclamation",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "QuantumReclamation_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Omega"
+				],
+				"NumberOfAbilitiesActivated": 1,
+				"EveryX": true
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "QuantumReclamation - General Refund",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyGain",
+								"Expression": {
+									"Percentage": 25,
+									"Stat": "EnergyCost",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "QuantumReclamation_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Omega"
+				],
+				"NumberOfAbilitiesActivated": 3,
+				"EveryX": true
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "QuantumReclamation - 3rd Omega Refund",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantEnergyGain",
+								"Expression": {
+									"Percentage": 50,
+									"Stat": "EnergyCost",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Quantum Reclamation",
+	"DisplayDescription": "On Omega, refund <EnergyCost>25%</> of the <EnergyCost>Energy Cost</>. Every 3rd Omega refunds an additional <EnergyCost>50%</>.",
+	"Description": {
+		"Format": "On Omega, refund <EnergyCost>{RefundValue}%</> of the <EnergyCost>Energy Cost</>. Every {CastNum}rd Omega refunds an additional <EnergyCost>{RefundValue2}%</>.",
+		"Parameters": {
+			"RefundValue": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"CastNum": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.NumberOfAbilitiesActivated",
+				"ValueMultiplier": 1.0
+			},
+			"RefundValue2": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "On Omega, refund 25% of the Energy Cost. Every 3rd Omega refunds an additional 50%."
+}

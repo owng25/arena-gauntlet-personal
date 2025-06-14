@@ -1,0 +1,26 @@
+{
+	"Name": "Slayer",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Slayer Matrix",
+	"DisplayDescription": "Gain a Slayer Imprint and a Riftstriker.",
+	"Description": {
+		"Format": "Gain a Slayer Imprint and a Riftstriker.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Slayer",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "Riftstriker",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

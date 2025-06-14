@@ -1,0 +1,86 @@
+{
+	"Name": "Bioarmor",
+	"Stage": 1,
+	"Tier": 3,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 35,
+		"EnergyResist": 45,
+		"MaxHealth": 1250000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 1800,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "HealthRegeneration",
+								"Expression": 1000,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Adaptum Bioarmor",
+	"DisplayDescription": "Health: 1,250\r\nPhysical Resist: 35\r\nEnergy Resist: 45\r\nMovement Speed: 18\r\n\r\nPassive: Gain 10 Health Regen.\r\n\r\nRegencore Bioarmor: Gain 25 Health Regen.\r\n\r\nSymbiotic Bioarmor: Gain 25 Health Regen. Every 5 seconds, heal 5% of Max Health.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d} Health Regen.\r\n\r\nRegencore Bioarmor: Gain 25 Health Regen.\r\n\r\nSymbiotic Bioarmor: Gain 25 Health Regen. Every 5 seconds, heal 5% of Max Health.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.01
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,250\r\nPhysical Resist: 35\r\nEnergy Resist: 45\r\nMovement Speed: 18\r\n\r\nPassive: Gain 10 Health Regen.\r\n\r\nRegencore Bioarmor: Gain 25 Health Regen.\r\n\r\nSymbiotic Bioarmor: Gain 25 Health Regen. Every 5 seconds, heal 5% of Max Health."
+}

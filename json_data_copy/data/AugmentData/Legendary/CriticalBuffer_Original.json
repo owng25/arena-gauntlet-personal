@@ -1,0 +1,123 @@
+{
+	"Name": "CriticalBuffer",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "CriticalBuffer_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "CriticalBuffer - Crit Damage Reduction",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 750000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "CritReductionPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 30
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "CriticalBuffer_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnHit",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"SenderAllegiance": "Enemy",
+				"ReceiverAllegiance": "Self",
+				"EveryX": true
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "CriticalBuffer - Stacking Crit Damage Reduction",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "CritReductionPercentage",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"MaxStacks": 100,
+								"Expression": {
+									"Operation": "/",
+									"Operands": [
+										5,
+										10
+									]
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"DurationMs": -1,
+								"OverlapProcessType": "Stacking",
+								"MaxStacks": 100,
+								"Expression": 1
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Critical Buffer",
+	"DisplayDescription": "The holder gains <MaxHealth>750</> <MaxHealth>Max Health</> and <CritReductionPercentage>30%</> <CritReductionPercentage>Crit Damage Reduction</>.\r\n\r\nWhen struck by an attack, gain an additional <CritReductionPercentage>0.5%</> <CritReductionPercentage>Crit Damage Reduction</> and <OmegaPowerPercentage>1</> <OmegaPowerPercentage>Omega Power</>, up to 100 stacks.",
+	"Description": {
+		"Format": "The holder gains <MaxHealth>{HealthVal}</> <MaxHealth>Max Health</> and <CritReductionPercentage>{CritDmgStart}%</> <CritReductionPercentage>Crit Damage Reduction</>.\r\n\r\nWhen struck by an attack, gain an additional <CritReductionPercentage>{CritDmgStack}%</> <CritReductionPercentage>Crit Damage Reduction</> and <OmegaPowerPercentage>{OmegaVal}</> <OmegaPowerPercentage>Omega Power</>, up to {Stacks} stacks.",
+		"Parameters": {
+			"HealthVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"CritDmgStart": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"CritDmgStack": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.1
+			},
+			"OmegaVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"Stacks": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].MaxStacks",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The holder gains 750 Max Health and 30% Crit Damage Reduction.\r\n\r\nWhen struck by an attack, gain an additional 0.5% Crit Damage Reduction and 1 Omega Power, up to 100 stacks."
+}

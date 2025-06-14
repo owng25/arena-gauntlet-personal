@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageOutputPath>.</PackageOutputPath>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <PackageId>Illuvium.DataModels</PackageId>
+    <Company>Illuvium</Company>
+	  <PackageVersion>1.0.0</PackageVersion>
+	  <AssemblyVersion>$(PackageVersion.Split('-')[0])</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="generated/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+</Project>

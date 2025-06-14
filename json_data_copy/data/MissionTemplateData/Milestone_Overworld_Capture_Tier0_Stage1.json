@@ -1,0 +1,219 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier0_Stage1",
+  "Name": "Capture all Tier 0 Stage 1 Illuvials",
+  "Description": "Capture all Tier 0 Stage 1 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "131_DokaWater_Stage1_Water_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Water Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "132_DokaEarth_Stage1_Earth_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Earth Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "133_DokaFire_Stage1_Fire_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Fire Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "134_DokaNature_Stage1_Nature_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Nature Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "135_DokaAir_Stage1_Air_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Air Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "136_GrokkoWater_Stage1_Water_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Water Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "137_GrokkoEarth_Stage1_Earth_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Earth Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "138_GrokkoFire_Stage1_Fire_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Fire Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "139_GrokkoNature_Stage1_Nature_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Nature Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "140_GrokkoAir_Stage1_Air_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Air Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "141_VolanteWater_Stage1_Water_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Water Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "142_VolanteEarth_Stage1_Earth_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Earth Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "143_VolanteFire_Stage1_Fire_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Fire Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "144_VolanteNature_Stage1_Nature_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Nature Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "145_VolanteAir_Stage1_Air_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Air Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "146_FliishWater_Stage1_Water_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Water Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "147_FliishEarth_Stage1_Earth_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Earth Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "148_FliishFire_Stage1_Fire_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Fire Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "149_FliishNature_Stage1_Nature_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Nature Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "150_FliishAir_Stage1_Air_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Air Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "151_AtippoWater_Stage1_Water_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Water Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "152_AtippoEarth_Stage1_Earth_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Earth Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "153_AtippoFire_Stage1_Fire_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Fire Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "154_AtippoNature_Stage1_Nature_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Nature Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "155_AtippoAir_Stage1_Air_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 0,
+      "Description": "Capture a Lesser Air Atippo",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

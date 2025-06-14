@@ -1,0 +1,171 @@
+{
+	"Name": "Scales",
+	"Stage": 3,
+	"Tier": 5,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 100,
+		"EnergyResist": 100,
+		"MaxHealth": 2400000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2000,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "CritReductionPercentage",
+								"Expression": 40,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "VulnerabilityPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 30
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Every 10 seconds gain resists",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 10000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Every 10 seconds gain resists and taunt",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalResist",
+								"Expression": 50,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"Expression": 50,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "Every 10 seconds taunt",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 10000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Taunt enemies in 30 hexes",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Enemy",
+						"RadiusUnits": 26
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "NegativeState",
+								"NegativeState": "Taunted",
+								"DurationMs": 3000
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Cosmic Scales",
+	"DisplayDescription": "Health: 2,400\r\nPhysical Resist: 100\r\nEnergy Resist: 100\r\nMovement Speed: 20\r\n\r\nPassive: Gain 50% Damage Reduction and 40% Critical Damage Reduction. Every 10 seconds, gain 50 Resistances and Taunt Nearby enemies for 3 seconds.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d}% Damage Reduction and {e}% Critical Damage Reduction. Every {f} seconds, gain {g} Resistances and Taunt Nearby enemies for {h} seconds.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression"
+			},
+			"e": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			},
+			"f": {
+				"ParameterPath": "Abilities[2].ActivationTrigger.ActivateEveryTimeMs",
+				"ValueMultiplier": 0.001
+			},
+			"g": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].Expression"
+			},
+			"h": {
+				"ParameterPath": "Abilities[2].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 2,400\r\nPhysical Resist: 100\r\nEnergy Resist: 100\r\nMovement Speed: 20\r\n\r\nPassive: Gain 50% Damage Reduction and 40% Critical Damage Reduction. Every 10 seconds, gain 50 Resistances and Taunt Nearby enemies for 3 seconds."
+}

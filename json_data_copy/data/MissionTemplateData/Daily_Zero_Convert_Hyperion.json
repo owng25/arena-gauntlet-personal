@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Zero_Convert_Hyperion",
+  "Name": "Convert Hyperion",
+  "Description": "Convert {0} Hyperion into a different resource using an Anti-Solon or a L-Crypton Collider",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 2,
+  "Game": "Zero",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "FuelType": "Hyperion",
+      "Quantity": 20,
+      "Description": "Convert {0} Hyperion into a different resource using an Anti-Solon or a L-Crypton Collider",
+      "Type": "ConvertFuelObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

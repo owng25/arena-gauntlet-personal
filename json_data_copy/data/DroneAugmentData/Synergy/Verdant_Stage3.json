@@ -1,0 +1,26 @@
+{
+	"Name": "Verdant",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Verdant Matrix",
+	"DisplayDescription": "Gain a Verdant Imprint and an Eldersurge.",
+	"Description": {
+		"Format": "Gain a Verdant Imprint and an Eldersurge.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Verdant",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "Eldersurge",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"Name": "Shock",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Shock Matrix",
+	"DisplayDescription": "Gain a Shock Imprint and a Corroder.",
+	"Description": {
+		"Format": "Gain a Shock Imprint and a Corroder.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Shock",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "Corroder",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

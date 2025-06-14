@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Weapons_Tier2_Stage2",
+  "Name": "Forge Tier 2 Stage 2 Weapons",
+  "Description": "Forge Tier 2 Stage 2 Weapons",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Bastion_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Lava Bastion",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Blade_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Sylvan Blade",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Rod_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Emberbloom Rod",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

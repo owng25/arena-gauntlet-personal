@@ -1,0 +1,115 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier1_Stage1",
+  "Name": "Capture all Tier 1 Stage 1 Illuvials",
+  "Description": "Capture all Tier 1 Stage 1 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "001_Axolotl_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture an Atlas",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "013_Turtle_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture an Archie",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "022_Dodo_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Kukka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "043_Snail_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Tatopee",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "058_Monkier_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Lesser Monkier",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "061_Aapon_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Lesser Aapon",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "064_Grilla_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Lesser Grilla",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "067_Tenrec_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Rota",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "079_TreeKangaroo_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Ti\u0027Ru",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "088_WaterBuffalo_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Carablu",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "094_DropBear_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Chucco",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "097_RedPanda_Stage1_Default_Original",
+      "Quantity": 1,
+      "Stage": 1,
+      "Tier": 1,
+      "Description": "Capture a Rai",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

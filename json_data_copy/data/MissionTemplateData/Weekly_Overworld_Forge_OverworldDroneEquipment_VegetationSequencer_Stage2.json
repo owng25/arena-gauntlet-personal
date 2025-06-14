@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_OverworldDroneEquipment_VegetationSequencer_Stage2",
+  "Name": "Forge a Advanced Vegetation Sequencer",
+  "Description": "Forge a Advanced Vegetation Sequencer",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "OverworldDroneEquipment",
+      "Name": "VegetationSequencer_Stage2",
+      "Quantity": 1,
+      "Description": "Forge a Advanced Vegetation Sequencer",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

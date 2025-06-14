@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Weekly_Zero_Extract_Crypton",
+  "Name": "Extract Crypton",
+  "Description": "Extract {0} Crypton from a Crypton site",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Zero",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "Quantity": 40,
+      "ResourceType": "Crypton",
+      "Description": "Extract {0} Crypton from a Crypton site",
+      "Type": "ExtractResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

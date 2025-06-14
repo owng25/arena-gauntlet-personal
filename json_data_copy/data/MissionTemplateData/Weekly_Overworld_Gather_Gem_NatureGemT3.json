@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Gem_NatureGemT3",
+  "Name": "Extract {0} Rare Nature Gem",
+  "Description": "Extract {0} Rare Nature Gem by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "OverworldGemstone",
+      "Name": "NatureGemT3",
+      "Quantity": 105,
+      "Description": "Extract {0} Rare Nature Gem by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

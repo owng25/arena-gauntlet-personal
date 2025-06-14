@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Shell_Stage3_Original_Plasma",
+  "Name": "Forge a Plasma Shell",
+  "Description": "Forge a Plasma Shell",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Shell_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Plasma Shell",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

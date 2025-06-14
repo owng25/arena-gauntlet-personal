@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Weapons_Tier4_Stage2",
+  "Name": "Forge Tier 4 Stage 2 Weapons",
+  "Description": "Forge Tier 4 Stage 2 Weapons",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Bow_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stormseeker Bow",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Cleaver_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Razor Cleaver",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Flail_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Torrent Flail",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

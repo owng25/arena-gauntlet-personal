@@ -1,0 +1,145 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"x-versioned": true,
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"ExperienceCostInCredits": {
+			"type": "integer"
+		},
+		"ExperienceGainOnPurchase": {
+			"type": "integer"
+		},
+		"RefreshCostInCredits": {
+			"type": "integer"
+		},
+		"RoundIncome": {
+			"type": "integer"
+		},
+		"WinIncome": {
+			"type": "integer"
+		},
+		"ExperiencePerRound": {
+			"type": "integer"
+		},
+		"StreakIncomeThresholds": {
+			"type": "object",
+			"propertyNames": {
+				"pattern": "^\\d+$"
+			},
+			"additionalProperties": {
+				"type": "integer"
+			}
+		},
+		"TierInstancesPerLine": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+		},
+		"LinesPerTier": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+		},
+		"SuitTierInstancesPerName": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+		},
+		"SuitNamesPerTier": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+		},
+		"WeaponTierInstancesPerName": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+		},
+		"WeaponNamesPerTier": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+		},
+		"ExperienceThresholdPerLevel": {
+			"type": "object",
+			"propertyNames": {
+				"pattern": "^\\d+$"
+			},
+			"additionalProperties": {
+				"type": "integer"
+			}
+		},
+		"TierChancePerLevel": {
+			"type": "object",
+			"propertyNames": {
+				"pattern": "^\\d+$"
+			},
+			"additionalProperties": {
+				"type": "array",
+				"items": {
+					"type": "integer"
+				}
+			}
+		},
+		"EquipmentTierChancePerLevel": {
+			"type": "object",
+			"propertyNames": {
+				"pattern": "^\\d+$"
+			},
+			"additionalProperties": {
+				"type": "array",
+				"items": {
+					"type": "integer"
+				}
+			}
+		},
+		"PveRoundChancesPerTier": {
+			"type": "object",
+			"propertyNames": {
+				"pattern": "^\\d+$"
+			},
+			"additionalProperties": {
+				"type": "array",
+				"items": {
+					"type": "integer"
+				}
+			}
+		},
+		"DroneHealthDamagePerRound": {
+			"type": "object",
+			"propertyNames": {
+				"pattern": "^\\d+$"
+			},
+			"additionalProperties": {
+				"type": "integer"
+			}
+		}
+	},
+	"required": [
+		"ExperienceCostInCredits",
+		"ExperienceGainOnPurchase",
+		"RefreshCostInCredits",
+		"RoundIncome",
+		"WinIncome",
+		"ExperiencePerRound",
+		"StreakIncomeThresholds",
+		"TierInstancesPerLine",
+		"LinesPerTier",
+		"SuitTierInstancesPerName",
+		"SuitNamesPerTier",
+		"WeaponTierInstancesPerName",
+		"WeaponNamesPerTier",
+		"ExperienceThresholdPerLevel",
+		"TierChancePerLevel",
+		"EquipmentTierChancePerLevel",
+		"PveRoundChancesPerTier",
+		"DroneHealthDamagePerRound"
+	]
+}

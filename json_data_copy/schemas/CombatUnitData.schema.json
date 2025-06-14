@@ -1,0 +1,1645 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Combat Unit Data",
+	"$ref": "#/$defs/CombatUnitType",
+	"$defs": {
+		"CombatUnitType": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"OmegaAbilitiesActivationCadence ": {
+					"type": "integer"
+				},
+				"OmegaAbilitiesActivationCheckStatType": {
+					"type": "string"
+				},
+				"OmegaAbilitiesActivationCheckValue": {
+					"type": "integer"
+				},
+				"AttackAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatAbilityType"
+					}
+				},
+				"AttackAbilitiesSelection": {
+					"$ref": "#/$defs/AbilitySelectionEnum"
+				},
+				"DominantCombatAffinity": {
+					"$ref": "#/$defs/CombatAffinityEnum"
+				},
+				"CombatAffinity": {
+					"$ref": "#/$defs/CombatAffinityEnum"
+				},
+				"CombatClass": {
+					"$ref": "#/$defs/CombatClassEnum"
+				},
+				"DominantCombatClass": {
+					"$ref": "#/$defs/CombatClassEnum"
+				},
+				"PreferredLineDominantCombatAffinity": {
+					"$ref": "#/$defs/CombatAffinityEnum"
+				},
+				"PreferredLineDominantCombatClass": {
+					"$ref": "#/$defs/CombatClassEnum"
+				},
+				"IntrinsicAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatAbilityType"
+					}
+				},
+				"Line": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"DisplayDescription": {
+					"type": "string"
+				},
+				"DisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"Description": {
+					"$ref": "#/$defs/DescriptionType"
+				},
+				"OmegaAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatAbilityType"
+					}
+				},
+				"OmegaAbilitiesSelection": {
+					"$ref": "#/$defs/AbilitySelectionEnum"
+				},
+				"SizeUnits": {
+					"type": "integer"
+				},
+				"Stage": {
+					"type": "integer"
+				},
+				"Path": {
+					"type": "string"
+				},
+				"Variation": {
+					"type": "string"
+				},
+				"Stats": {
+					"$ref": "#/$defs/CombatStatsType"
+				},
+				"Tier": {
+					"type": "integer"
+				},
+				"UnitType": {
+					"$ref": "#/$defs/UnitTypeEnum"
+				},
+				"IsDisabled": {
+					"type": "boolean"
+				},
+				"InnateAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatAbilityType"
+					}
+				},
+				"Facts": {
+					"$ref": "#/$defs/FactsType"
+				},
+				"Intro": {
+					"type": "string"
+				},
+				"Summary": {
+					"type": "string"
+				},
+				"ImageURL": {
+					"type": "string"
+				},
+				"AnimationURL": {
+					"type": "string"
+				},
+				"Biology": {
+					"$ref": "#/$defs/BiologyType"
+				},
+				"TraitOrderLegacy": {
+					"type": "array",
+					"items": {
+						"type": "integer"
+					}
+				},
+				"TraitOrder": {
+					"$ref": "#/$defs/TraitOrderType"
+				}
+			},
+			"additionalProperties": false
+		},
+		"TraitOrderType": {
+			"type": "object",
+			"properties": {
+				"Arena": {
+					"$ref": "#/$defs/TraitOrderFieldsType"
+				},
+				"Overworld": {
+					"$ref": "#/$defs/TraitOrderFieldsType"
+				}
+			},
+			"additionalProperties": false
+		},
+		"TraitOrderFieldsType": {
+			"type": "object",
+			"properties": {
+				"AttackDamage": {
+					"type": "integer"
+				},
+				"AttackSpeed": {
+					"type": "integer"
+				},
+				"Health": {
+					"type": "integer"
+				},
+				"MovementSpeed": {
+					"type": "integer"
+				},
+				"OmegaPower": {
+					"type": "integer"
+				},
+				"Resistance": {
+					"type": "integer"
+				}
+			},
+			"additionalProperties": false
+		},
+		"DescriptionType": {
+			"type": "object",
+			"properties": {
+				"Format": {
+					"type": "string"
+				},
+				"Parameters": {
+					"additionalProperties": { "$ref": "#/$defs/DescriptionTypeParameters" }
+				}
+			},
+			"required": ["Format"],
+			"additionalProperties": false
+		},
+		"DescriptionTypeParameters": {
+			"type": "object",
+			"properties": {
+				"ParameterPath": {
+					"type": "string"
+				},
+				"ValueMultiplier": {
+					"type": "number"
+				}
+			},
+			"required": ["ParameterPath"],
+			"additionalProperties": false
+		},
+		"CombatStatsType": {
+			"type": "object",
+			"properties": {
+				"HitChancePercentage": {
+					"type": "integer"
+				},
+				"AttackDodgeChancePercentage": {
+					"type": "integer"
+				},
+				"AttackDamage": {
+					"type": "integer"
+				},
+				"AttackEnergyDamage": {
+					"type": "integer"
+				},
+				"AttackPhysicalDamage": {
+					"type": "integer"
+				},
+				"AttackPureDamage": {
+					"type": "integer"
+				},
+				"AttackRangeUnits": {
+					"type": "integer"
+				},
+				"CurrentEnergy": {
+					"type": "integer"
+				},
+				"AttackSpeed": {
+					"type": "integer"
+				},
+				"CurrentHealth": {
+					"type": "integer"
+				},
+				"CurrentSubHyper": {
+					"type": "integer"
+				},
+				"EnergyCost": {
+					"type": "integer"
+				},
+				"EnergyGainEfficiencyPercentage": {
+					"type": "integer"
+				},
+				"EnergyPiercingPercentage": {
+					"type": "integer"
+				},
+				"EnergyRegeneration": {
+					"type": "integer"
+				},
+				"EnergyResist": {
+					"type": "integer"
+				},
+				"EnergyVampPercentage": {
+					"type": "integer"
+				},
+				"Grit": {
+					"type": "integer"
+				},
+				"CritReductionPercentage": {
+					"type": "integer"
+				},
+				"HealthGainEfficiencyPercentage": {
+					"type": "integer"
+				},
+				"HealthRegeneration": {
+					"type": "integer"
+				},
+				"MaxHealth": {
+					"type": "integer"
+				},
+				"MoveSpeedSubUnits": {
+					"type": "integer"
+				},
+				"OmegaPowerPercentage": {
+					"type": "integer"
+				},
+				"OmegaRangeUnits": {
+					"type": "integer"
+				},
+				"OnActivationEnergy": {
+					"type": "integer"
+				},
+				"PhysicalPiercingPercentage": {
+					"type": "integer"
+				},
+				"PhysicalResist": {
+					"type": "integer"
+				},
+				"PhysicalVampPercentage": {
+					"type": "integer"
+				},
+				"CritChancePercentage": {
+					"type": "integer"
+				},
+				"PureVampPercentage": {
+					"type": "integer"
+				},
+				"Resolve": {
+					"type": "integer"
+				},
+				"CritAmplificationPercentage": {
+					"type": "integer"
+				},
+				"StartingEnergy": {
+					"type": "integer"
+				},
+				"StartingShield": {
+					"type": "integer"
+				},
+				"TenacityPercentage": {
+					"type": "integer"
+				},
+				"Thorns": {
+					"type": "integer"
+				},
+				"VulnerabilityPercentage": {
+					"type": "integer"
+				},
+				"WillpowerPercentage": {
+					"type": "integer"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatAbilityType": {
+			"type": "object",
+			"properties": {
+				"ActivationTrigger": {
+					"$ref": "#/$defs/CombatActivationTriggerData"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"DisplayDescription": {
+					"type": "string"
+				},
+				"DisplayDescriptionNormalized": {
+					"type": "string"
+				},
+				"Skills": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatSkillType"
+					}
+				},
+				"TotalDurationMs": {
+					"type": "integer"
+				},
+				"MovementLock": {
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatActivationTriggerData": {
+			"type": "object",
+			"properties": {
+				"TriggerType": {
+					"$ref": "#/$defs/ActivationTriggerTypeEnum"
+				},
+				"ContextRequirement": {
+					"$ref": "#/$defs/ContextRequirementEnum"
+				},
+				"AbilityTypes": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/AbilityTypeItemEnum"
+					}
+				},
+				"Allegiance": {
+					"$ref": "#/$defs/AllegianceEnum"
+				},
+				"SenderAllegiance": {
+					"$ref": "#/$defs/AllegianceEnum"
+				},
+				"ReceiverAllegiance": {
+					"$ref": "#/$defs/AllegianceEnum"
+				},
+				"RangeUnits": {
+					"type": "integer"
+				},
+				"NotBeforeMs": {
+					"type": "integer"
+				},
+				"NotAfterMs": {
+					"type": "integer"
+				},
+				"ImmediateActivationOnly": {
+					"type": "boolean"
+				},
+				"OnlyFocus": {
+					"type": "boolean"
+				},
+				"OncePerSpawnedEntity": {
+					"type": "boolean"
+				},
+				"OnlyFromParent": {
+					"type": "boolean"
+				},
+				"ActivateEveryTimeMs": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"ActivationRadiusUnits": {
+					"type": "integer"
+				},
+				"ActivationCooldownMs": {
+					"type": "integer"
+				},
+				"ActivationTimeLimitMs": {
+					"type": "string"
+				},
+				"HealthLowerLimitPercentage": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"EveryX": {
+					"type": "boolean"
+				},
+				"NumberOfAbilitiesActivated": {
+					"type": "integer"
+				},
+				"MaxActivations": {
+					"type": "integer"
+				},
+				"RequiresHyperActive": {
+					"type": "boolean"
+				},
+				"ReceiverConditions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"SenderConditions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"SkillBeamDataType": {
+			"type": "object",
+			"properties": {
+				"LengthUnits": {
+					"type": "integer"
+				},
+				"WidthUnits": {
+					"type": "integer"
+				},
+				"FrequencyMs": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"ApplyOnce": {
+					"type": "boolean"
+				},
+				"IsHoming": {
+					"type": "boolean"
+				},
+				"IsBlockable": {
+					"type": "boolean"
+				},
+				"BlockAllegiance": {
+					"$ref": "#/$defs/AllegianceEnum"
+				}
+			}
+		},
+		"SkillDashDataType": {
+			"type": "object",
+			"properties": {
+				"HitDelayMs": {
+					"type": "integer"
+				},
+				"IsPassthrough": {
+					"type": "boolean"
+				},
+				"ApplyToAll": {
+					"type": "boolean"
+				},
+				"IsHoming": {
+					"type": "boolean"
+				},
+				"LandBehind": {
+					"type": "boolean"
+				}
+			}
+		},
+		"SkillProjectileDataType": {
+			"type": "object",
+			"properties": {
+				"SizeUnits": {
+					"type": "integer"
+				},
+				"SpeedSubUnits": {
+					"type": "integer"
+				},
+				"IsHoming": {
+					"type": "boolean"
+				},
+				"IsBlockable": {
+					"type": "boolean"
+				},
+				"ApplyToAll": {
+					"type": "boolean"
+				},
+				"ContinueAfterTarget": {
+					"type": "boolean"
+				}
+			}
+		},
+		"SkillZoneDataType": {
+			"type": "object",
+			"properties": {
+				"Shape": {
+					"$ref": "#/$defs/ZoneShapeEnum"
+				},
+				"RadiusUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"DurationMs": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"FrequencyMs": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"ApplyOnce": {
+					"type": "boolean"
+				},
+				"Attach": {
+					"type": "boolean"
+				},
+				"DestroyWithSender": {
+					"type": "boolean"
+				},
+				"GrowthRateSubUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"MaxRadiusUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"MovementSpeedSubUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"GlobalCollisionID": {
+					"type": "integer"
+				},
+				"DirectionDegrees": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"HeightUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"WidthUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"PredefinedSpawnPosition": {
+					"$ref": "#/$defs/PredefinedGridPositionEnum"
+				},
+				"PredefinedTargetPosition": {
+					"$ref": "#/$defs/PredefinedGridPositionEnum"
+				},
+				"SkipActivations": {
+					"type": "array",
+					"items": {
+						"type": "integer"
+					}
+				}
+			}
+		},
+		"SkillSpawnedCombatUnitDataType": {
+			"type": "object",
+			"properties": {
+				"CombatUnit": {
+					"$ref": "#/$defs/CombatUnitType"
+				},
+				"Direction": {
+					"type": "string"
+				},
+				"Linked": {
+					"type": "boolean"
+				},
+				"OnReservedPosition": {
+					"type": "boolean"
+				}
+			}
+		},
+		"CombatSkillDeploymentType": {
+			"type": "object",
+			"properties": {
+				"Type": {
+					"$ref": "#/$defs/DeploymentEnum"
+				},
+				"Guidance": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/GuidanceEnum"
+					}
+				},
+				"PreDeploymentDelayPercentage": {
+					"type": "integer"
+				},
+				"PreDeploymentRetargetingPercentage": {
+					"type": "integer"
+				}
+			}
+		},
+		"CombatSkillTargetingType": {
+			"type": "object",
+			"properties": {
+				"Type": {
+					"$ref": "#/$defs/TargetingEnum"
+				},
+				"Group": {
+					"type": "string"
+				},
+				"Lowest": {
+					"type": "boolean"
+				},
+				"Self": {
+					"type": "boolean"
+				},
+				"OnlyCurrentFocusers": {
+					"type": "boolean"
+				},
+				"Num": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"Stat": {
+					"type": "string"
+				},
+				"RadiusUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"Tier": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"CombatAffinity": {
+					"$ref": "#/$defs/CombatAffinityEnum"
+				},
+				"CombatClass": {
+					"$ref": "#/$defs/CombatClassEnum"
+				},
+				"NotCombatAffinity": {
+					"$ref": "#/$defs/CombatAffinityEnum"
+				},
+				"NotCombatClass": {
+					"$ref": "#/$defs/CombatClassEnum"
+				},
+				"Expression": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"Guidance": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/GuidanceEnum"
+					}
+				}
+			}
+		},
+		"CombatSkillType": {
+			"type": "object",
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"Beam": {
+					"$ref": "#/$defs/SkillBeamDataType"
+				},
+				"Dash": {
+					"$ref": "#/$defs/SkillDashDataType"
+				},
+				"Zone": {
+					"$ref": "#/$defs/SkillZoneDataType"
+				},
+				"Projectile": {
+					"$ref": "#/$defs/SkillProjectileDataType"
+				},
+				"SpawnCombatUnit": {
+					"$ref": "#/$defs/SkillSpawnedCombatUnitDataType"
+				},
+				"Targeting": {
+					"$ref": "#/$defs/CombatSkillTargetingType"
+				},
+				"Deployment": {
+					"$ref": "#/$defs/CombatSkillDeploymentType"
+				},
+				"ChannelTimeMs": {
+					"type": "integer"
+				},
+				"PercentageOfAbilityDuration": {
+					"type": "integer"
+				},
+				"EffectPackage": {
+					"$ref": "#/$defs/CombatEffectPackage"
+				},
+				"RotateToTarget": {
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatEffectPackage": {
+			"type": "object",
+			"properties": {
+				"Attributes": {
+					"$ref": "#/$defs/CombatEffectPackageAttribute"
+				},
+				"Effects": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatEffectType"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatEffectType": {
+			"type": "object",
+			"properties": {
+				"AbilityTypes": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/AbilityTypeItemEnum"
+					}
+				},
+				"ActivatedBy": {
+					"type": "string"
+				},
+				"ActivationsUntilExpiry": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"AttachedAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatAbilityType"
+					}
+				},
+				"AttachedEffects": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatEffectType"
+					}
+				},
+				"AttachableEffectTypeList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatEffectTypeID"
+					}
+				},
+				"AttachedEffectPackageAttributes": {
+					"$ref": "#/$defs/CombatEffectPackageAttribute"
+				},
+				"ShouldDestroyAttachedEntityOnSenderDeath": {
+					"type": "boolean"
+				},
+				"BlinkDelayMs": {
+					"type": "integer"
+				},
+				"BlinkTarget": {
+					"$ref": "#/$defs/BlinkTargetEnum"
+				},
+				"BlinkReservePreviousPosition": {
+					"type": "boolean"
+				},
+				"CanCleanse": {
+					"type": "boolean"
+				},
+				"CleanseBOTs": {
+					"type": "boolean"
+				},
+				"CleanseDebuffs": {
+					"type": "boolean"
+				},
+				"CleanseConditions": {
+					"type": "boolean"
+				},
+				"CleanseDOTs": {
+					"type": "boolean"
+				},
+				"CleanseNegativeStates": {
+					"type": "boolean"
+				},
+				"Conditions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"ConsumableActivationFrequency": {
+					"type": "integer"
+				},
+				"DamageType": {
+					"$ref": "#/$defs/DamageTypeEnum"
+				},
+				"DisplacementDistanceSubUnits": {
+					"type": "integer"
+				},
+				"DisplacementType": {
+					"$ref": "#/$defs/DisplacementTypeEnum"
+				},
+				"ConditionType": {
+					"$ref": "#/$defs/ConditionTypeEnum"
+				},
+				"Stacks": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"PlaneChange": {
+					"$ref": "#/$defs/PlaneChangeEnum"
+				},
+				"DurationMs": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"ExcessHealToShield": {
+					"type": "integer"
+				},
+				"Execute": {
+					"type": "boolean"
+				},
+				"Expression": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"FrequencyMs": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"VampiricPercentage": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"HealType": {
+					"$ref": "#/$defs/HealTypeEnum"
+				},
+				"IsConsumable": {
+					"type": "boolean"
+				},
+				"MaxHealthPercentageToHealth": {
+					"type": "integer"
+				},
+				"MissingHealthPercentageToHealth": {
+					"type": "integer"
+				},
+				"MarkType": {
+					"$ref": "#/$defs/MarkTypeEnum"
+				},
+				"NegativeState": {
+					"$ref": "#/$defs/NegativeStateEnum"
+				},
+				"OnDestroy": {
+					"$ref": "#/$defs/CombatSkillType"
+				},
+				"OnExpire": {
+					"$ref": "#/$defs/CombatSkillType"
+				},
+				"OnFinished": {
+					"$ref": "#/$defs/CombatSkillType"
+				},
+				"OnWasHit": {
+					"$ref": "#/$defs/CombatSkillType"
+				},
+				"PiercingPercentage": {
+					"type": "integer"
+				},
+				"PositiveState": {
+					"$ref": "#/$defs/PositiveStateEnum"
+				},
+				"RadiusUnits": {
+					"type": "integer"
+				},
+				"ShieldBypass": {
+					"type": "boolean"
+				},
+				"Stat": {
+					"$ref": "#/$defs/StatEnum"
+				},
+				"ToShieldDurationMs": {
+					"type": "integer"
+				},
+				"ToShieldPercentage": {
+					"type": "integer"
+				},
+				"Type": {
+					"$ref": "#/$defs/CombatEffectTypeEnum"
+				},
+				"ValidationList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatEffectValidation"
+					}
+				},
+				"OverlapProcessType": {
+					"$ref": "#/$defs/OverlapProcessTypeEnum"
+				},
+				"MaxStacks": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"ID": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatEffectTypeID": {
+			"type": "object",
+			"properties": {
+				"Type": {
+					"$ref": "#/$defs/CombatEffectTypeEnum"
+				},
+				"DamageType": {
+					"$ref": "#/$defs/DamageTypeEnum"
+				},
+				"DisplacementType": {
+					"$ref": "#/$defs/DisplacementTypeEnum"
+				},
+				"ConditionType": {
+					"$ref": "#/$defs/ConditionTypeEnum"
+				},
+				"PlaneChange": {
+					"$ref": "#/$defs/PlaneChangeEnum"
+				},
+				"HealType": {
+					"$ref": "#/$defs/HealTypeEnum"
+				},
+				"NegativeState": {
+					"$ref": "#/$defs/NegativeStateEnum"
+				},
+				"PositiveState": {
+					"$ref": "#/$defs/PositiveStateEnum"
+				},
+				"Stat": {
+					"$ref": "#/$defs/StatEnum"
+				},
+				"PropagationType": {
+					"$ref": "#/$defs/PropagationTypeEnum"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatEffectValidation": {
+			"type": "object",
+			"properties": {
+				"ComparisonEntities": {
+					"type": "string"
+				},
+				"ComparisonEntitiesCount": {
+					"type": "string"
+				},
+				"ComparisonType": {
+					"$ref": "#/$defs/ComparisonTypeEnum"
+				},
+				"DistanceUnits": {
+					"type": "integer"
+				},
+				"EnergyPiercingPercentage": {
+					"type": "integer"
+				},
+				"FrequencyMs": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"Left": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"PhysicalPiercingPercentage": {
+					"type": "integer"
+				},
+				"Right": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"Type": {
+					"$ref": "#/$defs/CombatEffectValidationEnum"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatExpression": {
+			"oneOf": [
+				{
+					"$ref": "#/$defs/CombatValue"
+				},
+				{
+					"$ref": "#/$defs/CombatExpressionObject"
+				}
+			]
+		},
+		"CombatValue": {
+			"oneOf": [
+				{
+					"type": "integer"
+				},
+				{
+					"type": "string"
+				}
+			]
+		},
+		"CombatExpressionObject": {
+			"type": "object",
+			"properties": {
+				"CombatAffinity": {
+					"$ref": "#/$defs/CombatAffinityEnum"
+				},
+				"CombatClass": {
+					"$ref": "#/$defs/CombatClassEnum"
+				},
+				"StatEvaluationType": {
+					"$ref": "#/$defs/StatEvaluationTypeEnum"
+				},
+				"IsUsedAsPercentage": {
+					"type": "boolean"
+				},
+				"Operands": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatExpression"
+					}
+				},
+				"Operation": {
+					"type": "string"
+				},
+				"Percentage": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"Stat": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"StatSource": {
+					"$ref": "#/$defs/StatSourceEnum"
+				},
+				"Value": {
+					"$ref": "#/$defs/CombatValue"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatEffectPackageAttribute": {
+			"type": "object",
+			"properties": {
+				"AlwaysCrit": {
+					"type": "boolean"
+				},
+				"CanCrit": {
+					"type": "boolean"
+				},
+				"CumulativeDamage": {
+					"type": "boolean"
+				},
+				"ExcessVampToShield": {
+					"type": "boolean"
+				},
+				"ExcessVampToShieldDurationMs": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"VampiricPercentage": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"DamageAmplification": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"DamageBonus": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"EnergyBurnAmplification": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"EnergyBurnBonus": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"EnergyDamageAmplification": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"EnergyDamageBonus": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"EnergyGainAmplification": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"EnergyGainBonus": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"EnergyPiercingPercentage": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"HardenedPiercingPercentage": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"HealAmplification": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"HealBonus": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"IsTrueshot": {
+					"type": "boolean"
+				},
+				"PhysicalDamageAmplification": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"PhysicalDamageBonus": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"PhysicalPiercingPercentage": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"PiercingPercentage": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"PureDamageAmplification": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"PureDamageBonus": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"RefundEnergy": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"RefundHealth": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"RotateToTarget": {
+					"type": "boolean"
+				},
+				"ShieldAmplification": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"ShieldBonus": {
+					"$ref": "#/$defs/CombatExpression"
+				},
+				"SplitDamage": {
+					"type": "boolean"
+				},
+				"ExploitWeakness": {
+					"type": "boolean"
+				},
+				"Propagation": {
+					"$ref": "#/$defs/CombatEffectPackageAttributePropagation"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatEffectPackageAttributePropagation": {
+			"type": "object",
+			"properties": {
+				"EffectPackage": {
+					"$ref": "#/$defs/CombatEffectPackage"
+				},
+				"PropagationType": {
+					"$ref": "#/$defs/PropagationTypeEnum"
+				},
+				"AddOriginalEffectPackage": {
+					"type": "boolean"
+				},
+				"SkipOriginalEffectPackage": {
+					"type": "boolean"
+				},
+				"TargetingGroup": {
+					"type": "string"
+				},
+				"PrioritizeNewTargets": {
+					"type": "boolean"
+				},
+				"IgnoreFirstPropagationReceiver": {
+					"type": "boolean"
+				},
+				"OnlyNewTargets": {
+					"type": "boolean"
+				},
+				"PreDeploymentDelayPercentage": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"ChainBounceMaxDistanceUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"SplashRadiusUnits": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"ChainDelayMs": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"ChainNumber": {
+					"$ref": "#/$defs/CombatValue"
+				},
+				"DeploymentGuidance": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/GuidanceEnum"
+					}
+				},
+				"TargetingGuidance": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/GuidanceEnum"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatSynergyThresholdsAbilityType": {
+			"type": "object",
+			"properties": {
+				"TeamAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatAbilityType"
+					}
+				},
+				"UnitAbilities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatAbilityType"
+					}
+				},
+				"Variables": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/CombatSynergyVariablesType"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatSynergyVariablesType": {
+			"type": "object",
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"Values": {
+					"type": "array",
+					"items": {
+						"type": "integer"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"FactsType": {
+			"type": "object",
+			"properties": {
+				"Kol": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Buckley": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"BiologyType": {
+			"type": "object",
+			"properties": {
+				"Physiology": {
+					"type": "string"
+				},
+				"Behaviour": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"CombatClassEnum": {
+			"type": "string",
+			"enum": [
+				"None",
+				"Aegis",
+				"Arcanite",
+				"Behemoth",
+				"Berserker",
+				"Bulwark",
+				"Colossus",
+				"Empath",
+				"Enchanter",
+				"Fighter",
+				"Harbinger",
+				"Invoker",
+				"Mystic",
+				"Phantom",
+				"Predator",
+				"Psion",
+				"Revenant",
+				"Rogue",
+				"Slayer",
+				"Templar",
+				"Vanguard"
+			]
+		},
+		"CombatAffinityEnum": {
+			"type": "string",
+			"enum": [
+				"None",
+				"Air",
+				"Bloom",
+				"Dust",
+				"Earth",
+				"Fire",
+				"Frost",
+				"Granite",
+				"Inferno",
+				"Magma",
+				"Mud",
+				"Nature",
+				"Shock",
+				"Spore",
+				"Steam",
+				"Tempest",
+				"Toxic",
+				"Tsunami",
+				"Verdant",
+				"Water",
+				"Wildfire"
+			]
+		},
+		"AbilitySelectionEnum": {
+			"type": "string",
+			"enum": [
+				"Cycle",
+				"EveryXActivations",
+				"SelfAttributeCheck",
+				"SelfHealthCheck"
+			]
+		},
+		"UnitTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Illuvial",
+				"Ranger",
+				"Pet",
+				"Crate"
+			]
+		},
+		"ActivationTriggerTypeEnum": {
+			"type": "string",
+			"enum": [
+				"EveryXTime",
+				"HealthInRange",
+				"InRange",
+				"OnAssist",
+				"OnActivateXAbilities",
+				"OnBattleStart",
+				"OnDealCrit",
+				"OnDamage",
+				"OnDodge",
+				"OnFaint",
+				"OnHit",
+				"OnMiss",
+				"OnTakeHit",
+				"OnVanquish",
+				"OnHyperactive",
+				"OnShieldHit"
+			]
+		},
+		"ContextRequirementEnum": {
+			"type": "string",
+			"enum": [
+				"DuringOmega"
+			]
+		},
+		"AllegianceEnum": {
+			"type": "string",
+			"enum": [
+				"Ally",
+				"Enemy",
+				"Self",
+				"All"
+			]
+		},
+		"GuidanceEnum": {
+			"type": "string",
+			"enum": [
+				"Ground",
+				"Airborne",
+				"Underground"
+			]
+		},
+		"TargetingEnum": {
+			"type": "string",
+			"enum": [
+				"Activator",
+				"Allegiance",
+				"CombatStatCheck",
+				"CurrentFocus",
+				"DistanceCheck",
+				"ExpressionCheck",
+				"InZone",
+				"PreviousTargetList",
+				"Self",
+				"Synergy",
+				"Vanquisher",
+				"Density",
+				"Pets",
+				"Tier"
+			]
+		},
+		"DeploymentEnum": {
+			"type": "string",
+			"enum": [
+				"Beam",
+				"Dash",
+				"Direct",
+				"Projectile",
+				"SpawnedCombatUnit",
+				"Zone"
+			]
+		},
+		"ZoneShapeEnum": {
+			"type": "string",
+			"enum": [
+				"Hexagon",
+				"Rectangle",
+				"Triangle"
+			]
+		},
+		"PredefinedGridPositionEnum": {
+			"type": "string",
+			"enum": [
+				"AllyBorderCenter",
+				"EnemyBorderCenter"
+			]
+		},
+		"AbilityTypeItemEnum": {
+			"type": "string",
+			"enum": [
+				"Attack",
+				"Innate",
+				"Omega"
+			]
+		},
+		"BlinkTargetEnum": {
+			"type": "string",
+			"enum": [
+				"Across",
+				"BehindReceiver",
+				"NearReceiver"
+			]
+		},
+		"DamageTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Energy",
+				"Physical",
+				"Pure",
+				"Purest"
+			]
+		},
+		"DisplacementTypeEnum": {
+			"type": "string",
+			"enum": [
+				"KnockBack",
+				"KnockUp",
+				"Pull",
+				"ThrowToFurthestEnemy",
+				"ThrowToHighestEnemyDensity"
+			]
+		},
+		"ConditionTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Burn",
+				"Frost",
+				"Poison",
+				"Wound"
+			]
+		},
+		"PlaneChangeEnum": {
+			"type": "string",
+			"enum": [
+				"Airborne",
+				"Underground"
+			]
+		},
+		"HealTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Normal",
+				"Pure"
+			]
+		},
+		"NegativeStateEnum": {
+			"type": "string",
+			"enum": [
+				"Blind",
+				"Charm",
+				"Clumsy",
+				"Disarm",
+				"Flee",
+				"Focused",
+				"Frozen",
+				"Lethargic",
+				"Root",
+				"Silenced",
+				"Stun",
+				"Taunted"
+			]
+		},
+		"MarkTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Beneficial",
+				"Detrimental"
+			]
+		},
+		"PositiveStateEnum": {
+			"type": "string",
+			"enum": [
+				"Airborne",
+				"Immune",
+				"Indomitable",
+				"Invulnerable",
+				"Truesight",
+				"EffectPackageBlock",
+				"Untargetable"
+			]
+		},
+		"PropagationTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Chain",
+				"Splash"
+			]
+		},
+		"StatEnum": {
+			"type": "string",
+			"enum": [
+				"HitChancePercentage",
+				"AttackDodgeChancePercentage",
+				"AttackDamage",
+				"AttackEnergyDamage",
+				"AttackPhysicalDamage",
+				"AttackPureDamage",
+				"AttackRangeUnits",
+				"AttackSpeed",
+				"EnergyCost",
+				"EnergyGainEfficiencyPercentage",
+				"EnergyPiercingPercentage",
+				"EnergyRegeneration",
+				"EnergyResist",
+				"EnergyVampPercentage",
+				"Grit",
+				"CritReductionPercentage",
+				"HealthGainEfficiencyPercentage",
+				"ShieldGainEfficiencyPercentage",
+				"HealthRegeneration",
+				"MaxHealth",
+				"MoveSpeedSubUnits",
+				"OmegaPowerPercentage",
+				"OmegaDamagePercentage",
+				"OmegaRangeUnits",
+				"OnActivationEnergy",
+				"PhysicalPiercingPercentage",
+				"PhysicalResist",
+				"PhysicalVampPercentage",
+				"CritChancePercentage",
+				"PureVampPercentage",
+				"Resolve",
+				"CritAmplificationPercentage",
+				"StartingEnergy",
+				"StartingShield",
+				"TenacityPercentage",
+				"Thorns",
+				"VulnerabilityPercentage",
+				"WillpowerPercentage"
+			]
+		},
+		"StatEvaluationTypeEnum": {
+			"type": "string",
+			"enum": [
+				"None",
+				"Live",
+				"Base",
+				"Bonus"
+			]
+		},
+		"StatSourceEnum": {
+			"type": "string",
+			"enum": [
+				"Receiver",
+				"Sender",
+				"SenderFocus"
+			]
+		},
+		"CombatEffectTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Aura",
+				"Blink",
+				"Buff",
+				"Cleanse",
+				"Debuff",
+				"Disempower",
+				"Displacement",
+				"DOT",
+				"Condition",
+				"Empower",
+				"EnergyBurnOverTime",
+				"EnergyGainOverTime",
+				"Execute",
+				"HOT",
+				"HyperBurnOverTime",
+				"HyperGainOverTime",
+				"InstantDamage",
+				"InstantEnergyBurn",
+				"InstantEnergyGain",
+				"InstantShieldBurn",
+				"InstantHeal",
+				"InstantHyperBurn",
+				"InstantHyperGain",
+				"NegativeState",
+				"PositiveState",
+				"SpawnMark",
+				"SpawnShield",
+				"PlaneChange",
+				"StatOverride"
+			]
+		},
+		"ComparisonTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Less",
+				"Equal",
+				"Greater"
+			]
+		},
+		"CombatEffectValidationEnum": {
+			"type": "string",
+			"enum": [
+				"DistanceCheck",
+				"Expression"
+			]
+		},
+		"OverlapProcessTypeEnum": {
+			"type": "string",
+			"enum": [
+				"Sum",
+				"Highest",
+				"Stacking",
+				"Shield",
+				"Condition",
+				"Merge"
+			]
+		}
+	}
+}

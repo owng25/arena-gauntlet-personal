@@ -1,0 +1,115 @@
+{
+	"Name": "RetributionsCall",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "RetributionsCall_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "RetributionsCall - Max Health",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 900000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "RetributionsCall_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 8000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "RetributionsCall - Taunt",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Enemy",
+						"RadiusUnits": 25
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "NegativeState",
+								"NegativeState": "Taunted",
+								"DurationMs": 3000
+							}
+						]
+					}
+				},
+				{
+					"Name": "RetributionsCall - Thorns",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "Thorns",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 3000,
+								"Expression": 100000
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Retribution's Call",
+	"DisplayDescription": "Gain <MaxHealth>900</> <MaxHealth>Max Health</>. Every 8 seconds, Taunt enemies within 25-hexes and gain <Thorns>100</> <Thorns>Thorns</> for 3 seconds.",
+	"Description": {
+		"Format": "Gain <MaxHealth>{HealthVal}</> <MaxHealth>Max Health</>. Every {TriggeTime} seconds, Taunt enemies within {Radius}-hexes and gain <Thorns>{Thorns}</> <Thorns>Thorns</> for {Duration} seconds.",
+		"Parameters": {
+			"HealthVal": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"TriggeTime": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.ActivateEveryTimeMs",
+				"ValueMultiplier": 0.001
+			},
+			"Radius": {
+				"ParameterPath": "Abilities[1].Skills[0].Targeting.RadiusUnits"
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[1].Skills[1].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"Thorns": {
+				"ParameterPath": "Abilities[1].Skills[1].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Gain 900 Max Health. Every 8 seconds, Taunt enemies within 25-hexes and gain 100 Thorns for 3 seconds."
+}

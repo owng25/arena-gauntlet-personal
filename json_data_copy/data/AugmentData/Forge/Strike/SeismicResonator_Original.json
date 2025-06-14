@@ -1,0 +1,151 @@
+{
+	"Name": "SeismicResonator",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "SeismicResonator Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "SeismicResonator - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "CritAmplificationPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "SeismicResonator_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 5
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "SeismicResonator - Deal AOE Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": true,
+								"ActivationsUntilExpiry": 1,
+								"ActivatedBy": "Attack",
+								"AttachedEffectPackageAttributes": {
+									"Propagation": {
+										"PropagationType": "Splash",
+										"IgnoreFirstPropagationReceiver": true,
+										"SplashRadiusUnits": 20,
+										"EffectPackage": {
+											"Effects": [
+												{
+													"Type": "InstantDamage",
+													"DamageType": "Physical",
+													"Expression": 100000
+												}
+											]
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Seismic Resonator",
+	"DisplayDescription": "Every 5 attacks, deal an additional <AttackPhysicalDamage>100</> <AttackPhysicalDamage>Physical Damage</> to enemies within 20-hexes around the target.\r\n\r\nStats:\r\n+20% <AttackDamage>Attack Damage</>\r\n+10% <CritAmplificationPercentage>Crit Amp</>",
+	"Description": {
+		"Format": "Every {AttackNum} attacks, deal an additional <AttackPhysicalDamage>{DamageValue}</> <AttackPhysicalDamage>Physical Damage</> to enemies within {Radius}-hexes around the target.\r\n\r\nStats:\r\n+{Stat_AD}% <AttackDamage>Attack Damage</>\r\n+{Stat_CA}% <CritAmplificationPercentage>Crit Amp</>",
+		"Parameters": {
+			"AttackNum": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.NumberOfAbilitiesActivated",
+				"ValueMultiplier": 1.0
+			},
+			"DamageValue": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffectPackageAttributes.Propagation.EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Radius": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffectPackageAttributes.Propagation.SplashRadiusUnits",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_AD": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_CA": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Every 5 attacks, deal an additional 100 Physical Damage to enemies within 20-hexes around the target.\r\n\r\nStats:\r\n+20% Attack Damage\r\n+10% Crit Amp"
+}

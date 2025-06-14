@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Consumable_Flintcap_Tier3",
+  "Name": "Gather {0} Rare Flintcap-cap",
+  "Description": "Gather {0} Rare Flintcap-cap by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "Consumable",
+      "Name": "Flintcap_Tier3",
+      "Quantity": 15,
+      "Description": "Gather {0} Rare Flintcap-cap by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

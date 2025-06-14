@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_InfusedGemstone_EarthInfusedGemT1",
+  "Name": "Forge Infused Common Earth Gems",
+  "Description": "Forge Infused Common Earth Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "EarthInfusedGemT1",
+      "Quantity": 70,
+      "Description": "Forge {0} Infused Common Earth Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

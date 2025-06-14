@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Milestone_Gauntlet_Leviathan_Tier1_Win",
+  "Name": "Finish {0} matches of Leviathan Gauntlet in First Place",
+  "Description": "Finish {0} matches of Leviathan Gauntlet in First Place",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "Quantity": 100,
+      "WinRequired": true,
+      "GameMode": "Gauntlet",
+      "Queue": "Leviathan",
+      "Description": "Finish {0} matches of Leviathan Gauntlet in First Place",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_InfusedGemstone_WaterInfusedGemT0",
+  "Name": "Forge Infused Water Gem Fragments",
+  "Description": "Forge Infused Water Gem Fragments",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "WaterInfusedGemT0",
+      "Quantity": 140,
+      "Description": "Forge {0} Infused Water Gem Fragments",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

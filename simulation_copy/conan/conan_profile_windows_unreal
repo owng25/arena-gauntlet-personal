@@ -1,0 +1,13 @@
+include(conan_profile_windows)
+include(conan_profile_generic_unreal_and_server)
+
+[options]
+    enable_cli=True
+    enable_visualization=True
+
+#
+# Uncomment the code below if you want to build for (See README): ReleaseWithDebugInformation
+#
+#[conf]
+#    tools.build:cxxflags=["/Zi"]
+#    tools.build:sharedflags=["/DEBUG"]

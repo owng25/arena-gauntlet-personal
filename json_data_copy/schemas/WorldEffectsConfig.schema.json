@@ -1,0 +1,57 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "World Effects Configs",
+	"$ref": "#/$defs/WorldEffectsConfig",
+	"$defs": {
+		"WorldEffectConditionConfig": {
+			"type": "object",
+			"x-versioned": true,
+			"additionalProperties": false,
+			"properties": {
+				"DurationMs": {
+					"type": "integer"
+				},
+				"FrequencyTimeMs": {
+					"type": "integer"
+				},
+				"MaxStacks": {
+					"type": "integer"
+				},
+				"CleanseOnMaxStacks": {
+					"type": "boolean"
+				},
+				"DotDamageType": {
+					"$ref": "CombatUnitData.schema.json#/$defs/DamageTypeEnum"
+				},
+				"DotHighPrecisionPercentage": {
+					"type": "integer"
+				},
+				"DebuffStatType": {
+					"$ref": "CombatUnitData.schema.json#/$defs/StatEnum"
+				},
+				"DebuffPercentage": {
+					"type": "integer"
+				}
+			}
+		},
+		"WorldEffectsConfig": {
+			"type": "object",
+			"x-versioned": true,
+			"additionalProperties": false,
+			"properties": {
+				"Poison": {
+					"$ref": "#/$defs/WorldEffectConditionConfig"
+				},
+				"Wound": {
+					"$ref": "#/$defs/WorldEffectConditionConfig"
+				},
+				"Burn": {
+					"$ref": "#/$defs/WorldEffectConditionConfig"
+				},
+				"Frost": {
+					"$ref": "#/$defs/WorldEffectConditionConfig"
+				}
+			}
+		}
+	}
+}

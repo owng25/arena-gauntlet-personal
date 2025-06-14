@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Zero_Extract_Hydrogen",
+  "Name": "Extract Hydrogen",
+  "Description": "Extract {0} Hydrogen from a Hydrogen site",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Zero",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Quantity": 800000,
+      "ResourceType": "Hydrogen",
+      "Description": "Extract {0} Hydrogen from a Hydrogen site",
+      "Type": "ExtractResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

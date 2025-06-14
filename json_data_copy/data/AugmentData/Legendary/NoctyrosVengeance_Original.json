@@ -1,0 +1,147 @@
+{
+	"Name": "NoctyrosVengeance",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "NoctyrosVengeance_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "NoctyrosVengeance - Poison",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": false,
+								"DurationMs": -1,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "DOT",
+										"DamageType": "Pure",
+										"OverlapProcessType": "Merge",
+										"DurationMs": 5000,
+										"FrequencyMs": 1000,
+										"Expression": {
+											"Percentage": 3,
+											"Stat": "MaxHealth",
+											"StatSource": "Receiver"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "NoctyrosVengeance_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "NoctyrosVengeance - Targeting",
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Targeting": {
+						"Type": "Allegiance",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnMark",
+								"MarkType": "Detrimental",
+								"DurationMs": -1,
+								"ShouldDestroyAttachedEntityOnSenderDeath": true,
+								"AttachedAbilities": [
+									{
+										"Name": "NoctyrosVengeance - Sub Ability",
+										"ActivationTrigger": {
+											"TriggerType": "OnVanquish",
+											"Allegiance": "Self"
+										},
+										"TotalDurationMs": 0,
+										"Skills": [
+											{
+												"Name": "NoctyrosVengeance - Focused and Damage Reduction",
+												"Deployment": {
+													"Type": "Direct"
+												},
+												"Targeting": {
+													"Type": "Self"
+												},
+												"EffectPackage": {
+													"Effects": [
+														{
+															"Type": "NegativeState",
+															"NegativeState": "Focused",
+															"DurationMs": 4000
+														},
+														{
+															"Type": "Debuff",
+															"Stat": "VulnerabilityPercentage",
+															"DurationMs": 4000,
+															"OverlapProcessType": "Merge",
+															"Expression": 100
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Noctyros Vengeance",
+	"DisplayDescription": "Attacks inflict Poison for 5 seconds.\r\n\r\nWhen an ally is Vanquished, the vanquisher becomes Focused and takes <DamageAmplification>100%</> more damage for the next 4 seconds.\r\n\r\n<Italic>Poison: Deals 1% of target's Max Health as Pure Damage per second.</>\r\n\r\n<Italic>Focused: Causes all allies within range to attack the unit.</>",
+	"Description": {
+		"Format": "Attacks inflict Poison for {PoisonDuration} seconds.\r\n\r\nWhen an ally is Vanquished, the vanquisher becomes Focused and takes <DamageAmplification>{ExtraDmg}%</> more damage for the next {FocusDuration} seconds.\r\n\r\n<Italic>Poison: Deals 1% of target's Max Health as Pure Damage per second.</>\r\n\r\n<Italic>Focused: Causes all allies within range to attack the unit.</>",
+		"Parameters": {
+			"PoisonDuration": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"ExtraDmg": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			},
+			"FocusDuration": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Attacks inflict Poison for 5 seconds.\r\n\r\nWhen an ally is Vanquished, the vanquisher becomes Focused and takes 100% more damage for the next 4 seconds.\r\n\r\nPoison: Deals 1% of target's Max Health as Pure Damage per second.\r\n\r\nFocused: Causes all allies within range to attack the unit."
+}

@@ -1,0 +1,78 @@
+{
+	"Name": "SmolderingStrike",
+	"Stage": 2,
+	"Type": "Simulation",
+	"Abilities": [
+		{
+			"Name": "SmolderingStrike_Buf",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Your Fire Units attacks deal 10% bonus Pure damage over 3 seconds.",
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Targeting": {
+						"Type": "Allegiance",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Ally"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": false,
+								"DurationMs": -1,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "DOT",
+										"DamageType": "Pure",
+										"OverlapProcessType": "Sum",
+										"DurationMs": 3000,
+										"FrequencyMs": 1000,
+										"Expression": {
+											"Percentage": 16,
+											"Stat": "AttackDamage",
+											"StatSource": "Sender"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Smoldering Strike II",
+	"DisplayDescription": "Your units attacks deal 16% bonus Pure damage over 3 seconds.",
+	"Description": {
+		"Format": "Your units attacks deal {DamageValue}% bonus Pure damage over {Duration} seconds.",
+		"Parameters": {
+			"DamageValue": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Percentage"
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [],
+		"GrantedCredits": 0
+	}
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_OverworldDroneEquipment_VacuumDiverter_Stage2",
+  "Name": "Forge a Advanced Vacuum Diverter",
+  "Description": "Forge a Advanced Vacuum Diverter",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "OverworldDroneEquipment",
+      "Name": "VacuumDiverter_Stage2",
+      "Quantity": 1,
+      "Description": "Forge a Advanced Vacuum Diverter",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

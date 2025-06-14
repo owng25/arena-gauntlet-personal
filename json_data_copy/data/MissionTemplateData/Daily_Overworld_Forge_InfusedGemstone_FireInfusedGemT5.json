@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Forge_InfusedGemstone_FireInfusedGemT5",
+  "Name": "Forge {0} Infused Resplendent Fire Gems",
+  "Description": "Forge {0} Infused Resplendent Fire Gems",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "InfusedGemstone",
+      "Name": "FireInfusedGemT5",
+      "Quantity": 8,
+      "Description": "Forge {0} Infused Resplendent Fire Gems",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

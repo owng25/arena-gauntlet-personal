@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Consumable_Ringnut_Tier2",
+  "Name": "Gather {0} Uncommon Ringnut",
+  "Description": "Gather {0} Uncommon Ringnut by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "Consumable",
+      "Name": "Ringnut_Tier2",
+      "Quantity": 140,
+      "Description": "Gather {0} Uncommon Ringnut by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

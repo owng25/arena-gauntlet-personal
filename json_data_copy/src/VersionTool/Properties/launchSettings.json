@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VersionTool": {
+      "commandName": "Project",
+      "commandLineArgs": "-p ../../../../.."
+    }
+  }
+}

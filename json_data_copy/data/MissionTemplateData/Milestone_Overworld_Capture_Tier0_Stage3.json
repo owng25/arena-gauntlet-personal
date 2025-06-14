@@ -1,0 +1,219 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier0_Stage3",
+  "Name": "Capture all Tier 0 Stage 3 Illuvials",
+  "Description": "Capture all Tier 0 Stage 3 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "131_DokaWater_Stage3_Water_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Water Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "132_DokaEarth_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Earth Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "133_DokaFire_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Fire Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "134_DokaNature_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Nature Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "135_DokaAir_Stage3_Air_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Air Doka",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "136_GrokkoWater_Stage3_Water_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Water Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "137_GrokkoEarth_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Earth Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "138_GrokkoFire_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Fire Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "139_GrokkoNature_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Nature Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "140_GrokkoAir_Stage3_Air_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Air Grokko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "141_VolanteWater_Stage3_Water_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Water Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "142_VolanteEarth_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Earth Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "143_VolanteFire_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Fire Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "144_VolanteNature_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Nature Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "145_VolanteAir_Stage3_Air_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Air Volante",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "146_FliishWater_Stage3_Water_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Water Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "147_FliishEarth_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Earth Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "148_FliishFire_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Fire Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "149_FliishNature_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Nature Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "150_FliishAir_Stage3_Air_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Air Fliish",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "151_AtippoWater_Stage3_Water_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Water Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "152_AtippoEarth_Stage3_Earth_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Earth Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "153_AtippoFire_Stage3_Fire_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Fire Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "154_AtippoNature_Stage3_Nature_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Nature Atippo",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "155_AtippoAir_Stage3_Air_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 0,
+      "Description": "Capture an Exalted Air Atippo",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

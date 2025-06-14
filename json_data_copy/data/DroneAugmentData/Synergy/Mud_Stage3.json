@@ -1,0 +1,26 @@
+{
+	"Name": "Mud",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Mud Matrix",
+	"DisplayDescription": "Gain a Mud Imprint and a Bloodroot Charm.",
+	"Description": {
+		"Format": "Gain a Mud Imprint and a Bloodroot Charm.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Mud",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "BloodrootCharm",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

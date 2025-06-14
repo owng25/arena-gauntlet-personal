@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Suits_Tier5_Stage3",
+  "Name": "Forge Tier 5 Stage 3 Suits",
+  "Description": "Forge Tier 5 Stage 3 Suits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Mantle_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Wrath Mantle",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Scales_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Cosmic Scales",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Xenolink_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Spectral Xenolink",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

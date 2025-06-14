@@ -1,0 +1,34 @@
+{
+	"Name": "EnergyResist",
+	"Stage": 1,
+	"Abilities": [
+		{
+			"Name": "Energy Resist",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Energy Resist Buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "EnergyResist",
+								"DurationMs": -1,
+								"Expression": 17
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

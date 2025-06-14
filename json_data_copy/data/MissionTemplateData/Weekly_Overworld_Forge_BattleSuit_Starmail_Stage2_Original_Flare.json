@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Starmail_Stage2_Original_Flare",
+  "Name": "Forge a Flare Starmail",
+  "Description": "Forge a Flare Starmail",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Starmail_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Flare Starmail",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

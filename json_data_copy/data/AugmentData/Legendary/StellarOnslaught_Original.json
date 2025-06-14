@@ -1,0 +1,110 @@
+{
+	"Name": "StellarOnslaught",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "StellarOnslaught_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "StellarOnslaught - Pure Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"FrequencyMs": 100,
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										{
+											"Percentage": 50,
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Receiver"
+										},
+										1000
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "StellarOnslaught_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnVanquish",
+				"Allegiance": "Self"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "StellarOnslaught - Pure Damage on Vanquish",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Merge",
+								"DurationMs": 5000,
+								"FrequencyMs": 100,
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										{
+											"Percentage": 50,
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Receiver"
+										},
+										1000
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Stellar Onslaught",
+	"DisplayDescription": "Attacks deal 50% of <OmegaPowerPercentage>Omega Power</> as bonus Pure Damage.\r\n\r\nAfter Vanquishing an enemy, this bonus increases to 100% for 5 seconds.",
+	"Description": {
+		"Format": "Attacks deal {PureDamageStart}% of <OmegaPowerPercentage>Omega Power</> as bonus Pure Damage.\r\n\r\nAfter Vanquishing an enemy, this bonus increases to {PureDamageVanq}% for {Duration} seconds.",
+		"Parameters": {
+			"PureDamageStart": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0].Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"PureDamageVanq": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Operands[0].Percentage",
+				"ValueMultiplier": 2.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Attacks deal 50% of Omega Power as bonus Pure Damage.\r\n\r\nAfter Vanquishing an enemy, this bonus increases to 100% for 5 seconds."
+}

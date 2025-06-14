@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Gem_FireGemT0",
+  "Name": "Extract {0} Fire Gem Fragment",
+  "Description": "Extract {0} Fire Gem Fragment by mining deposits in a Stage 0 Region",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "OverworldGemstone",
+      "Name": "FireGemT0",
+      "Quantity": 210,
+      "Description": "Extract {0} Fire Gem Fragment by mining deposits in a Stage 0 Region",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

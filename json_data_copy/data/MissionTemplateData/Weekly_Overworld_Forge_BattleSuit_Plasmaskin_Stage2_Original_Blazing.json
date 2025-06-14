@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Plasmaskin_Stage2_Original_Blazing",
+  "Name": "Forge a Blazing Plasmaskin",
+  "Description": "Forge a Blazing Plasmaskin",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Plasmaskin_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Blazing Plasmaskin",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

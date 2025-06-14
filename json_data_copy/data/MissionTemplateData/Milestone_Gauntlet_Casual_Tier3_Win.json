@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Milestone_Gauntlet_Casual_Tier3_Win",
+  "Name": "Finish {0} matches of Casual Gauntlet in First Place",
+  "Description": "Finish {0} matches of Casual Gauntlet in First Place",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "Quantity": 10000,
+      "WinRequired": true,
+      "GameMode": "Gauntlet",
+      "Queue": "Casual",
+      "Description": "Finish {0} matches of Casual Gauntlet in First Place",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Maul_Stage1_Original_Shadow",
+  "Name": "Forge a Shadow Maul",
+  "Description": "Forge a Shadow Maul",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Maul_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Shadow Maul",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

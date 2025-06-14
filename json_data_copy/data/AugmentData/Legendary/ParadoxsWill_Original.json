@@ -1,0 +1,124 @@
+{
+	"Name": "ParadoxsWill",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "ParadoxsWill_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "ParadoxsWill - Immune",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "PositiveState",
+								"PositiveState": "Immune",
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "ParadoxsWill_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 7
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "ParadoxsWill - Disarm",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CombatStatCheck",
+						"Group": "Enemy",
+						"Stat": "AttackSpeed",
+						"Lowest": false,
+						"Num": 1
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "NegativeState",
+								"NegativeState": "Disarm",
+								"DurationMs": 2000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "ParadoxsWill_Ability3",
+			"ActivationTrigger": {
+				"TriggerType": "OnActivateXAbilities",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"EveryX": true,
+				"NumberOfAbilitiesActivated": 7
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "ParadoxsWill - Silence",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "CombatStatCheck",
+						"Group": "Enemy",
+						"Stat": "OmegaPowerPercentage",
+						"Lowest": false,
+						"Num": 1
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "NegativeState",
+								"NegativeState": "Silenced",
+								"DurationMs": 2000
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Paradox's Will",
+	"DisplayDescription": "The holder is Immune.\r\n\r\nEvery 7 attacks, Disarm the highest <AttackSpeed>Attack Speed</> and Silence the highest <OmegaPowerPercentage>Omega Power</> enemies for 2 seconds.",
+	"Description": {
+		"Format": "The holder is Immune.\r\n\r\nEvery {AttackNum} attacks, Disarm the highest <AttackSpeed>Attack Speed</> and Silence the highest <OmegaPowerPercentage>Omega Power</> enemies for {Duration} seconds.",
+		"Parameters": {
+			"AttackNum": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.NumberOfAbilitiesActivated",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The holder is Immune.\r\n\r\nEvery 7 attacks, Disarm the highest Attack Speed and Silence the highest Omega Power enemies for 2 seconds."
+}

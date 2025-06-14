@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Cleaver_Stage1_Original_Vinebound",
+  "Name": "Forge a Vinebound Cleaver",
+  "Description": "Forge a Vinebound Cleaver",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Cleaver_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Vinebound Cleaver",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

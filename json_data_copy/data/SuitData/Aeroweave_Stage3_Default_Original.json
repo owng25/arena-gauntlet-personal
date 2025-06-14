@@ -1,0 +1,126 @@
+{
+	"Name": "Aeroweave",
+	"Stage": 3,
+	"Tier": 1,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 70,
+		"EnergyResist": 90,
+		"MaxHealth": 1350000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2500,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackDodgeChancePercentage",
+								"Expression": 20,
+								"DurationMs": -1
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "On Dodge, gain 20% stacking crit amp, up to 300%.",
+			"ActivationTrigger": {
+				"TriggerType": "OnDodge",
+				"Allegiance": "Self"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "AeroweaveS3",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Merge",
+								"DurationMs": 5000,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Hyperflux Aeroweave",
+	"DisplayDescription": "Health: 1,350\r\nPhysical Resist: 70\r\nEnergy Resist: 90\r\nMovement Speed: 25\r\n\r\nPassive: Gain 20 Dodge Chance. Dodging an Attack grants 40% Attack Speed for 5 Seconds.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d} Dodge Chance. Dodging an Attack grants {e}% Attack Speed for {f} Seconds.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			},
+			"e": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage"
+			},
+			"f": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,350\r\nPhysical Resist: 70\r\nEnergy Resist: 90\r\nMovement Speed: 25\r\n\r\nPassive: Gain 20 Dodge Chance. Dodging an Attack grants 40% Attack Speed for 5 Seconds."
+}

@@ -1,0 +1,24 @@
+{
+  "ProductionId": "Daily_Overworld_Morphopod_Catch",
+  "Name": "Catch {0} Morphopods",
+  "Description": "Catch {0} Morphopods",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 16,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Quantity": 10,
+      "Description": "Catch {0} Morphopods",
+      "Type": "CatchMorphopodObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

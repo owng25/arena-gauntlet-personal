@@ -1,0 +1,37 @@
+{
+  "ProductionId": "Milestone_Overworld_Forge_Weapons_Tier5_Stage3",
+  "Name": "Forge Tier 5 Stage 3 Weapons",
+  "Description": "Forge Tier 5 Stage 3 Weapons",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "Lance_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Zephyr Lance",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Maul_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Dreadmarsh Maul",
+      "Type": "ForgeItemObjective"
+    },
+    {
+      "Name": "Sceptre_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Venomous Sceptre",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

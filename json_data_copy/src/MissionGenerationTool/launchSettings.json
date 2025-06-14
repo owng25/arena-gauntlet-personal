@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "MissionGenerationTool": {
+      "commandName": "Project",
+      "commandLineArgs": "../..",
+      "workingDirectory": "."
+    }
+  }
+}

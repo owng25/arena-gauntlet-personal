@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Neuroplate_Stage1_Original_Synapse",
+  "Name": "Forge a Synapse Neuroplate",
+  "Description": "Forge a Synapse Neuroplate",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Neuroplate_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Synapse Neuroplate",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

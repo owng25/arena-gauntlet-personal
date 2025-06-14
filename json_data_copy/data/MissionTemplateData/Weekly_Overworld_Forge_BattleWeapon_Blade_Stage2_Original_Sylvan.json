@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Blade_Stage2_Original_Sylvan",
+  "Name": "Forge a Sylvan Blade",
+  "Description": "Forge a Sylvan Blade",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Blade_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Sylvan Blade",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+	"Name": "Starmail",
+	"Stage": 3,
+	"Tier": 2,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 95,
+		"EnergyResist": 95,
+		"MaxHealth": 1900000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2200,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Holder has True Sight, 30% increased Attack Damage, and 30% increased Attack Speed.",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "True Sight and Attack Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 40,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "On Critical, Holder and its two Nearest Allies gain 6% Crit Amp. (Max 30 Stacks)",
+			"ActivationTrigger": {
+				"TriggerType": "OnDealCrit"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Savagery Buff",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"MaxStacks": 10,
+								"Expression": {
+									"Percentage": 2,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"MaxStacks": 10,
+								"Expression": {
+									"Percentage": 2,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"MaxStacks": 10,
+								"Expression": {
+									"Percentage": 2,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Nova Starmail",
+	"DisplayDescription": "Health: 1,900\r\nPhysical Resist: 95\r\nEnergy Resist: 95\r\nMovement Speed: 22\r\n\r\nPassive: Gain 40% Attack Damage. Critical Attacks give a stack of 2% Attack Damage, up to 10 stacks.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d}% Attack Damage. Critical Attacks give a stack of {e}% Attack Damage, up to {f} stacks.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression.Percentage"
+			},
+			"e": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].Expression.Percentage"
+			},
+			"f": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[2].MaxStacks"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 1,900\r\nPhysical Resist: 95\r\nEnergy Resist: 95\r\nMovement Speed: 22\r\n\r\nPassive: Gain 40% Attack Damage. Critical Attacks give a stack of 2% Attack Damage, up to 10 stacks."
+}

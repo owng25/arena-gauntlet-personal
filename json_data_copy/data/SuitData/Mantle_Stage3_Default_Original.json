@@ -1,0 +1,125 @@
+{
+	"Name": "Mantle",
+	"Stage": 3,
+	"Tier": 5,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Stats": {
+		"PhysicalResist": 80,
+		"EnergyResist": 95,
+		"MaxHealth": 2000000,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 0,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 0,
+		"AttackDodgeChancePercentage": 0,
+		"MoveSpeedSubUnits": 2500,
+		"OmegaPowerPercentage": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"StartingEnergy": 0,
+		"StartingShield": 0,
+		"CritChancePercentage": 0,
+		"CritAmplificationPercentage": 0,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0
+	},
+	"Abilities": [
+		{
+			"Name": "Buff Dodge Chance",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Buff All Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "CritChancePercentage",
+								"Expression": 25,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "CritAmplificationPercentage",
+								"Expression": 100,
+								"DurationMs": -1
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 30,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "PhysicalPiercingPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 30
+							},
+							{
+								"Type": "Buff",
+								"Stat": "EnergyPiercingPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 30
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Wrath Mantle",
+	"DisplayDescription": "Health: 2,000\r\nPhysical Resist: 80\r\nEnergy Resist: 95\r\nMovement Speed: 25\r\n\r\nPassive: Gain 25% Crit Chance, 100% Crit Amp, and 30% Attack Speed. Your Attacks pierce 30% of the target's Resistances.",
+	"Description": {
+		"Format": "Health: {a}\r\nPhysical Resist: {b}\r\nEnergy Resist: {z}\r\nMovement Speed: {c}\r\n\r\nPassive: Gain {d}% Crit Chance, {e}% Crit Amp, and {f}% Attack Speed. Your Attacks pierce {g}% of the target's Resistances.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "Stats.MaxHealth",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "Stats.PhysicalResist"
+			},
+			"z": {
+				"ParameterPath": "Stats.EnergyResist"
+			},
+			"c": {
+				"ParameterPath": "Stats.MoveSpeedSubUnits",
+				"ValueMultiplier": 0.01
+			},
+			"d": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			},
+			"e": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression"
+			},
+			"f": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[2].Expression.Percentage"
+			},
+			"g": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Health: 2,000\r\nPhysical Resist: 80\r\nEnergy Resist: 95\r\nMovement Speed: 25\r\n\r\nPassive: Gain 25% Crit Chance, 100% Crit Amp, and 30% Attack Speed. Your Attacks pierce 30% of the target's Resistances."
+}

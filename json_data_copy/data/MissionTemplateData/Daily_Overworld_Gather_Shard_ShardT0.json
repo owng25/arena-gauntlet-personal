@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Shard_ShardT0",
+  "Name": "Extract {0} Shard Fragment",
+  "Description": "Extract {0} Shard Fragment by mining deposits in a Stage 0 Region",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "ItemType": "Shard",
+      "Name": "ShardT0",
+      "Quantity": 30,
+      "Description": "Extract {0} Shard Fragment by mining deposits in a Stage 0 Region",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

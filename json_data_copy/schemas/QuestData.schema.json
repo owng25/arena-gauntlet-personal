@@ -1,0 +1,270 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Quest",
+    "$ref": "#/$defs/QuestType",
+    "$defs": {
+        "QuestType": {
+            "type": "object",
+            "x-versioned": true,
+            "description": "Contains the overall structure of a quest line",
+            "additionalProperties": false,
+            "properties": {
+                "ProductionId": {
+                    "type": "string",
+                    "description": "The unique id of the quest",
+                    "maxLength": 100
+                },
+                "Name": {
+                    "type": "string",
+                    "description": "A friendly name for the quest",
+                    "maxLength": 500
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "A friendly description that will be displayed to the player. This could be a basic description, or a more advanced narrative piece.",
+                    "maxLength": 500
+                },
+                "Game": {
+                    "type": "string",
+                    "description": "The game that the quest is for",
+                    "enum": [ "Arena", "Overworld", "Zero", "Beyond" ]
+                },
+                "Conditions": {
+                    "type": "array",
+                    "description": "The conditions that must be met before the quest can be started",
+                    "maxItems": 5,
+                    "items": {
+                        "$ref": "MissionTemplateData.schema.json#/$defs/ConditionTemplate",
+                        "oneOf": [
+                            {
+                                "$ref": "MissionTemplateData.schema.json#/$defs/QuestConditionTemplate"
+                            },
+                            {
+                                "$ref": "MissionTemplateData.schema.json#/$defs/FactionConditionTemplate"
+                            },
+                            {
+                                "$ref": "MissionTemplateData.schema.json#/$defs/RangerLevelConditionTemplate"
+                            },
+                            {
+                                "$ref": "MissionTemplateData.schema.json#/$defs/TimeConditionTemplate"
+                            }
+                        ]
+                    }
+                },
+                "States": {
+                    "type": "array",
+                    "description": "The set of states defining the quest progression. Organized as a tree to support branching quests",
+                    "minItems": 1,
+                    "items": { "$ref": "#/$defs/QuestState" }
+                },
+                "Rewards": {
+                    "type": "array",
+                    "maxItems": 3,
+                    "items": {
+                        "$ref": "MissionTemplateData.schema.json#/$defs/RewardTemplate",
+                        "oneOf": [
+                            {
+                                "$ref": "MissionTemplateData.schema.json#/$defs/FactionRewardTemplate"
+                            },
+                            {
+                                "$ref": "MissionTemplateData.schema.json#/$defs/ItemRewardTemplate"
+                            },
+                            {
+                                "$ref": "#/$defs/QuestRewardTemplate"
+                            }
+                        ]
+                    }
+                }
+            },
+            "required": [ "ProductionId", "Name", "Game", "States" ]
+        },
+        "QuestState": {
+            "type": "object",
+            "description": "Defines a node in the quest progression",
+            "additionalProperties": false,
+			"properties": {
+				"StateId": {
+					"type": "string",
+					"description": "The unique id of the quest state",
+					"maxLength": 100
+				},
+				"Name": {
+					"type": "string",
+					"description": "A friendly name for the quest state",
+					"maxLength": 500
+				},
+				"Description": {
+					"type": "string",
+					"description": "A friendly description that will be displayed to the player. This could be a basic description, or a more advanced narrative piece.",
+					"maxLength": 500
+				},
+				"Optional": {
+					"type": "boolean",
+					"description": "Reserved for future use"
+				},
+				"Parents": {
+					"type": "array",
+					"description": "The ProductionId of the previous state(s) in the quest tree, which must be completed before this one may be started. If more than one, only one is required (indicates branch paths coming back together)",
+					"items": { "type": "string" }
+				},
+				"Children": {
+					"type": "array",
+					"description": "ProductionIds of the state(s) following this one in the quest tree. If more than one, branch selection is determined by the CompletionTag.",
+					"items": { "type": "string" }
+				},
+				"Conditions": {
+					"type": "array",
+					"description": "Conditions for beginning this State. Used for branching.",
+					"items": {
+						"$ref": "MissionTemplateData.schema.json#/$defs/ConditionTemplate",
+						"oneOf": [
+							{
+								"$ref": "#/$defs/QuestStateConditionTemplate"
+							}
+
+						]
+					}
+				},
+				"Objectives": {
+					"type": "array",
+					"description": "The objectives that the player must complete for this state",
+					"minItems": 1,
+					"items": {
+						"$ref": "MissionTemplateData.schema.json#/$defs/ObjectiveTemplate",
+						"oneOf": [
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/CaptureIlluvialObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/GainIlluvialExperienceObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/ForgeItemObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/FuseIlluvialObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/GatherResourceObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/CatchMorphopodObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/FightEncounterObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/ExtractResourceObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/ScanCountObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/ResearchCountObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/DialogObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/ScanLocationObjectiveTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/TrainerBattleObjectiveTemplate"
+							}
+						]
+					}
+				},
+				"Rewards": {
+					"type": "array",
+					"items": {
+						"$ref": "MissionTemplateData.schema.json#/$defs/RewardTemplate",
+						"oneOf": [
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/FactionRewardTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/AirdropRewardTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/AirdropMultiplierRewardTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/MissionRewardTemplate"
+							},
+							{
+								"$ref": "MissionTemplateData.schema.json#/$defs/ItemRewardTemplate"
+							}
+						]
+					}
+				},
+				"CompletionTags": {
+					"type": "array",
+					"description": "Set of allowable tags that can be used for the completion state. Used to control branching.",
+					"items": { "type": "string" }
+				}
+			},
+            "required": [
+                "StateId",
+                "Name",
+                "Description",
+                "Objectives"
+            ]
+        },
+        "QuestConditionTemplate": {
+            "type": "object",
+            "$id": "schema:QuestConditionTemplate",
+            "$ref": "MissionTemplateData.schema.json#/$defs/ConditionTemplate",
+            "description": "Player must complete the specified quest before this quest can be selected",
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "type": "string",
+                    "const": "QuestCondition"
+                },
+                "ProductionId": {
+                    "type": "string",
+                    "description": "The production id of the quest that must be completed before this quest can be selected"
+                }
+            },
+            "required": [ "Type", "ProductionId" ]
+        },
+        "QuestStateConditionTemplate": {
+            "type": "object",
+            "$id": "schema:QuestStateConditionTemplate",
+            "$ref": "MissionTemplateData.schema.json#/$defs/ConditionTemplate",
+            "description": "Player must complete the specified state with the given CompletionTag before this quest can be selected",
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "type": "string",
+                    "const": "QuestStateondition"
+                },
+                "ProductionId": {
+                    "type": "string",
+                    "description": "The production id of the state that must be completed prior to this one"
+                },
+                "CompletionTag": {
+                    "type": "string",
+                    "description": "The CompletionTag of the prior state to select this one."
+                }
+            },
+            "required": [ "Type", "ProductionId", "CompletionTag" ]
+        },
+        "QuestRewardTemplate": {
+            "type": "object",
+            "$ref": "MissionTemplateData.schema.json#/$defs/RewardTemplate",
+            "description": "Unlock a new quest",
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "type": "string",
+                    "const": "QuestReward"
+                },
+                "ProductionId": {
+                    "type": "string",
+                    "description": "The production id of the quest that will be unlocked"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Weekly_Overworld_Morphopod_Catch_Murahn",
+  "Name": "Catch {0} Murahn Morphopods",
+  "Description": "Catch {0} Murahn Morphopods",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 42,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Line": "Murahn",
+      "Quantity": 21,
+      "Description": "Catch {0} Murahn Morphopods",
+      "Type": "CatchMorphopodObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

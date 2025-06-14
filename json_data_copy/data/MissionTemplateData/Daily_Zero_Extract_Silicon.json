@@ -1,0 +1,25 @@
+{
+  "ProductionId": "Daily_Zero_Extract_Silicon",
+  "Name": "Extract Silicon",
+  "Description": "Extract {0} Silicon from a Silicon site",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Zero",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Quantity": 800000,
+      "ResourceType": "Silicon",
+      "Description": "Extract {0} Silicon from a Silicon site",
+      "Type": "ExtractResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

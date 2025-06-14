@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Consumable_BasketFruit_Tier1",
+  "Name": "Gather {0} Common Basket Fruit",
+  "Description": "Gather {0} Common Basket Fruit by harvesting plants",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "Consumable",
+      "Name": "BasketFruit_Tier1",
+      "Quantity": 25,
+      "Description": "Gather {0} Common Basket Fruit by harvesting plants",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

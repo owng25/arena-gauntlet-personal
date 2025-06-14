@@ -1,0 +1,96 @@
+{
+	"Name": "LifeStorm",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "GreaterPower",
+	"Abilities": [
+		{
+			"Name": "LifeStorm_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "LifeStorm - Health",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 500000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "LifeStorm_Ability2",
+			"ActivationTrigger": {
+				"TriggerType": "EveryXTime",
+				"ActivateEveryTimeMs": 2000
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "LifeStorm - AOE Heal",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "InZone",
+						"Group": "Ally",
+						"RadiusUnits": 20
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantHeal",
+								"HealType": "Normal",
+								"Expression": {
+									"Percentage": 3,
+									"Stat": "MaxHealth",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Life Storm",
+	"DisplayDescription": "Gain <MaxHealth>500</> <MaxHealth>Max Health</>. The holder and allies within 20-hexes heal <MaxHealth>3%</> of holder's Max Health every 2 seconds.",
+	"Description": {
+		"Format": "Gain <MaxHealth>{HealthBuff}</> <MaxHealth>Max Health</>. The holder and allies within {Radius}-hexes heal <MaxHealth>{Healing}%</> of holder's Max Health every {TriggerTime} seconds.",
+		"Parameters": {
+			"HealthBuff": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Radius": {
+				"ParameterPath": "Abilities[1].Skills[0].Targeting.RadiusUnits",
+				"ValueMultiplier": 1.0
+			},
+			"Healing": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"TriggerTime": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.ActivateEveryTimeMs",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Gain 500 Max Health. The holder and allies within 20-hexes heal 3% of holder's Max Health every 2 seconds."
+}

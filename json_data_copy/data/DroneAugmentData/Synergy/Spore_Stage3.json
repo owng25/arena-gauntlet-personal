@@ -1,0 +1,26 @@
+{
+	"Name": "Spore",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Spore Matrix",
+	"DisplayDescription": "Gain a Spore Imprint and a Vanquisher's Barrier.",
+	"Description": {
+		"Format": "Gain a Spore Imprint and a Vanquisher's Barrier.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Spore",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "VanquishersBarrier",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

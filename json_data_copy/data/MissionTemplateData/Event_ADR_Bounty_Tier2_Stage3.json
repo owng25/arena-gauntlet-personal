@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_ADR_Bounty_Tier2_Stage3",
+  "Name": "Collect a Tier 2 Stage 3 Illuvial",
+  "Description": "Collect a Tier 2 Stage 3 Illuvial",
+  "Expiry": "2025-04-17",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Conditions": [
+	  {
+		"Type": "TimeCondition",
+		"StartTime": "2025-04-03T00:00:00.0000000Z",
+		"EndTime": "2025-04-17T00:00:00.0000000Z"
+	  }
+  ],
+  "Objectives": [
+    {
+      "Quantity": 1,
+      "Source": "ADR",
+      "Stage": 3,
+      "Tier": 2,
+      "Description": "Collect a Tier 2 Stage 3 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 16,
+      "Type": "AirdropReward"
+    }
+  ]
+}

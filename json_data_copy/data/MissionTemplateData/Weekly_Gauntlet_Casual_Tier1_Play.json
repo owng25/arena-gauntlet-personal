@@ -1,0 +1,27 @@
+{
+  "ProductionId": "Weekly_Gauntlet_Casual_Tier1_Play",
+  "Name": "Play {0} matches of Casual Gauntlet",
+  "Description": "Play {0} matches of Casual Gauntlet",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Arena",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "Quantity": 14,
+      "WinRequired": true,
+      "GameMode": "Gauntlet",
+      "Queue": "Casual",
+      "Description": "Play {0} matches of Casual Gauntlet",
+      "Type": "ArenaGameObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

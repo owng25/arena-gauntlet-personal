@@ -1,0 +1,102 @@
+name: Update Auto-Link References from JIRA
+
+on:
+  workflow_dispatch: # Allows this action to be manually triggered
+  schedule:
+    - cron: '0 0 * * 1'  # Runs every Monday at midnight (00:00 UTC)
+
+jobs:
+  update-autolinks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Ensure running on main branch
+        if: github.ref != 'refs/heads/main' # Only proceed if the branch is main
+        run: |
+          echo "This workflow can only be run on the main branch."
+          exit 1
+
+      - name: Fetch list of JIRA projects
+        run: |
+          JIRA_API_ENDPOINT="https://illuvium.atlassian.net/rest/api/3/project/search"
+          JIRA_USERNAME="${{ secrets.JIRA_USERNAME }}"
+          JIRA_API_TOKEN="${{ secrets.JIRA_API_TOKEN }}"
+
+          # Fetch project list from JIRA
+          curl -u $JIRA_USERNAME:$JIRA_API_TOKEN \
+            -H "Accept: application/json" \
+            -X GET "$JIRA_API_ENDPOINT" > projects.json
+
+          # Extract project keys and save them to a file
+          jq -r '.values[].key' projects.json > prefixes.txt
+
+      - name: Fetch existing auto-links
+        id: fetch_autolinks
+        run: |
+          GITHUB_TOKEN="${{ secrets.GIT_PAT_OCTOPUS }}"
+          ORG="${{ github.repository_owner }}"
+          REPO="${{ github.event.repository.name }}"
+
+          # Echo the URL being used for debugging purposes
+          URL="https://api.github.com/repos/$ORG/$REPO/autolinks"
+          echo "Fetching auto-links from URL: $URL"
+
+          # Fetch all existing auto-links and output to a file
+          HTTP_RESPONSE=$(curl -s -o autolinks.json -w "%{http_code}" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "$URL")
+
+          if [[ "$HTTP_RESPONSE" == "403" ]]; then
+            echo "Error: Received 403 Forbidden. Exiting."
+            exit 1
+          elif [[ "$HTTP_RESPONSE" == "404" ]]; then
+            echo "Error: Repository not found. Exiting."
+            exit 1
+          fi
+
+          # Output the fetched auto-links
+          cat autolinks.json
+
+      - name: Update Auto-Link References
+        run: |
+          # Define variables
+          GITHUB_TOKEN="${{ secrets.GIT_PAT_OCTOPUS }}"
+          ORG="${{ github.repository_owner }}"
+          REPO="${{ github.event.repository.name }}"
+
+          # Use the previously fetched auto-links stored in autolinks.json
+          AUTO_LINKS=$(cat autolinks.json)
+          URL="https://api.github.com/repos/$ORG/$REPO/autolinks"
+          echo "Using autolink URL: $URL"
+
+          while IFS= read -r PREFIX; do
+            echo "Processing prefix: $PREFIX"
+
+            # Ensure the prefix ends with a dash
+            if [[ "$PREFIX" != *- ]]; then
+              PREFIX="${PREFIX}-"
+            fi
+
+            URL_TEMPLATE="https://illuvium.atlassian.net/browse/$PREFIX<num>"
+
+            # Check if the auto-link already exists
+            EXISTING_AUTOLINK=$(echo "$AUTO_LINKS" \
+              | jq -r --arg prefix "$PREFIX" '.[]? | select(.key_prefix==$prefix)')
+
+            if [[ -z "$EXISTING_AUTOLINK" ]]; then
+              # Create a new auto-link reference if it doesn't exist
+              curl -X POST \
+                -H "Authorization: token $GITHUB_TOKEN" \
+                -H "Accept: application/vnd.github+json" \
+                -d "{\"key_prefix\": \"$PREFIX\", \"url_template\": \"$URL_TEMPLATE\"}" \
+                "$URL"
+              
+              echo "Created auto-link for $PREFIX in $REPO"
+            else
+              echo "Auto-link for $PREFIX already exists"
+            fi
+          done < prefixes.txt

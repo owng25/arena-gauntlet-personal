@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Flail_Stage1_Original_Ripple",
+  "Name": "Forge a Ripple Flail",
+  "Description": "Forge a Ripple Flail",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Flail_Stage1_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Ripple Flail",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

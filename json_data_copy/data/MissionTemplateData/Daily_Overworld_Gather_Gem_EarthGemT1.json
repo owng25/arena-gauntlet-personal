@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Daily_Overworld_Gather_Gem_EarthGemT1",
+  "Name": "Extract {0} Common Earth Gem",
+  "Description": "Extract {0} Common Earth Gem by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Daily",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "OverworldGemstone",
+      "Name": "EarthGemT1",
+      "Quantity": 20,
+      "Description": "Extract {0} Common Earth Gem by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

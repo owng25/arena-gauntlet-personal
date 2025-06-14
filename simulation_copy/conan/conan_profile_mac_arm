@@ -1,0 +1,5 @@
+include(conan_profile_mac)
+
+[settings]
+    arch=armv8
+    arch_build=armv8

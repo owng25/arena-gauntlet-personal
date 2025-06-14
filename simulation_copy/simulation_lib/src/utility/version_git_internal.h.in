@@ -1,0 +1,13 @@
+#pragma once
+
+#include <string_view>
+
+namespace simulation
+{
+// The full git hash
+static constexpr std::string_view kGitSha1 = "@GIT_SHA1@";
+
+// Similar to git describe --match=NeVeRmAtCh --always --abbrev=10
+static constexpr std::string_view kGitSha1Short = kGitSha1.substr(0, 10);
+
+}  // namespace simulation

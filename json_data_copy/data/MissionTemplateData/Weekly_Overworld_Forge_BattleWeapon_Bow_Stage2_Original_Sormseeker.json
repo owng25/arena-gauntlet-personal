@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleWeapon_Bow_Stage2_Original_Sormseeker",
+  "Name": "Forge a Stormseeker Bow",
+  "Description": "Forge a Stormseeker Bow",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Objectives": [
+    {
+      "ItemType": "BattleWeapon",
+      "Name": "Bow_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Stormseeker Bow",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

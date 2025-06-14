@@ -1,0 +1,271 @@
+{
+	"Name": "PreyDrive",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "PreyDrive_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "PreyDrive - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "PreyDrive_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnHit",
+				"AbilityTypes": [
+					"Attack"
+				],
+				"SenderAllegiance": "Self",
+				"ReceiverAllegiance": "Enemy",
+				"EveryX": true
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "PreyDrive - Missing Health Damage",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Empower",
+								"IsConsumable": true,
+								"ActivationsUntilExpiry": 1,
+								"ActivatedBy": "Attack",
+								"AttachedEffects": [
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Physical",
+										"Expression": {
+											"Operation": "*",
+											"Operands": [
+												{
+													"Stat": "AttackPhysicalDamage",
+													"StatSource": "Sender"
+												},
+												{
+													"Operation": "*",
+													"Operands": [
+														{
+															"Operation": "-",
+															"Operands": [
+																1,
+																{
+																	"Operation": "/",
+																	"Operands": [
+																		{
+																			"Stat": "CurrentHealth",
+																			"StatSource": "Receiver"
+																		},
+																		{
+																			"Stat": "MaxHealth",
+																			"StatSource": "Receiver"
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"Operation": "/",
+															"Operands": [
+																30,
+																100
+															]
+														}
+													]
+												}
+											]
+										}
+									},
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Energy",
+										"Expression": {
+											"Operation": "*",
+											"Operands": [
+												{
+													"Stat": "AttackEnergyDamage",
+													"StatSource": "Sender"
+												},
+												{
+													"Operation": "*",
+													"Operands": [
+														{
+															"Operation": "-",
+															"Operands": [
+																1,
+																{
+																	"Operation": "/",
+																	"Operands": [
+																		{
+																			"Stat": "CurrentHealth",
+																			"StatSource": "Receiver"
+																		},
+																		{
+																			"Stat": "MaxHealth",
+																			"StatSource": "Receiver"
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"Operation": "/",
+															"Operands": [
+																30,
+																100
+															]
+														}
+													]
+												}
+											]
+										}
+									},
+									{
+										"Type": "InstantDamage",
+										"DamageType": "Pure",
+										"Expression": {
+											"Operation": "*",
+											"Operands": [
+												{
+													"Stat": "AttackPureDamage",
+													"StatSource": "Sender"
+												},
+												{
+													"Operation": "*",
+													"Operands": [
+														{
+															"Operation": "-",
+															"Operands": [
+																1,
+																{
+																	"Operation": "/",
+																	"Operands": [
+																		{
+																			"Stat": "CurrentHealth",
+																			"StatSource": "Receiver"
+																		},
+																		{
+																			"Stat": "MaxHealth",
+																			"StatSource": "Receiver"
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"Operation": "/",
+															"Operands": [
+																30,
+																100
+															]
+														}
+													]
+												}
+											]
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Prey Drive",
+	"DisplayDescription": "Attacks deal <DamageAmplification>3%</> additional <DamageAmplification>Damage</> for every <MaxHealth>5%</> of target's missing Health.\r\n\r\nStats:\r\n+20% <AttackDamage>Attack Damage</>\r\n+10% <AttackSpeed>Attack Speed</>",
+	"Description": {
+		"Format": "Attacks deal <DamageAmplification>{Damage%}%</> additional <DamageAmplification>Damage</> for every <MaxHealth>{MissingHealth%}%</> of target's missing Health.\r\n\r\nStats:\r\n+{Stat_AD}% <AttackDamage>Attack Damage</>\r\n+{Stat_AS}% <AttackSpeed>Attack Speed</>",
+		"Parameters": {
+			"Damage%": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Operands[1].Operands[1].Operands[0]",
+				"ValueMultiplier": 0.1
+			},
+			"MissingHealth%": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].AttachedEffects[0].Expression.Operands[1].Operands[1].Operands[1]",
+				"ValueMultiplier": 0.05
+			},
+			"Stat_AD": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_AS": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "Attacks deal 3% additional Damage for every 5% of target's missing Health.\r\n\r\nStats:\r\n+20% Attack Damage\r\n+10% Attack Speed"
+}

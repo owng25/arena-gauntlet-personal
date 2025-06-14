@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Impervium_Stage2_Original_Alloyed",
+  "Name": "Forge a Alloyed Impervium",
+  "Description": "Forge a Alloyed Impervium",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 3,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Impervium_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Alloyed Impervium",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Mantle_Stage3_Original_Wrath",
+  "Name": "Forge a Wrath Mantle",
+  "Description": "Forge a Wrath Mantle",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 5,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Mantle_Stage3_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Wrath Mantle",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

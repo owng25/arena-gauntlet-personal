@@ -1,0 +1,129 @@
+{
+	"Name": "VanquishersBarrier",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "VanquishersBarrier_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "VanquishersBarrier - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 100000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaPowerPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 10
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "VanquishersBarrier_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "OnAssist"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "VanquishersBarrier - Shield and Attack Speed",
+					"Targeting": {
+						"Type": "ExpressionCheck",
+						"Group": "Ally",
+						"Expression": {
+							"Stat": "CurrentHealth%",
+							"StatSource": "Sender"
+						},
+						"Lowest": true,
+						"Num": 1,
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						]
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": 4000,
+								"Expression": 150000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackSpeed",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 4000,
+								"Expression": {
+									"Percentage": 20,
+									"Stat": "AttackSpeed",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Vanquishers Barrier",
+	"DisplayDescription": "On Takedown, grant 150 Shield and <AttackSpeed>20%</> <AttackSpeed>Attack Speed</> to the lowest percent Health ally for 4 seconds.\r\n\r\nStats:\r\n+100 <MaxHealth>Health</>\r\n+10 <OmegaPowerPercentage>Omega Power</>",
+	"Description": {
+		"Format": "On Takedown, grant {ShieldVal} Shield and <AttackSpeed>{ASVal}%</> <AttackSpeed>Attack Speed</> to the lowest percent Health ally for {Duration} seconds.\r\n\r\nStats:\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_OP} <OmegaPowerPercentage>Omega Power</>",
+		"Parameters": {
+			"ShieldVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"ASVal": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_OP": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[1].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "On Takedown, grant 150 Shield and 20% Attack Speed to the lowest percent Health ally for 4 seconds.\r\n\r\nStats:\r\n+100 Health\r\n+10 Omega Power"
+}

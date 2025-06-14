@@ -1,0 +1,115 @@
+{
+  "ProductionId": "Milestone_Overworld_Capture_Tier1_Stage3",
+  "Name": "Capture all Tier 1 Stage 3 Illuvials",
+  "Description": "Capture all Tier 1 Stage 3 Illuvials",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Milestone",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 0,
+  "Objectives": [
+    {
+      "Name": "003_Axolotl_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture an Axodon",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "015_Turtle_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture an Archeleon",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "024_Dodo_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture a Kukkaraph",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "045_Snail_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture a Seeforus",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "060_Monkier_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture an Exalted Monkier",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "063_Aapon_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture an Exalted Aapon",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "066_Grilla_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture an Exalted Grilla",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "069_Tenrec_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture a Gyro",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "081_TreeKangaroo_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture a Tibi\u0027Rukko",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "090_WaterBuffalo_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture a Cardulox",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "096_DropBear_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture a Chukoondi",
+      "Type": "CaptureIlluvialObjective"
+    },
+    {
+      "Name": "099_RedPanda_Stage3_Default_Original",
+      "Quantity": 1,
+      "Stage": 3,
+      "Tier": 1,
+      "Description": "Capture a Rai-lee",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

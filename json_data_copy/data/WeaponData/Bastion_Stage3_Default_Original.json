@@ -1,0 +1,199 @@
+{
+	"Name": "Bastion",
+	"Stage": 3,
+	"Tier": 2,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Magma",
+	"CombatClass": "Colossus",
+	"DominantCombatAffinity": "Earth",
+	"DominantCombatClass": "Bulwark",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 60000,
+		"EnergyCost": 140000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 120000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 70,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 25,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 2,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Bastion Attack III",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 50
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Fortified Mantle III",
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "Beneficial Mark",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct",
+						"PreDeploymentDelayPercentage": 0
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "VulnerabilityPercentage",
+								"DurationMs": 5000,
+								"Expression": 60
+							},
+							{
+								"Type": "Buff",
+								"Stat": "Grit",
+								"DurationMs": 5000,
+								"Expression": 10000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "Resolve",
+								"DurationMs": 5000,
+								"Expression": 10000
+							},
+							{
+								"Type": "SpawnMark",
+								"MarkType": "Beneficial",
+								"DurationMs": 5000,
+								"AttachedAbilities": [
+									{
+										"Name": "If hit while shield is active deal extra Energy Damage",
+										"ActivationTrigger": {
+											"TriggerType": "OnHit",
+											"AbilityTypes": [
+												"Attack"
+											],
+											"SenderAllegiance": "Enemy",
+											"ReceiverAllegiance": "Self",
+											"MaxActivations": -1
+										},
+										"TotalDurationMs": 0,
+										"Skills": [
+											{
+												"Name": "Energy Damage for nearset enemy",
+												"Deployment": {
+													"Type": "Direct"
+												},
+												"Targeting": {
+													"Type": "Activator"
+												},
+												"EffectPackage": {
+													"Effects": [
+														{
+															"Type": "InstantDamage",
+															"DamageType": "Energy",
+															"Expression": 30000
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Molten Bastion",
+	"DisplayDescription": "The Ranger activates the shield, forming a shell of volcanic rock around it, gaining 10 Grit and Resolve, and ignoring 60% of the Damage received from enemies for 5 seconds.\r\n\r\nAdditionally, when hit, the shield emanates heat, dealing 30 Energy Damage back to the Attacker.",
+	"Description": {
+		"Format": "The Ranger activates the shield, forming a shell of volcanic rock around it, gaining {a} Grit and Resolve, and ignoring {b}% of the Damage received from enemies for {c} seconds.\r\n\r\nAdditionally, when hit, the shield emanates heat, dealing {d} Energy Damage back to the Attacker.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[2].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			},
+			"c": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"d": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[3].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].Expression",
+				"ValueMultiplier": 0.001
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger activates the shield, forming a shell of volcanic rock around it, gaining 10 Grit and Resolve, and ignoring 60% of the Damage received from enemies for 5 seconds.\r\n\r\nAdditionally, when hit, the shield emanates heat, dealing 30 Energy Damage back to the Attacker."
+}

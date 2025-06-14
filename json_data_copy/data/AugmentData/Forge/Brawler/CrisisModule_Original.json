@@ -1,0 +1,194 @@
+{
+	"Name": "CrisisModule",
+	"Stage": 0,
+	"Tier": 0,
+	"Variation": "Original",
+	"Type": "Normal",
+	"Abilities": [
+		{
+			"Name": "CrisisModule_Stats",
+			"ActivationTrigger": {
+				"TriggerType": "OnBattleStart"
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "CrisisModule - List of Stats",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver",
+									"StatEvaluationType": "Base"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "MaxHealth",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 100000
+							},
+							{
+								"Type": "Buff",
+								"Stat": "VulnerabilityPercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": -1,
+								"Expression": 3
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"Name": "CrisisModule_Ability1",
+			"ActivationTrigger": {
+				"TriggerType": "HealthInRange",
+				"HealthLowerLimitPercentage": 20,
+				"MaxActivations": 1
+			},
+			"TotalDurationMs": 0,
+			"Skills": [
+				{
+					"Name": "CrisisModule - Shield and Damage Amp",
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"Targeting": {
+						"Type": "Self"
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnShield",
+								"DurationMs": 8000,
+								"Expression": {
+									"Percentage": 25,
+									"Stat": "MaxHealth",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPhysicalDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 8000,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackEnergyDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 8000,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "AttackPureDamage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 8000,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "AttackPureDamage",
+									"StatSource": "Receiver"
+								}
+							},
+							{
+								"Type": "Buff",
+								"Stat": "OmegaDamagePercentage",
+								"OverlapProcessType": "Stacking",
+								"DurationMs": 8000,
+								"Expression": {
+									"Percentage": 10,
+									"Stat": "OmegaDamagePercentage",
+									"StatSource": "Receiver"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Crisis Module",
+	"DisplayDescription": "At 20% Health, gain a Shield equal to 25% of <MaxHealth>Max Health</> and <DamageAmplification>10%</> <DamageAmplification>Damage Amp</> for 8 seconds.\r\n\r\nStats:\r\n+10% <AttackDamage>Attack Damage</>\r\n+100 <MaxHealth>Health</>\r\n+3% <DamageReduction>Damage Reduction</>",
+	"Description": {
+		"Format": "At {HealthTrigger}% Health, gain a Shield equal to {ShieldValue}% of <MaxHealth>Max Health</> and <DamageAmplification>{DamageAmp}%</> <DamageAmplification>Damage Amp</> for {Duration} seconds.\r\n\r\nStats:\r\n+{Stat_AD}% <AttackDamage>Attack Damage</>\r\n+{Stat_Health} <MaxHealth>Health</>\r\n+{Stat_DmgRed}% <DamageReduction>Damage Reduction</>",
+		"Parameters": {
+			"HealthTrigger": {
+				"ParameterPath": "Abilities[1].ActivationTrigger.HealthLowerLimitPercentage",
+				"ValueMultiplier": 1.0
+			},
+			"ShieldValue": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"DamageAmp": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[1].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Duration": {
+				"ParameterPath": "Abilities[1].Skills[0].EffectPackage.Effects[0].DurationMs",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_AD": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[0].Expression.Percentage",
+				"ValueMultiplier": 1.0
+			},
+			"Stat_Health": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[3].Expression",
+				"ValueMultiplier": 0.001
+			},
+			"Stat_DmgRed": {
+				"ParameterPath": "Abilities[0].Skills[0].EffectPackage.Effects[4].Expression",
+				"ValueMultiplier": 1.0
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "At 20% Health, gain a Shield equal to 25% of Max Health and 10% Damage Amp for 8 seconds.\r\n\r\nStats:\r\n+10% Attack Damage\r\n+100 Health\r\n+3% Damage Reduction"
+}

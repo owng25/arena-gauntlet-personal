@@ -1,0 +1,26 @@
+{
+	"Name": "Templar",
+	"Stage": 3,
+	"Type": "Game",
+	"DisplayName": "Templar Matrix",
+	"DisplayDescription": "Gain a Templar Imprint and a Battleborn Pact.",
+	"Description": {
+		"Format": "Gain a Templar Imprint and a Battleborn Pact.",
+		"Parameters": {}
+	},
+	"RuntimeBonus": {
+		"GrantedAugments": [
+			{
+				"Name": "Templar",
+				"Stage": 0,
+				"Variation": "Original"
+			},
+			{
+				"Name": "BattlebornPact",
+				"Stage": 0,
+				"Variation": "Original"
+			}
+		],
+		"GrantedCredits": 0
+	}
+}

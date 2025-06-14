@@ -1,0 +1,35 @@
+{
+  "ProductionId": "Event_ADR_BountyWeek9_Tier4_Stage2",
+  "Name": "Collect a Tier 4 Stage 2 Illuvial",
+  "Description": "Collect a Tier 4 Stage 2 Illuvial",
+  "Expiry": "2025-06-05",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-29T00:00:00.0000000Z",
+      "EndTime": "2025-06-05T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Quantity": 1,
+      "Source": "ADR",
+      "Stage": 2,
+      "Tier": 4,
+      "Description": "Collect a Tier 4 Stage 2 Illuvial",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 80,
+      "Type": "AirdropReward"
+    }
+  ]
+}

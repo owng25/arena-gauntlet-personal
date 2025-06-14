@@ -1,0 +1,2 @@
+include(conan_profile_mac_intel)
+include(conan_profile_generic_unreal_and_server)

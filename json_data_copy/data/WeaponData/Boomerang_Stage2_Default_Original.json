@@ -1,0 +1,229 @@
+{
+	"Name": "Boomerang",
+	"Stage": 2,
+	"Tier": 3,
+	"Variation": "Original",
+	"Type": "Normal",
+	"CombatAffinity": "Fire",
+	"CombatClass": "Arcanite",
+	"DominantCombatAffinity": "Fire",
+	"DominantCombatClass": "Fighter",
+	"Stats": {
+		"MaxHealth": 0,
+		"StartingEnergy": 10000,
+		"EnergyCost": 90000,
+		"PhysicalResist": 0,
+		"EnergyResist": 0,
+		"TenacityPercentage": 0,
+		"WillpowerPercentage": 0,
+		"Grit": 0,
+		"Resolve": 0,
+		"AttackPhysicalDamage": 85000,
+		"AttackEnergyDamage": 0,
+		"AttackPureDamage": 0,
+		"AttackSpeed": 100,
+		"MoveSpeedSubUnits": 0,
+		"HitChancePercentage": 100,
+		"AttackDodgeChancePercentage": 0,
+		"CritChancePercentage": 30,
+		"CritAmplificationPercentage": 150,
+		"OmegaPowerPercentage": 100,
+		"AttackRangeUnits": 60,
+		"OmegaRangeUnits": 0,
+		"HealthRegeneration": 0,
+		"EnergyRegeneration": 0,
+		"EnergyGainEfficiencyPercentage": 100,
+		"OnActivationEnergy": 0,
+		"VulnerabilityPercentage": 100,
+		"EnergyPiercingPercentage": 0,
+		"PhysicalPiercingPercentage": 0,
+		"HealthGainEfficiencyPercentage": 100,
+		"PhysicalVampPercentage": 0,
+		"EnergyVampPercentage": 0,
+		"PureVampPercentage": 0,
+		"Thorns": 0,
+		"StartingShield": 0,
+		"CritReductionPercentage": 0
+	},
+	"AttackAbilitiesSelection": "Cycle",
+	"AttackAbilities": [
+		{
+			"Name": "Boomerang Attack II",
+			"Skills": [
+				{
+					"Name": "Attack",
+					"Targeting": {
+						"Type": "CurrentFocus"
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"PreDeploymentDelayPercentage": 40
+					},
+					"Projectile": {
+						"SizeUnits": 0,
+						"IsHoming": true,
+						"SpeedSubUnits": 10000,
+						"IsBlockable": false,
+						"ApplyToAll": false
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Stat": "AttackPhysicalDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Energy",
+								"Expression": {
+									"Stat": "AttackEnergyDamage",
+									"StatSource": "Sender"
+								}
+							},
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Pure",
+								"Expression": {
+									"Stat": "AttackPureDamage",
+									"StatSource": "Sender"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"OmegaAbilitiesSelection": "Cycle",
+	"OmegaAbilities": [
+		{
+			"Name": "Ignition Circuit II",
+			"TotalDurationMs": 2000,
+			"Skills": [
+				{
+					"Name": "Boomerang",
+					"Targeting": {
+						"Type": "DistanceCheck",
+						"Guidance": [
+							"Ground",
+							"Underground",
+							"Airborne"
+						],
+						"Group": "Enemy",
+						"Lowest": false,
+						"Num": 1
+					},
+					"Deployment": {
+						"Type": "Projectile",
+						"Guidance": [
+							"Ground",
+							"Airborne"
+						],
+						"PreDeploymentDelayPercentage": 50
+					},
+					"PercentageOfAbilityDuration": 100,
+					"Projectile": {
+						"SizeUnits": 1,
+						"IsHoming": true,
+						"SpeedSubUnits": 8000,
+						"IsBlockable": false,
+						"ApplyToAll": true
+					},
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "InstantDamage",
+								"DamageType": "Physical",
+								"Expression": {
+									"Operation": "*",
+									"Operands": [
+										350000,
+										{
+											"Stat": "OmegaPowerPercentage",
+											"StatSource": "Sender"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"Name": "Omega power for hit",
+					"Targeting": {
+						"Type": "Self"
+					},
+					"Deployment": {
+						"Type": "Direct"
+					},
+					"PercentageOfAbilityDuration": 0,
+					"EffectPackage": {
+						"Effects": [
+							{
+								"Type": "SpawnMark",
+								"MarkType": "Beneficial",
+								"DurationMs": 2000,
+								"AttachedAbilities": [
+									{
+										"Name": "Op per hit",
+										"ActivationTrigger": {
+											"TriggerType": "OnHit",
+											"AbilityTypes": [
+												"Attack",
+												"Omega"
+											],
+											"SenderAllegiance": "Self",
+											"ReceiverAllegiance": "Enemy"
+										},
+										"TotalDurationMs": 0,
+										"Skills": [
+											{
+												"Name": "Omega power for self",
+												"Targeting": {
+													"Type": "Self"
+												},
+												"Deployment": {
+													"Type": "Direct"
+												},
+												"EffectPackage": {
+													"Effects": [
+														{
+															"Type": "Buff",
+															"OverlapProcessType": "Stacking",
+															"Stat": "OmegaPowerPercentage",
+															"DurationMs": -1,
+															"Expression": 3
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"DisplayName": "Fury Boomerang",
+	"DisplayDescription": "The Ranger throws the boomerang at the furthest enemy in range, dealing 350*OP Physical Damage to all enemies hit by it.\r\n\r\nAdditionally, gain 3 Omega Power for every enemy hit by the boomerang.\r\n\r\nArc Boomerang: Gives Arcanite and Shock.",
+	"Description": {
+		"Format": "The Ranger throws the boomerang at the furthest enemy in range, dealing {a}*OP Physical Damage to all enemies hit by it.\r\n\r\nAdditionally, gain {b} Omega Power for every enemy hit by the boomerang.\r\n\r\nArc Boomerang: Gives Arcanite and Shock.",
+		"Parameters": {
+			"a": {
+				"ParameterPath": "OmegaAbilities[0].Skills[0].EffectPackage.Effects[0].Expression.Operands[0]",
+				"ValueMultiplier": 0.001
+			},
+			"b": {
+				"ParameterPath": "OmegaAbilities[0].Skills[1].EffectPackage.Effects[0].AttachedAbilities[0].Skills[0].EffectPackage.Effects[0].Expression"
+			}
+		}
+	},
+	"DisplayDescriptionNormalized": "The Ranger throws the boomerang at the furthest enemy in range, dealing 350*OP Physical Damage to all enemies hit by it.\r\n\r\nAdditionally, gain 3 Omega Power for every enemy hit by the boomerang.\r\n\r\nArc Boomerang: Gives Arcanite and Shock."
+}

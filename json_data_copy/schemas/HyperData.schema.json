@@ -1,0 +1,69 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Hyper Data",
+	"oneOf": [
+		{
+			"$ref": "#/$defs/HyperData"
+		},
+		{
+			"$ref": "#/$defs/HyperConfig"
+		}
+	],
+	"$defs": {
+		"HyperData": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"CombatAffinityCounter": {
+					"$ref": "#/$defs/HyperSynergyCounter"
+				}
+			},
+			"additionalProperties": false
+		},
+		"HyperSynergyCounter": {
+			"type": "object",
+			"properties": {
+				"CombatAffinityTypes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"CombatAffinities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/HyperSynergyEffect"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"HyperSynergyEffect": {
+			"type": "object",
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"Effectiveness": {
+					"additionalProperties": {
+						"type": "integer"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"HyperConfig": {
+			"type": "object",
+			"x-versioned": true,
+			"properties": {
+				"SubHyperScalePercentage": {
+					"type": "integer"
+				},
+				"EnemiesRangeUnits": {
+					"type": "integer"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Gather_Ore_ChroviumOre",
+  "Name": "Extract {0} Chrovium",
+  "Description": "Extract {0} Chrovium by mining deposits",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 2,
+  "Game": "Overworld",
+  "MissionTier": 1,
+  "Objectives": [
+    {
+      "ItemType": "OverworldOre",
+      "Name": "ChroviumOre",
+      "Quantity": 280,
+      "Description": "Extract {0} Chrovium by mining deposits",
+      "Type": "GatherResourceObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

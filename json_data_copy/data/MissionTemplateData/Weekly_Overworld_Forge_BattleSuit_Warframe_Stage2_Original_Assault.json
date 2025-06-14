@@ -1,0 +1,26 @@
+{
+  "ProductionId": "Weekly_Overworld_Forge_BattleSuit_Warframe_Stage2_Original_Assault",
+  "Name": "Forge a Assault Warframe",
+  "Description": "Forge a Assault Warframe",
+  "Quantity": 1,
+  "Tags": [],
+  "Type": "Weekly",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 2,
+  "Objectives": [
+    {
+      "ItemType": "BattleSuit",
+      "Name": "Warframe_Stage2_Default_Original",
+      "Quantity": 1,
+      "Description": "Forge a Assault Warframe",
+      "Type": "ForgeItemObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 0,
+      "Type": "AirdropReward"
+    }
+  ]
+}

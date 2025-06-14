@@ -1,0 +1,34 @@
+{
+  "ProductionId": "Weekly_Overworld_BountyWeek9_Hunt_Illuvial6",
+  "Name": "Capture a Chucco",
+  "Description": "Capture a Chucco",
+  "Expiry": "2025-06-05",
+  "Quantity": 100,
+  "Tags": [],
+  "Type": "Event",
+  "Weight": 1,
+  "Game": "Overworld",
+  "MissionTier": 4,
+  "Conditions": [
+    {
+      "Type": "TimeCondition",
+      "StartTime": "2025-05-29T00:00:00.0000000Z",
+      "EndTime": "2025-06-05T00:00:00.0000000Z"
+    }
+  ],
+  "Objectives": [
+    {
+      "Name": "094_DropBear_Stage1_Default_Original",
+      "Quantity": 1,
+      "Source": "Default",
+      "Description": "Capture a Chucco",
+      "Type": "CaptureIlluvialObjective"
+    }
+  ],
+  "Rewards": [
+    {
+      "Points": 3,
+      "Type": "AirdropReward"
+    }
+  ]
+}
